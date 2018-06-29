@@ -30,7 +30,7 @@ github "sindresorhus/Preferences"
 
 #### CocoaPods
 
-```
+```ruby
 pod 'Preferences'
 ```
 
@@ -131,6 +131,17 @@ class PreferencesWindowController: NSWindowController {
 	func hideWindow()
 }
 ```
+
+
+## FAQ
+
+### How is it better than [`MASPreferences`](https://github.com/shpakovski/MASPreferences)?
+
+- Written in Swift. *(No bridging header!)*
+- Swifty API using a protocol.
+- Fully documented.
+- The window title is automatically localized by using the system string.
+- Less code (and less chance of bugs) as it uses `NSTabView` instead of manually implementing the toolbar and view switching.
 
 
 ## Related

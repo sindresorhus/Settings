@@ -53,7 +53,6 @@
 		E34E9EEB20E6149D002F8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E34E9EEE20E6149D002F8F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E34E9EF020E6149D002F8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E34E9EF120E6149D002F8F86 /* PreferencesExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PreferencesExample.entitlements; sourceTree = "<group>"; };
 		E34E9EFA20E61557002F8F86 /* Preferenceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Preferenceable.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EFE20E617E7002F8F86 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
 		E34E9F0020E61A26002F8F86 /* GeneralPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralPreferenceViewController.xib; sourceTree = "<group>"; };
@@ -96,7 +95,6 @@
 				E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */,
 				E34E9EEB20E6149D002F8F86 /* Assets.xcassets */,
 				E34E9EF020E6149D002F8F86 /* Info.plist */,
-				E34E9EF120E6149D002F8F86 /* PreferencesExample.entitlements */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -203,6 +201,11 @@
 				TargetAttributes = {
 					E34E9EE620E6149B002F8F86 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -211,7 +214,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = OBJ_5;
@@ -308,7 +310,6 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Example/PreferencesExample.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -352,7 +353,6 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Example/PreferencesExample.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -401,10 +401,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = Preferences;
-				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -433,10 +431,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = Preferences;
-				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
@@ -499,10 +495,11 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -544,11 +541,12 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
