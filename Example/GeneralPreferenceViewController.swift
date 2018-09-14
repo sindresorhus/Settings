@@ -3,10 +3,10 @@ import Preferences
 
 final class GeneralPreferenceViewController: NSViewController, Preferenceable {
 	let toolbarItemTitle = "General"
-	let toolbarItemIcon = NSImage(named: .preferencesGeneral)!
+	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
 	override var nibName: NSNib.Name? {
-		return NSNib.Name("GeneralPreferenceViewController")
+		return "GeneralPreferenceViewController"
 	}
 
 	override func viewDidLoad() {

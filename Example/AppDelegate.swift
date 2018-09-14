@@ -3,7 +3,7 @@ import Preferences
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
-	@IBOutlet private weak var window: NSWindow!
+	@IBOutlet private var window: NSWindow!
 
 	let preferencesWindowController = PreferencesWindowController(
 		viewControllers: [

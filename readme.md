@@ -10,8 +10,8 @@ Just pass in some view controllers and this package will take care of the rest.
 ## Requirements
 
 - macOS 10.12+
-- Xcode 9.3+
-- Swift 4.1+
+- Xcode 10+
+- Swift 4.2+
 
 
 ## Install
@@ -53,10 +53,10 @@ import Preferences
 
 final class GeneralPreferenceViewController: NSViewController, Preferenceable {
 	let toolbarItemTitle = "General"
-	let toolbarItemIcon = NSImage(named: .preferencesGeneral)!
+	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
 	override var nibName: NSNib.Name? {
-		return NSNib.Name("GeneralPreferenceViewController")
+		return "GeneralPreferenceViewController"
 	}
 
 	override func viewDidLoad() {
@@ -75,10 +75,10 @@ import Preferences
 
 final class AdvancedPreferenceViewController: NSViewController, Preferenceable {
 	let toolbarItemTitle = "Advanced"
-	let toolbarItemIcon = NSImage(named: .advanced)!
+	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
 	override var nibName: NSNib.Name? {
-		return NSNib.Name("AdvancedPreferenceViewController")
+		return "AdvancedPreferenceViewController"
 	}
 
 	override func viewDidLoad() {
@@ -99,7 +99,7 @@ import Preferences
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
-	@IBOutlet private weak var window: NSWindow!
+	@IBOutlet private var window: NSWindow!
 
 	let preferencesWindowController = PreferencesWindowController(
 		viewControllers: [
@@ -110,7 +110,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
 	func applicationDidFinishLaunching(_ notification: Notification) {}
 
-	@IBAction func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
+	@IBAction
+	func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
 		preferencesWindowController.showWindow()
 	}
 }
@@ -149,6 +150,7 @@ class PreferencesWindowController: NSWindowController {
 - [Defaults](https://github.com/sindresorhus/Defaults) - Swifty and modern UserDefaults
 - [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - Add "Launch at Login" functionality to your macOS app
 - [DockProgress](https://github.com/sindresorhus/DockProgress) - Show progress in your app's Dock icon
+- [More…](https://github.com/search?q=user%3Asindresorhus+language%3Aswift)
 
 You might also like my [apps](https://sindresorhus.com/#apps).
 

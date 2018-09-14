@@ -3,10 +3,10 @@ import Preferences
 
 final class AdvancedPreferenceViewController: NSViewController, Preferenceable {
 	let toolbarItemTitle = "Advanced"
-	let toolbarItemIcon = NSImage(named: .advanced)!
+	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
 	override var nibName: NSNib.Name? {
-		return NSNib.Name("AdvancedPreferenceViewController")
+		return "AdvancedPreferenceViewController"
 	}
 
 	override func viewDidLoad() {
