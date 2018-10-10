@@ -19,7 +19,7 @@ Just pass in some view controllers and this package will take care of the rest.
 #### SPM
 
 ```swift
-.package(url: "https://github.com/sindresorhus/Preferences", from: "0.1.0")
+.package(url: "https://github.com/sindresorhus/Preferences", from: "0.2.0")
 ```
 
 #### Carthage
