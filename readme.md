@@ -16,7 +16,7 @@ Just pass in some view controllers and this package will take care of the rest.
 
 ## Install
 
-#### SPM
+#### SwiftPM
 
 ```swift
 .package(url: "https://github.com/sindresorhus/Preferences", from: "0.2.0")
