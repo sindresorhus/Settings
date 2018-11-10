@@ -32,6 +32,8 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		return view.window
 	}
 
+	var isCrossfadingTransitions: Bool = true
+
 	override func loadView() {
 		self.view = NSView()
 		self.view.translatesAutoresizingMaskIntoConstraints = false
@@ -120,20 +122,35 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		let fromViewController = children[activeTab]
 		let toViewController = children[index]
 
-		guard let window = self.window as? PausableWindow else {
-			fromViewController.view.removeFromSuperview()
-			view.addSubview(toViewController.view)
-			toViewController.view.constrainToSuperviewBounds()
-			self.setWindowFrame(for: toViewController)
-			return
+		guard self.isCrossfadingTransitions else {
+			return immediatelyTransition(fromViewController: fromViewController,
+										 toViewController: toViewController)
 		}
-		
+
+		animateTransition(fromViewController: fromViewController,
+						  toViewController: toViewController,
+						  animated: animated)
+	}
+
+	private func immediatelyTransition(fromViewController: NSViewController, toViewController: NSViewController) {
+		fromViewController.view.removeFromSuperview()
+		view.addSubview(toViewController.view)
+		toViewController.view.constrainToSuperviewBounds()
+		self.setWindowFrame(for: toViewController)
+	}
+
+	private func animateTransition(fromViewController: NSViewController, toViewController: NSViewController, animated: Bool) {
+		guard let window = self.window as? PausableWindow else {
+			return immediatelyTransition(fromViewController: fromViewController,
+										 toViewController: toViewController)
+		}
+
 		window.isUserInteractionEnabled = false
 
 		toViewController.view.alphaValue = 0
 		view.addSubview(toViewController.view)
 		toViewController.view.constrainToSuperviewBounds()
-		
+
 		NSAnimationContext.runAnimationGroup({ context in
 			context.allowsImplicitAnimation = true
 			context.duration = (animated ? 0.25 : 0.0)

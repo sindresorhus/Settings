@@ -3,7 +3,7 @@ import Cocoa
 public final class PreferencesWindowController: NSWindowController {
 	private let tabViewController = PreferencesTabViewController()
 
-	public init(preferences: [Preferenceable], style: PreferencesStyle = .tabs) {
+	public init(preferences: [Preferenceable], style: PreferencesStyle = .tabs, crossfadeTransitions: Bool = true) {
 		precondition(!preferences.isEmpty, "You need to set at least one view controller")
 
 		let window = PausableWindow(
@@ -20,6 +20,7 @@ public final class PreferencesWindowController: NSWindowController {
 		window.title = String(System.localizedString(forKey: "Preferences…").dropLast())
 		window.titleVisibility = style.windowTitleVisibility
 		window.contentView = tabViewController.view
+		tabViewController.isCrossfadingTransitions = crossfadeTransitions
 		tabViewController.configure(preferences: preferences, style: style)
 	}
 
