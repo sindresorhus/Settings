@@ -27,19 +27,19 @@ final class PreferencesTabViewController: NSTabViewController {
 	}
 
 	internal func configure(preferenceables: [Preferenceable], style: PreferencesStyle) {
-		tabViewItems = preferenceables.map { viewController in
-			let item = NSTabViewItem(identifier: viewController.toolbarItemTitle)
-			item.label = viewController.toolbarItemTitle
+		tabViewItems = preferenceables.map { preferenceable in
+			let item = NSTabViewItem(identifier: preferenceable.toolbarItemTitle)
+			item.label = preferenceable.toolbarItemTitle
 			if style == .tabs {
-				item.image = viewController.toolbarItemIcon
+				item.image = preferenceable.toolbarItemIcon
 			}
-			item.viewController = viewController as? NSViewController
+			item.viewController = preferenceable.viewController
 			return item
 		}
 
 		tabViewSizes = preferenceables.map { preferenceable -> (String, CGSize) in
-			let viewController = preferenceable as! NSViewController
-			return (viewController.simpleClassName, viewController.view.frame.size)
+			return (preferenceable.viewController.simpleClassName,
+					preferenceable.viewController.view.frame.size)
 		}
 
 		tabStyle = style.tabStyle

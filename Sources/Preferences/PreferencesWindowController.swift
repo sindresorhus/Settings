@@ -7,7 +7,7 @@ public final class PreferencesWindowController: NSWindowController {
 		precondition(!viewControllers.isEmpty, "You need to set at least one view controller")
 
 		let window = NSWindow(
-			contentRect: (viewControllers[0] as! NSViewController).view.bounds,
+			contentRect: viewControllers[0].viewController.view.bounds,
 			styleMask: [
 				.titled,
 				.closable
