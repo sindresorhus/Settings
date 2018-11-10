@@ -2,14 +2,22 @@ import Cocoa
 
 final class PreferencesToolbarViewController: NSObject, PreferenceStyleController {
 
-    var centerToolbarItems: Bool = true
+    let toolbar: NSToolbar
+    let centerToolbarItems: Bool
     let preferences: [Preferenceable]
-    var selectedTab: Int = 0
+
+    var selectedTab: Int = 0 {
+        didSet {
+            toolbar.selectedItemIdentifier = preferences[selectedTab].toolbarItemIdentifier
+        }
+    }
 
     weak var delegate: PreferenceStyleControllerDelegate?
 
-    init(preferences: [Preferenceable]) {
+    init(preferences: [Preferenceable], toolbar: NSToolbar, centerToolbarItems: Bool = true) {
         self.preferences = preferences
+        self.toolbar = toolbar
+        self.centerToolbarItems = centerToolbarItems
     }
 
     func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier] {
@@ -20,7 +28,7 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
         }
 
         for preference in preferences {
-            toolbarItemIdentifiers.append(NSToolbarItem.Identifier(rawValue: preference.toolbarItemTitle))
+            toolbarItemIdentifiers.append(preference.toolbarItemIdentifier)
         }
 
         if centerToolbarItems {
@@ -43,8 +51,14 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
     }
 
     @IBAction func toolbarItemSelected(_ toolbarItem: NSToolbarItem) {
-        let index = toolbarItem.tag
-        selectedTab = index
-        delegate?.activateTab(index: index, animated: true)
+        let preferenceIndex = toolbarItem.tag
+        selectedTab = preferenceIndex
+        delegate?.activateTab(index: preferenceIndex, animated: true)
+    }
+}
+
+fileprivate extension Preferenceable {
+    var toolbarItemIdentifier: NSToolbarItem.Identifier {
+        return NSToolbarItem.Identifier(rawValue: toolbarItemTitle)
     }
 }

@@ -10,7 +10,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 			GeneralPreferenceViewController(),
 			AdvancedPreferenceViewController()
 		],
-		style: .segmentedControl
+		style: .tabs
 	)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {

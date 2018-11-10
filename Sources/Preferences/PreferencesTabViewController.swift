@@ -4,8 +4,6 @@ protocol PreferenceStyleController: class {
 	var delegate: PreferenceStyleControllerDelegate? { get set }
 	var selectedTab: Int { get set }
 
-	init(preferences: [Preferenceable])
-
 	func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
 	func toolbarItem(identifier: NSToolbarItem.Identifier) -> NSToolbarItem?
 }
@@ -28,15 +26,6 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		}
 	}
 
-	private var toolbar: NSToolbar! {
-		get {
-			return self.view.window!.toolbar
-		}
-		set {
-			self.view.window!.toolbar = newValue
-		}
-	}
-
 	override func loadView() {
 		self.view = NSView()
 		self.view.translatesAutoresizingMaskIntoConstraints = false
@@ -51,22 +40,23 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 		self.children = preferences.map { $0.viewController }
 
-		self.preferencesStyleController = {
-			switch style {
-			case .segmentedControl:
-				return PreferencesSegmentedControlViewController(preferences: preferences)
-			case .tabs:
-				return PreferencesToolbarViewController(preferences: preferences)
-			}
-		}()
-		self.preferencesStyleController.delegate = self
-
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
 		toolbar.displayMode = .iconAndLabel
 		toolbar.showsBaselineSeparator = true
 		toolbar.delegate = self
-		self.toolbar = toolbar
+
+		self.preferencesStyleController = {
+			switch style {
+			case .segmentedControl:
+				return PreferencesSegmentedControlViewController(preferences: preferences)
+			case .tabs:
+				return PreferencesToolbarViewController(preferences: preferences, toolbar: toolbar, centerToolbarItems: true)
+			}
+		}()
+		self.preferencesStyleController.delegate = self
+
+		self.view.window!.toolbar = toolbar // Call latest so that preferencesStyleController can be asked for items
 
 		self.activateTab(index: 0, animated: false)
 	}
