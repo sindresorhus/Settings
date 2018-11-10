@@ -1,7 +1,74 @@
 import Cocoa
 
-final class PreferencesTabViewController: NSTabViewController {
-	private var tabViewSizes = [String: CGSize]()
+protocol PreferenceStyleController: class {
+	var delegate: PreferenceStyleControllerDelegate? { get set }
+	var selectedTab: Int { get set }
+
+	init(preferences: [Preferenceable])
+
+	func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
+	func toolbarItem(identifier: NSToolbarItem.Identifier) -> NSToolbarItem?
+}
+
+protocol PreferenceStyleControllerDelegate: class {
+	func activateTab(index: Int, animated: Bool)
+}
+
+final class PreferencesTabViewController: NSViewController, PreferenceStyleControllerDelegate {
+
+	private var activeTab: Int!
+	private var tabViewSizes: [String: CGSize] = [:]
+	private var preferences: [Preferenceable] = []
+
+	private var toolbarItemIdentifiers: [NSToolbarItem.Identifier] = []
+
+	private var preferencesStyleController: PreferenceStyleController! {
+		didSet {
+			toolbarItemIdentifiers = preferencesStyleController.toolbarItemIdentifiers()
+		}
+	}
+
+	private var toolbar: NSToolbar! {
+		get {
+			return self.view.window!.toolbar
+		}
+		set {
+			self.view.window!.toolbar = newValue
+		}
+	}
+
+	override func loadView() {
+		self.view = NSView()
+	}
+
+	func configure(preferences: [Preferenceable], style: PreferencesStyle) {
+		self.preferences = preferences
+		self.tabViewSizes = preferences.map { preference -> (String, CGSize) in
+			return (preference.viewController.simpleClassName,
+					preference.viewController.view.frame.size)
+		}
+
+		self.children = preferences.map { $0.viewController }
+
+		self.preferencesStyleController = {
+			switch style {
+			case .segmentedControl:
+				return PreferencesSegmentedControlViewController(preferences: preferences)
+			case .tabs:
+				fatalError()
+			}
+		}()
+		self.preferencesStyleController.delegate = self
+
+		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
+		toolbar.allowsUserCustomization = false
+		toolbar.displayMode = .iconOnly
+		toolbar.showsBaselineSeparator = true
+		toolbar.delegate = self
+		self.toolbar = toolbar
+
+		self.activateTab(index: 0, animated: false)
+	}
 
 	private func setWindowFrame(for viewController: NSViewController) {
 		guard let contentSize = tabViewSizes[viewController.simpleClassName] else {
@@ -17,43 +84,58 @@ final class PreferencesTabViewController: NSTabViewController {
 		window.animator().setFrame(frame, display: false)
 	}
 
-	override func transition(from fromViewController: NSViewController, to toViewController: NSViewController, options: NSViewController.TransitionOptions = [], completionHandler completion: (() -> Void)? = nil) {
-		
-		NSAnimationContext.runAnimationGroup({ context in
-			context.duration = 0.5
-			setWindowFrame(for: toViewController)
-			super.transition(from: fromViewController, to: toViewController, options: [.crossfade, .allowUserInteraction], completionHandler: completion)
-		}, completionHandler: nil)
-	}
+	func activateTab(index: Int, animated: Bool) {
+		defer { activeTab = index }
 
-	internal func configure(preferences: [Preferenceable], style: PreferencesStyle) {
-		tabViewItems = preferences.map { preference in
-			let item = NSTabViewItem(identifier: preference.toolbarItemTitle)
-			item.label = preference.toolbarItemTitle
-			if style == .tabs {
-				item.image = preference.toolbarItemIcon
-			}
-			item.viewController = preference.viewController
-			return item
+		if self.activeTab == nil {
+			let toViewController = children[index]
+			view.addSubview(toViewController.view)
+			toViewController.view.alphaValue = 1.0
+			preferencesStyleController.selectedTab = index
+			// No need for `setWindowFrame`: Initial selection will display view at correct size
+		} else {
+			let fromViewController = children[activeTab]
+			let toViewController = children[index]
+			
+			toViewController.view.alphaValue = 0
+			view.addSubview(toViewController.view)
+
+			NSAnimationContext.runAnimationGroup({ context in
+				context.allowsImplicitAnimation = true
+				context.duration = (animated ? 0.25 : 0.0)
+				context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+				fromViewController.view.animator().alphaValue = 0
+				self.setWindowFrame(for: toViewController)
+				toViewController.view.animator().alphaValue = 1.0
+			}, completionHandler: {
+				fromViewController.view.removeFromSuperview()
+			})
+
+			self.view.needsDisplay = true
 		}
-
-		tabViewSizes = preferences.map { preference -> (String, CGSize) in
-			return (preference.viewController.simpleClassName,
-					preference.viewController.view.frame.size)
-		}
-
-		tabStyle = style.tabStyle
-		transitionOptions = [.crossfade, .slideDown]
 	}
 }
 
-extension Collection {
-	func map<T, U>(_ transform: (Element) throws -> (key: T, value: U)) rethrows -> [T: U] {
-		var result: [T: U] = [:]
-		for element in self {
-			let transformation = try transform(element)
-			result[transformation.key] = transformation.value
+extension PreferencesTabViewController: NSToolbarDelegate {
+
+	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+		return toolbarItemIdentifiers
+	}
+
+	func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+		return toolbarItemIdentifiers
+	}
+
+	func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+		return toolbarItemIdentifiers
+	}
+
+	public func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+
+		if itemIdentifier == .flexibleSpace {
+			return nil
 		}
-		return result
+
+		return preferencesStyleController.toolbarItem(identifier: itemIdentifier)
 	}
 }

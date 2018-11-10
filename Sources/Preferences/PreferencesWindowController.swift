@@ -18,8 +18,8 @@ public final class PreferencesWindowController: NSWindowController {
 		super.init(window: window)
 
 		window.title = String(System.localizedString(forKey: "Preferences…").dropLast())
+		window.titleVisibility = .hidden
 		window.contentView = tabViewController.view
-
 		tabViewController.configure(preferences: preferences, style: style)
 	}
 

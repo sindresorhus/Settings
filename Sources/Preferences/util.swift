@@ -19,3 +19,14 @@ extension NSObject {
 		return type(of: self).simpleClassName
 	}
 }
+
+extension Collection {
+	func map<T, U>(_ transform: (Element) throws -> (key: T, value: U)) rethrows -> [T: U] {
+		var result: [T: U] = [:]
+		for element in self {
+			let transformation = try transform(element)
+			result[transformation.key] = transformation.value
+		}
+		return result
+	}
+}
