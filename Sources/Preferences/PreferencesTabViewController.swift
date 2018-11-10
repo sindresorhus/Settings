@@ -39,6 +39,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 	override func loadView() {
 		self.view = NSView()
+		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
 	func configure(preferences: [Preferenceable], style: PreferencesStyle) {
@@ -85,7 +86,10 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 	}
 
 	func activateTab(index: Int, animated: Bool) {
-		defer { activeTab = index }
+		defer {
+			activeTab = index
+			preferencesStyleController.selectedTab = index
+		}
 
 		if self.activeTab == nil {
 			immediatelyDisplayTab(index: index)
@@ -98,8 +102,8 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 	private func immediatelyDisplayTab(index: Int) {
 		let toViewController = children[index]
 		view.addSubview(toViewController.view)
+		toViewController.view.constrainToSuperviewBounds()
 		toViewController.view.alphaValue = 1.0
-		preferencesStyleController.selectedTab = index
 		// No need for `setWindowFrame`: Initial selection will display view at correct size
 	}
 
@@ -109,7 +113,8 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 		toViewController.view.alphaValue = 0
 		view.addSubview(toViewController.view)
-
+		toViewController.view.constrainToSuperviewBounds()
+		
 		NSAnimationContext.runAnimationGroup({ context in
 			context.allowsImplicitAnimation = true
 			context.duration = (animated ? 0.25 : 0.0)
