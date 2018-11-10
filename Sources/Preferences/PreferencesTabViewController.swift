@@ -88,31 +88,38 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		defer { activeTab = index }
 
 		if self.activeTab == nil {
-			let toViewController = children[index]
-			view.addSubview(toViewController.view)
-			toViewController.view.alphaValue = 1.0
-			preferencesStyleController.selectedTab = index
-			// No need for `setWindowFrame`: Initial selection will display view at correct size
+			immediatelyDisplayTab(index: index)
 		} else {
-			let fromViewController = children[activeTab]
-			let toViewController = children[index]
-			
-			toViewController.view.alphaValue = 0
-			view.addSubview(toViewController.view)
-
-			NSAnimationContext.runAnimationGroup({ context in
-				context.allowsImplicitAnimation = true
-				context.duration = (animated ? 0.25 : 0.0)
-				context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-				fromViewController.view.animator().alphaValue = 0
-				self.setWindowFrame(for: toViewController)
-				toViewController.view.animator().alphaValue = 1.0
-			}, completionHandler: {
-				fromViewController.view.removeFromSuperview()
-			})
-
-			self.view.needsDisplay = true
+			guard index != activeTab else { return }
+			animateTabTransition(index: index, animated: animated)
 		}
+	}
+
+	private func immediatelyDisplayTab(index: Int) {
+		let toViewController = children[index]
+		view.addSubview(toViewController.view)
+		toViewController.view.alphaValue = 1.0
+		preferencesStyleController.selectedTab = index
+		// No need for `setWindowFrame`: Initial selection will display view at correct size
+	}
+
+	private func animateTabTransition(index: Int, animated: Bool) {
+		let fromViewController = children[activeTab]
+		let toViewController = children[index]
+
+		toViewController.view.alphaValue = 0
+		view.addSubview(toViewController.view)
+
+		NSAnimationContext.runAnimationGroup({ context in
+			context.allowsImplicitAnimation = true
+			context.duration = (animated ? 0.25 : 0.0)
+			context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+			fromViewController.view.animator().alphaValue = 0
+			self.setWindowFrame(for: toViewController)
+			toViewController.view.animator().alphaValue = 1.0
+		}, completionHandler: {
+			fromViewController.view.removeFromSuperview()
+		})
 	}
 }
 
