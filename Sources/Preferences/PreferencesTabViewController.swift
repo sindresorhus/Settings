@@ -65,7 +65,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		self.activateTab(index: 0, animated: false)
 	}
 
-	private func setWindowFrame(for viewController: NSViewController) {
+	private func setWindowFrame(for viewController: NSViewController, animated: Bool = true) {
 		guard let window = window else { preconditionFailure() }
 		guard let contentSize = tabViewSizes[viewController.simpleClassName] else {
 			preconditionFailure("Call configure(preferenceables:style:) first")
@@ -76,7 +76,15 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		var frame = window.frame
 		frame.origin.y += frame.height - newWindowSize.height
 		frame.size = newWindowSize
-		window.animator().setFrame(frame, display: false)
+		let animatableWindow = animated ? window.animator() : window
+		animatableWindow.setFrame(frame, display: false)
+	}
+
+	func activate(preference: Preferenceable?, animated: Bool) {
+		guard let preference = preference,
+			  let index = preferences.firstIndex(where: { $0 === preference})
+			  else { return activateTab(index: 0, animated: animated) }
+		activateTab(index: index, animated: animated)
 	}
 
 	func activateTab(index: Int, animated: Bool) {
@@ -124,7 +132,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 			context.duration = (animated ? 0.25 : 0.0)
 			context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 			fromViewController.view.animator().alphaValue = 0
-			self.setWindowFrame(for: toViewController)
+			self.setWindowFrame(for: toViewController, animated: animated)
 			toViewController.view.animator().alphaValue = 1.0
 		}, completionHandler: {
 			fromViewController.view.removeFromSuperview()

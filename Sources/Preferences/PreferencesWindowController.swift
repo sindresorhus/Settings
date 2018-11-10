@@ -27,12 +27,13 @@ public final class PreferencesWindowController: NSWindowController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	public func showWindow() {
+	public func showWindow(preference: Preferenceable? = nil) {
 		if !window!.isVisible {
 			window?.center()
 		}
 
 		showWindow(self)
+		tabViewController.activate(preference: preference, animated: false)
 		NSApp.activate(ignoringOtherApps: true)
 	}
 
