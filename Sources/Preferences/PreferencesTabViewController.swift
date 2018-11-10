@@ -55,14 +55,14 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 			case .segmentedControl:
 				return PreferencesSegmentedControlViewController(preferences: preferences)
 			case .tabs:
-				fatalError()
+				return PreferencesToolbarViewController(preferences: preferences)
 			}
 		}()
 		self.preferencesStyleController.delegate = self
 
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
-		toolbar.displayMode = .iconOnly
+		toolbar.displayMode = .iconAndLabel
 		toolbar.showsBaselineSeparator = true
 		toolbar.delegate = self
 		self.toolbar = toolbar
