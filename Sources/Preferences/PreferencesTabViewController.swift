@@ -26,6 +26,10 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		}
 	}
 
+	var window: NSWindow! {
+		return view.window
+	}
+
 	override func loadView() {
 		self.view = NSView()
 		self.view.translatesAutoresizingMaskIntoConstraints = false
@@ -56,17 +60,17 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		}()
 		self.preferencesStyleController.delegate = self
 
-		self.view.window!.toolbar = toolbar // Call latest so that preferencesStyleController can be asked for items
+		self.window.toolbar = toolbar // Call latest so that preferencesStyleController can be asked for items
 
 		self.activateTab(index: 0, animated: false)
 	}
 
 	private func setWindowFrame(for viewController: NSViewController) {
+		guard let window = window else { preconditionFailure() }
 		guard let contentSize = tabViewSizes[viewController.simpleClassName] else {
 			preconditionFailure("Call configure(preferenceables:style:) first")
 		}
 
-		let window = view.window!
 		let newWindowSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
 
 		var frame = window.frame
@@ -101,11 +105,10 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		let fromViewController = children[activeTab]
 		let toViewController = children[index]
 
-		guard let window = self.view.window as? PausableWindow else {
+		guard let window = self.window as? PausableWindow else {
 			fromViewController.view.removeFromSuperview()
 			view.addSubview(toViewController.view)
 			toViewController.view.constrainToSuperviewBounds()
-			toViewController.view.frame.origin.y = 0
 			self.setWindowFrame(for: toViewController)
 			return
 		}
