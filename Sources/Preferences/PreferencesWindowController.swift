@@ -27,7 +27,7 @@ public final class PreferencesWindowController: NSWindowController {
 			item.viewController = viewController as? NSViewController
 			return item
 		}
-		tabViewController.tabStyle = .toolbar
+		tabViewController.tabStyle = style.tabStyle
 		tabViewController.transitionOptions = [.crossfade, .slideDown]
 	}
 
