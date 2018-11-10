@@ -27,13 +27,13 @@ public final class PreferencesWindowController: NSWindowController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	public func showWindow(preference: Preferenceable? = nil) {
+	public func showWindow(toolbarItemIdentifier: NSToolbarItem.Identifier? = nil) {
 		if !window!.isVisible {
 			window?.center()
 		}
 
 		showWindow(self)
-		tabViewController.activate(preference: preference, animated: false)
+		tabViewController.activateTab(toolbarItemIdentifier: toolbarItemIdentifier, animated: false)
 		NSApp.activate(ignoringOtherApps: true)
 	}
 
@@ -54,7 +54,7 @@ class PausableWindow: NSWindow {
 		if #available(macOS 10.10.3, *) {
 			result.append(.pressure)
 		}
-		
+
 		return result
 	}()
 

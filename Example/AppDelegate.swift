@@ -1,6 +1,16 @@
 import Cocoa
 import Preferences
 
+extension NSToolbarItem.Identifier {
+	static var preferenceGeneral: NSToolbarItem.Identifier {
+		return NSToolbarItem.Identifier(rawValue: "preferenceGeneral")
+	}
+
+	static var preferenceAdvanced: NSToolbarItem.Identifier {
+		return NSToolbarItem.Identifier(rawValue: "preferenceAdvanced")
+	}
+}
+
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
@@ -16,7 +26,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		preferencesWindowController.showWindow(preference: preferences[1])
+		preferencesWindowController.showWindow(toolbarItemIdentifier: .preferenceAdvanced)
 	}
 
 	@IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {

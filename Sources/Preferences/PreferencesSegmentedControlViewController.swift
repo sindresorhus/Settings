@@ -24,15 +24,6 @@ final class PreferencesSegmentedControlViewController: NSViewController, Prefere
 
     weak var delegate: PreferenceStyleControllerDelegate?
 
-    var selectedTab: Int {
-        get {
-            return segmentedControl.selectedSegment
-        }
-        set {
-            segmentedControl.selectedSegment = newValue
-        }
-    }
-
     private var preferences: [Preferenceable]!
 
     required init(preferences: [Preferenceable]) {
@@ -95,6 +86,10 @@ final class PreferencesSegmentedControlViewController: NSViewController, Prefere
 
     @IBAction func segmentedControlAction(_ control: NSSegmentedControl) {
         delegate?.activateTab(index: control.selectedSegment, animated: true)
+    }
+
+    func selectTab(index: Int) {
+        segmentedControl.selectedSegment = index
     }
 
     func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier] {

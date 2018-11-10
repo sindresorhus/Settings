@@ -2,13 +2,15 @@ import Cocoa
 
 protocol PreferenceStyleController: class {
 	var delegate: PreferenceStyleControllerDelegate? { get set }
-	var selectedTab: Int { get set }
 
 	func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
 	func toolbarItem(identifier: NSToolbarItem.Identifier) -> NSToolbarItem?
+
+	func selectTab(index: Int)
 }
 
 protocol PreferenceStyleControllerDelegate: class {
+	func activateTab(toolbarItemIdentifier: NSToolbarItem.Identifier?, animated: Bool)
 	func activateTab(index: Int, animated: Bool)
 }
 
@@ -80,9 +82,14 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		animatableWindow.setFrame(frame, display: false)
 	}
 
-	func activate(preference: Preferenceable?, animated: Bool) {
-		guard let preference = preference,
-			  let index = preferences.firstIndex(where: { $0 === preference})
+	func activateTab(preference: Preferenceable?, animated: Bool) {
+		guard let preference = preference else { return activateTab(index: 0, animated: animated) }
+		activateTab(toolbarItemIdentifier: preference.toolbarItemIdentifier, animated: animated)
+	}
+
+	func activateTab(toolbarItemIdentifier: NSToolbarItem.Identifier?, animated: Bool) {
+		guard let toolbarItemIdentifier = toolbarItemIdentifier,
+			  let index = preferences.firstIndex(where: { $0.toolbarItemIdentifier == toolbarItemIdentifier })
 			  else { return activateTab(index: 0, animated: animated) }
 		activateTab(index: index, animated: animated)
 	}
@@ -90,7 +97,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 	func activateTab(index: Int, animated: Bool) {
 		defer {
 			activeTab = index
-			preferencesStyleController.selectedTab = index
+			preferencesStyleController.selectTab(index: index)
 		}
 
 		if self.activeTab == nil {
