@@ -111,6 +111,17 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		let fromViewController = children[activeTab]
 		let toViewController = children[index]
 
+		guard let window = self.view.window as? PausableWindow else {
+			fromViewController.view.removeFromSuperview()
+			view.addSubview(toViewController.view)
+			toViewController.view.constrainToSuperviewBounds()
+			toViewController.view.frame.origin.y = 0
+			self.setWindowFrame(for: toViewController)
+			return
+		}
+		
+		window.isUserInteractionEnabled = false
+
 		toViewController.view.alphaValue = 0
 		view.addSubview(toViewController.view)
 		toViewController.view.constrainToSuperviewBounds()
@@ -124,6 +135,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 			toViewController.view.animator().alphaValue = 1.0
 		}, completionHandler: {
 			fromViewController.view.removeFromSuperview()
+			window.isUserInteractionEnabled = true
 		})
 	}
 }
