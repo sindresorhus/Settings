@@ -6,10 +6,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
 	let preferencesWindowController = PreferencesWindowController(
-		viewControllers: [
+		preferences: [
 			GeneralPreferenceViewController(),
 			AdvancedPreferenceViewController()
-		]
+		],
+		style: .segmentedControl
 	)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {

@@ -3,11 +3,11 @@ import Cocoa
 public final class PreferencesWindowController: NSWindowController {
 	private let tabViewController = PreferencesTabViewController()
 
-	public init(viewControllers: [Preferenceable], style: PreferencesStyle = .tabs) {
-		precondition(!viewControllers.isEmpty, "You need to set at least one view controller")
+	public init(preferences: [Preferenceable], style: PreferencesStyle = .tabs) {
+		precondition(!preferences.isEmpty, "You need to set at least one view controller")
 
 		let window = NSWindow(
-			contentRect: viewControllers[0].viewController.view.bounds,
+			contentRect: preferences[0].viewController.view.bounds,
 			styleMask: [
 				.titled,
 				.closable
@@ -20,7 +20,7 @@ public final class PreferencesWindowController: NSWindowController {
 		window.title = String(System.localizedString(forKey: "Preferences…").dropLast())
 		window.contentView = tabViewController.view
 
-		tabViewController.configure(preferenceables: viewControllers, style: style)
+		tabViewController.configure(preferences: preferences, style: style)
 	}
 
 	public required init?(coder: NSCoder) {
