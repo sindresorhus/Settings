@@ -20,17 +20,7 @@ public final class PreferencesWindowController: NSWindowController {
 		window.title = String(System.localizedString(forKey: "Preferences…").dropLast())
 		window.contentView = tabViewController.view
 
-		tabViewController.tabViewItems = viewControllers.map { viewController in
-			let item = NSTabViewItem(identifier: viewController.toolbarItemTitle)
-			item.label = viewController.toolbarItemTitle
-			if style == .tabs {
-				item.image = viewController.toolbarItemIcon
-			}
-			item.viewController = viewController as? NSViewController
-			return item
-		}
-		tabViewController.tabStyle = style.tabStyle
-		tabViewController.transitionOptions = [.crossfade, .slideDown]
+		tabViewController.configure(preferenceables: viewControllers, style: style)
 	}
 
 	public required init?(coder: NSCoder) {
