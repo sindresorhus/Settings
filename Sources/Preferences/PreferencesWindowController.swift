@@ -23,7 +23,9 @@ public final class PreferencesWindowController: NSWindowController {
 		tabViewController.tabViewItems = viewControllers.map { viewController in
 			let item = NSTabViewItem(identifier: viewController.toolbarItemTitle)
 			item.label = viewController.toolbarItemTitle
-			item.image = viewController.toolbarItemIcon
+			if style == .tabs {
+				item.image = viewController.toolbarItemIcon
+			}
 			item.viewController = viewController as? NSViewController
 			return item
 		}
