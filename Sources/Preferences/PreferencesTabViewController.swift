@@ -75,7 +75,11 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 			preconditionFailure("Call configure(preferenceables:style:) first")
 		}
 
-		let newWindowSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
+		let desiredContentSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
+		let minWindowSize: NSSize = window.effectiveMinSize
+		let newWindowSize = NSSize(
+			width: max(desiredContentSize.width, minWindowSize.width),
+			height: max(desiredContentSize.height, minWindowSize.height))
 
 		var frame = window.frame
 		frame.origin.y += frame.height - newWindowSize.height
@@ -115,7 +119,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		view.addSubview(toViewController.view)
 		toViewController.view.constrainToSuperviewBounds()
 		toViewController.view.alphaValue = 1.0
-		// No need for `setWindowFrame`: Initial selection will display view at correct size
+		setWindowFrame(for: toViewController, animated: false)
 	}
 
 	private func animateTabTransition(index: Int, animated: Bool) {
@@ -186,5 +190,13 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 		}
 
 		return preferencesStyleController.toolbarItem(identifier: itemIdentifier)
+	}
+}
+
+extension NSWindow {
+	var effectiveMinSize: NSSize {
+		return (contentMinSize != .zero)
+			? frameRect(forContentRect: NSRect(origin: .zero, size: contentMinSize)).size
+			: minSize
 	}
 }
