@@ -65,8 +65,6 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		self.preferencesStyleController.delegate = self
 
 		self.window.toolbar = toolbar // Call latest so that preferencesStyleController can be asked for items
-
-		self.activateTab(index: 0, animated: false)
 	}
 
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = true) {
