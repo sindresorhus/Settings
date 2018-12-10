@@ -103,8 +103,29 @@ final class PreferencesSegmentedControlViewController: NSViewController, Prefere
     func toolbarItem(identifier: NSToolbarItem.Identifier) -> NSToolbarItem? {
         precondition(identifier == .toolbarSegmentedControlItem)
 
-        let toolbarItem = NSToolbarItem(itemIdentifier: identifier)
-        toolbarItem.view = segmentedControl
-        return toolbarItem
+        // When the segments outgrow the window, we need to provide a group of
+        // NSToolbarItems with custom menu item labels and action handling for the
+        // context menu that pops up at the right edge of the window.
+        let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: identifier)
+        toolbarItemGroup.view = segmentedControl
+        toolbarItemGroup.subitems = preferences.enumerated().map { (index, preferenceable) -> NSToolbarItem in
+            let item = NSToolbarItem(itemIdentifier: .init(rawValue: "segment-\(preferenceable.toolbarItemTitle)"))
+            item.label = preferenceable.toolbarItemTitle
+
+            let menuItem = NSMenuItem(
+                title: preferenceable.toolbarItemTitle,
+                action: #selector(segmentedControlMenuAction(_:)),
+                keyEquivalent: "")
+            menuItem.tag = index
+            menuItem.target = self
+            item.menuFormRepresentation = menuItem
+
+            return item
+        }
+        return toolbarItemGroup
+    }
+
+    @IBAction func segmentedControlMenuAction(_ menuItem: NSMenuItem) {
+        delegate?.activateTab(index: menuItem.tag, animated: true)
     }
 }
