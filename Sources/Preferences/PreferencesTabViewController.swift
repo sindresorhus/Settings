@@ -149,6 +149,9 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 		window.isUserInteractionEnabled = false
 
+		// Remove first so its constraints don't affect the animation
+		fromViewController.view.removeFromSuperview()
+
 		toViewController.view.alphaValue = 0
 		view.addSubview(toViewController.view)
 		toViewController.view.constrainToSuperviewBounds()
@@ -157,11 +160,9 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 			context.allowsImplicitAnimation = true
 			context.duration = (animated ? 0.25 : 0.0)
 			context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-			fromViewController.view.animator().alphaValue = 0
 			self.setWindowFrame(for: toViewController, animated: animated)
 			toViewController.view.animator().alphaValue = 1.0
 		}, completionHandler: {
-			fromViewController.view.removeFromSuperview()
 			window.isUserInteractionEnabled = true
 		})
 	}
