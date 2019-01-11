@@ -64,7 +64,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = true) {
 		guard let window = window else { preconditionFailure() }
-		let contentSize = viewController.view.frame.size
+		let contentSize = viewController.view.fittingSize
 
 		let desiredContentSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
 		let minWindowSize: NSSize = window.effectiveMinSize
