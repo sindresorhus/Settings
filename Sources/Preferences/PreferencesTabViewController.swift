@@ -17,7 +17,6 @@ protocol PreferenceStyleControllerDelegate: class {
 final class PreferencesTabViewController: NSViewController, PreferenceStyleControllerDelegate {
 
 	private var activeTab: Int!
-	private var tabViewSizes: [String: CGSize] = [:]
 	private var preferences: [Preferenceable] = []
 
 	private var toolbarItemIdentifiers: [NSToolbarItem.Identifier] = []
@@ -41,10 +40,6 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 	func configure(preferences: [Preferenceable], style: PreferencesStyle) {
 		self.preferences = preferences
-		self.tabViewSizes = preferences.map { preference -> (String, CGSize) in
-			return (preference.viewController.simpleClassName,
-					preference.viewController.view.frame.size)
-		}
 
 		self.children = preferences.map { $0.viewController }
 
@@ -69,9 +64,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = true) {
 		guard let window = window else { preconditionFailure() }
-		guard let contentSize = tabViewSizes[viewController.simpleClassName] else {
-			preconditionFailure("Call configure(preferences:style:) first")
-		}
+		let contentSize = viewController.view.frame.size
 
 		let desiredContentSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
 		let minWindowSize: NSSize = window.effectiveMinSize
