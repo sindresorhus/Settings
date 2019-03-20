@@ -15,8 +15,10 @@ final class PreferencesTabViewController: NSTabViewController {
 	}
 
 	override func transition(from fromViewController: NSViewController, to toViewController: NSViewController, options: NSViewController.TransitionOptions = [], completionHandler completion: (() -> Void)? = nil) {
-		tabViewSizes[fromViewController.simpleClassName] = fromViewController.view.frame.size
-
+		if !tabViewSizes.contains(where: { $0.key == fromViewController.simpleClassName }) {
+			tabViewSizes[fromViewController.simpleClassName] = fromViewController.view.frame.size
+		}
+		
 		NSAnimationContext.runAnimationGroup({ context in
 			context.duration = 0.5
 			setWindowFrame(for: toViewController)
