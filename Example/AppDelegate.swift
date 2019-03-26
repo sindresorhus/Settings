@@ -20,7 +20,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		preferencesWindowController.showWindow()
 	}
 
-	@IBAction func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
+	@IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
 		preferencesWindowController.showWindow()
 	}
 }
