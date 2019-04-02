@@ -28,6 +28,10 @@ extension Preferenceable {
 }
 
 extension PreferenceIdentifier {
+	public init(_ rawValue: String) {
+		self.init(rawValue: rawValue)
+	}
+
 	public init(fromToolbarItemIdentifier itemIdentifier: NSToolbarItem.Identifier) {
 		self.init(rawValue: itemIdentifier.rawValue)
 	}

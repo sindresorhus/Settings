@@ -2,8 +2,8 @@ import Cocoa
 import Preferences
 
 extension PreferenceIdentifier {
-	static let general = PreferenceIdentifier(rawValue: "preferenceGeneral")
-	static let advanced = PreferenceIdentifier(rawValue: "preferenceAdvances")
+	static let general = PreferenceIdentifier("general")
+	static let advanced = PreferenceIdentifier("advanced")
 }
 
 @NSApplicationMain
