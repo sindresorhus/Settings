@@ -4,12 +4,10 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 	private var activeTab: Int!
 	private var preferences: [Preference] = []
 
-	private var toolbarItemIdentifiers: [NSToolbarItem.Identifier] = []
+	private var preferencesStyleController: PreferenceStyleController!
 
-	private var preferencesStyleController: PreferenceStyleController! {
-		didSet {
-			toolbarItemIdentifiers = preferencesStyleController.toolbarItemIdentifiers()
-		}
+	private var toolbarItemIdentifiers: [NSToolbarItem.Identifier] {
+		return preferencesStyleController?.toolbarItemIdentifiers() ?? []
 	}
 
 	var window: NSWindow! {
@@ -25,28 +23,31 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 	func configure(preferences: [Preference], style: PreferencesStyle) {
 		self.preferences = preferences
-
 		self.children = preferences.map { $0.viewController }
+		self.changePreferencesStyleController(preferences: preferences, style: style)
+	}
 
+	func changePreferencesStyle(to newStyle: PreferencesStyle) {
+		changePreferencesStyleController(preferences: self.preferences, style: newStyle)
+	}
+
+	private func changePreferencesStyleController(preferences: [Preference], style: PreferencesStyle) {
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
 		toolbar.displayMode = .iconAndLabel
 		toolbar.showsBaselineSeparator = true
 		toolbar.delegate = self
 
-		self.preferencesStyleController = {
-			switch style {
-			case .segmentedControl:
-				return SegmentedControlViewController(preferences: preferences)
-			case .tabs:
-				return PreferencesToolbarViewController(preferences: preferences, toolbar: toolbar, centerToolbarItems: true)
-			}
-		}()
+		switch style {
+		case .segmentedControl:
+			self.preferencesStyleController = SegmentedControlViewController(preferences: preferences)
+		case .tabs:
+			self.preferencesStyleController = PreferencesToolbarViewController(preferences: preferences, toolbar: toolbar, centerToolbarItems: true)
+		}
 		self.preferencesStyleController.delegate = self
 
 		self.window.toolbar = toolbar // Call latest so that preferencesStyleController can be asked for items
 	}
-
 
 	func activateTab(preference: Preference?, animated: Bool) {
 		guard let preference = preference else {

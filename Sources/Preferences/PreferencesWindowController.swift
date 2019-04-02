@@ -3,6 +3,15 @@ import Cocoa
 public final class PreferencesWindowController: NSWindowController {
 	private let tabViewController = PreferencesTabViewController()
 
+	public var isAnimated: Bool {
+		get {
+			return tabViewController.isAnimated
+		}
+		set {
+			tabViewController.isAnimated = newValue
+		}
+	}
+
 	public init(preferences: [Preference], style: PreferencesStyle = .tabs, animated: Bool = true) {
 		precondition(!preferences.isEmpty, "You need to set at least one view controller")
 
@@ -27,6 +36,11 @@ public final class PreferencesWindowController: NSWindowController {
 	@available(*, unavailable)
 	public required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	public func changePreferencesStyle(to newStyle: PreferencesStyle) {
+		window?.titleVisibility = newStyle.windowTitleVisibility
+		tabViewController.changePreferencesStyle(to: newStyle)
 	}
 
 	public func showPreference(preferenceIdentifier: PreferenceIdentifier? = nil) {

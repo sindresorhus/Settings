@@ -14,7 +14,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController()
 	]
-	lazy var preferencesWindowController = PreferencesWindowController(preferences: self.preferences, style: .segmentedControl, animated: true)
+	lazy var preferencesStyle = PreferencesStyle.segmentedControl
+	lazy var preferencesWindowController = PreferencesWindowController(preferences: self.preferences, style: self.preferencesStyle, animated: true)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {
 		window.orderOut(self)
@@ -26,5 +27,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
 	@IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
 		preferencesWindowController.showPreference()
+	}
+
+	@IBAction private func switchStyle(_ sender: Any) {
+		self.preferencesStyle = (self.preferencesStyle == .segmentedControl)
+        	? .tabs
+			: .segmentedControl
+		preferencesWindowController.changePreferencesStyle(to: preferencesStyle)
 	}
 }
