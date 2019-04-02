@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol PreferenceStyleController: class {
+protocol PreferenceStyleController: AnyObject {
 	var delegate: PreferenceStyleControllerDelegate? { get set }
 
 	func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
@@ -9,13 +9,12 @@ protocol PreferenceStyleController: class {
 	func selectTab(index: Int)
 }
 
-protocol PreferenceStyleControllerDelegate: class {
+protocol PreferenceStyleControllerDelegate: AnyObject {
 	func activateTab(toolbarItemIdentifier: NSToolbarItem.Identifier?, animated: Bool)
 	func activateTab(index: Int, animated: Bool)
 }
 
 final class PreferencesTabViewController: NSViewController, PreferenceStyleControllerDelegate {
-
 	private var activeTab: Int!
 	private var preferences: [Preferenceable] = []
 
@@ -64,7 +63,9 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 
 	func activateTab(preference: Preferenceable?, animated: Bool) {
-		guard let preference = preference else { return activateTab(index: 0, animated: animated) }
+		guard let preference = preference else {
+			return activateTab(index: 0, animated: animated)
+		}
 		activateTab(toolbarItemIdentifier: preference.toolbarItemIdentifier, animated: animated)
 	}
 
@@ -84,7 +85,9 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		if self.activeTab == nil {
 			immediatelyDisplayTab(index: index)
 		} else {
-			guard index != activeTab else { return }
+			guard index != activeTab else {
+				return
+			}
 			animateTabTransition(index: index, animated: animated)
 		}
 	}
@@ -111,20 +114,18 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		transition(
 			from: fromViewController,
 			to: toViewController,
-			options: options,
-			completionHandler: {
+			options: options) {
 				self.activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
-		})
+		}
 	}
 
 	override func transition(from fromViewController: NSViewController, to toViewController: NSViewController, options: NSViewController.TransitionOptions = [], completionHandler completion: (() -> Void)? = nil) {
-
 		let isAnimated = options
 			.intersection([.crossfade, .slideUp, .slideDown, .slideForward, .slideBackward, .slideLeft, .slideRight])
 			.isEmpty == false
 
 		if isAnimated {
-			NSAnimationContext.runAnimationGroup({ (context) in
+			NSAnimationContext.runAnimationGroup({ context in
 				context.allowsImplicitAnimation = true
 				context.duration = 0.25
 				context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
@@ -151,7 +152,6 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 }
 
 extension PreferencesTabViewController: NSToolbarDelegate {
-
 	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
 		return toolbarItemIdentifiers
 	}
@@ -165,7 +165,6 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 	}
 
 	public func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-
 		if itemIdentifier == .flexibleSpace {
 			return nil
 		}

@@ -7,8 +7,8 @@ public protocol Preferenceable: AnyObject {
 	var viewController: NSViewController { get }
 }
 
-public extension Preferenceable where Self: NSViewController {
-	var viewController: NSViewController {
+extension Preferenceable where Self: NSViewController {
+	public var viewController: NSViewController {
 		return self
 	}
 }

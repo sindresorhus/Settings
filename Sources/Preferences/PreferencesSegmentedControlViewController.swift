@@ -31,6 +31,7 @@ final class PreferencesSegmentedControlViewController: NSViewController, Prefere
         self.preferences = preferences
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -71,20 +72,20 @@ final class PreferencesSegmentedControlViewController: NSViewController, Prefere
         let segmentBorderWidth = CGFloat(preferences.count) + 1.0
         let segmentWidth = segmentSize.width * CGFloat(preferences.count) + segmentBorderWidth
         let segmentHeight = segmentSize.height
-        segmentedControl.frame = NSMakeRect(0, 0, segmentWidth, segmentHeight)
+        segmentedControl.frame = NSRect(x: 0, y: 0, width: segmentWidth, height: segmentHeight)
 
-        for (i, preference) in preferences.enumerated() {
-            segmentedControl.setLabel(preference.toolbarItemTitle, forSegment: i)
-            segmentedControl.setWidth(segmentSize.width, forSegment: i)
+        for (index, preference) in preferences.enumerated() {
+            segmentedControl.setLabel(preference.toolbarItemTitle, forSegment: index)
+            segmentedControl.setWidth(segmentSize.width, forSegment: index)
             if let cell = segmentedControl.cell as? NSSegmentedCell {
-                cell.setTag(i, forSegment: i)
+                cell.setTag(index, forSegment: index)
             }
         }
 
         return segmentedControl
     }
 
-    @IBAction func segmentedControlAction(_ control: NSSegmentedControl) {
+    @IBAction private func segmentedControlAction(_ control: NSSegmentedControl) {
         delegate?.activateTab(index: control.selectedSegment, animated: true)
     }
 
@@ -108,7 +109,7 @@ final class PreferencesSegmentedControlViewController: NSViewController, Prefere
         // context menu that pops up at the right edge of the window.
         let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: identifier)
         toolbarItemGroup.view = segmentedControl
-        toolbarItemGroup.subitems = preferences.enumerated().map { (index, preferenceable) -> NSToolbarItem in
+        toolbarItemGroup.subitems = preferences.enumerated().map { index, preferenceable -> NSToolbarItem in
             let item = NSToolbarItem(itemIdentifier: .init(rawValue: "segment-\(preferenceable.toolbarItemTitle)"))
             item.label = preferenceable.toolbarItemTitle
 
@@ -125,7 +126,7 @@ final class PreferencesSegmentedControlViewController: NSViewController, Prefere
         return toolbarItemGroup
     }
 
-    @IBAction func segmentedControlMenuAction(_ menuItem: NSMenuItem) {
+    @IBAction private func segmentedControlMenuAction(_ menuItem: NSMenuItem) {
         delegate?.activateTab(index: menuItem.tag, animated: true)
     }
 }

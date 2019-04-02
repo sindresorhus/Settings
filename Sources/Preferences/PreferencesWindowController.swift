@@ -24,6 +24,7 @@ public final class PreferencesWindowController: NSWindowController {
 		tabViewController.configure(preferences: preferences, style: style)
 	}
 
+	@available(*, unavailable)
 	public required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

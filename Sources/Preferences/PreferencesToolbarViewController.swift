@@ -1,7 +1,6 @@
 import Cocoa
 
 final class PreferencesToolbarViewController: NSObject, PreferenceStyleController {
-
     let toolbar: NSToolbar
     let centerToolbarItems: Bool
     let preferences: [Preferenceable]
@@ -33,7 +32,9 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
     }
 
     func toolbarItem(identifier: NSToolbarItem.Identifier) -> NSToolbarItem? {
-        guard let preference = preferences.first(where: { $0.toolbarItemIdentifier == identifier }) else { preconditionFailure()}
+        guard let preference = preferences.first(where: { $0.toolbarItemIdentifier == identifier }) else {
+            preconditionFailure()
+        }
 
         let toolbarItem = NSToolbarItem(itemIdentifier: identifier)
         toolbarItem.label = preference.toolbarItemTitle
@@ -43,12 +44,11 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
         return toolbarItem
     }
 
-    @IBAction func toolbarItemSelected(_ toolbarItem: NSToolbarItem) {
+    @IBAction private func toolbarItemSelected(_ toolbarItem: NSToolbarItem) {
         delegate?.activateTab(toolbarItemIdentifier: toolbarItem.itemIdentifier, animated: true)
     }
 
     func selectTab(index: Int) {
         toolbar.selectedItemIdentifier = preferences[index].toolbarItemIdentifier
     }
-
 }
