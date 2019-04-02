@@ -21,10 +21,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		preferencesWindowController.showWindow(preferenceIdentifier: .advanced)
+		preferencesWindowController.showPreference(preferenceIdentifier: .advanced)
 	}
 
 	@IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
-		preferencesWindowController.showWindow()
+		preferencesWindowController.showPreference()
 	}
 }
