@@ -11,7 +11,7 @@ public struct PreferenceIdentifier: Equatable, RawRepresentable {
 public protocol Preference: AnyObject {
 	var preferenceIdentifier: PreferenceIdentifier { get }
 	var toolbarItemTitle: String { get }
-	var toolbarItemIcon: NSImage? { get }
+	var toolbarItemIcon: NSImage { get }
 	var viewController: NSViewController { get }
 }
 
@@ -24,6 +24,10 @@ extension Preference where Self: NSViewController {
 extension Preference {
 	public var toolbarItemIdentifier: NSToolbarItem.Identifier {
 		return preferenceIdentifier.toolbarItemIdentifier
+	}
+
+	public var toolbarItemIcon: NSImage {
+		return NSImage(size: .zero)
 	}
 }
 
