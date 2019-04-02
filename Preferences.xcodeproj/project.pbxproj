@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */; };
 		50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */; };
-		50A412F62196E87900E4A5A8 /* PreferencesSegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* PreferencesSegmentedControlViewController.swift */; };
+		50A412F62196E87900E4A5A8 /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */; };
 		50A412F82196EAF200E4A5A8 /* PreferencesToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */; };
 		E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EE920E6149B002F8F86 /* AppDelegate.swift */; };
 		E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EEB20E6149D002F8F86 /* Assets.xcassets */; };
@@ -54,7 +54,7 @@
 /* Begin PBXFileReference section */
 		5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionPausableWindow.swift; sourceTree = "<group>"; };
 		50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyle.swift; sourceTree = "<group>"; };
-		50A412F52196E87900E4A5A8 /* PreferencesSegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesSegmentedControlViewController.swift; sourceTree = "<group>"; };
+		50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
 		50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesToolbarViewController.swift; sourceTree = "<group>"; };
 		E34E9EE720E6149B002F8F86 /* PreferencesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreferencesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34E9EE920E6149B002F8F86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -141,7 +141,7 @@
 				OBJ_9 /* PreferencesWindowController.swift */,
 				5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */,
 				E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */,
-				50A412F52196E87900E4A5A8 /* PreferencesSegmentedControlViewController.swift */,
+				50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */,
 				50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */,
 				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
 				OBJ_10 /* util.swift */,
@@ -231,6 +231,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				Base,
 			);
 			mainGroup = OBJ_5;
@@ -300,7 +301,7 @@
 				E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */,
 				5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */,
 				50A412F82196EAF200E4A5A8 /* PreferencesToolbarViewController.swift in Sources */,
-				50A412F62196E87900E4A5A8 /* PreferencesSegmentedControlViewController.swift in Sources */,
+				50A412F62196E87900E4A5A8 /* SegmentedControlViewController.swift in Sources */,
 				50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */,
 				E34E9EFB20E61557002F8F86 /* Preferenceable.swift in Sources */,
 				OBJ_20 /* util.swift in Sources */,
