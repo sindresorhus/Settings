@@ -3,11 +3,11 @@ import Cocoa
 final class PreferencesToolbarViewController: NSObject, PreferenceStyleController {
     let toolbar: NSToolbar
     let centerToolbarItems: Bool
-    let preferences: [Preferenceable]
+    let preferences: [Preference]
 
     weak var delegate: PreferenceStyleControllerDelegate?
 
-    init(preferences: [Preferenceable], toolbar: NSToolbar, centerToolbarItems: Bool = true) {
+    init(preferences: [Preference], toolbar: NSToolbar, centerToolbarItems: Bool = true) {
         self.preferences = preferences
         self.toolbar = toolbar
         self.centerToolbarItems = centerToolbarItems

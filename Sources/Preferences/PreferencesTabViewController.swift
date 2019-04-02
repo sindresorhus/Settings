@@ -2,7 +2,7 @@ import Cocoa
 
 final class PreferencesTabViewController: NSViewController, PreferenceStyleControllerDelegate {
 	private var activeTab: Int!
-	private var preferences: [Preferenceable] = []
+	private var preferences: [Preference] = []
 
 	private var toolbarItemIdentifiers: [NSToolbarItem.Identifier] = []
 
@@ -23,7 +23,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferences: [Preferenceable], style: PreferencesStyle) {
+	func configure(preferences: [Preference], style: PreferencesStyle) {
 		self.preferences = preferences
 
 		self.children = preferences.map { $0.viewController }
@@ -48,7 +48,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 	}
 
 
-	func activateTab(preference: Preferenceable?, animated: Bool) {
+	func activateTab(preference: Preference?, animated: Bool) {
 		guard let preference = preference else {
 			return activateTab(index: 0, animated: animated)
 		}

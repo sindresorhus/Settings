@@ -24,9 +24,9 @@ final class SegmentedControlViewController: NSViewController, PreferenceStyleCon
 
     weak var delegate: PreferenceStyleControllerDelegate?
 
-    private var preferences: [Preferenceable]!
+    private var preferences: [Preference]!
 
-    required init(preferences: [Preferenceable]) {
+    required init(preferences: [Preference]) {
         super.init(nibName: nil, bundle: nil)
         self.preferences = preferences
     }
@@ -40,7 +40,7 @@ final class SegmentedControlViewController: NSViewController, PreferenceStyleCon
         self.view = createSegmentedControl(preferences: self.preferences)
     }
 
-    fileprivate func createSegmentedControl(preferences: [Preferenceable]) -> NSSegmentedControl {
+    fileprivate func createSegmentedControl(preferences: [Preference]) -> NSSegmentedControl {
         let segmentedControl = NSSegmentedControl()
         segmentedControl.segmentCount = preferences.count
         segmentedControl.segmentStyle = .texturedSquare

@@ -10,7 +10,7 @@ extension PreferenceIdentifier {
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
-	lazy var preferences: [Preferenceable] = [
+	lazy var preferences: [Preference] = [
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController()
 	]

@@ -3,7 +3,7 @@ import Cocoa
 public final class PreferencesWindowController: NSWindowController {
 	private let tabViewController = PreferencesTabViewController()
 
-	public init(preferences: [Preferenceable], style: PreferencesStyle = .tabs, crossfadeTransitions: Bool = true) {
+	public init(preferences: [Preference], style: PreferencesStyle = .tabs, crossfadeTransitions: Bool = true) {
 		precondition(!preferences.isEmpty, "You need to set at least one view controller")
 
 		let window = UserInteractionPausableWindow(

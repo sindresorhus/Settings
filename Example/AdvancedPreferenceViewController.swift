@@ -1,7 +1,7 @@
 import Cocoa
 import Preferences
 
-final class AdvancedPreferenceViewController: NSViewController, Preferenceable {
+final class AdvancedPreferenceViewController: NSViewController, Preference {
 	let preferenceIdentifier: PreferenceIdentifier = .advanced
 	let toolbarItemTitle = "Advanced"
 	let toolbarItemIcon: NSImage? = NSImage(named: NSImage.advancedName)!

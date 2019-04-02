@@ -8,20 +8,20 @@ public struct PreferenceIdentifier: Equatable, RawRepresentable {
 	}
 }
 
-public protocol Preferenceable: AnyObject {
+public protocol Preference: AnyObject {
 	var preferenceIdentifier: PreferenceIdentifier { get }
 	var toolbarItemTitle: String { get }
 	var toolbarItemIcon: NSImage? { get }
 	var viewController: NSViewController { get }
 }
 
-extension Preferenceable where Self: NSViewController {
+extension Preference where Self: NSViewController {
 	public var viewController: NSViewController {
 		return self
 	}
 }
 
-extension Preferenceable {
+extension Preference {
 	public var toolbarItemIdentifier: NSToolbarItem.Identifier {
 		return preferenceIdentifier.toolbarItemIdentifier
 	}
