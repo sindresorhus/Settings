@@ -31,12 +31,12 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
         return toolbarItemIdentifiers
     }
 
-    func toolbarItem(identifier: NSToolbarItem.Identifier) -> NSToolbarItem? {
-        guard let preference = preferences.first(where: { $0.toolbarItemIdentifier == identifier }) else {
+    func toolbarItem(preferenceIdentifier: PreferenceIdentifier) -> NSToolbarItem? {
+        guard let preference = preferences.first(where: { $0.preferenceIdentifier == preferenceIdentifier }) else {
             preconditionFailure()
         }
 
-        let toolbarItem = NSToolbarItem(itemIdentifier: identifier)
+        let toolbarItem = NSToolbarItem(itemIdentifier: preferenceIdentifier.toolbarItemIdentifier)
         toolbarItem.label = preference.toolbarItemTitle
         toolbarItem.image = preference.toolbarItemIcon
         toolbarItem.target = self
@@ -45,7 +45,9 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
     }
 
     @IBAction private func toolbarItemSelected(_ toolbarItem: NSToolbarItem) {
-        delegate?.activateTab(toolbarItemIdentifier: toolbarItem.itemIdentifier, animated: true)
+        delegate?.activateTab(
+            preferenceIdentifier: PreferenceIdentifier(fromToolbarItemIdentifier: toolbarItem.itemIdentifier),
+            animated: true)
     }
 
     func selectTab(index: Int) {

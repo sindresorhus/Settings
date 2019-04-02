@@ -101,13 +101,14 @@ final class SegmentedControlViewController: NSViewController, PreferenceStyleCon
         ]
     }
 
-    func toolbarItem(identifier: NSToolbarItem.Identifier) -> NSToolbarItem? {
-        precondition(identifier == .toolbarSegmentedControlItem)
+    func toolbarItem(preferenceIdentifier: PreferenceIdentifier) -> NSToolbarItem? {
+        let toolbarItemIdentifier = preferenceIdentifier.toolbarItemIdentifier
+        precondition(toolbarItemIdentifier == .toolbarSegmentedControlItem)
 
         // When the segments outgrow the window, we need to provide a group of
         // NSToolbarItems with custom menu item labels and action handling for the
         // context menu that pops up at the right edge of the window.
-        let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: identifier)
+        let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: toolbarItemIdentifier)
         toolbarItemGroup.view = segmentedControl
         toolbarItemGroup.subitems = preferences.enumerated().map { index, preferenceable -> NSToolbarItem in
             let item = NSToolbarItem(itemIdentifier: .init(rawValue: "segment-\(preferenceable.toolbarItemTitle)"))

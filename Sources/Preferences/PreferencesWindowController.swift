@@ -29,13 +29,13 @@ public final class PreferencesWindowController: NSWindowController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	public func showWindow(toolbarItemIdentifier: NSToolbarItem.Identifier? = nil) {
+	public func showWindow(preferenceIdentifier: PreferenceIdentifier? = nil) {
 		if !window!.isVisible {
 			window?.center()
 		}
 
 		showWindow(self)
-		tabViewController.activateTab(toolbarItemIdentifier: toolbarItemIdentifier, animated: false)
+		tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
 		NSApp.activate(ignoringOtherApps: true)
 	}
 

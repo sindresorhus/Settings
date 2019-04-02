@@ -1,14 +1,9 @@
 import Cocoa
 import Preferences
 
-extension NSToolbarItem.Identifier {
-	static var preferenceGeneral: NSToolbarItem.Identifier {
-		return NSToolbarItem.Identifier(rawValue: "preferenceGeneral")
-	}
-
-	static var preferenceAdvanced: NSToolbarItem.Identifier {
-		return NSToolbarItem.Identifier(rawValue: "preferenceAdvanced")
-	}
+extension PreferenceIdentifier {
+	static let general = PreferenceIdentifier(rawValue: "preferenceGeneral")
+	static let advanced = PreferenceIdentifier(rawValue: "preferenceAdvances")
 }
 
 @NSApplicationMain
@@ -26,7 +21,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		preferencesWindowController.showWindow(toolbarItemIdentifier: .preferenceAdvanced)
+		preferencesWindowController.showWindow(preferenceIdentifier: .advanced)
 	}
 
 	@IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {

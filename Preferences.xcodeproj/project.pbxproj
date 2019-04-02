@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */; };
+		509EC81C22535E0A00760A3C /* PreferenceStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC81B22535E0A00760A3C /* PreferenceStyleController.swift */; };
 		50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */; };
 		50A412F62196E87900E4A5A8 /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */; };
 		50A412F82196EAF200E4A5A8 /* PreferencesToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionPausableWindow.swift; sourceTree = "<group>"; };
+		509EC81B22535E0A00760A3C /* PreferenceStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceStyleController.swift; sourceTree = "<group>"; };
 		50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyle.swift; sourceTree = "<group>"; };
 		50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
 		50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesToolbarViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				E34E9EFA20E61557002F8F86 /* Preferenceable.swift */,
 				OBJ_9 /* PreferencesWindowController.swift */,
 				5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */,
+				509EC81B22535E0A00760A3C /* PreferenceStyleController.swift */,
 				E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */,
 				50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */,
 				50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */,
@@ -297,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				509EC81C22535E0A00760A3C /* PreferenceStyleController.swift in Sources */,
 				OBJ_19 /* PreferencesWindowController.swift in Sources */,
 				E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */,
 				5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */,
