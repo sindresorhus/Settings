@@ -16,7 +16,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		return view.window
 	}
 
-	var isCrossfadingTransitions: Bool = true
+	var isAnimated: Bool = true
 
 	override func loadView() {
 		self.view = NSView()
@@ -91,7 +91,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 	private func animateTabTransition(index: Int, animated: Bool) {
 		let fromViewController = children[activeTab]
 		let toViewController = children[index]
-		let options: NSViewController.TransitionOptions = animated && isCrossfadingTransitions
+		let options: NSViewController.TransitionOptions = animated && isAnimated
 			? [.crossfade]
 			: []
 

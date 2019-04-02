@@ -14,7 +14,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController()
 	]
-	lazy var preferencesWindowController = PreferencesWindowController(preferences: self.preferences, style: .segmentedControl, crossfadeTransitions: true)
+	lazy var preferencesWindowController = PreferencesWindowController(preferences: self.preferences, style: .segmentedControl, animated: true)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {
 		window.orderOut(self)
