@@ -31,11 +31,15 @@ public final class PreferencesWindowController: NSWindowController {
 		window.contentView = tabViewController.view
 		tabViewController.isAnimated = animated
 		tabViewController.configure(preferences: preferences, style: style)
+
+	@available(*, unavailable)
+	override public init(window: NSWindow?) {
+		fatalError("init(window:) is not supported, use init(preferences:style:animated:)")
 	}
 
 	@available(*, unavailable)
 	public required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
+		fatalError("init(coder:) is not supported, use init(preferences:style:animated:)")
 	}
 
 	public func changePreferencesStyle(to newStyle: PreferencesStyle) {
