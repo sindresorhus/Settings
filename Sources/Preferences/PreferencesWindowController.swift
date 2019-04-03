@@ -48,13 +48,19 @@ public final class PreferencesWindowController: NSWindowController {
 		tabViewController.changePreferencesStyle(to: newStyle)
 	}
 
-	public func showPreferences(preferencePane: PreferencePaneIdentifier? = nil) {
+	/// Show the preferences window and brings it to front.
+	///
+	/// If you pass a `PreferencePaneIdentifier`, the window will activate the corresponding tab.
+	///
+	/// - Note: Unless you need to open a specific pane, prefer not to pass a parameter at all
+	/// - Parameter preferencePane: Identifier of the preference pane to display.
+	public func show(preferencePane preferenceIdentifier: PreferencePaneIdentifier? = nil) {
 		if !window!.isVisible {
 			window?.center()
 		}
 
 		showWindow(self)
-		tabViewController.activateTab(preferenceIdentifier: preferencePane, animated: false)
+		tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
 		NSApp.activate(ignoringOtherApps: true)
 	}
 

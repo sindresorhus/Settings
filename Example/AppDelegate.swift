@@ -30,11 +30,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		preferencesWindowController.showPreferences(preferencePane: .advanced)
+		preferencesWindowController.show(preferencePane: .advanced)
 	}
 
 	@IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
-		preferencesWindowController.showPreferences()
+		preferencesWindowController.show()
 	}
 
 	@IBAction private func switchStyle(_ sender: Any) {
