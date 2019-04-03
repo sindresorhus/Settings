@@ -1,12 +1,14 @@
 import Cocoa
 
 public enum PreferencesStyle {
-    case tabs
+    case toolbarItems
     case segmentedControl
+}
 
+extension PreferencesStyle {
     var windowTitleVisibility: NSWindow.TitleVisibility {
         switch self {
-        case .tabs:
+        case .toolbarItems:
             return .visible
         case .segmentedControl:
             return .hidden

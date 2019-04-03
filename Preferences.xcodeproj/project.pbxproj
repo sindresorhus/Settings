@@ -140,13 +140,13 @@
 			isa = PBXGroup;
 			children = (
 				E34E9EFA20E61557002F8F86 /* PreferencePane.swift */,
+				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
 				OBJ_9 /* PreferencesWindowController.swift */,
 				5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */,
 				509EC81B22535E0A00760A3C /* PreferenceStyleController.swift */,
 				E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */,
 				50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */,
 				50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */,
-				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
 				OBJ_10 /* util.swift */,
 			);
 			name = Preferences;

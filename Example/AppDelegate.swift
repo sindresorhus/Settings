@@ -31,7 +31,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
 	@IBAction private func switchStyle(_ sender: Any) {
 		self.preferencesStyle = (self.preferencesStyle == .segmentedControl)
-        	? .tabs
+        	? .toolbarItems
 			: .segmentedControl
 		preferencesWindowController.changePreferencesStyle(to: preferencesStyle)
 	}

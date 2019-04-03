@@ -41,7 +41,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		switch style {
 		case .segmentedControl:
 			self.preferencesStyleController = SegmentedControlViewController(preferences: preferences)
-		case .tabs:
+		case .toolbarItems:
 			self.preferencesStyleController = PreferencesToolbarViewController(preferences: preferences, toolbar: toolbar, centerToolbarItems: true)
 		}
 		self.preferencesStyleController.delegate = self

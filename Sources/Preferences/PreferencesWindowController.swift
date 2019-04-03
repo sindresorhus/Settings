@@ -12,7 +12,7 @@ public final class PreferencesWindowController: NSWindowController {
 		}
 	}
 
-	public init(preferences: [PreferencePane], style: PreferencesStyle = .tabs, animated: Bool = true) {
+	public init(preferences: [PreferencePane], style: PreferencesStyle = .toolbarItems, animated: Bool = true) {
 		precondition(!preferences.isEmpty, "You need to set at least one view controller")
 
 		let window = UserInteractionPausableWindow(
