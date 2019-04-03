@@ -10,11 +10,19 @@ extension PreferencePaneIdentifier {
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
+	var preferencesStyle: PreferencesStyle {
+		get {
+			return PreferencesStyle.preferencesStyleFromUserDefaults()
+		}
+		set(newPreferencesStyle) {
+			newPreferencesStyle.storeInUserDefaults()
+		}
+	}
+
 	lazy var preferences: [PreferencePane] = [
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController()
 	]
-	lazy var preferencesStyle = PreferencesStyle.segmentedControl
 	lazy var preferencesWindowController = PreferencesWindowController(preferences: self.preferences, style: self.preferencesStyle, animated: true)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {

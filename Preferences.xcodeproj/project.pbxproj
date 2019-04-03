@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */; };
+		502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */; };
 		509EC81C22535E0A00760A3C /* PreferencesStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */; };
 		50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */; };
 		50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionPausableWindow.swift; sourceTree = "<group>"; };
+		502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; };
 		509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyleController.swift; sourceTree = "<group>"; };
 		50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyle.swift; sourceTree = "<group>"; };
 		50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlStyleViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E34E9EE920E6149B002F8F86 /* AppDelegate.swift */,
+				502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */,
 				E34E9EED20E6149D002F8F86 /* MainMenu.xib */,
 				E34E9EFE20E617E7002F8F86 /* GeneralPreferenceViewController.swift */,
 				E34E9F0020E61A26002F8F86 /* GeneralPreferenceViewController.xib */,
@@ -293,6 +296,7 @@
 				E34E9EFF20E617E7002F8F86 /* GeneralPreferenceViewController.swift in Sources */,
 				E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */,
 				E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */,
+				502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
