@@ -22,6 +22,10 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
         }
     }
 
+    var isKeepingWindowCentered: Bool {
+        return true
+    }
+
     weak var delegate: PreferencesStyleControllerDelegate?
 
     private var preferences: [PreferencePane]!

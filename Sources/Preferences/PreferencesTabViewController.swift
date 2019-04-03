@@ -6,6 +6,10 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 	private var preferencesStyleController: PreferencesStyleController!
 
+	private var isKeepingWindowCentered: Bool {
+		return preferencesStyleController.isKeepingWindowCentered
+	}
+
 	private var toolbarItemIdentifiers: [NSToolbarItem.Identifier] {
 		return preferencesStyleController?.toolbarItemIdentifiers() ?? []
 	}
@@ -131,6 +135,11 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		var frame = window.frame
 		frame.origin.y += frame.height - newWindowSize.height
 		frame.size = newWindowSize
+
+		if isKeepingWindowCentered {
+			let horizontalDiff = (window.frame.width - newWindowSize.width) / 2.0
+			frame.origin.x += horizontalDiff
+		}
 
 		let animatableWindow = animated ? window.animator() : window
 		animatableWindow.setFrame(frame, display: false)
