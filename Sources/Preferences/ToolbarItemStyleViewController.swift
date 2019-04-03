@@ -6,7 +6,7 @@ final class ToolbarItemStyleViewController: NSObject, PreferencesStyleController
     let preferences: [PreferencePane]
 
     var isKeepingWindowCentered: Bool {
-        return false
+        return centerToolbarItems
     }
 
     weak var delegate: PreferencesStyleControllerDelegate?
