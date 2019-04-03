@@ -7,7 +7,7 @@ final class ToolbarItemStyleViewController: NSObject, PreferencesStyleController
 
     weak var delegate: PreferencesStyleControllerDelegate?
 
-    init(preferences: [PreferencePane], toolbar: NSToolbar, centerToolbarItems: Bool = true) {
+    init(preferences: [PreferencePane], toolbar: NSToolbar, centerToolbarItems: Bool) {
         self.preferences = preferences
         self.toolbar = toolbar
         self.centerToolbarItems = centerToolbarItems
