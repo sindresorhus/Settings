@@ -27,10 +27,11 @@ public final class PreferencesWindowController: NSWindowController {
 		super.init(window: window)
 
 		window.title = String(System.localizedString(forKey: "Preferences…").dropLast())
-		window.titleVisibility = style.windowTitleVisibility
-		window.contentView = tabViewController.view
+		window.contentViewController = tabViewController
 		tabViewController.isAnimated = animated
-		tabViewController.configure(preferences: preferences, style: style)
+		tabViewController.configure(preferences: preferences)
+		changePreferencesStyle(to: style)
+	}
 
 	@available(*, unavailable)
 	override public init(window: NSWindow?) {
@@ -42,7 +43,7 @@ public final class PreferencesWindowController: NSWindowController {
 		fatalError("init(coder:) is not supported, use init(preferences:style:animated:)")
 	}
 
-	public func changePreferencesStyle(to newStyle: PreferencesStyle) {
+	private func changePreferencesStyle(to newStyle: PreferencesStyle) {
 		window?.titleVisibility = newStyle.windowTitleVisibility
 		tabViewController.changePreferencesStyle(to: newStyle)
 	}

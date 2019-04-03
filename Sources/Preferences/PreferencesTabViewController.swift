@@ -21,10 +21,9 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferences: [PreferencePane], style: PreferencesStyle) {
+	func configure(preferences: [PreferencePane]) {
 		self.preferences = preferences
 		self.children = preferences.map { $0.viewController }
-		self.changePreferencesStyleController(preferences: preferences, style: style)
 	}
 
 	func changePreferencesStyle(to newStyle: PreferencesStyle) {

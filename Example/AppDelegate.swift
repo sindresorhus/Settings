@@ -41,6 +41,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		self.preferencesStyle = (self.preferencesStyle == .segmentedControl)
         	? .toolbarItems
 			: .segmentedControl
-		preferencesWindowController.changePreferencesStyle(to: preferencesStyle)
+		relaunch()
 	}
+}
+
+private func relaunch() {
+	let appBundleIdentifier = Bundle.main.bundleIdentifier!
+	NSWorkspace.shared.launchApplication(
+		withBundleIdentifier: appBundleIdentifier,
+		options: NSWorkspace.LaunchOptions.newInstance,
+		additionalEventParamDescriptor: nil,
+		launchIdentifier: nil)
+	NSApp.terminate(nil)
 }
