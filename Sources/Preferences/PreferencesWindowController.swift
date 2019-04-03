@@ -48,13 +48,13 @@ public final class PreferencesWindowController: NSWindowController {
 		tabViewController.changePreferencesStyle(to: newStyle)
 	}
 
-	public func showPreference(preferenceIdentifier: PreferencePaneIdentifier? = nil) {
+	public func showPreference(preferencePane: PreferencePaneIdentifier? = nil) {
 		if !window!.isVisible {
 			window?.center()
 		}
 
 		showWindow(self)
-		tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
+		tabViewController.activateTab(preferenceIdentifier: preferencePane, animated: false)
 		NSApp.activate(ignoringOtherApps: true)
 	}
 
