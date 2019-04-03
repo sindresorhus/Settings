@@ -48,7 +48,7 @@ public final class PreferencesWindowController: NSWindowController {
 		tabViewController.changePreferencesStyle(to: newStyle)
 	}
 
-	public func showPreference(preferencePane: PreferencePaneIdentifier? = nil) {
+	public func showPreferences(preferencePane: PreferencePaneIdentifier? = nil) {
 		if !window!.isVisible {
 			window?.center()
 		}
