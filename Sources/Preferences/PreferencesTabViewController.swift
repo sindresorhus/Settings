@@ -1,10 +1,10 @@
 import Cocoa
 
-final class PreferencesTabViewController: NSViewController, PreferenceStyleControllerDelegate {
+final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
 	private var activeTab: Int!
 	private var preferences: [PreferencePane] = []
 
-	private var preferencesStyleController: PreferenceStyleController!
+	private var preferencesStyleController: PreferencesStyleController!
 
 	private var toolbarItemIdentifiers: [NSToolbarItem.Identifier] {
 		return preferencesStyleController?.toolbarItemIdentifiers() ?? []
@@ -40,9 +40,9 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 
 		switch style {
 		case .segmentedControl:
-			self.preferencesStyleController = SegmentedControlViewController(preferences: preferences)
+			self.preferencesStyleController = SegmentedControlStyleViewController(preferences: preferences)
 		case .toolbarItems:
-			self.preferencesStyleController = PreferencesToolbarViewController(preferences: preferences, toolbar: toolbar, centerToolbarItems: true)
+			self.preferencesStyleController = ToolbarItemStyleViewController(preferences: preferences, toolbar: toolbar, centerToolbarItems: true)
 		}
 		self.preferencesStyleController.delegate = self
 

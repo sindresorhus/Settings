@@ -1,11 +1,11 @@
 import Cocoa
 
-final class PreferencesToolbarViewController: NSObject, PreferenceStyleController {
+final class ToolbarItemStyleViewController: NSObject, PreferencesStyleController {
     let toolbar: NSToolbar
     let centerToolbarItems: Bool
     let preferences: [PreferencePane]
 
-    weak var delegate: PreferenceStyleControllerDelegate?
+    weak var delegate: PreferencesStyleControllerDelegate?
 
     init(preferences: [PreferencePane], toolbar: NSToolbar, centerToolbarItems: Bool = true) {
         self.preferences = preferences
@@ -40,7 +40,7 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
         toolbarItem.label = preference.toolbarItemTitle
         toolbarItem.image = preference.toolbarItemIcon
         toolbarItem.target = self
-        toolbarItem.action = #selector(PreferencesToolbarViewController.toolbarItemSelected(_:))
+        toolbarItem.action = #selector(ToolbarItemStyleViewController.toolbarItemSelected(_:))
         return toolbarItem
     }
 

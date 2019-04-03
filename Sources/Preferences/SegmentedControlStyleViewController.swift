@@ -12,7 +12,7 @@ extension NSUserInterfaceItemIdentifier {
     }
 }
 
-final class SegmentedControlViewController: NSViewController, PreferenceStyleController {
+final class SegmentedControlStyleViewController: NSViewController, PreferencesStyleController {
     var segmentedControl: NSSegmentedControl! {
         get {
             return view as? NSSegmentedControl
@@ -22,7 +22,7 @@ final class SegmentedControlViewController: NSViewController, PreferenceStyleCon
         }
     }
 
-    weak var delegate: PreferenceStyleControllerDelegate?
+    weak var delegate: PreferencesStyleControllerDelegate?
 
     private var preferences: [PreferencePane]!
 
@@ -45,7 +45,7 @@ final class SegmentedControlViewController: NSViewController, PreferenceStyleCon
         segmentedControl.segmentCount = preferences.count
         segmentedControl.segmentStyle = .texturedSquare
         segmentedControl.target = self
-        segmentedControl.action = #selector(SegmentedControlViewController.segmentedControlAction(_:))
+        segmentedControl.action = #selector(SegmentedControlStyleViewController.segmentedControlAction(_:))
         segmentedControl.identifier = .toolbarSegmentedControl
 
         if let cell = segmentedControl.cell as? NSSegmentedCell {

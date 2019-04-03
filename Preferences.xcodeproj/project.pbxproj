@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */; };
-		509EC81C22535E0A00760A3C /* PreferenceStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC81B22535E0A00760A3C /* PreferenceStyleController.swift */; };
+		509EC81C22535E0A00760A3C /* PreferencesStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */; };
 		50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */; };
-		50A412F62196E87900E4A5A8 /* SegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */; };
-		50A412F82196EAF200E4A5A8 /* PreferencesToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */; };
+		50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */; };
+		50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */; };
 		E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EE920E6149B002F8F86 /* AppDelegate.swift */; };
 		E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EEB20E6149D002F8F86 /* Assets.xcassets */; };
 		E34E9EEF20E6149D002F8F86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EED20E6149D002F8F86 /* MainMenu.xib */; };
@@ -54,10 +54,10 @@
 
 /* Begin PBXFileReference section */
 		5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionPausableWindow.swift; sourceTree = "<group>"; };
-		509EC81B22535E0A00760A3C /* PreferenceStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceStyleController.swift; sourceTree = "<group>"; };
+		509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyleController.swift; sourceTree = "<group>"; };
 		50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyle.swift; sourceTree = "<group>"; };
-		50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewController.swift; sourceTree = "<group>"; };
-		50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesToolbarViewController.swift; sourceTree = "<group>"; };
+		50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlStyleViewController.swift; sourceTree = "<group>"; };
+		50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemStyleViewController.swift; sourceTree = "<group>"; };
 		E34E9EE720E6149B002F8F86 /* PreferencesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreferencesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34E9EE920E6149B002F8F86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EEB20E6149D002F8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,10 +143,10 @@
 				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
 				OBJ_9 /* PreferencesWindowController.swift */,
 				5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */,
-				509EC81B22535E0A00760A3C /* PreferenceStyleController.swift */,
 				E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */,
-				50A412F52196E87900E4A5A8 /* SegmentedControlViewController.swift */,
-				50A412F72196EAF200E4A5A8 /* PreferencesToolbarViewController.swift */,
+				509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */,
+				50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */,
+				50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */,
 				OBJ_10 /* util.swift */,
 			);
 			name = Preferences;
@@ -300,12 +300,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				509EC81C22535E0A00760A3C /* PreferenceStyleController.swift in Sources */,
+				509EC81C22535E0A00760A3C /* PreferencesStyleController.swift in Sources */,
 				OBJ_19 /* PreferencesWindowController.swift in Sources */,
 				E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */,
 				5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */,
-				50A412F82196EAF200E4A5A8 /* PreferencesToolbarViewController.swift in Sources */,
-				50A412F62196E87900E4A5A8 /* SegmentedControlViewController.swift in Sources */,
+				50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */,
+				50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */,
 				50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */,
 				E34E9EFB20E61557002F8F86 /* PreferencePane.swift in Sources */,
 				OBJ_20 /* util.swift in Sources */,

@@ -1,7 +1,7 @@
 import Cocoa
 
-protocol PreferenceStyleController: AnyObject {
-    var delegate: PreferenceStyleControllerDelegate? { get set }
+protocol PreferencesStyleController: AnyObject {
+    var delegate: PreferencesStyleControllerDelegate? { get set }
 
     func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
     func toolbarItem(preferenceIdentifier: PreferencePaneIdentifier) -> NSToolbarItem?
@@ -9,7 +9,7 @@ protocol PreferenceStyleController: AnyObject {
     func selectTab(index: Int)
 }
 
-protocol PreferenceStyleControllerDelegate: AnyObject {
+protocol PreferencesStyleControllerDelegate: AnyObject {
     func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool)
     func activateTab(index: Int, animated: Bool)
 }
