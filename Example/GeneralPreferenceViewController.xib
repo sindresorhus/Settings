@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,20 +13,37 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="666" height="272"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xc1-oC-jbN">
-                    <rect key="frame" x="204" y="124" width="72" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xc1-oC-jbN">
+                    <rect key="frame" x="298" y="124" width="70" height="24"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="General" id="kEa-Ts-PrR">
                         <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-us-BJO">
+                    <rect key="frame" x="241" y="88" width="185" height="32"/>
+                    <buttonCell key="cell" type="push" title="Switch Preference Style" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pPv-HR-smI">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="switchStyle:" target="-1" id="mbG-7D-LUH"/>
+                    </connections>
+                </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="AeJ-us-BJO" firstAttribute="centerX" secondItem="Xc1-oC-jbN" secondAttribute="centerX" id="0D5-yt-qbT"/>
+                <constraint firstItem="AeJ-us-BJO" firstAttribute="top" secondItem="Xc1-oC-jbN" secondAttribute="bottom" constant="8" id="PDh-Co-vOC"/>
+                <constraint firstAttribute="bottom" secondItem="Xc1-oC-jbN" secondAttribute="bottom" constant="124" id="Ygh-kW-pw7"/>
+                <constraint firstAttribute="trailing" secondItem="Xc1-oC-jbN" secondAttribute="trailing" constant="300" id="dPQ-fn-EVx"/>
+                <constraint firstItem="Xc1-oC-jbN" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="124" id="obX-e4-hYJ"/>
+                <constraint firstItem="Xc1-oC-jbN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="300" id="sQd-RT-oXo"/>
+            </constraints>
+            <point key="canvasLocation" x="55" y="154"/>
         </customView>
     </objects>
 </document>
