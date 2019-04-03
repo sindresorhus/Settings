@@ -1,6 +1,6 @@
 import Cocoa
 
-public struct PreferenceIdentifier: Equatable, RawRepresentable {
+public struct PreferencePaneIdentifier: Equatable, RawRepresentable {
 	public let rawValue: String
 
 	public init(rawValue: String) {
@@ -8,22 +8,22 @@ public struct PreferenceIdentifier: Equatable, RawRepresentable {
 	}
 }
 
-public protocol Preference: AnyObject {
-	var preferenceIdentifier: PreferenceIdentifier { get }
+public protocol PreferencePane: AnyObject {
+	var preferencePaneIdentifier: PreferencePaneIdentifier { get }
 	var toolbarItemTitle: String { get }
 	var toolbarItemIcon: NSImage { get }
 	var viewController: NSViewController { get }
 }
 
-extension Preference where Self: NSViewController {
+extension PreferencePane where Self: NSViewController {
 	public var viewController: NSViewController {
 		return self
 	}
 }
 
-extension Preference {
+extension PreferencePane {
 	public var toolbarItemIdentifier: NSToolbarItem.Identifier {
-		return preferenceIdentifier.toolbarItemIdentifier
+		return preferencePaneIdentifier.toolbarItemIdentifier
 	}
 
 	public var toolbarItemIcon: NSImage {
@@ -31,7 +31,7 @@ extension Preference {
 	}
 }
 
-extension PreferenceIdentifier {
+extension PreferencePaneIdentifier {
 	public init(_ rawValue: String) {
 		self.init(rawValue: rawValue)
 	}

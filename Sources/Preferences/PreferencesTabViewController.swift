@@ -2,7 +2,7 @@ import Cocoa
 
 final class PreferencesTabViewController: NSViewController, PreferenceStyleControllerDelegate {
 	private var activeTab: Int!
-	private var preferences: [Preference] = []
+	private var preferences: [PreferencePane] = []
 
 	private var preferencesStyleController: PreferenceStyleController!
 
@@ -21,7 +21,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferences: [Preference], style: PreferencesStyle) {
+	func configure(preferences: [PreferencePane], style: PreferencesStyle) {
 		self.preferences = preferences
 		self.children = preferences.map { $0.viewController }
 		self.changePreferencesStyleController(preferences: preferences, style: style)
@@ -31,7 +31,7 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		changePreferencesStyleController(preferences: self.preferences, style: newStyle)
 	}
 
-	private func changePreferencesStyleController(preferences: [Preference], style: PreferencesStyle) {
+	private func changePreferencesStyleController(preferences: [PreferencePane], style: PreferencesStyle) {
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
 		toolbar.displayMode = .iconAndLabel
@@ -49,16 +49,16 @@ final class PreferencesTabViewController: NSViewController, PreferenceStyleContr
 		self.window.toolbar = toolbar // Call latest so that preferencesStyleController can be asked for items
 	}
 
-	func activateTab(preference: Preference?, animated: Bool) {
+	func activateTab(preference: PreferencePane?, animated: Bool) {
 		guard let preference = preference else {
 			return activateTab(index: 0, animated: animated)
 		}
-		activateTab(preferenceIdentifier: preference.preferenceIdentifier, animated: animated)
+		activateTab(preferenceIdentifier: preference.preferencePaneIdentifier, animated: animated)
 	}
 
-	func activateTab(preferenceIdentifier: PreferenceIdentifier?, animated: Bool) {
+	func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool) {
 		guard let preferenceIdentifier = preferenceIdentifier,
-			let index = preferences.firstIndex(where: { $0.preferenceIdentifier == preferenceIdentifier })
+			let index = preferences.firstIndex(where: { $0.preferencePaneIdentifier == preferenceIdentifier })
 			else { return activateTab(index: 0, animated: animated) }
 		activateTab(index: index, animated: animated)
 	}
@@ -156,7 +156,7 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 			return nil
 		}
 
-		return preferencesStyleController.toolbarItem(preferenceIdentifier: PreferenceIdentifier(fromToolbarItemIdentifier: itemIdentifier))
+		return preferencesStyleController.toolbarItem(preferenceIdentifier: PreferencePaneIdentifier(fromToolbarItemIdentifier: itemIdentifier))
 	}
 }
 

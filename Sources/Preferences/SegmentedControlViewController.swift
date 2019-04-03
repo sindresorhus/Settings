@@ -24,9 +24,9 @@ final class SegmentedControlViewController: NSViewController, PreferenceStyleCon
 
     weak var delegate: PreferenceStyleControllerDelegate?
 
-    private var preferences: [Preference]!
+    private var preferences: [PreferencePane]!
 
-    required init(preferences: [Preference]) {
+    required init(preferences: [PreferencePane]) {
         super.init(nibName: nil, bundle: nil)
         self.preferences = preferences
     }
@@ -40,7 +40,7 @@ final class SegmentedControlViewController: NSViewController, PreferenceStyleCon
         self.view = createSegmentedControl(preferences: self.preferences)
     }
 
-    fileprivate func createSegmentedControl(preferences: [Preference]) -> NSSegmentedControl {
+    fileprivate func createSegmentedControl(preferences: [PreferencePane]) -> NSSegmentedControl {
         let segmentedControl = NSSegmentedControl()
         segmentedControl.segmentCount = preferences.count
         segmentedControl.segmentStyle = .texturedSquare
@@ -101,7 +101,7 @@ final class SegmentedControlViewController: NSViewController, PreferenceStyleCon
         ]
     }
 
-    func toolbarItem(preferenceIdentifier: PreferenceIdentifier) -> NSToolbarItem? {
+    func toolbarItem(preferenceIdentifier: PreferencePaneIdentifier) -> NSToolbarItem? {
         let toolbarItemIdentifier = preferenceIdentifier.toolbarItemIdentifier
         precondition(toolbarItemIdentifier == .toolbarSegmentedControlItem)
 

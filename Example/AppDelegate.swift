@@ -1,16 +1,16 @@
 import Cocoa
 import Preferences
 
-extension PreferenceIdentifier {
-	static let general = PreferenceIdentifier("general")
-	static let advanced = PreferenceIdentifier("advanced")
+extension PreferencePaneIdentifier {
+	static let general = PreferencePaneIdentifier("general")
+	static let advanced = PreferencePaneIdentifier("advanced")
 }
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
-	lazy var preferences: [Preference] = [
+	lazy var preferences: [PreferencePane] = [
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController()
 	]

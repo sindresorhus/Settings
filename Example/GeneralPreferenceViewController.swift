@@ -1,8 +1,8 @@
 import Cocoa
 import Preferences
 
-final class GeneralPreferenceViewController: NSViewController, Preference {
-    let preferenceIdentifier: PreferenceIdentifier = .general
+final class GeneralPreferenceViewController: NSViewController, PreferencePane {
+    let preferencePaneIdentifier: PreferencePaneIdentifier = .general
     let toolbarItemTitle = "General"
     let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 

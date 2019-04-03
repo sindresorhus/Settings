@@ -12,7 +12,7 @@ public final class PreferencesWindowController: NSWindowController {
 		}
 	}
 
-	public init(preferences: [Preference], style: PreferencesStyle = .tabs, animated: Bool = true) {
+	public init(preferences: [PreferencePane], style: PreferencesStyle = .tabs, animated: Bool = true) {
 		precondition(!preferences.isEmpty, "You need to set at least one view controller")
 
 		let window = UserInteractionPausableWindow(
@@ -43,7 +43,7 @@ public final class PreferencesWindowController: NSWindowController {
 		tabViewController.changePreferencesStyle(to: newStyle)
 	}
 
-	public func showPreference(preferenceIdentifier: PreferenceIdentifier? = nil) {
+	public func showPreference(preferenceIdentifier: PreferencePaneIdentifier? = nil) {
 		if !window!.isVisible {
 			window?.center()
 		}

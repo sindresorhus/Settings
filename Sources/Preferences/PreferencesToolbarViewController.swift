@@ -3,11 +3,11 @@ import Cocoa
 final class PreferencesToolbarViewController: NSObject, PreferenceStyleController {
     let toolbar: NSToolbar
     let centerToolbarItems: Bool
-    let preferences: [Preference]
+    let preferences: [PreferencePane]
 
     weak var delegate: PreferenceStyleControllerDelegate?
 
-    init(preferences: [Preference], toolbar: NSToolbar, centerToolbarItems: Bool = true) {
+    init(preferences: [PreferencePane], toolbar: NSToolbar, centerToolbarItems: Bool = true) {
         self.preferences = preferences
         self.toolbar = toolbar
         self.centerToolbarItems = centerToolbarItems
@@ -31,8 +31,8 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
         return toolbarItemIdentifiers
     }
 
-    func toolbarItem(preferenceIdentifier: PreferenceIdentifier) -> NSToolbarItem? {
-        guard let preference = preferences.first(where: { $0.preferenceIdentifier == preferenceIdentifier }) else {
+    func toolbarItem(preferenceIdentifier: PreferencePaneIdentifier) -> NSToolbarItem? {
+        guard let preference = preferences.first(where: { $0.preferencePaneIdentifier == preferenceIdentifier }) else {
             preconditionFailure()
         }
 
@@ -46,7 +46,7 @@ final class PreferencesToolbarViewController: NSObject, PreferenceStyleControlle
 
     @IBAction private func toolbarItemSelected(_ toolbarItem: NSToolbarItem) {
         delegate?.activateTab(
-            preferenceIdentifier: PreferenceIdentifier(fromToolbarItemIdentifier: toolbarItem.itemIdentifier),
+            preferenceIdentifier: PreferencePaneIdentifier(fromToolbarItemIdentifier: toolbarItem.itemIdentifier),
             animated: true)
     }
 
