@@ -12,11 +12,11 @@ public final class PreferencesWindowController: NSWindowController {
 		}
 	}
 
-	public init(preferences: [PreferencePane], style: PreferencesStyle = .toolbarItems, animated: Bool = true) {
-		precondition(!preferences.isEmpty, "You need to set at least one view controller")
+	public init(preferencePanes: [PreferencePane], style: PreferencesStyle = .toolbarItems, animated: Bool = true) {
+		precondition(!preferencePanes.isEmpty, "You need to set at least one view controller")
 
 		let window = UserInteractionPausableWindow(
-			contentRect: preferences[0].viewController.view.bounds,
+			contentRect: preferencePanes[0].viewController.view.bounds,
 			styleMask: [
 				.titled,
 				.closable
@@ -29,7 +29,7 @@ public final class PreferencesWindowController: NSWindowController {
 		window.title = String(System.localizedString(forKey: "Preferences…").dropLast())
 		window.contentViewController = tabViewController
 		tabViewController.isAnimated = animated
-		tabViewController.configure(preferences: preferences)
+		tabViewController.configure(preferencePanes: preferencePanes)
 		changePreferencesStyle(to: style)
 	}
 

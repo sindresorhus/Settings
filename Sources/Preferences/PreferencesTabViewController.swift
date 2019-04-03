@@ -2,7 +2,7 @@ import Cocoa
 
 final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
 	private var activeTab: Int!
-	private var preferences: [PreferencePane] = []
+	private var preferencePanes: [PreferencePane] = []
 
 	private var preferencesStyleController: PreferencesStyleController!
 
@@ -25,13 +25,13 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferences: [PreferencePane]) {
-		self.preferences = preferences
-		self.children = preferences.map { $0.viewController }
+	func configure(preferencePanes: [PreferencePane]) {
+		self.preferencePanes = preferencePanes
+		self.children = preferencePanes.map { $0.viewController }
 	}
 
 	func changePreferencesStyle(to newStyle: PreferencesStyle) {
-		changePreferencesStyleController(preferences: self.preferences, style: newStyle)
+		changePreferencesStyleController(preferences: self.preferencePanes, style: newStyle)
 	}
 
 	private func changePreferencesStyleController(preferences: [PreferencePane], style: PreferencesStyle) {
@@ -61,7 +61,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 	func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool) {
 		guard let preferenceIdentifier = preferenceIdentifier,
-			let index = preferences.firstIndex(where: { $0.preferencePaneIdentifier == preferenceIdentifier })
+			let index = preferencePanes.firstIndex(where: { $0.preferencePaneIdentifier == preferenceIdentifier })
 			else { return activateTab(index: 0, animated: animated) }
 		activateTab(index: index, animated: animated)
 	}

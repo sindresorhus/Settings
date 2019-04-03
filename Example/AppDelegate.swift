@@ -23,7 +23,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController()
 	]
-	lazy var preferencesWindowController = PreferencesWindowController(preferences: self.preferences, style: self.preferencesStyle, animated: true)
+	lazy var preferencesWindowController = PreferencesWindowController(preferencePanes: self.preferences, style: self.preferencesStyle, animated: true)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {
 		window.orderOut(self)
