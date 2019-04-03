@@ -2,7 +2,7 @@ import Cocoa
 
 final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
 	private var activeTab: Int!
-	private var preferencePanes: [PreferencePane] = []
+	private var preferencePanes = [PreferencePane]()
 
 	private var preferencesStyleController: PreferencesStyleController!
 
@@ -43,26 +43,36 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		switch style {
 		case .segmentedControl:
-			self.preferencesStyleController = SegmentedControlStyleViewController(preferences: preferences)
+			preferencesStyleController = SegmentedControlStyleViewController(preferences: preferences)
 		case .toolbarItems:
-			self.preferencesStyleController = ToolbarItemStyleViewController(preferences: preferences, toolbar: toolbar, centerToolbarItems: false)
+			preferencesStyleController = ToolbarItemStyleViewController(
+				preferences: preferences,
+				toolbar: toolbar,
+				centerToolbarItems: false
+			)
 		}
-		self.preferencesStyleController.delegate = self
+		preferencesStyleController.delegate = self
 
-		self.window.toolbar = toolbar // Call latest so that preferencesStyleController can be asked for items
+		// Called last so that `preferencesStyleController` can be asked for items
+		window.toolbar = toolbar
 	}
 
 	func activateTab(preference: PreferencePane?, animated: Bool) {
 		guard let preference = preference else {
 			return activateTab(index: 0, animated: animated)
 		}
+
 		activateTab(preferenceIdentifier: preference.preferencePaneIdentifier, animated: animated)
 	}
 
 	func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool) {
-		guard let preferenceIdentifier = preferenceIdentifier,
-			let index = preferencePanes.firstIndex(where: { $0.preferencePaneIdentifier == preferenceIdentifier })
-			else { return activateTab(index: 0, animated: animated) }
+		guard
+			let preferenceIdentifier = preferenceIdentifier,
+			let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier })
+		else {
+			return activateTab(index: 0, animated: animated)
+		}
+
 		activateTab(index: index, animated: animated)
 	}
 
@@ -72,18 +82,19 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			preferencesStyleController.selectTab(index: index)
 		}
 
-		if self.activeTab == nil {
+		if activeTab == nil {
 			immediatelyDisplayTab(index: index)
 		} else {
 			guard index != activeTab else {
 				return
 			}
+
 			animateTabTransition(index: index, animated: animated)
 		}
 	}
 
 	/// Cached constraints that pin childViewController views to the content view
-	private var activeChildViewConstraints: [NSLayoutConstraint] = []
+	private var activeChildViewConstraints = [NSLayoutConstraint]()
 
 	private func immediatelyDisplayTab(index: Int) {
 		let toViewController = children[index]
@@ -104,14 +115,28 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		transition(
 			from: fromViewController,
 			to: toViewController,
-			options: options) {
-				self.activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
+			options: options
+		) {
+			self.activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		}
 	}
 
-	override func transition(from fromViewController: NSViewController, to toViewController: NSViewController, options: NSViewController.TransitionOptions = [], completionHandler completion: (() -> Void)? = nil) {
+	override func transition(
+		from fromViewController: NSViewController,
+		to toViewController: NSViewController,
+		options: NSViewController.TransitionOptions = [],
+		completionHandler completion: (() -> Void)? = nil
+	) {
 		let isAnimated = options
-			.intersection([.crossfade, .slideUp, .slideDown, .slideForward, .slideBackward, .slideLeft, .slideRight])
+			.intersection([
+				.crossfade,
+				.slideUp,
+				.slideDown,
+				.slideForward,
+				.slideBackward,
+				.slideLeft,
+				.slideRight
+			])
 			.isEmpty == false
 
 		if isAnimated {
@@ -120,15 +145,29 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 				context.duration = 0.25
 				context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 				setWindowFrame(for: toViewController, animated: true)
-				super.transition(from: fromViewController, to: toViewController, options: options, completionHandler: completion)
+
+				super.transition(
+					from: fromViewController,
+					to: toViewController,
+					options: options,
+					completionHandler: completion
+				)
 			}, completionHandler: nil)
 		} else {
-			super.transition(from: fromViewController, to: toViewController, options: options, completionHandler: completion)
+			super.transition(
+				from: fromViewController,
+				to: toViewController,
+				options: options,
+				completionHandler: completion
+			)
 		}
 	}
 
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = false) {
-		guard let window = window else { preconditionFailure() }
+		guard let window = window else {
+			preconditionFailure()
+		}
+
 		let contentSize = viewController.view.fittingSize
 
 		let newWindowSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
@@ -137,7 +176,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		frame.size = newWindowSize
 
 		if isKeepingWindowCentered {
-			let horizontalDiff = (window.frame.width - newWindowSize.width) / 2.0
+			let horizontalDiff = (window.frame.width - newWindowSize.width) / 2
 			frame.origin.x += horizontalDiff
 		}
 
@@ -159,7 +198,11 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 		return toolbarItemIdentifiers
 	}
 
-	public func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+	public func toolbar(
+		_ toolbar: NSToolbar,
+		itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
+		willBeInsertedIntoToolbar flag: Bool
+	) -> NSToolbarItem? {
 		if itemIdentifier == .flexibleSpace {
 			return nil
 		}
@@ -169,9 +212,9 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 }
 
 extension NSWindow {
-	var effectiveMinSize: NSSize {
-		return (contentMinSize != .zero)
-			? frameRect(forContentRect: NSRect(origin: .zero, size: contentMinSize)).size
+	var effectiveMinSize: CGSize {
+		return contentMinSize != .zero
+			? frameRect(forContentRect: CGRect(origin: .zero, size: contentMinSize)).size
 			: minSize
 	}
 }

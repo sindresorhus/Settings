@@ -34,12 +34,14 @@ extension Collection {
 extension NSView {
 	@discardableResult
 	func constrainToSuperviewBounds() -> [NSLayoutConstraint] {
-		guard let superview = self.superview else { preconditionFailure("superview has to be set first") }
+		guard let superview = superview else {
+			preconditionFailure("superview has to be set first")
+		}
 
-		var result: [NSLayoutConstraint] = []
+		var result = [NSLayoutConstraint]()
 		result.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
 		result.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
-		self.translatesAutoresizingMaskIntoConstraints = false
+		translatesAutoresizingMaskIntoConstraints = false
 		superview.addConstraints(result)
 
 		return result

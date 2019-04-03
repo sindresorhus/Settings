@@ -54,19 +54,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractionPausableWindow.swift; sourceTree = "<group>"; };
-		502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; };
-		509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyleController.swift; sourceTree = "<group>"; };
-		50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStyle.swift; sourceTree = "<group>"; };
-		50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlStyleViewController.swift; sourceTree = "<group>"; };
-		50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemStyleViewController.swift; sourceTree = "<group>"; };
+		5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserInteractionPausableWindow.swift; sourceTree = "<group>"; usesTabs = 1; };
+		502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; usesTabs = 1; };
+		509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesStyleController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesStyle.swift; sourceTree = "<group>"; usesTabs = 1; };
+		50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SegmentedControlStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ToolbarItemStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EE720E6149B002F8F86 /* PreferencesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreferencesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34E9EE920E6149B002F8F86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EEB20E6149D002F8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E34E9EEE20E6149D002F8F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E34E9EF020E6149D002F8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E34E9EFA20E61557002F8F86 /* PreferencePane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencePane.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E34E9EFE20E617E7002F8F86 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
+		E34E9EFE20E617E7002F8F86 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9F0020E61A26002F8F86 /* GeneralPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralPreferenceViewController.xib; sourceTree = "<group>"; };
 		E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AdvancedPreferenceViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedPreferenceViewController.xib; sourceTree = "<group>"; };
@@ -145,11 +145,11 @@
 				E34E9EFA20E61557002F8F86 /* PreferencePane.swift */,
 				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
 				OBJ_9 /* PreferencesWindowController.swift */,
-				5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */,
 				E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */,
 				509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */,
 				50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */,
 				50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */,
+				5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */,
 				OBJ_10 /* util.swift */,
 			);
 			name = Preferences;

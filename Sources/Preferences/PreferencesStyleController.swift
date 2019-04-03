@@ -1,16 +1,16 @@
 import Cocoa
 
 protocol PreferencesStyleController: AnyObject {
-    var delegate: PreferencesStyleControllerDelegate? { get set }
-    var isKeepingWindowCentered: Bool { get }
+	var delegate: PreferencesStyleControllerDelegate? { get set }
+	var isKeepingWindowCentered: Bool { get }
 
-    func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
-    func toolbarItem(preferenceIdentifier: PreferencePaneIdentifier) -> NSToolbarItem?
+	func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
+	func toolbarItem(preferenceIdentifier: PreferencePaneIdentifier) -> NSToolbarItem?
 
-    func selectTab(index: Int)
+	func selectTab(index: Int)
 }
 
 protocol PreferencesStyleControllerDelegate: AnyObject {
-    func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool)
-    func activateTab(index: Int, animated: Bool)
+	func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool)
+	func activateTab(index: Int, animated: Bool)
 }

@@ -14,8 +14,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		get {
 			return PreferencesStyle.preferencesStyleFromUserDefaults()
 		}
-		set(newPreferencesStyle) {
-			newPreferencesStyle.storeInUserDefaults()
+		set {
+			newValue.storeInUserDefaults()
 		}
 	}
 
@@ -23,7 +23,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController()
 	]
-	lazy var preferencesWindowController = PreferencesWindowController(preferencePanes: self.preferences, style: self.preferencesStyle, animated: true)
+
+	lazy var preferencesWindowController = PreferencesWindowController(
+		preferencePanes: preferences,
+		style: preferencesStyle,
+		animated: true
+	)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {
 		window.orderOut(self)
@@ -38,19 +43,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	@IBAction private func switchStyle(_ sender: Any) {
-		self.preferencesStyle = (self.preferencesStyle == .segmentedControl)
-        	? .toolbarItems
+		preferencesStyle = preferencesStyle == .segmentedControl
+			? .toolbarItems
 			: .segmentedControl
+
 		relaunch()
 	}
 }
 
 private func relaunch() {
-	let appBundleIdentifier = Bundle.main.bundleIdentifier!
 	NSWorkspace.shared.launchApplication(
-		withBundleIdentifier: appBundleIdentifier,
-		options: NSWorkspace.LaunchOptions.newInstance,
+		withBundleIdentifier: Bundle.main.bundleIdentifier!,
+		options: .newInstance,
 		additionalEventParamDescriptor: nil,
-		launchIdentifier: nil)
+		launchIdentifier: nil
+	)
 	NSApp.terminate(nil)
 }
