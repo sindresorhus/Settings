@@ -2,7 +2,7 @@
 
 > Add a preferences window to your macOS app in minutes
 
-<img src="images/screenshot.gif" width="628" height="416">
+<img src="screenshot.gif" width="628" height="416">
 
 Just pass in some view controllers and this package will take care of the rest.
 
@@ -148,11 +148,11 @@ lazy var preferencesWindowController = PreferencesWindowController(
 
 `.toolbarItem` style:
 
-![NSToolbarItem based (default)](images/toolbar-item.png)
+![NSToolbarItem based (default)](toolbar-item.png)
 
 `.segmentedControl` style:
 
-![NSSegmentedControl based](images/segmented-control.png)
+![NSSegmentedControl based](segmented-control.png)
 
 
 ## API
@@ -171,9 +171,9 @@ public enum PreferencesStyle {
 
 public final class PreferencesWindowController: NSWindowController {
 	init(
-	     preferencePanes: [PreferencePane],
-		 style: PreferencesStyle = .toolbarItems,
-		 animated: Bool = true
+		preferencePanes: [PreferencePane],
+		style: PreferencesStyle = .toolbarItems,
+		animated: Bool = true
 	)
 
 	func show(preferencePane: PreferencePaneIdentifier? = nil)
