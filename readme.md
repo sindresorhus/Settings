@@ -171,9 +171,9 @@ public enum PreferencesStyle {
 
 public final class PreferencesWindowController: NSWindowController {
 	init(
-		 preferencePanes: [PreferencePane],
-		 style: PreferencesStyle = .toolbarItems,
-		 animated: Bool = true
+		preferencePanes: [PreferencePane],
+		style: PreferencesStyle = .toolbarItems,
+		animated: Bool = true
 	)
 
 	func show(preferencePane: PreferencePaneIdentifier? = nil)
