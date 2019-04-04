@@ -3,7 +3,7 @@ import Preferences
 
 final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneIdentifier = PreferencePaneIdentifier.general
-	let toolbarItemTitle = "General"
+	let preferencePaneTitle = "General"
 	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
 	override var nibName: NSNib.Name? {
