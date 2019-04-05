@@ -204,6 +204,12 @@ public final class PreferencesWindowController: NSWindowController {
 You might also like my [apps](https://sindresorhus.com/apps).
 
 
+## Maintainers
+
+- [Sindre Sorhus](https://github.com/sindresorhus)
+- [Christian Tietze](https://github.com/DivineDominion)
+
+
 ## License
 
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+MIT
