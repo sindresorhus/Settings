@@ -185,6 +185,17 @@ As usual, call `NSWindowController#close()` to close the preferences window.
 
 ## FAQ
 
+### How can I localize the window title?
+
+The `PreferencesWindowController` adheres to the [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/) and uses this set of rules to determine the window title:
+
+- **Multiple preference panes:** Uses the currently selected `preferencePaneTitle` as the window title. Localize your `preferencePaneTitle`s to get localized window titles. 
+- **Single preference pane:** Sets the window title to `APPNAME Preferences`. The app name is obtained from your app's bundle. You can localize its `Info.plist` to customize the title. The `Preferences` part is taken from the "Preferences…" menu item, see #12. The order of lookup for the app name from your bundle:
+    1. `CFBundleDisplayName`
+    2. `CFBundleName`
+    3. `CFBundleExecutable`
+    4. Fall back to `"<Unknown App Name>"` to show you're missing some settings.
+
 ### How is it better than [`MASPreferences`](https://github.com/shpakovski/MASPreferences)?
 
 - Written in Swift. *(No bridging header!)*
