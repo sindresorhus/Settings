@@ -177,10 +177,10 @@ public final class PreferencesWindowController: NSWindowController {
 	)
 
 	func show(preferencePane: PreferencePaneIdentifier? = nil)
-
-	func hideWindow()
 }
 ```
+
+As usual, call `NSWindowController.close()` to close the preferences window.
 
 
 ## FAQ
