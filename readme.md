@@ -180,7 +180,7 @@ public final class PreferencesWindowController: NSWindowController {
 }
 ```
 
-As usual, call `NSWindowController.close()` to close the preferences window.
+As usual, call `NSWindowController#close()` to close the preferences window.
 
 
 ## FAQ
