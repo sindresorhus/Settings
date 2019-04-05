@@ -48,14 +48,6 @@ extension NSView {
 	}
 }
 
-extension NSWindow {
-	var effectiveMinSize: CGSize {
-		return contentMinSize == .zero
-			? minSize
-			: frameRect(forContentRect: CGRect(origin: .zero, size: contentMinSize)).size
-	}
-}
-
 extension NSEvent {
 	/// Events triggered by user interaction.
 	static let userInteractionEvents: [NSEvent.EventType] = {
