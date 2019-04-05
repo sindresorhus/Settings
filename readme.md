@@ -64,7 +64,7 @@ import Preferences
 
 final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneIdentifier = PreferencePaneIdentifier.general
-	let toolbarItemTitle = "General"
+	let preferencePaneTitle = "General"
 	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
 	override var nibName: NSNib.Name? {
@@ -87,7 +87,7 @@ import Preferences
 
 final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneIdentifier = PreferencePaneIdentifier.advanced
-	let toolbarItemTitle = "Advanced"
+	let preferencePaneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
 	override var nibName: NSNib.Name? {
@@ -160,7 +160,7 @@ lazy var preferencesWindowController = PreferencesWindowController(
 ```swift
 public protocol PreferencePane: AnyObject {
 	var preferencePaneIdentifier: PreferencePaneIdentifier { get }
-	var toolbarItemTitle: String { get }
+	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
 }
 
