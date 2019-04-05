@@ -47,3 +47,52 @@ extension NSView {
 		return result
 	}
 }
+
+extension NSWindow {
+	var effectiveMinSize: CGSize {
+		return contentMinSize == .zero
+			? minSize
+			: frameRect(forContentRect: CGRect(origin: .zero, size: contentMinSize)).size
+	}
+}
+
+extension NSEvent {
+	/// Events triggered by user interaction.
+	static let userInteractionEvents: [NSEvent.EventType] = {
+		var events: [NSEvent.EventType] = [
+			.leftMouseDown,
+			.leftMouseUp,
+			.rightMouseDown,
+			.rightMouseUp,
+			.leftMouseDragged,
+			.rightMouseDragged,
+			.keyDown,
+			.keyUp,
+			.scrollWheel,
+			.tabletPoint,
+			.otherMouseDown,
+			.otherMouseUp,
+			.otherMouseDragged,
+			.gesture,
+			.magnify,
+			.swipe,
+			.rotate,
+			.beginGesture,
+			.endGesture,
+			.smartMagnify,
+			.quickLook,
+			.directTouch
+		]
+
+		if #available(macOS 10.10.3, *) {
+			events.append(.pressure)
+		}
+
+		return events
+	}()
+
+	/// Whether the event was triggered by user interaction.
+	var isUserInteraction: Bool {
+		return NSEvent.userInteractionEvents.contains(type)
+	}
+}

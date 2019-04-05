@@ -49,7 +49,7 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 		segmentedControl.segmentCount = preferences.count
 		segmentedControl.segmentStyle = .texturedSquare
 		segmentedControl.target = self
-		segmentedControl.action = #selector(SegmentedControlStyleViewController.segmentedControlAction)
+		segmentedControl.action = #selector(segmentedControlAction)
 		segmentedControl.identifier = .toolbarSegmentedControl
 
 		if let cell = segmentedControl.cell as? NSSegmentedCell {
@@ -129,7 +129,8 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 			let menuItem = NSMenuItem(
 				title: preferenceable.toolbarItemTitle,
 				action: #selector(segmentedControlMenuAction),
-				keyEquivalent: "")
+				keyEquivalent: ""
+			)
 			menuItem.tag = index
 			menuItem.target = self
 			item.menuFormRepresentation = menuItem

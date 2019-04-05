@@ -210,11 +210,3 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 		return preferencesStyleController.toolbarItem(preferenceIdentifier: PreferencePaneIdentifier(fromToolbarItemIdentifier: itemIdentifier))
 	}
 }
-
-extension NSWindow {
-	var effectiveMinSize: CGSize {
-		return contentMinSize != .zero
-			? frameRect(forContentRect: CGRect(origin: .zero, size: contentMinSize)).size
-			: minSize
-	}
-}
