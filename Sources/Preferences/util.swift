@@ -8,29 +8,6 @@ struct System {
 	}
 }
 
-extension NSObject {
-	/// Returns the class name without module name
-	class var simpleClassName: String {
-		return String(describing: self)
-	}
-
-	/// Returns the class name of the instance without module name
-	var simpleClassName: String {
-		return type(of: self).simpleClassName
-	}
-}
-
-extension Collection {
-	func map<T, U>(_ transform: (Element) throws -> (key: T, value: U)) rethrows -> [T: U] {
-		var result: [T: U] = [:]
-		for element in self {
-			let transformation = try transform(element)
-			result[transformation.key] = transformation.value
-		}
-		return result
-	}
-}
-
 extension NSView {
 	@discardableResult
 	func constrainToSuperviewBounds() -> [NSLayoutConstraint] {
@@ -45,5 +22,46 @@ extension NSView {
 		superview.addConstraints(result)
 
 		return result
+	}
+}
+
+extension NSEvent {
+	/// Events triggered by user interaction.
+	static let userInteractionEvents: [NSEvent.EventType] = {
+		var events: [NSEvent.EventType] = [
+			.leftMouseDown,
+			.leftMouseUp,
+			.rightMouseDown,
+			.rightMouseUp,
+			.leftMouseDragged,
+			.rightMouseDragged,
+			.keyDown,
+			.keyUp,
+			.scrollWheel,
+			.tabletPoint,
+			.otherMouseDown,
+			.otherMouseUp,
+			.otherMouseDragged,
+			.gesture,
+			.magnify,
+			.swipe,
+			.rotate,
+			.beginGesture,
+			.endGesture,
+			.smartMagnify,
+			.quickLook,
+			.directTouch
+		]
+
+		if #available(macOS 10.10.3, *) {
+			events.append(.pressure)
+		}
+
+		return events
+	}()
+
+	/// Whether the event was triggered by user interaction.
+	var isUserInteraction: Bool {
+		return NSEvent.userInteractionEvents.contains(type)
 	}
 }

@@ -7,41 +7,8 @@ import Cocoa
 class UserInteractionPausableWindow: NSWindow {
 	var isUserInteractionEnabled: Bool = true
 
-	let pausableUserEventTypes: [NSEvent.EventType] = {
-		var result: [NSEvent.EventType] = [
-			.leftMouseDown,
-			.leftMouseUp,
-			.rightMouseDown,
-			.rightMouseUp,
-			.leftMouseDragged,
-			.rightMouseDragged,
-			.keyDown,
-			.keyUp,
-			.scrollWheel,
-			.tabletPoint,
-			.otherMouseDown,
-			.otherMouseUp,
-			.otherMouseDragged,
-			.gesture,
-			.magnify,
-			.swipe,
-			.rotate,
-			.beginGesture,
-			.endGesture,
-			.smartMagnify,
-			.quickLook,
-			.directTouch
-		]
-
-		if #available(macOS 10.10.3, *) {
-			result.append(.pressure)
-		}
-
-		return result
-	}()
-
 	override func sendEvent(_ event: NSEvent) {
-		if !isUserInteractionEnabled && pausableUserEventTypes.contains(event.type) {
+		guard isUserInteractionEnabled || !event.isUserInteraction else {
 			return
 		}
 

@@ -44,7 +44,7 @@ final class ToolbarItemStyleViewController: NSObject, PreferencesStyleController
 		toolbarItem.label = preference.toolbarItemTitle
 		toolbarItem.image = preference.toolbarItemIcon
 		toolbarItem.target = self
-		toolbarItem.action = #selector(ToolbarItemStyleViewController.toolbarItemSelected)
+		toolbarItem.action = #selector(toolbarItemSelected)
 		return toolbarItem
 	}
 

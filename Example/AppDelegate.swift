@@ -47,16 +47,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 			? .toolbarItems
 			: .segmentedControl
 
-		relaunch()
+		NSApp.relaunch()
 	}
-}
-
-private func relaunch() {
-	NSWorkspace.shared.launchApplication(
-		withBundleIdentifier: Bundle.main.bundleIdentifier!,
-		options: .newInstance,
-		additionalEventParamDescriptor: nil,
-		launchIdentifier: nil
-	)
-	NSApp.terminate(nil)
 }
