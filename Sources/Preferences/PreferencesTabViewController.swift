@@ -99,17 +99,9 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			if preferencePanes.count > 1 {
 				return preferencePanes[tabIndex].preferencePaneTitle
 			} else {
-				let appBundle = Bundle.main
-				let appName = appBundle.localizedInfoDictionary?["CFBundleDisplayName"] as? String
-					?? appBundle.infoDictionary?["CFBundleDisplayName"] as? String
-					?? appBundle.localizedInfoDictionary?["CFBundleExecutable"] as? String
-					?? appBundle.infoDictionary?["CFBundleExecutable"] as? String
 				let preferences = String(System.localizedString(forKey: "Preferences…").dropLast())
-				if let appName = appName {
-					return "\(appName) \(preferences)"
-				} else {
-					return preferences
-				}
+				let appName = Bundle.main.appName ?? "<Unknown App Name>"
+				return "\(appName) \(preferences)"
 			}
 		}()
 	}
