@@ -100,7 +100,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 				return preferencePanes[tabIndex].preferencePaneTitle
 			} else {
 				let preferences = String(System.localizedString(forKey: "Preferences…").dropLast())
-				let appName = Bundle.main.appName ?? "<Unknown App Name>"
+				let appName = Bundle.main.appName
 				return "\(appName) \(preferences)"
 			}
 		}()

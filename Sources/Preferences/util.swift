@@ -67,10 +67,11 @@ extension NSEvent {
 }
 
 extension Bundle {
-	var appName: String? {
+	var appName: String {
 		return string(forInfoDictionaryKey: "CFBundleDisplayName")
 			?? string(forInfoDictionaryKey: "CFBundleName")
 			?? string(forInfoDictionaryKey: "CFBundleExecutable")
+			?? "<Unknown App Name>"
 	}
 
 	private func string(forInfoDictionaryKey key: String) -> String? {
