@@ -80,6 +80,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		defer {
 			activeTab = index
 			preferencesStyleController.selectTab(index: index)
+			updateWindowTitle(tabIndex: index)
 		}
 
 		if activeTab == nil {
@@ -91,6 +92,18 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 			animateTabTransition(index: index, animated: animated)
 		}
+	}
+
+	private func updateWindowTitle(tabIndex: Int) {
+		self.window.title = {
+			if preferencePanes.count > 1 {
+				return preferencePanes[tabIndex].preferencePaneTitle
+			} else {
+				let preferences = String(System.localizedString(forKey: "Preferences…").dropLast())
+				let appName = Bundle.main.appName
+				return "\(appName) \(preferences)"
+			}
+		}()
 	}
 
 	/// Cached constraints that pin childViewController views to the content view

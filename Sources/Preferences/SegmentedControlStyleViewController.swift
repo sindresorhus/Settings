@@ -62,7 +62,7 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 			var maxSize = CGSize.zero
 
 			for preference in preferences {
-				let title = preference.toolbarItemTitle
+				let title = preference.preferencePaneTitle
 				let titleSize = title.size(
 					withAttributes: [
 						.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
@@ -87,7 +87,7 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 		segmentedControl.frame = CGRect(x: 0, y: 0, width: segmentWidth, height: segmentHeight)
 
 		for (index, preference) in preferences.enumerated() {
-			segmentedControl.setLabel(preference.toolbarItemTitle, forSegment: index)
+			segmentedControl.setLabel(preference.preferencePaneTitle, forSegment: index)
 			segmentedControl.setWidth(segmentSize.width, forSegment: index)
 			if let cell = segmentedControl.cell as? NSSegmentedCell {
 				cell.setTag(index, forSegment: index)
@@ -123,11 +123,11 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 		let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: toolbarItemIdentifier)
 		toolbarItemGroup.view = segmentedControl
 		toolbarItemGroup.subitems = preferences.enumerated().map { index, preferenceable -> NSToolbarItem in
-			let item = NSToolbarItem(itemIdentifier: .init("segment-\(preferenceable.toolbarItemTitle)"))
-			item.label = preferenceable.toolbarItemTitle
+			let item = NSToolbarItem(itemIdentifier: .init("segment-\(preferenceable.preferencePaneTitle)"))
+			item.label = preferenceable.preferencePaneTitle
 
 			let menuItem = NSMenuItem(
-				title: preferenceable.toolbarItemTitle,
+				title: preferenceable.preferencePaneTitle,
 				action: #selector(segmentedControlMenuAction),
 				keyEquivalent: ""
 			)

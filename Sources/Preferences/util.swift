@@ -65,3 +65,17 @@ extension NSEvent {
 		return NSEvent.userInteractionEvents.contains(type)
 	}
 }
+
+extension Bundle {
+	var appName: String {
+		return string(forInfoDictionaryKey: "CFBundleDisplayName")
+			?? string(forInfoDictionaryKey: "CFBundleName")
+			?? string(forInfoDictionaryKey: "CFBundleExecutable")
+			?? "<Unknown App Name>"
+	}
+
+	private func string(forInfoDictionaryKey key: String) -> String? {
+		// `object(forInfoDictionaryKey:)` prefers localized info dictionary over the regular one automatically
+		return object(forInfoDictionaryKey: key) as? String
+	}
+}

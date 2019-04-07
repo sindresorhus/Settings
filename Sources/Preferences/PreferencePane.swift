@@ -10,7 +10,7 @@ public struct PreferencePaneIdentifier: Equatable, RawRepresentable {
 
 public protocol PreferencePane: AnyObject {
 	var preferencePaneIdentifier: PreferencePaneIdentifier { get }
-	var toolbarItemTitle: String { get }
+	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get }
 	var viewController: NSViewController { get }
 }

@@ -30,7 +30,6 @@ public final class PreferencesWindowController: NSWindowController {
 		)
 		super.init(window: window)
 
-		window.title = String(System.localizedString(forKey: "Preferences…").dropLast())
 		window.contentViewController = tabViewController
 		tabViewController.isAnimated = animated
 		tabViewController.configure(preferencePanes: preferencePanes)
