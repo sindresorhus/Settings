@@ -3,6 +3,9 @@ import Cocoa
 final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
 	private var activeTab: Int!
 	private var preferencePanes = [PreferencePane]()
+	internal var preferencePanesCount: Int {
+		return preferencePanes.count
+	}
 
 	private var preferencesStyleController: PreferencesStyleController!
 
@@ -28,7 +31,6 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	func configure(preferencePanes: [PreferencePane]) {
 		self.preferencePanes = preferencePanes
 		self.children = preferencePanes.map { $0.viewController }
-		updateToolbarVisibility()
 	}
 
 	func changePreferencesStyle(to newStyle: PreferencesStyle) {
@@ -54,11 +56,6 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		// Called last so that `preferencesStyleController` can be asked for items
 		window.toolbar = toolbar
-		updateToolbarVisibility()
-	}
-
-	private func updateToolbarVisibility() {
-		window.toolbar?.isVisible = (preferencePanes.count > 1)
 	}
 
 	func activateTab(preference: PreferencePane?, animated: Bool) {
