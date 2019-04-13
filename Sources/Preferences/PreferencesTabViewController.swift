@@ -28,20 +28,19 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	func configure(preferencePanes: [PreferencePane]) {
 		self.preferencePanes = preferencePanes
 		self.children = preferencePanes.map { $0.viewController }
+		updateToolbarVisibility()
 	}
 
 	func changePreferencesStyle(to newStyle: PreferencesStyle) {
-		changePreferencesStyleController(preferences: self.preferencePanes, style: newStyle)
-	}
-
-	private func changePreferencesStyleController(preferences: [PreferencePane], style: PreferencesStyle) {
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
 		toolbar.displayMode = .iconAndLabel
 		toolbar.showsBaselineSeparator = true
 		toolbar.delegate = self
 
-		switch style {
+		let preferences = self.preferencePanes
+
+		switch newStyle {
 		case .segmentedControl:
 			preferencesStyleController = SegmentedControlStyleViewController(preferences: preferences)
 		case .toolbarItems:
@@ -55,6 +54,11 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		// Called last so that `preferencesStyleController` can be asked for items
 		window.toolbar = toolbar
+		updateToolbarVisibility()
+	}
+
+	private func updateToolbarVisibility() {
+		window.toolbar?.isVisible = (preferencePanes.count > 1)
 	}
 
 	func activateTab(preference: PreferencePane?, animated: Bool) {
