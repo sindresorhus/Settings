@@ -1,5 +1,9 @@
 import Cocoa
 
+extension NSWindow.FrameAutosaveName {
+	static let preferences: NSWindow.FrameAutosaveName = "com.sindresorhus.Preferences.FrameAutosaveName-WIP-1"
+}
+
 public final class PreferencesWindowController: NSWindowController {
 	private let tabViewController = PreferencesTabViewController()
 
@@ -60,12 +64,22 @@ public final class PreferencesWindowController: NSWindowController {
 	/// - Note: Unless you need to open a specific pane, prefer not to pass a parameter at all
 	/// - Parameter preferencePane: Identifier of the preference pane to display.
 	public func show(preferencePane preferenceIdentifier: PreferencePaneIdentifier? = nil) {
-		if !window!.isVisible {
-			window?.center()
-		}
-
+		centerWindowOnFirstStart()
 		showWindow(self)
 		tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
 		NSApp.activate(ignoringOtherApps: true)
+	}
+
+	private func centerWindowOnFirstStart() {
+		guard let window = self.window else {
+			return
+		}
+
+		// When setting the autosave name, the current position isn't stored immediately.
+		// Trying to read the frame values will fail, so we can center it.
+		window.setFrameAutosaveName(.preferences)
+		if window.setFrameUsingName(.preferences) == false {
+			window.center()
+		}
 	}
 }
