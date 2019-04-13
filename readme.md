@@ -173,7 +173,8 @@ public final class PreferencesWindowController: NSWindowController {
 	init(
 		preferencePanes: [PreferencePane],
 		style: PreferencesStyle = .toolbarItems,
-		animated: Bool = true
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
 	)
 
 	func show(preferencePane: PreferencePaneIdentifier? = nil)
