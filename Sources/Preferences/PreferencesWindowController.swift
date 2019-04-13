@@ -65,7 +65,9 @@ public final class PreferencesWindowController: NSWindowController {
 		}
 
 		showWindow(self)
-		tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
+		if let preferenceIdentifier = preferenceIdentifier {
+			tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
+		}
 		NSApp.activate(ignoringOtherApps: true)
 	}
 }

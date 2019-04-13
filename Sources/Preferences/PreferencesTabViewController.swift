@@ -57,19 +57,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		window.toolbar = toolbar
 	}
 
-	func activateTab(preference: PreferencePane?, animated: Bool) {
-		guard let preference = preference else {
-			return activateTab(index: 0, animated: animated)
-		}
-
+	func activateTab(preference: PreferencePane, animated: Bool) {
 		activateTab(preferenceIdentifier: preference.preferencePaneIdentifier, animated: animated)
 	}
 
-	func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool) {
-		guard
-			let preferenceIdentifier = preferenceIdentifier,
-			let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier })
-		else {
+	func activateTab(preferenceIdentifier: PreferencePaneIdentifier, animated: Bool) {
+		guard let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier }) else {
 			return activateTab(index: 0, animated: animated)
 		}
 
