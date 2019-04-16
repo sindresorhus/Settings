@@ -15,12 +15,12 @@ class UserInteractionPausableWindow: NSWindow {
 		super.sendEvent(event)
 	}
 
-	override func responds(to aSelector: Selector!) -> Bool {
-		// Deactivate toolbar interactions from the Main Menu
-		if aSelector == #selector(NSWindow.toggleToolbarShown(_:)) {
+	override func responds(to selector: Selector!) -> Bool {
+		// Deactivate toolbar interactions from the Main Menu.
+		if selector == #selector(NSWindow.toggleToolbarShown(_:)) {
 			return false
 		}
 
-		return super.responds(to: aSelector)
+		return super.responds(to: selector)
 	}
 }
