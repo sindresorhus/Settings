@@ -83,16 +83,19 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			activeTab = index
 			preferencesStyleController.selectTab(index: index)
 			updateWindowTitle(tabIndex: index)
+			setWindowFrame(for: preferencePanes[index].viewController, animated: animated)
 		}
 
 		if activeTab == nil {
+			print("activeTab nil")
 			immediatelyDisplayTab(index: index)
 		} else {
 			guard index != activeTab else {
-				setWindowFrame(for: preferencePanes[index].viewController)
+				print("index mismatch")
 				return
 			}
 
+			print("animate transition")
 			animateTabTransition(index: index, animated: animated)
 		}
 	}
