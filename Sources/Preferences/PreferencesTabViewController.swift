@@ -40,14 +40,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		toolbar.showsBaselineSeparator = true
 		toolbar.delegate = self
 
-		let preferences = self.preferencePanes
-
 		switch newStyle {
 		case .segmentedControl:
-			preferencesStyleController = SegmentedControlStyleViewController(preferences: preferences)
+			preferencesStyleController = SegmentedControlStyleViewController(preferencePanes: preferencePanes)
 		case .toolbarItems:
 			preferencesStyleController = ToolbarItemStyleViewController(
-				preferences: preferences,
+				preferencePanes: preferencePanes,
 				toolbar: toolbar,
 				centerToolbarItems: false
 			)
@@ -58,8 +56,8 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		window.toolbar = toolbar
 	}
 
-	func activateTab(preference: PreferencePane?, animated: Bool) {
-		guard let preference = preference else {
+	func activateTab(preferencePane: PreferencePane?, animated: Bool) {
+		guard let preference = preferencePane else {
 			return activateTab(index: 0, animated: animated)
 		}
 
