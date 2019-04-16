@@ -1,6 +1,6 @@
 import Cocoa
 
-public struct PreferencePaneIdentifier: Equatable, RawRepresentable {
+public struct PreferencePaneIdentifier: Equatable, RawRepresentable, Hashable {
 	public let rawValue: String
 
 	public init(rawValue: String) {
