@@ -28,19 +28,17 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferencePanes: [PreferencePane]) {
+	func configure(preferencePanes: [PreferencePane], style: PreferencesStyle) {
 		self.preferencePanes = preferencePanes
 		self.children = preferencePanes.map { $0.viewController }
-	}
 
-	func changePreferencesStyle(to newStyle: PreferencesStyle) {
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
 		toolbar.displayMode = .iconAndLabel
 		toolbar.showsBaselineSeparator = true
 		toolbar.delegate = self
 
-		switch newStyle {
+		switch style {
 		case .segmentedControl:
 			preferencesStyleController = SegmentedControlStyleViewController(preferencePanes: preferencePanes)
 		case .toolbarItems:

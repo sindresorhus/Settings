@@ -44,9 +44,16 @@ public final class PreferencesWindowController: NSWindowController {
 		super.init(window: window)
 
 		window.contentViewController = tabViewController
+		window.titleVisibility = {
+			switch style {
+			case .toolbarItems:
+				return .visible
+			case .segmentedControl:
+				return (preferencePanes.count <= 1) ? .visible : .hidden
+			}
+		}()
 		tabViewController.isAnimated = animated
-		tabViewController.configure(preferencePanes: preferencePanes)
-		changePreferencesStyle(to: style)
+		tabViewController.configure(preferencePanes: preferencePanes, style: style)
 		updateToolbarVisibility()
 	}
 
@@ -60,10 +67,6 @@ public final class PreferencesWindowController: NSWindowController {
 		fatalError("init(coder:) is not supported, use init(preferences:style:animated:)")
 	}
 
-	private func changePreferencesStyle(to newStyle: PreferencesStyle) {
-		window?.titleVisibility = newStyle.windowTitleVisibility
-		tabViewController.changePreferencesStyle(to: newStyle)
-	}
 
 	/// Show the preferences window and brings it to front.
 	///
