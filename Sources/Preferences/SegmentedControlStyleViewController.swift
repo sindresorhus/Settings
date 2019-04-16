@@ -28,11 +28,11 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 
 	weak var delegate: PreferencesStyleControllerDelegate?
 
-	private var preferences: [PreferencePane]!
+	private var preferencePanes: [PreferencePane]!
 
-	required init(preferences: [PreferencePane]) {
+	required init(preferencePanes: [PreferencePane]) {
 		super.init(nibName: nil, bundle: nil)
-		self.preferences = preferences
+		self.preferencePanes = preferencePanes
 	}
 
 	@available(*, unavailable)
@@ -41,12 +41,12 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 	}
 
 	override func loadView() {
-		view = createSegmentedControl(preferences: preferences)
+		view = createSegmentedControl(preferencePanes: preferencePanes)
 	}
 
-	fileprivate func createSegmentedControl(preferences: [PreferencePane]) -> NSSegmentedControl {
+	fileprivate func createSegmentedControl(preferencePanes: [PreferencePane]) -> NSSegmentedControl {
 		let segmentedControl = NSSegmentedControl()
-		segmentedControl.segmentCount = preferences.count
+		segmentedControl.segmentCount = preferencePanes.count
 		segmentedControl.segmentStyle = .texturedSquare
 		segmentedControl.target = self
 		segmentedControl.action = #selector(segmentedControlAction)
@@ -61,8 +61,8 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 			let insets = CGSize(width: 36, height: 12)
 			var maxSize = CGSize.zero
 
-			for preference in preferences {
-				let title = preference.preferencePaneTitle
+			for preferencePane in preferencePanes {
+				let title = preferencePane.preferencePaneTitle
 				let titleSize = title.size(
 					withAttributes: [
 						.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
@@ -81,13 +81,13 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 			)
 		}()
 
-		let segmentBorderWidth = CGFloat(preferences.count) + 1
-		let segmentWidth = segmentSize.width * CGFloat(preferences.count) + segmentBorderWidth
+		let segmentBorderWidth = CGFloat(preferencePanes.count) + 1
+		let segmentWidth = segmentSize.width * CGFloat(preferencePanes.count) + segmentBorderWidth
 		let segmentHeight = segmentSize.height
 		segmentedControl.frame = CGRect(x: 0, y: 0, width: segmentWidth, height: segmentHeight)
 
-		for (index, preference) in preferences.enumerated() {
-			segmentedControl.setLabel(preference.preferencePaneTitle, forSegment: index)
+		for (index, preferencePane) in preferencePanes.enumerated() {
+			segmentedControl.setLabel(preferencePane.preferencePaneTitle, forSegment: index)
 			segmentedControl.setWidth(segmentSize.width, forSegment: index)
 			if let cell = segmentedControl.cell as? NSSegmentedCell {
 				cell.setTag(index, forSegment: index)
@@ -122,7 +122,7 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 		// context menu that pops up at the right edge of the window.
 		let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: toolbarItemIdentifier)
 		toolbarItemGroup.view = segmentedControl
-		toolbarItemGroup.subitems = preferences.enumerated().map { index, preferenceable -> NSToolbarItem in
+		toolbarItemGroup.subitems = preferencePanes.enumerated().map { index, preferenceable -> NSToolbarItem in
 			let item = NSToolbarItem(itemIdentifier: .init("segment-\(preferenceable.preferencePaneTitle)"))
 			item.label = preferenceable.preferencePaneTitle
 

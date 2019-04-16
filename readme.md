@@ -173,7 +173,8 @@ public final class PreferencesWindowController: NSWindowController {
 	init(
 		preferencePanes: [PreferencePane],
 		style: PreferencesStyle = .toolbarItems,
-		animated: Bool = true
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
 	)
 
 	func show(preferencePane: PreferencePaneIdentifier? = nil)
@@ -212,7 +213,7 @@ The `PreferencesWindowController` adheres to the [Apple HIG](https://developer.a
 - [DockProgress](https://github.com/sindresorhus/DockProgress) - Show progress in your app's Dock icon
 - [More…](https://github.com/search?q=user%3Asindresorhus+language%3Aswift)
 
-You might also like my [apps](https://sindresorhus.com/apps).
+You might also like Sindre's [apps](https://sindresorhus.com/apps).
 
 
 ## Maintainers

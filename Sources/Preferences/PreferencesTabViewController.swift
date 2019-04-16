@@ -3,6 +3,9 @@ import Cocoa
 final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
 	private var activeTab: Int!
 	private var preferencePanes = [PreferencePane]()
+	internal var preferencePanesCount: Int {
+		return preferencePanes.count
+	}
 
 	private var preferencesStyleController: PreferencesStyleController!
 
@@ -25,16 +28,10 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferencePanes: [PreferencePane]) {
+	func configure(preferencePanes: [PreferencePane], style: PreferencesStyle) {
 		self.preferencePanes = preferencePanes
 		self.children = preferencePanes.map { $0.viewController }
-	}
 
-	func changePreferencesStyle(to newStyle: PreferencesStyle) {
-		changePreferencesStyleController(preferences: self.preferencePanes, style: newStyle)
-	}
-
-	private func changePreferencesStyleController(preferences: [PreferencePane], style: PreferencesStyle) {
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
 		toolbar.displayMode = .iconAndLabel
@@ -43,10 +40,10 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		switch style {
 		case .segmentedControl:
-			preferencesStyleController = SegmentedControlStyleViewController(preferences: preferences)
+			preferencesStyleController = SegmentedControlStyleViewController(preferencePanes: preferencePanes)
 		case .toolbarItems:
 			preferencesStyleController = ToolbarItemStyleViewController(
-				preferences: preferences,
+				preferencePanes: preferencePanes,
 				toolbar: toolbar,
 				centerToolbarItems: false
 			)
@@ -57,8 +54,8 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		window.toolbar = toolbar
 	}
 
-	func activateTab(preference: PreferencePane?, animated: Bool) {
-		guard let preference = preference else {
+	func activateTab(preferencePane: PreferencePane?, animated: Bool) {
+		guard let preference = preferencePane else {
 			return activateTab(index: 0, animated: animated)
 		}
 

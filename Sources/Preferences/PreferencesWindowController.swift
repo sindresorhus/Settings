@@ -12,10 +12,22 @@ public final class PreferencesWindowController: NSWindowController {
 		}
 	}
 
+	public var hidesToolbarForSingleItem: Bool {
+		didSet {
+			updateToolbarVisibility()
+		}
+	}
+
+	private func updateToolbarVisibility() {
+		window?.toolbar?.isVisible = (hidesToolbarForSingleItem == false)
+			|| (tabViewController.preferencePanesCount > 1)
+	}
+
 	public init(
 		preferencePanes: [PreferencePane],
 		style: PreferencesStyle = .toolbarItems,
-		animated: Bool = true
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
 	) {
 		precondition(!preferencePanes.isEmpty, "You need to set at least one view controller")
 
@@ -28,12 +40,21 @@ public final class PreferencesWindowController: NSWindowController {
 			backing: .buffered,
 			defer: true
 		)
+		self.hidesToolbarForSingleItem = hidesToolbarForSingleItem
 		super.init(window: window)
 
 		window.contentViewController = tabViewController
+		window.titleVisibility = {
+			switch style {
+			case .toolbarItems:
+				return .visible
+			case .segmentedControl:
+				return (preferencePanes.count <= 1) ? .visible : .hidden
+			}
+		}()
 		tabViewController.isAnimated = animated
-		tabViewController.configure(preferencePanes: preferencePanes)
-		changePreferencesStyle(to: style)
+		tabViewController.configure(preferencePanes: preferencePanes, style: style)
+		updateToolbarVisibility()
 	}
 
 	@available(*, unavailable)
@@ -46,10 +67,6 @@ public final class PreferencesWindowController: NSWindowController {
 		fatalError("init(coder:) is not supported, use init(preferences:style:animated:)")
 	}
 
-	private func changePreferencesStyle(to newStyle: PreferencesStyle) {
-		window?.titleVisibility = newStyle.windowTitleVisibility
-		tabViewController.changePreferencesStyle(to: newStyle)
-	}
 
 	/// Show the preferences window and brings it to front.
 	///
