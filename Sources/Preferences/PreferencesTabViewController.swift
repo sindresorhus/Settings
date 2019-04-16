@@ -89,6 +89,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			immediatelyDisplayTab(index: index)
 		} else {
 			guard index != activeTab else {
+				setWindowFrame(for: preferencePanes[index].viewController)
 				return
 			}
 
@@ -112,9 +113,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	private var activeChildViewConstraints = [NSLayoutConstraint]()
 
 	private func immediatelyDisplayTab(index: Int) {
-//		let toViewController = children[index]
-		print("immediatelyDisplayTab", index)
-		let toViewController = preferencePanes[index].viewController
+		let toViewController = children[index]
 		view.addSubview(toViewController.view)
 		activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		setWindowFrame(for: toViewController, animated: false)
