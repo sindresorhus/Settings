@@ -23,6 +23,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	var isAnimated: Bool = true
 
 	override func loadView() {
+		print("loadView")
 		self.view = NSView()
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
