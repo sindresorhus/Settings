@@ -222,7 +222,7 @@ You might also like Sindre's [apps](https://sindresorhus.com/apps).
 - [The Archive](https://zettelkasten.de/the-archive/)
 - [Word Counter](https://wordcounterapp.com/)
 
-Want to tell the world about your app using Preferences? Open a PR!
+Want to tell the world about your app that is using Preferences? Open a PR!
 
 
 ## Maintainers
