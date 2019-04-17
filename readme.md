@@ -218,9 +218,9 @@ You might also like Sindre's [apps](https://sindresorhus.com/apps).
 
 ## Used in these apps
 
-- [TableFlip](https://tableflipapp.com/), visual Markdown table editor by [Christian Tietze](https://github.com/DivineDominion)
-- [The Archive](https://zettelkasten.de/the-archive/), note-taking application by [Christian Tietze](https://github.com/DivineDominion)
-- [Word Counter](https://wordcounterapp.com/), measuring writer's productivity by [Christian Tietze](https://github.com/DivineDominion)
+- [TableFlip](https://tableflipapp.com) - Visual Markdown table editor by [Christian Tietze](https://github.com/DivineDominion)
+- [The Archive](https://zettelkasten.de/the-archive/) - Note-taking app by [Christian Tietze](https://github.com/DivineDominion)
+- [Word Counter](https://wordcounterapp.com) - Measuring writer's productivity by [Christian Tietze](https://github.com/DivineDominion)
 
 Want to tell the world about your app that is using Preferences? Open a PR!
 
