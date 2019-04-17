@@ -27,7 +27,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	lazy var preferencesWindowController = PreferencesWindowController(
 		preferencePanes: preferences,
 		style: preferencesStyle,
-		animated: true
+		animated: true,
+		hidesToolbarForSingleItem: true
 	)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {
