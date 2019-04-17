@@ -216,6 +216,15 @@ The `PreferencesWindowController` adheres to the [Apple HIG](https://developer.a
 You might also like Sindre's [apps](https://sindresorhus.com/apps).
 
 
+### Used in these app
+
+- [TableFlip](https://tableflipapp.com/)
+- [The Archive](https://zettelkasten.de/the-archive/)
+- [Word Counter](https://wordcounterapp.com/)
+
+Want to tell the world about your app using Preferences? Open a PR!
+
+
 ## Maintainers
 
 - [Sindre Sorhus](https://github.com/sindresorhus)
