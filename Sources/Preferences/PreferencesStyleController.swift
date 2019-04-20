@@ -11,6 +11,6 @@ protocol PreferencesStyleController: AnyObject {
 }
 
 protocol PreferencesStyleControllerDelegate: AnyObject {
-	func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool)
+	func activateTab(preferenceIdentifier: PreferencePaneIdentifier, animated: Bool)
 	func activateTab(index: Int, animated: Bool)
 }

@@ -1,7 +1,7 @@
 import Cocoa
 
 final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
-	private var activeTab: Int!
+	private var activeTab: Int?
 	private var preferencePanes = [PreferencePane]()
 	internal var preferencePanesCount: Int {
 		return preferencePanes.count
@@ -54,19 +54,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		window.toolbar = toolbar
 	}
 
-	func activateTab(preferencePane: PreferencePane?, animated: Bool) {
-		guard let preference = preferencePane else {
-			return activateTab(index: 0, animated: animated)
-		}
-
-		activateTab(preferenceIdentifier: preference.preferencePaneIdentifier, animated: animated)
+	func activateTab(preferencePane: PreferencePane, animated: Bool) {
+		activateTab(preferenceIdentifier: preferencePane.preferencePaneIdentifier, animated: animated)
 	}
 
-	func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool) {
-		guard
-			let preferenceIdentifier = preferenceIdentifier,
-			let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier })
-		else {
+	func activateTab(preferenceIdentifier: PreferencePaneIdentifier, animated: Bool) {
+		guard let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier }) else {
 			return activateTab(index: 0, animated: animated)
 		}
 
@@ -88,6 +81,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			}
 
 			animateTabTransition(index: index, animated: animated)
+		}
+	}
+
+	func restoreInitialTab() {
+		if activeTab == nil {
+			activateTab(index: 0, animated: false)
 		}
 	}
 
@@ -114,6 +113,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	}
 
 	private func animateTabTransition(index: Int, animated: Bool) {
+		guard let activeTab = activeTab else {
+			assertionFailure("animateTabTransition called before a tab was displayed; transition only works from one tab to another")
+			immediatelyDisplayTab(index: index)
+			return
+		}
+
 		let fromViewController = children[activeTab]
 		let toViewController = children[index]
 		let options: NSViewController.TransitionOptions = animated && isAnimated
