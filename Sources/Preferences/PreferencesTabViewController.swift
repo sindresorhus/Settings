@@ -1,7 +1,7 @@
 import Cocoa
 
 final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
-	private var activeTab: Int!
+	private var activeTab: Int?
 	private var preferencePanes = [PreferencePane]()
 	internal var preferencePanesCount: Int {
 		return preferencePanes.count
@@ -84,6 +84,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		}
 	}
 
+	func restoreInitialTab() {
+		if activeTab == nil {
+			activateTab(index: 0, animated: false)
+		}
+	}
+
 	private func updateWindowTitle(tabIndex: Int) {
 		self.window.title = {
 			if preferencePanes.count > 1 {
@@ -107,6 +113,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	}
 
 	private func animateTabTransition(index: Int, animated: Bool) {
+		guard let activeTab = activeTab else {
+			assertionFailure("animateTabTransition called before a tab was displayed; transition only works from one tab to another")
+			immediatelyDisplayTab(index: index)
+			return
+		}
+
 		let fromViewController = children[activeTab]
 		let toViewController = children[index]
 		let options: NSViewController.TransitionOptions = animated && isAnimated
