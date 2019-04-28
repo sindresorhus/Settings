@@ -35,7 +35,7 @@ final class ToolbarItemStyleViewController: NSObject, PreferencesStyleController
 		return toolbarItemIdentifiers
 	}
 
-	func toolbarItem(preferenceIdentifier: PreferencePaneIdentifier) -> NSToolbarItem? {
+	func toolbarItem(preferenceIdentifier: PreferencePane.Identifier) -> NSToolbarItem? {
 		guard let preference = (preferencePanes.first { $0.preferencePaneIdentifier == preferenceIdentifier }) else {
 			preconditionFailure()
 		}
@@ -50,7 +50,7 @@ final class ToolbarItemStyleViewController: NSObject, PreferencesStyleController
 
 	@IBAction private func toolbarItemSelected(_ toolbarItem: NSToolbarItem) {
 		delegate?.activateTab(
-			preferenceIdentifier: PreferencePaneIdentifier(fromToolbarItemIdentifier: toolbarItem.itemIdentifier),
+			preferenceIdentifier: PreferencePane.Identifier(fromToolbarItemIdentifier: toolbarItem.itemIdentifier),
 			animated: true
 		)
 	}
