@@ -195,21 +195,27 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			preconditionFailure()
 		}
 
+		print("setWindowFrame reached")
+
 		var contentSize = CGSize.zero
 		if let cachedSize = self.viewSizeCache[preferencePane.preferencePaneIdentifier] {
 			contentSize = cachedSize
+			print("cached size used: \(contentSize)")
 		} else {
 			contentSize = viewController.view.fittingSize
 			if contentSize == .zero {
 				contentSize = viewController.view.bounds.size
 			}
 			self.viewSizeCache[preferencePane.preferencePaneIdentifier] = contentSize
+			print("size added to cache: \(contentSize)")
 		}
 
 		let newWindowSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
 		var frame = window.frame
 		frame.origin.y += frame.height - newWindowSize.height
 		frame.size = newWindowSize
+
+		print("new window size: \(newWindowSize)")
 
 		if isKeepingWindowCentered {
 			let horizontalDiff = (window.frame.width - newWindowSize.width) / 2
