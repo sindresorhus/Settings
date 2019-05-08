@@ -109,8 +109,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	private var activeChildViewConstraints = [NSLayoutConstraint]()
 
 	private func immediatelyDisplayTab(index: Int) {
-//		let toViewController = children[index]
-		let toViewController = preferencePanes[index].viewController
+		let toViewController = children[index]
 		view.addSubview(toViewController.view)
 		activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		setWindowFrame(for: toViewController, animated: false)
