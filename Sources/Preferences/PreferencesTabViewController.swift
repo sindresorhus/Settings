@@ -195,8 +195,6 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			preconditionFailure()
 		}
 
-		print("setWindowFrame reached")
-
 		var contentSize = CGSize.zero
 		if let cachedSize = self.viewSizeCache[preferencePane.preferencePaneIdentifier] {
 			contentSize = cachedSize
@@ -205,12 +203,11 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 //			viewController.view.needsUpdateConstraints = true
 			contentSize = viewController.view.fittingSize
 			print("contentSize pass 1: \(contentSize)")
-			if contentSize == .zero {
+			if contentSize.width == 0 || contentSize.height == 0 {
 				contentSize = viewController.view.bounds.size
 				print("contentSize pass 2: \(contentSize)")
 			}
 
-			print("contentSize bounds size pass: \(viewController.view.bounds.size)")
 			self.viewSizeCache[preferencePane.preferencePaneIdentifier] = contentSize
 			print("size added to cache: \(contentSize)")
 		}
