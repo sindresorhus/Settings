@@ -26,7 +26,6 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	var isAnimated: Bool = true
 
 	override func loadView() {
-		print("loadView")
 		self.view = NSView()
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
@@ -78,21 +77,17 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		}
 
 		if activeTab == nil {
-			print("activeTab nil")
 			immediatelyDisplayTab(index: index)
 		} else {
 			guard index != activeTab else {
-				print("index mismatch")
 				return
 			}
 
-			print("animate transition")
 			animateTabTransition(index: index, animated: animated)
 		}
 	}
 
 	func restoreInitialTab() {
-		print("Active Tab: \(activeTab)")
 		if activeTab == nil {
 			activateTab(index: 0, animated: false)
 		}
@@ -198,20 +193,16 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		var contentSize = CGSize.zero
 		if let cachedSize = self.viewSizeCache[preferencePane.preferencePaneIdentifier] {
 			contentSize = cachedSize
-			print("cached size used: \(contentSize)")
 		} else {
 			contentSize = viewController.view.bounds.size
 
 			self.viewSizeCache[preferencePane.preferencePaneIdentifier] = contentSize
-			print("size added to cache: \(contentSize)")
 		}
 
 		let newWindowSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
 		var frame = window.frame
 		frame.origin.y += frame.height - newWindowSize.height
 		frame.size = newWindowSize
-
-		print("new window size: \(newWindowSize)")
 
 		if isKeepingWindowCentered {
 			let horizontalDiff = (window.frame.width - newWindowSize.width) / 2
