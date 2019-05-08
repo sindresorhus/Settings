@@ -1,6 +1,6 @@
 import Cocoa
 
-public struct PreferencePaneIdentifier: Equatable, RawRepresentable {
+public struct PreferencePaneIdentifier: Equatable, Hashable, RawRepresentable {
 	public typealias Identifier = PreferencePaneIdentifier
 
 	public let rawValue: String
