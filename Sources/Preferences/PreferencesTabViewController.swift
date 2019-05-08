@@ -17,7 +17,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		return preferencesStyleController?.toolbarItemIdentifiers() ?? []
 	}
 
-	private var viewSizeCache: [PreferencePaneIdentifier: NSSize] = [:]
+	private var viewSizeCache = [PreferencePaneIdentifier: CGSize]()
 
 	var window: NSWindow! {
 		return view.window
@@ -188,13 +188,14 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	}
 
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = false) {
-		guard let window = window,
-			  let preferencePane = preferencePanes.first(where: { $0.viewController == viewController })
-			else {
+		guard
+			let window = window,
+			let preferencePane = preferencePanes.first(where: { $0.viewController == viewController })
+		else {
 			preconditionFailure()
 		}
 
-		var contentSize = NSSize.zero
+		var contentSize = CGSize.zero
 		if let cachedSize = self.viewSizeCache[preferencePane.preferencePaneIdentifier] {
 			contentSize = cachedSize
 		} else {
