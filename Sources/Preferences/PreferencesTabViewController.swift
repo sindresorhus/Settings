@@ -202,6 +202,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			contentSize = cachedSize
 			print("cached size used: \(contentSize)")
 		} else {
+			viewController.view.needsLayout = true
 			contentSize = viewController.view.fittingSize
 			print("contentSize pass 1: \(contentSize)")
 			if contentSize == .zero {
