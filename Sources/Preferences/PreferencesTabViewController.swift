@@ -92,6 +92,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	}
 
 	func restoreInitialTab() {
+		print("Active Tab: \(activeTab)")
 		if activeTab == nil {
 			activateTab(index: 0, animated: false)
 		}
