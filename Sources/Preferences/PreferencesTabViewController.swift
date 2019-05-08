@@ -209,7 +209,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 				print("contentSize pass 2: \(contentSize)")
 			}
 
-			print("contentSize intrinsic size pass: \(viewController.view.intrinsicContentSize)")
+			print("contentSize preferred size pass: \(viewController.preferredContentSize)")
 			self.viewSizeCache[preferencePane.preferencePaneIdentifier] = contentSize
 			print("size added to cache: \(contentSize)")
 		}
