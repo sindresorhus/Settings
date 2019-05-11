@@ -32,7 +32,7 @@ public final class PreferencesWindowController: NSWindowController {
 		style: PreferencesStyle = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
-		) {
+	) {
 		precondition(!preferencePanes.isEmpty, "You need to set at least one view controller")
 
 		let window = UserInteractionPausableWindow(
@@ -101,18 +101,21 @@ public final class PreferencesWindowController: NSWindowController {
 	}
 
 	private func centerWindowOnFirstStart() {
-		guard let window = self.window,
-			let screenContainingWindow = window.screen else {
-				return
+		guard
+			let window = self.window,
+			let screenContainingWindow = window.screen
+		else {
+			return
 		}
 
 		// When setting the autosave name, the current position isn't stored immediately.
 		// Trying to read the frame values will fail, so we can center it.
 		window.setFrameAutosaveName(.preferences)
+
 		if window.setFrameUsingName(.preferences) == false {
-			let xPos = screenContainingWindow.frame.midX - window.frame.width / 2
-			let yPos = screenContainingWindow.frame.midY - window.frame.height / 2
-			window.setFrameOrigin(NSPoint(x: xPos, y: yPos))
+			let x = screenContainingWindow.frame.midX - window.frame.width / 2
+			let y = screenContainingWindow.frame.midY - window.frame.height / 2
+			window.setFrameOrigin(CGPoint(x: x, y: y))
 		}
 	}
 }
