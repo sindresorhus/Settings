@@ -95,7 +95,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			if preferencePanes.count > 1 {
 				return preferencePanes[tabIndex].preferencePaneTitle
 			} else {
-				let preferences = System.localizedPreferences()
+				let preferences = Localization.get(identifier: .preferences)
 				let appName = Bundle.main.appName
 				return "\(appName) \(preferences)"
 			}
