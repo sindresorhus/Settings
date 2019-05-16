@@ -1,9 +1,9 @@
 import Cocoa
 import Preferences
 
-extension PreferencePaneIdentifier {
-	static let general = PreferencePaneIdentifier("general")
-	static let advanced = PreferencePaneIdentifier("advanced")
+extension PreferencePane.Identifier {
+	static let general = Identifier("general")
+	static let advanced = Identifier("advanced")
 }
 
 @NSApplicationMain
@@ -27,7 +27,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	lazy var preferencesWindowController = PreferencesWindowController(
 		preferencePanes: preferences,
 		style: preferencesStyle,
-		animated: true
+		animated: true,
+		hidesToolbarForSingleItem: true
 	)
 
 	func applicationWillFinishLaunching(_ notification: Notification) {

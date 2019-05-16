@@ -19,7 +19,7 @@ Just pass in some view controllers and this package will take care of the rest.
 #### SwiftPM
 
 ```swift
-.package(url: "https://github.com/sindresorhus/Preferences", from: "0.2.1")
+.package(url: "https://github.com/sindresorhus/Preferences", from: "0.3.0")
 ```
 
 #### Carthage
@@ -48,9 +48,9 @@ First, create a collection of preference pane identifiers:
 ```swift
 import Preferences
 
-extension PreferencePaneIdentifier {
-	static let general = PreferencePaneIdentifier("general")
-	static let advanced = PreferencePaneIdentifier("advanced")
+extension PreferencePane.Identifier {
+	static let general = Identifier("general")
+	static let advanced = Identifier("advanced")
 }
 ```
 
@@ -63,7 +63,7 @@ import Cocoa
 import Preferences
 
 final class GeneralPreferenceViewController: NSViewController, PreferencePane {
-	let preferencePaneIdentifier = PreferencePaneIdentifier.general
+	let preferencePaneIdentifier = PreferencePane.Identifier.general
 	let preferencePaneTitle = "General"
 	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
@@ -86,7 +86,7 @@ import Cocoa
 import Preferences
 
 final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
-	let preferencePaneIdentifier = PreferencePaneIdentifier.advanced
+	let preferencePaneIdentifier = PreferencePane.Identifier.advanced
 	let preferencePaneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
@@ -159,7 +159,7 @@ lazy var preferencesWindowController = PreferencesWindowController(
 
 ```swift
 public protocol PreferencePane: AnyObject {
-	var preferencePaneIdentifier: PreferencePaneIdentifier { get }
+	var preferencePaneIdentifier: PreferencePane.Identifier { get }
 	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
 }
@@ -173,10 +173,11 @@ public final class PreferencesWindowController: NSWindowController {
 	init(
 		preferencePanes: [PreferencePane],
 		style: PreferencesStyle = .toolbarItems,
-		animated: Bool = true
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
 	)
 
-	func show(preferencePane: PreferencePaneIdentifier? = nil)
+	func show(preferencePane: PreferencePane.Identifier? = nil)
 }
 ```
 
@@ -212,7 +213,16 @@ The `PreferencesWindowController` adheres to the [Apple HIG](https://developer.a
 - [DockProgress](https://github.com/sindresorhus/DockProgress) - Show progress in your app's Dock icon
 - [More…](https://github.com/search?q=user%3Asindresorhus+language%3Aswift)
 
-You might also like my [apps](https://sindresorhus.com/apps).
+You might also like Sindre's [apps](https://sindresorhus.com/apps).
+
+
+## Used in these apps
+
+- [TableFlip](https://tableflipapp.com) - Visual Markdown table editor by [Christian Tietze](https://github.com/DivineDominion)
+- [The Archive](https://zettelkasten.de/the-archive/) - Note-taking app by [Christian Tietze](https://github.com/DivineDominion)
+- [Word Counter](https://wordcounterapp.com) - Measuring writer's productivity by [Christian Tietze](https://github.com/DivineDominion)
+
+Want to tell the world about your app that is using Preferences? Open a PR!
 
 
 ## Maintainers

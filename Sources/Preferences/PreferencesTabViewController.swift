@@ -1,8 +1,11 @@
 import Cocoa
 
 final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
-	private var activeTab: Int!
+	private var activeTab: Int?
 	private var preferencePanes = [PreferencePane]()
+	internal var preferencePanesCount: Int {
+		return preferencePanes.count
+	}
 
 	private var preferencesStyleController: PreferencesStyleController!
 
@@ -25,16 +28,10 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferencePanes: [PreferencePane]) {
+	func configure(preferencePanes: [PreferencePane], style: PreferencesStyle) {
 		self.preferencePanes = preferencePanes
 		self.children = preferencePanes.map { $0.viewController }
-	}
 
-	func changePreferencesStyle(to newStyle: PreferencesStyle) {
-		changePreferencesStyleController(preferences: self.preferencePanes, style: newStyle)
-	}
-
-	private func changePreferencesStyleController(preferences: [PreferencePane], style: PreferencesStyle) {
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
 		toolbar.displayMode = .iconAndLabel
@@ -43,10 +40,10 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		switch style {
 		case .segmentedControl:
-			preferencesStyleController = SegmentedControlStyleViewController(preferences: preferences)
+			preferencesStyleController = SegmentedControlStyleViewController(preferencePanes: preferencePanes)
 		case .toolbarItems:
 			preferencesStyleController = ToolbarItemStyleViewController(
-				preferences: preferences,
+				preferencePanes: preferencePanes,
 				toolbar: toolbar,
 				centerToolbarItems: false
 			)
@@ -57,19 +54,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		window.toolbar = toolbar
 	}
 
-	func activateTab(preference: PreferencePane?, animated: Bool) {
-		guard let preference = preference else {
-			return activateTab(index: 0, animated: animated)
-		}
-
-		activateTab(preferenceIdentifier: preference.preferencePaneIdentifier, animated: animated)
+	func activateTab(preferencePane: PreferencePane, animated: Bool) {
+		activateTab(preferenceIdentifier: preferencePane.preferencePaneIdentifier, animated: animated)
 	}
 
-	func activateTab(preferenceIdentifier: PreferencePaneIdentifier?, animated: Bool) {
-		guard
-			let preferenceIdentifier = preferenceIdentifier,
-			let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier })
-		else {
+	func activateTab(preferenceIdentifier: PreferencePane.Identifier, animated: Bool) {
+		guard let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier }) else {
 			return activateTab(index: 0, animated: animated)
 		}
 
@@ -91,6 +81,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			}
 
 			animateTabTransition(index: index, animated: animated)
+		}
+	}
+
+	func restoreInitialTab() {
+		if activeTab == nil {
+			activateTab(index: 0, animated: false)
 		}
 	}
 
@@ -117,6 +113,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	}
 
 	private func animateTabTransition(index: Int, animated: Bool) {
+		guard let activeTab = activeTab else {
+			assertionFailure("animateTabTransition called before a tab was displayed; transition only works from one tab to another")
+			immediatelyDisplayTab(index: index)
+			return
+		}
+
 		let fromViewController = children[activeTab]
 		let toViewController = children[index]
 		let options: NSViewController.TransitionOptions = animated && isAnimated
@@ -220,6 +222,6 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 			return nil
 		}
 
-		return preferencesStyleController.toolbarItem(preferenceIdentifier: PreferencePaneIdentifier(fromToolbarItemIdentifier: itemIdentifier))
+		return preferencesStyleController.toolbarItem(preferenceIdentifier: PreferencePane.Identifier(fromToolbarItemIdentifier: itemIdentifier))
 	}
 }

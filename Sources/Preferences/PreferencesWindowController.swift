@@ -12,10 +12,22 @@ public final class PreferencesWindowController: NSWindowController {
 		}
 	}
 
+	public var hidesToolbarForSingleItem: Bool {
+		didSet {
+			updateToolbarVisibility()
+		}
+	}
+
+	private func updateToolbarVisibility() {
+		window?.toolbar?.isVisible = (hidesToolbarForSingleItem == false)
+			|| (tabViewController.preferencePanesCount > 1)
+	}
+
 	public init(
 		preferencePanes: [PreferencePane],
 		style: PreferencesStyle = .toolbarItems,
-		animated: Bool = true
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
 	) {
 		precondition(!preferencePanes.isEmpty, "You need to set at least one view controller")
 
@@ -28,12 +40,21 @@ public final class PreferencesWindowController: NSWindowController {
 			backing: .buffered,
 			defer: true
 		)
+		self.hidesToolbarForSingleItem = hidesToolbarForSingleItem
 		super.init(window: window)
 
 		window.contentViewController = tabViewController
+		window.titleVisibility = {
+			switch style {
+			case .toolbarItems:
+				return .visible
+			case .segmentedControl:
+				return (preferencePanes.count <= 1) ? .visible : .hidden
+			}
+		}()
 		tabViewController.isAnimated = animated
-		tabViewController.configure(preferencePanes: preferencePanes)
-		changePreferencesStyle(to: style)
+		tabViewController.configure(preferencePanes: preferencePanes, style: style)
+		updateToolbarVisibility()
 	}
 
 	@available(*, unavailable)
@@ -46,26 +67,27 @@ public final class PreferencesWindowController: NSWindowController {
 		fatalError("init(coder:) is not supported, use init(preferences:style:animated:)")
 	}
 
-	private func changePreferencesStyle(to newStyle: PreferencesStyle) {
-		window?.titleVisibility = newStyle.windowTitleVisibility
-		tabViewController.changePreferencesStyle(to: newStyle)
-	}
 
 	/// Show the preferences window and brings it to front.
 	///
-	/// If you pass a `PreferencePaneIdentifier`, the window will activate the corresponding tab.
+	/// If you pass a `PreferencePane.Identifier`, the window will activate the corresponding tab.
 	///
 	/// - See `close()` to close the window again.
 	/// - See `showWindow(_:)` to show the window without the convenience of activating the app.
-	/// - Note: Unless you need to open a specific pane, prefer not to pass a parameter at all
-	/// - Parameter preferencePane: Identifier of the preference pane to display.
-	public func show(preferencePane preferenceIdentifier: PreferencePaneIdentifier? = nil) {
+	/// - Note: Unless you need to open a specific pane, prefer not to pass a parameter at all or `nil`.
+	/// - Parameter preferencePane: Identifier of the preference pane to display, or `nil` to show the
+	///   tab that was open when the user last closed the window.
+	public func show(preferencePane preferenceIdentifier: PreferencePane.Identifier? = nil) {
 		if !window!.isVisible {
 			window?.center()
 		}
 
 		showWindow(self)
-		tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
+		if let preferenceIdentifier = preferenceIdentifier {
+			tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
+		} else {
+			tabViewController.restoreInitialTab()
+		}
 		NSApp.activate(ignoringOtherApps: true)
 	}
 }
