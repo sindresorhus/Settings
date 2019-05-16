@@ -1,12 +1,12 @@
 import Foundation
 
-public enum LocalizationIdentifier {
-	case preferences
-	case preferencesEllipsized
-}
-
 struct Localization {
-	private static let localizedStrings: [LocalizationIdentifier: [String: String]] = [
+	enum Identifier {
+		case preferences
+		case preferencesEllipsized
+	}
+
+	private static let localizedStrings: [Identifier: [String: String]] = [
 		.preferences: [
 			"ar": "تفضيلات",
 			"ca": "Preferències",
@@ -91,24 +91,32 @@ struct Localization {
 		]
 	]
 
-	static func get(identifier: LocalizationIdentifier) -> String {
+	/// Returns the localized version of the specified string.
+	///
+	/// - Note: If the system's locale can't be determined, the English localization of the string will be returned.
+	/// - Parameter identifier: Identifier of the string to localize.
+	static func get(identifier: Identifier) -> String {
 		let locale = Locale.current
-		if let languageCode = locale.languageCode, let regionCode = locale.regionCode, let localizedDict = Localization.localizedStrings[identifier] {
-			let localeIdentifier = "\(languageCode)_\(regionCode)"
 
-			if let localizedString = localizedDict[localeIdentifier] {
-				return localizedString
-			}
+		// force-unwrapped since 100% of the involved code is under our control
+		let localizedDict = Localization.localizedStrings[identifier]!
 
-			if let localizedString = localizedDict[languageCode] {
-				return localizedString
-			}
-
+		guard let languageCode = locale.languageCode, let regionCode = locale.regionCode else {
 			// Fall back to English locale, which always exists
 			return localizedDict["en"]!
 		}
 
-		// Fall back that shouldn't ever happen
-		return "PREFERENCES"
+		let localeIdentifier = "\(languageCode)_\(regionCode)"
+
+		if let localizedString = localizedDict[localeIdentifier] {
+			return localizedString
+		}
+
+		if let localizedString = localizedDict[languageCode] {
+			return localizedString
+		}
+
+		// Fall back to English locale, which always exists
+		return localizedDict["en"]!
 	}
 }
