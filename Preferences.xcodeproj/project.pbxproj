@@ -13,6 +13,7 @@
 		50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */; };
 		50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */; };
 		50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */; };
+		56392002228D453100F8804C /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56392001228D453100F8804C /* Localization.swift */; };
 		E3194E4122573FF3006FE775 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3194E4022573FF3006FE775 /* util.swift */; };
 		E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EE920E6149B002F8F86 /* AppDelegate.swift */; };
 		E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EEB20E6149D002F8F86 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SegmentedControlStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ToolbarItemStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		50F9AE80225773A0005D7DC3 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; usesTabs = 1; };
+		56392001228D453100F8804C /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		E3194E4022573FF3006FE775 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = util.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EE720E6149B002F8F86 /* PreferencesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreferencesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34E9EE920E6149B002F8F86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -147,6 +149,7 @@
 		OBJ_8 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				56392001228D453100F8804C /* Localization.swift */,
 				E34E9EFA20E61557002F8F86 /* PreferencePane.swift */,
 				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
 				OBJ_9 /* PreferencesWindowController.swift */,
@@ -316,6 +319,7 @@
 				5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */,
 				50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */,
 				50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */,
+				56392002228D453100F8804C /* Localization.swift in Sources */,
 				50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */,
 				E34E9EFB20E61557002F8F86 /* PreferencePane.swift in Sources */,
 				OBJ_20 /* util.swift in Sources */,
