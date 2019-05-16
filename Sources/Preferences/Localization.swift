@@ -91,6 +91,7 @@ struct Localization {
 		]
 	]
 
+	// TODO: Use a static subscript instead of a `get` method when using Swift 5.1
 	static func get(identifier: LocalizationIdentifier) -> String {
 		let locale = Locale.current
 		if let languageCode = locale.languageCode, let regionCode = locale.regionCode, let localizedDict = Localization.localizedStrings[identifier] {
