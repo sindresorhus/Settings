@@ -91,6 +91,7 @@ struct Localization {
 		]
 	]
 
+	// TODO: Use a static subscript instead of a `get` method when using Swift 5.1
 	/// Returns the localized version of the specified string.
 	///
 	/// - Note: If the system's locale can't be determined, the English localization of the string will be returned.
