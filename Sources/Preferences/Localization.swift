@@ -15,13 +15,13 @@ struct Localization {
 			"de": "Einstellungen",
 			"el": "Προτιμήσεις",
 			"en": "Preferences",
-			"en_AU": "Preferences",
-			"en_GB": "Preferences",
+			"en-AU": "Preferences",
+			"en-GB": "Preferences",
 			"es": "Preferencias",
-			"es_419": "Preferencias",
+			"es-419": "Preferencias",
 			"fi": "Asetukset",
 			"fr": "Préférences",
-			"fr_CA": "Préférences",
+			"fr-CA": "Préférences",
 			"he": "העדפות",
 			"hi": "प्राथमिकता",
 			"hr": "Postavke",
@@ -35,7 +35,7 @@ struct Localization {
 			"no": "Valg",
 			"pl": "Preferencje",
 			"pt": "Preferências",
-			"pt_PT": "Preferências",
+			"pt-PT": "Preferências",
 			"ro": "Preferințe",
 			"ru": "Настройки",
 			"sk": "Nastavenia",
@@ -44,9 +44,9 @@ struct Localization {
 			"tr": "Tercihler",
 			"uk": "Параметри",
 			"vi": "Tùy chọn",
-			"zh_CN": "偏好设置",
-			"zh_HK": "偏好設定",
-			"zh_TW": "偏好設定"
+			"zh-CN": "偏好设置",
+			"zh-HK": "偏好設定",
+			"zh-TW": "偏好設定"
 		],
 		.preferencesEllipsized: [
 			"ar": "تفضيلات…",
@@ -56,13 +56,13 @@ struct Localization {
 			"de": "Einstellungen…",
 			"el": "Προτιμήσεις…",
 			"en": "Preferences…",
-			"en_AU": "Preferences…",
-			"en_GB": "Preferences…",
+			"en-AU": "Preferences…",
+			"en-GB": "Preferences…",
 			"es": "Preferencias…",
-			"es_419": "Preferencias…",
+			"es-419": "Preferencias…",
 			"fi": "Asetukset…",
 			"fr": "Préférences…",
-			"fr_CA": "Préférences…",
+			"fr-CA": "Préférences…",
 			"he": "העדפות…",
 			"hi": "प्राथमिकता…",
 			"hr": "Postavke…",
@@ -76,7 +76,7 @@ struct Localization {
 			"no": "Valg…",
 			"pl": "Preferencje…",
 			"pt": "Preferências…",
-			"pt_PT": "Preferências…",
+			"pt-PT": "Preferências…",
 			"ro": "Preferințe…",
 			"ru": "Настройки…",
 			"sk": "Nastavenia…",
@@ -85,30 +85,34 @@ struct Localization {
 			"tr": "Tercihler…",
 			"uk": "Параметри…",
 			"vi": "Tùy chọn…",
-			"zh_CN": "偏好设置…",
-			"zh_HK": "偏好設定⋯",
-			"zh_TW": "偏好設定⋯"
+			"zh-CN": "偏好设置…",
+			"zh-HK": "偏好設定⋯",
+			"zh-TW": "偏好設定⋯"
 		]
 	]
 
 	// TODO: Use a static subscript instead of a `get` method when using Swift 5.1
-	/// Returns the localized version of the specified string.
-	///
-	/// - Note: If the system's locale can't be determined, the English localization of the string will be returned.
-	/// - Parameter identifier: Identifier of the string to localize.
+	/**
+	Returns the localized version of the given string.
+
+	- Note: If the system's locale can't be determined, the English localization of the string will be returned.
+	- Parameter identifier: Identifier of the string to localize.
+	*/
 	static func get(identifier: Identifier) -> String {
 		let locale = Locale.current
 
-		// force-unwrapped since 100% of the involved code is under our control
+		// Force-unwrapped since all of the involved code is under our control.
 		let localizedDict = Localization.localizedStrings[identifier]!
+		let defaultLocalizedString = localizedDict["en"]!
 
-		guard let languageCode = locale.languageCode, let regionCode = locale.regionCode else {
-			// Fall back to English locale, which always exists
-			return localizedDict["en"]!
+		guard
+			let languageCode = locale.languageCode,
+			let regionCode = locale.regionCode
+		else {
+			return defaultLocalizedString
 		}
 
-		let localeIdentifier = "\(languageCode)_\(regionCode)"
-
+		let localeIdentifier = "\(languageCode)-\(regionCode)"
 		if let localizedString = localizedDict[localeIdentifier] {
 			return localizedString
 		}
@@ -117,7 +121,6 @@ struct Localization {
 			return localizedString
 		}
 
-		// Fall back to English locale, which always exists
-		return localizedDict["en"]!
+		return defaultLocalizedString
 	}
 }
