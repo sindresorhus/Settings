@@ -94,7 +94,7 @@ struct Localization {
 		let defaultLocalizedString = localizedDict["en"]!
 
 		// Iterate through all user-preferred languages until we find one that has a valid language code
-		var preferredLocale: Locale?
+		var preferredLocale = Locale.current
 		for localeID in Locale.preferredLanguages {
 			let locale = Locale(identifier: localeID)
 			if locale.languageCode != nil {
@@ -103,18 +103,13 @@ struct Localization {
 			}
 		}
 
-		// Fall back to the system language if no language code was found (unlikely, but might happen)
-		if preferredLocale == nil {
-			preferredLocale = Locale.current
-		}
-
-		guard let languageCode = preferredLocale!.languageCode else {
+		guard let languageCode = preferredLocale.languageCode else {
 			return defaultLocalizedString
 		}
 
 		// Chinese is the only language where different region codes result in different translations
 		if languageCode == "zh" {
-			let regionCode = preferredLocale!.regionCode ?? ""
+			let regionCode = preferredLocale.regionCode ?? ""
 			if regionCode == "HK" || regionCode == "TW" {
 				return localizedDict["\(languageCode)-\(regionCode)"]!
 			} else {
