@@ -15,13 +15,9 @@ struct Localization {
 			"de": "Einstellungen",
 			"el": "Προτιμήσεις",
 			"en": "Preferences",
-			"en-AU": "Preferences",
-			"en-GB": "Preferences",
 			"es": "Preferencias",
-			"es-419": "Preferencias",
 			"fi": "Asetukset",
 			"fr": "Préférences",
-			"fr-CA": "Préférences",
 			"he": "העדפות",
 			"hi": "प्राथमिकता",
 			"hr": "Postavke",
@@ -35,7 +31,6 @@ struct Localization {
 			"no": "Valg",
 			"pl": "Preferencje",
 			"pt": "Preferências",
-			"pt-PT": "Preferências",
 			"ro": "Preferințe",
 			"ru": "Настройки",
 			"sk": "Nastavenia",
@@ -56,13 +51,9 @@ struct Localization {
 			"de": "Einstellungen…",
 			"el": "Προτιμήσεις…",
 			"en": "Preferences…",
-			"en-AU": "Preferences…",
-			"en-GB": "Preferences…",
 			"es": "Preferencias…",
-			"es-419": "Preferencias…",
 			"fi": "Asetukset…",
 			"fr": "Préférences…",
-			"fr-CA": "Préférences…",
 			"he": "העדפות…",
 			"hi": "प्राथमिकता…",
 			"hr": "Postavke…",
@@ -76,7 +67,6 @@ struct Localization {
 			"no": "Valg…",
 			"pl": "Preferencje…",
 			"pt": "Preferências…",
-			"pt-PT": "Preferências…",
 			"ro": "Preferințe…",
 			"ru": "Настройки…",
 			"sk": "Nastavenia…",
@@ -99,26 +89,37 @@ struct Localization {
 	- Parameter identifier: Identifier of the string to localize.
 	*/
 	static func get(identifier: Identifier) -> String {
-		let locale = Locale.current
-
 		// Force-unwrapped since all of the involved code is under our control.
 		let localizedDict = Localization.localizedStrings[identifier]!
 		let defaultLocalizedString = localizedDict["en"]!
 
-		guard
-			let languageCode = locale.languageCode,
-			let regionCode = locale.regionCode
-		else {
+		// Iterate through all user-preferred languages until we find one that has a valid language code
+		var preferredLocale = Locale.current
+		for localeID in Locale.preferredLanguages {
+			let locale = Locale(identifier: localeID)
+			if locale.languageCode != nil {
+				preferredLocale = locale
+				break
+			}
+		}
+
+		guard let languageCode = preferredLocale.languageCode else {
 			return defaultLocalizedString
 		}
 
-		let localeIdentifier = "\(languageCode)-\(regionCode)"
-		if let localizedString = localizedDict[localeIdentifier] {
-			return localizedString
-		}
-
-		if let localizedString = localizedDict[languageCode] {
-			return localizedString
+		// Chinese is the only language where different region codes result in different translations
+		if languageCode == "zh" {
+			let regionCode = preferredLocale.regionCode ?? ""
+			if regionCode == "HK" || regionCode == "TW" {
+				return localizedDict["\(languageCode)-\(regionCode)"]!
+			} else {
+				// Fall back to "regular" zh-CN if neither the HK or TW region codes are found
+				return localizedDict["\(languageCode)-CN"]!
+			}
+		} else {
+			if let localizedString = localizedDict[languageCode] {
+				return localizedString
+			}
 		}
 
 		return defaultLocalizedString
