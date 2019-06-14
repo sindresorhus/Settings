@@ -10,7 +10,7 @@ public struct PreferencePaneIdentifier: Hashable, RawRepresentable, Codable {
 	}
 }
 
-public protocol PreferencePane: AnyObject {
+public protocol PreferencePane: NSViewController {
 	typealias Identifier = PreferencePaneIdentifier
 
 	var preferencePaneIdentifier: Identifier { get }
@@ -19,7 +19,7 @@ public protocol PreferencePane: AnyObject {
 	var viewController: NSViewController { get }
 }
 
-extension PreferencePane where Self: NSViewController {
+extension PreferencePane {
 	public var viewController: NSViewController {
 		return self
 	}

@@ -39,7 +39,7 @@ pod 'Preferences'
 
 *Run the `PreferencesExample` target in Xcode to try a live example.*
 
-First, create a collection of preference pane identifiers:
+First, create some preference pane identifiers:
 
 ```swift
 import Preferences
@@ -154,7 +154,7 @@ lazy var preferencesWindowController = PreferencesWindowController(
 ## API
 
 ```swift
-public protocol PreferencePane: AnyObject {
+public protocol PreferencePane: NSViewController {
 	var preferencePaneIdentifier: PreferencePane.Identifier { get }
 	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
@@ -177,14 +177,14 @@ public final class PreferencesWindowController: NSWindowController {
 }
 ```
 
-As usual, call `NSWindowController#close()` to close the preferences window.
+As with any `NSWindowController`, call `NSWindowController#close()` to close the preferences window.
 
 
 ## FAQ
 
 ### How can I localize the window title?
 
-The `PreferencesWindowController` adheres to the [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/) and uses this set of rules to determine the window title:
+The `PreferencesWindowController` adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/) and uses this set of rules to determine the window title:
 
 - **Multiple preference panes:** Uses the currently selected `preferencePaneTitle` as the window title. Localize your `preferencePaneTitle`s to get localized window titles.
 - **Single preference pane:** Sets the window title to `APPNAME Preferences`. The app name is obtained from your app's bundle. You can localize its `Info.plist` to customize the title. The `Preferences` part is taken from the "Preferences…" menu item, see #12. The order of lookup for the app name from your bundle:
@@ -197,9 +197,10 @@ The `PreferencesWindowController` adheres to the [Apple HIG](https://developer.a
 
 - Written in Swift. *(No bridging header!)*
 - Swifty API using a protocol.
-- Fully documented.
-- The window title is automatically localized by using the system string.
 - Supports segmented control style tabs.
+- Fully documented.
+- Adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/).
+- The window title is automatically localized by using the system string.
 
 
 ## Related

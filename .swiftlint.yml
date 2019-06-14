@@ -21,6 +21,7 @@ whitelist_rules:
   - discouraged_object_literal
   - discouraged_optional_boolean
   - discouraged_optional_collection
+  - duplicate_enum_cases
   - duplicate_imports
   - dynamic_inline
   - empty_count
@@ -48,6 +49,7 @@ whitelist_rules:
   - legacy_constant
   - legacy_constructor
   - legacy_hashing
+  - legacy_multiple
   - legacy_nsgeometry_functions
   - legacy_random
   - literal_expression_end_indentation
@@ -64,6 +66,7 @@ whitelist_rules:
   - no_extension_access_modifier
   - no_fallthrough_only
   - notification_center_detachment
+  - nsobject_prefer_isequal
   - number_separator
   - object_literal
   - opening_brace
@@ -76,6 +79,8 @@ whitelist_rules:
   - private_unit_test
   - prohibited_super_call
   - protocol_property_accessors_order
+  - reduce_boolean
+  - reduce_into
   - redundant_discardable_let
   - redundant_nil_coalescing
   - redundant_objc_attribute
@@ -106,7 +111,9 @@ whitelist_rules:
   - unavailable_function
   - unneeded_break_in_switch
   - unneeded_parentheses_in_closure_argument
+  - unowned_variable_capture
   - untyped_error_in_catch
+  - unused_capture_list
   - unused_closure_parameter
   - unused_control_flow_label
   - unused_enumerated
@@ -118,7 +125,6 @@ whitelist_rules:
   - vertical_whitespace_closing_braces
   - vertical_whitespace_opening_braces
   - void_return
-  - weak_computed_property
   - weak_delegate
   - xct_specific_matcher
   - xctfail_message
