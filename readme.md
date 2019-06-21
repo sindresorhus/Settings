@@ -202,7 +202,11 @@ The `PreferencesWindowController` adheres to the [macOS Human Interface Guidelin
 - Adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/).
 - The window title is automatically localized by using the system string.
 
+### Preferences window size ###
 
+The preferences window's size will dynamically change to fit the view controller. In case the preferences window doesn't show, check that your view controller has a correct size.
+ 
+ 
 ## Related
 
 - [Defaults](https://github.com/sindresorhus/Defaults) - Swifty and modern UserDefaults
