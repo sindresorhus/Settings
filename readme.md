@@ -180,6 +180,13 @@ public final class PreferencesWindowController: NSWindowController {
 As with any `NSWindowController`, call `NSWindowController#close()` to close the preferences window.
 
 
+## Known issues
+
+### The preferences window doesn't show
+
+This can happen when you are not using auto-layout or have not set a size for the view controller. You can fix this by either using auto-layout or setting an explicit size, for example, `preferredContentSize` in `viewDidLoad()`. [We intend to fix this.](https://github.com/sindresorhus/Preferences/pull/28)
+
+
 ## FAQ
 
 ### How can I localize the window title?
