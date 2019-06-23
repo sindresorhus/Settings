@@ -16,13 +16,6 @@ public protocol PreferencePane: NSViewController {
 	var preferencePaneIdentifier: Identifier { get }
 	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get }
-	var viewController: NSViewController { get }
-}
-
-extension PreferencePane {
-	public var viewController: NSViewController {
-		return self
-	}
 }
 
 extension PreferencePane {

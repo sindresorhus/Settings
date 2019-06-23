@@ -30,7 +30,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 	func configure(preferencePanes: [PreferencePane], style: PreferencesStyle) {
 		self.preferencePanes = preferencePanes
-		self.children = preferencePanes.map { $0.viewController }
+		self.children = preferencePanes
 
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
@@ -106,7 +106,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	private var activeChildViewConstraints = [NSLayoutConstraint]()
 
 	private func immediatelyDisplayTab(index: Int) {
-		let toViewController = children[index]
+		let toViewController = preferencePanes[index]
 		view.addSubview(toViewController.view)
 		activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		setWindowFrame(for: toViewController, animated: false)
@@ -119,8 +119,8 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			return
 		}
 
-		let fromViewController = children[activeTab]
-		let toViewController = children[index]
+		let fromViewController = preferencePanes[activeTab]
+		let toViewController = preferencePanes[index]
 		let options: NSViewController.TransitionOptions = animated && isAnimated
 			? [.crossfade]
 			: []

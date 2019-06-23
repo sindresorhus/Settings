@@ -32,7 +32,7 @@ public final class PreferencesWindowController: NSWindowController {
 		precondition(!preferencePanes.isEmpty, "You need to set at least one view controller")
 
 		let window = UserInteractionPausableWindow(
-			contentRect: preferencePanes[0].viewController.view.bounds,
+			contentRect: preferencePanes[0].view.bounds,
 			styleMask: [
 				.titled,
 				.closable
