@@ -108,14 +108,10 @@ public final class PreferencesWindowController: NSWindowController {
 			return
 		}
 
-		// When setting the autosave name, the current position isn't stored immediately.
-		// Trying to read the frame values will fail, so we can center it.
+		let x = screenContainingWindow.visibleFrame.midX - window.frame.width / 2
+		let y = screenContainingWindow.visibleFrame.midY - window.frame.height / 2
+		window.setFrameOrigin(CGPoint(x: x, y: y))
+		window.setFrameUsingName(.preferences)
 		window.setFrameAutosaveName(.preferences)
-
-		if window.setFrameUsingName(.preferences) == false {
-			let x = screenContainingWindow.frame.midX - window.frame.width / 2
-			let y = screenContainingWindow.frame.midY - window.frame.height / 2
-			window.setFrameOrigin(CGPoint(x: x, y: y))
-		}
 	}
 }
