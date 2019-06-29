@@ -82,11 +82,6 @@ public final class PreferencesWindowController: NSWindowController {
 	/// - Parameter preferencePane: Identifier of the preference pane to display, or `nil` to show the
 	///   tab that was open when the user last closed the window.
 	public func show(preferencePane preferenceIdentifier: PreferencePane.Identifier? = nil) {
-		if !window!.isVisible {
-			window?.center()
-		}
-
-		showWindow(self)
 		if let preferenceIdentifier = preferenceIdentifier {
 			tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
 		} else {
