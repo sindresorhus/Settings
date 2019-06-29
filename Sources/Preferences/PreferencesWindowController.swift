@@ -90,12 +90,12 @@ public final class PreferencesWindowController: NSWindowController {
 
 		showWindow(self)
 
-		centerWindowOnFirstStart()
+		restoreWindowPosition()
 
 		NSApp.activate(ignoringOtherApps: true)
 	}
 
-	private func centerWindowOnFirstStart() {
+	private func restoreWindowPosition() {
 		guard
 			let window = self.window,
 			let screenContainingWindow = window.screen
