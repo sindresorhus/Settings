@@ -121,9 +121,16 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		let fromViewController = preferencePanes[activeTab]
 		let toViewController = preferencePanes[index]
-		let options: NSViewController.TransitionOptions = animated && isAnimated
-			? [.crossfade]
-			: []
+
+		// View controller animations only work in 10.14 and newer
+		let options: NSViewController.TransitionOptions
+		if #available(macOS 10.14, *) {
+			options = animated && isAnimated
+				? [.crossfade]
+				: []
+		} else {
+			options = []
+		}
 
 		view.removeConstraints(activeChildViewConstraints)
 
