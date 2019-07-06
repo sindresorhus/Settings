@@ -89,20 +89,22 @@ public final class PreferencesWindowController: NSWindowController {
 		}
 
 		showWindow(self)
-
 		restoreWindowPosition()
-
 		NSApp.activate(ignoringOtherApps: true)
 	}
 
 	private func restoreWindowPosition() {
-		guard let window = self.window,
-			let screenContainingWindow = window.screen 
-			else { return }
+		guard
+			let window = self.window,
+			let screenContainingWindow = window.screen
+		else {
+			return
+		}
 
-		let x = screenContainingWindow.visibleFrame.midX - window.frame.width / 2
-		let y = screenContainingWindow.visibleFrame.midY - window.frame.height / 2
-		window.setFrameOrigin(CGPoint(x: x, y: y))
+		window.setFrameOrigin(CGPoint(
+			x: screenContainingWindow.visibleFrame.midX - window.frame.width / 2,
+			y: screenContainingWindow.visibleFrame.midY - window.frame.height / 2
+		))
 		window.setFrameUsingName(.preferences)
 		window.setFrameAutosaveName(.preferences)
 	}
