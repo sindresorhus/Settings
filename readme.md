@@ -186,6 +186,9 @@ As with any `NSWindowController`, call `NSWindowController#close()` to close the
 
 This can happen when you are not using auto-layout or have not set a size for the view controller. You can fix this by either using auto-layout or setting an explicit size, for example, `preferredContentSize` in `viewDidLoad()`. [We intend to fix this.](https://github.com/sindresorhus/Preferences/pull/28)
 
+### On macOS 10.13 and earlier, animations will not work
+
+The default animation is `NSViewController.TransitionOptions.crossfade`, and this will produce an assertion failure in AppKit on macOS 10.13 High Sierra and earlier. The `animated` parameter of `PreferencesWindowController.init` has no effect on these versions of macOS.
 
 ## FAQ
 
