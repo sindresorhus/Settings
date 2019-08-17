@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="510" height="400"/>
             <subviews>
                 <gridView xPlacement="center" yPlacement="center" rowAlignment="none" rowSpacing="8" columnSpacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-Y2-eOl">
-                    <rect key="frame" x="30" y="25" width="450" height="350"/>
+                    <rect key="frame" x="30" y="20" width="450" height="360"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="3Ab-aZ-SDF" secondAttribute="bottom" constant="108" id="1Br-Ce-zfQ"/>
                         <constraint firstAttribute="width" constant="450" id="5HG-su-XZq"/>
@@ -45,7 +45,7 @@
                     <gridCells>
                         <gridCell row="ukr-az-gqc" column="GGj-JC-w4E" id="sRb-hw-f4U">
                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vt6-jC-8Jo">
-                                <rect key="frame" x="62" y="333" width="69" height="17"/>
+                                <rect key="frame" x="62" y="343" width="69" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Auto Save:" id="uKy-ok-dDi">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -55,7 +55,7 @@
                         </gridCell>
                         <gridCell row="ukr-az-gqc" column="cs9-fm-l2F" id="jPa-TM-cRP">
                             <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-jy-wRw">
-                                <rect key="frame" x="137" y="333" width="163" height="18"/>
+                                <rect key="frame" x="137" y="343" width="163" height="18"/>
                                 <buttonCell key="cell" type="check" title="Auto Save while editing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dB2-6s-xY8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -65,7 +65,7 @@
                         <gridCell row="gSl-iE-cwq" column="GGj-JC-w4E" id="IXl-mV-waK"/>
                         <gridCell row="gSl-iE-cwq" column="cs9-fm-l2F" id="yFx-k0-cPt">
                             <textField key="contentView" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="c2E-pX-Fuo">
-                                <rect key="frame" x="137" y="269" width="315" height="56"/>
+                                <rect key="frame" x="137" y="279" width="315" height="56"/>
                                 <textFieldCell key="cell" selectable="YES" id="D9h-tf-tnk">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">A macOS feature that regurlarely saves your files and allows you to access previous versions. Auto Saves greatly reduce the chance of losing your work in the event of a system error.</string>
@@ -210,9 +210,9 @@
             </subviews>
             <constraints>
                 <constraint firstItem="lkV-Y2-eOl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c22-O7-iKe" secondAttribute="leading" priority="750" constant="30" id="F1e-Dt-RW9"/>
-                <constraint firstItem="lkV-Y2-eOl" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="N7H-hp-bhb"/>
+                <constraint firstItem="lkV-Y2-eOl" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="N7H-hp-bhb"/>
                 <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lkV-Y2-eOl" secondAttribute="trailing" priority="750" constant="30" id="Ses-fe-Clv"/>
-                <constraint firstAttribute="bottom" secondItem="lkV-Y2-eOl" secondAttribute="bottom" priority="750" constant="25" id="bsa-Ju-YOT"/>
+                <constraint firstAttribute="bottom" secondItem="lkV-Y2-eOl" secondAttribute="bottom" priority="750" constant="20" id="bsa-Ju-YOT"/>
                 <constraint firstItem="lkV-Y2-eOl" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="rdL-1S-HXy"/>
             </constraints>
             <point key="canvasLocation" x="108" y="385"/>
