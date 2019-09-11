@@ -20,12 +20,10 @@ public protocol PreferencePane: NSViewController {
 
 extension PreferencePane {
 	public var toolbarItemIdentifier: NSToolbarItem.Identifier {
-		return preferencePaneIdentifier.toolbarItemIdentifier
+		preferencePaneIdentifier.toolbarItemIdentifier
 	}
 
-	public var toolbarItemIcon: NSImage {
-		return NSImage(size: .zero)
-	}
+	public var toolbarItemIcon: NSImage { .empty }
 }
 
 extension PreferencePane.Identifier {
@@ -38,6 +36,6 @@ extension PreferencePane.Identifier {
 	}
 
 	public var toolbarItemIdentifier: NSToolbarItem.Identifier {
-		return NSToolbarItem.Identifier(rawValue)
+		NSToolbarItem.Identifier(rawValue)
 	}
 }

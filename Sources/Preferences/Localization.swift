@@ -91,14 +91,13 @@ struct Localization {
 		]
 	]
 
-	// TODO: Use a static subscript instead of a `get` method when using Swift 5.1
 	/**
 	Returns the localized version of the given string.
 
 	- Note: If the system's locale can't be determined, the English localization of the string will be returned.
 	- Parameter identifier: Identifier of the string to localize.
 	*/
-	static func get(identifier: Identifier) -> String {
+	static subscript(identifier: Identifier) -> String {
 		// Force-unwrapped since all of the involved code is under our control.
 		let localizedDict = Localization.localizedStrings[identifier]!
 		let defaultLocalizedString = localizedDict["en"]!

@@ -63,9 +63,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneTitle = "General"
 	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
-	override var nibName: NSNib.Name? {
-		return "GeneralPreferenceViewController"
-	}
+	override var nibName: NSNib.Name? { "GeneralPreferenceViewController" }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -86,9 +84,7 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
-	override var nibName: NSNib.Name? {
-		return "AdvancedPreferenceViewController"
-	}
+	override var nibName: NSNib.Name? { "AdvancedPreferenceViewController" }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -237,8 +233,3 @@ Want to tell the world about your app that is using Preferences? Open a PR!
 
 - [Sindre Sorhus](https://github.com/sindresorhus)
 - [Christian Tietze](https://github.com/DivineDominion)
-
-
-## License
-
-MIT

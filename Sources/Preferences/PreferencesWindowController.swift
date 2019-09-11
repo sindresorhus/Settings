@@ -8,9 +8,7 @@ public final class PreferencesWindowController: NSWindowController {
 	private let tabViewController = PreferencesTabViewController()
 
 	public var isAnimated: Bool {
-		get {
-			return tabViewController.isAnimated
-		}
+		get { tabViewController.isAnimated }
 		set {
 			tabViewController.isAnimated = newValue
 		}

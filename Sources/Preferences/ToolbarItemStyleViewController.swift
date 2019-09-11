@@ -4,11 +4,7 @@ final class ToolbarItemStyleViewController: NSObject, PreferencesStyleController
 	let toolbar: NSToolbar
 	let centerToolbarItems: Bool
 	let preferencePanes: [PreferencePane]
-
-	var isKeepingWindowCentered: Bool {
-		return centerToolbarItems
-	}
-
+	var isKeepingWindowCentered: Bool { centerToolbarItems }
 	weak var delegate: PreferencesStyleControllerDelegate?
 
 	init(preferencePanes: [PreferencePane], toolbar: NSToolbar, centerToolbarItems: Bool) {

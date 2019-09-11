@@ -13,6 +13,8 @@ whitelist_rules:
   - comma
   - compiler_protocol_init
   - conditional_returns_on_newline
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
   - contains_over_first_not_nil
   - control_statement
   - deployment_target
@@ -24,6 +26,7 @@ whitelist_rules:
   - duplicate_enum_cases
   - duplicate_imports
   - dynamic_inline
+  - empty_collection_literal
   - empty_count
   - empty_enum_arguments
   - empty_parameters
@@ -65,6 +68,7 @@ whitelist_rules:
   - nimble_operator
   - no_extension_access_modifier
   - no_fallthrough_only
+  - no_space_in_method_call
   - notification_center_detachment
   - nsobject_prefer_isequal
   - number_separator
@@ -130,8 +134,8 @@ whitelist_rules:
   - xctfail_message
   - yoda_condition
 analyzer_rules:
+  - unused_declaration
   - unused_import
-  - unused_private_declaration
 force_cast: warning
 force_unwrapping: warning
 number_separator:
@@ -140,6 +144,18 @@ object_literal:
   image_literal: false
 discouraged_object_literal:
   color_literal: false
+type_contents_order:
+  order:
+    - case
+    - [type_alias, associated_type, subtype]
+    - type_property
+    - type_method
+    - ib_outlet
+    - [ib_inspectable, instance_property]
+    - initializer
+    - subscript
+    - view_life_cycle_method
+    - [ib_action, other_method]
 identifier_name:
   max_length:
     warning: 100

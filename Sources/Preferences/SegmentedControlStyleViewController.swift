@@ -2,29 +2,25 @@ import Cocoa
 
 extension NSToolbarItem.Identifier {
 	static var toolbarSegmentedControlItem: NSToolbarItem.Identifier {
-		return NSToolbarItem.Identifier("toolbarSegmentedControlItem")
+		NSToolbarItem.Identifier("toolbarSegmentedControlItem")
 	}
 }
 
 extension NSUserInterfaceItemIdentifier {
 	static var toolbarSegmentedControl: NSUserInterfaceItemIdentifier {
-		return NSUserInterfaceItemIdentifier("toolbarSegmentedControl")
+		NSUserInterfaceItemIdentifier("toolbarSegmentedControl")
 	}
 }
 
 final class SegmentedControlStyleViewController: NSViewController, PreferencesStyleController {
 	var segmentedControl: NSSegmentedControl! {
-		get {
-			return view as? NSSegmentedControl
-		}
+		get { view as? NSSegmentedControl }
 		set {
 			view = newValue
 		}
 	}
 
-	var isKeepingWindowCentered: Bool {
-		return true
-	}
+	var isKeepingWindowCentered: Bool { true }
 
 	weak var delegate: PreferencesStyleControllerDelegate?
 
@@ -106,7 +102,7 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 	}
 
 	func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier] {
-		return [
+		[
 			.flexibleSpace,
 			.toolbarSegmentedControlItem,
 			.flexibleSpace

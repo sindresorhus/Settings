@@ -1,5 +1,9 @@
 import Cocoa
 
+extension NSImage {
+	static var empty: NSImage { NSImage(size: .zero) }
+}
+
 extension NSView {
 	@discardableResult
 	func constrainToSuperviewBounds() -> [NSLayoutConstraint] {
@@ -53,14 +57,12 @@ extension NSEvent {
 	}()
 
 	/// Whether the event was triggered by user interaction.
-	var isUserInteraction: Bool {
-		return NSEvent.userInteractionEvents.contains(type)
-	}
+	var isUserInteraction: Bool { NSEvent.userInteractionEvents.contains(type) }
 }
 
 extension Bundle {
 	var appName: String {
-		return string(forInfoDictionaryKey: "CFBundleDisplayName")
+		string(forInfoDictionaryKey: "CFBundleDisplayName")
 			?? string(forInfoDictionaryKey: "CFBundleName")
 			?? string(forInfoDictionaryKey: "CFBundleExecutable")
 			?? "<Unknown App Name>"
@@ -68,6 +70,6 @@ extension Bundle {
 
 	private func string(forInfoDictionaryKey key: String) -> String? {
 		// `object(forInfoDictionaryKey:)` prefers localized info dictionary over the regular one automatically
-		return object(forInfoDictionaryKey: key) as? String
+		object(forInfoDictionaryKey: key) as? String
 	}
 }

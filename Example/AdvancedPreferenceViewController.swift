@@ -6,9 +6,7 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
-	override var nibName: NSNib.Name? {
-		return "AdvancedPreferenceViewController"
-	}
+	override var nibName: NSNib.Name? { "AdvancedPreferenceViewController" }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

@@ -26,16 +26,14 @@ extension PreferencesStyle: RawRepresentable {
 }
 
 extension PreferencesStyle {
-	static var userDefaultsKey: String {
-		return "preferencesStyle"
-	}
+	static let userDefaultsKey = "preferencesStyle"
 
-	static func preferencesStyleFromUserDefaults(_ userDefaults: UserDefaults = .standard) -> PreferencesStyle {
-		return PreferencesStyle(rawValue: userDefaults.integer(forKey: PreferencesStyle.userDefaultsKey))
+	static func preferencesStyleFromUserDefaults(_ userDefaults: UserDefaults = .standard) -> Self {
+		Self(rawValue: userDefaults.integer(forKey: userDefaultsKey))
 			?? .toolbarItems
 	}
 
 	func storeInUserDefaults(_ userDefaults: UserDefaults = .standard) {
-		userDefaults.set(rawValue, forKey: PreferencesStyle.userDefaultsKey)
+		userDefaults.set(rawValue, forKey: Self.userDefaultsKey)
 	}
 }
