@@ -156,7 +156,6 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			contentSize = cachedSize
 		} else {
 			contentSize = viewController.view.bounds.size
-
 			self.viewSizeCache[preferencePane.preferencePaneIdentifier] = contentSize
 		}
 
