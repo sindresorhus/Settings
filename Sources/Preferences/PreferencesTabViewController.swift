@@ -13,9 +13,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 	private var viewSizeCache = [PreferencePaneIdentifier: CGSize]()
 
-	var window: NSWindow! {
-		return view.window
-	}
+	var window: NSWindow! { view.window }
 
 	override func loadView() {
 		self.view = NSView()
