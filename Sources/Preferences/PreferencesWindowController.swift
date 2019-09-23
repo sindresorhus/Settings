@@ -3,15 +3,6 @@ import Cocoa
 public final class PreferencesWindowController: NSWindowController {
 	private let tabViewController = PreferencesTabViewController()
 
-	public var isAnimated: Bool {
-		get {
-			return tabViewController.isAnimated
-		}
-		set {
-			tabViewController.isAnimated = newValue
-		}
-	}
-
 	public var hidesToolbarForSingleItem: Bool {
 		didSet {
 			updateToolbarVisibility()
@@ -52,7 +43,6 @@ public final class PreferencesWindowController: NSWindowController {
 				return (preferencePanes.count <= 1) ? .visible : .hidden
 			}
 		}()
-		tabViewController.isAnimated = animated
 		tabViewController.configure(preferencePanes: preferencePanes, style: style)
 		updateToolbarVisibility()
 	}

@@ -23,8 +23,6 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		return view.window
 	}
 
-	var isAnimated: Bool = true
-
 	override func loadView() {
 		self.view = NSView()
 		self.view.translatesAutoresizingMaskIntoConstraints = false
@@ -124,17 +122,17 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		let fromViewController = children[activeTab]
 		let toViewController = children[index]
-		let options: NSViewController.TransitionOptions = animated && isAnimated
-			? [.crossfade]
-			: []
 
 		view.removeConstraints(activeChildViewConstraints)
 
+		fromViewController.view.layer?.opacity = 0
+		toViewController.view.layer?.opacity = 0
 		transition(
 			from: fromViewController,
 			to: toViewController,
-			options: options
+			options: []
 		) {
+			toViewController.view.layer?.opacity = 1
 			self.activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		}
 	}
@@ -145,40 +143,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		options: NSViewController.TransitionOptions = [],
 		completionHandler completion: (() -> Void)? = nil
 	) {
-		let isAnimated = options
-			.intersection([
-				.crossfade,
-				.slideUp,
-				.slideDown,
-				.slideForward,
-				.slideBackward,
-				.slideLeft,
-				.slideRight
-			])
-			.isEmpty == false
-
-		if isAnimated {
-			NSAnimationContext.runAnimationGroup({ context in
-				context.allowsImplicitAnimation = true
-				context.duration = 0.25
-				context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-				setWindowFrame(for: toViewController, animated: true)
-
-				super.transition(
-					from: fromViewController,
-					to: toViewController,
-					options: options,
-					completionHandler: completion
-				)
-			}, completionHandler: nil)
-		} else {
-			super.transition(
-				from: fromViewController,
-				to: toViewController,
-				options: options,
-				completionHandler: completion
-			)
-		}
+		super.transition(
+			from: fromViewController,
+			to: toViewController,
+			options: [],
+			completionHandler: completion
+		)
 	}
 
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = false) {
