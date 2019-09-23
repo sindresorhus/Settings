@@ -63,7 +63,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			activeTab = index
 			preferencesStyleController.selectTab(index: index)
 			updateWindowTitle(tabIndex: index)
-			setWindowFrame(for: preferencePanes[index].viewController, animated: animated)
+			setWindowFrame(for: preferencePanes[index], animated: animated)
 		}
 
 		if activeTab == nil {
@@ -146,7 +146,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = false) {
 		guard
 			let window = window,
-			let preferencePane = preferencePanes.first(where: { $0.viewController == viewController })
+			let preferencePane = preferencePanes.first(where: { $0 == viewController })
 		else {
 			preconditionFailure()
 		}
