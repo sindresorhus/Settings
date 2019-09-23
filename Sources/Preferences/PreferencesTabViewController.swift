@@ -117,14 +117,11 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		view.removeConstraints(activeChildViewConstraints)
 
-		fromViewController.view.layer?.opacity = 0
-		toViewController.view.layer?.opacity = 0
 		transition(
 			from: fromViewController,
 			to: toViewController,
 			options: []
 		) {
-			toViewController.view.layer?.opacity = 1
 			self.activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		}
 	}
@@ -135,12 +132,30 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		options: NSViewController.TransitionOptions = [],
 		completionHandler completion: (() -> Void)? = nil
 	) {
+		// Ensure views have layers
+		fromViewController.view.wantsLayer = true
+		toViewController.view.wantsLayer = true
+
+		// Make views invisible before animation starts
+		fromViewController.view.layer?.opacity = 0
+		toViewController.view.layer?.opacity = 0
+
+		// Start window frame animation
+		setWindowFrame(for: toViewController, animated: true)
+
+		// Do the VC transition
 		super.transition(
 			from: fromViewController,
 			to: toViewController,
-			options: [],
+			options: options,
 			completionHandler: completion
 		)
+
+		// Make destination VC visible after animation has ended
+		// Assuming of course that macOS's animation takes 250ms to run
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+			toViewController.view.layer?.opacity = 1
+		}
 	}
 
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = false) {
