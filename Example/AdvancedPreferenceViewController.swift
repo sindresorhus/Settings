@@ -15,4 +15,8 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 
 		// Setup stuff here
 	}
+    
+    @IBAction func zoomAction(_ sender: Any) {
+    }
+    
 }
