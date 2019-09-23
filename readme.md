@@ -19,7 +19,7 @@ Just pass in some view controllers and this package will take care of the rest.
 #### SwiftPM
 
 ```swift
-.package(url: "https://github.com/sindresorhus/Preferences", from: "0.2.1")
+.package(url: "https://github.com/sindresorhus/Preferences", from: "0.4.1")
 ```
 
 #### Carthage
@@ -34,16 +34,12 @@ github "sindresorhus/Preferences"
 pod 'Preferences'
 ```
 
-<a href="https://www.patreon.com/sindresorhus">
-	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
-
 
 ## Usage
 
 *Run the `PreferencesExample` target in Xcode to try a live example.*
 
-First, create a collection of preference pane identifiers:
+First, create some preference pane identifiers:
 
 ```swift
 import Preferences
@@ -67,9 +63,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneTitle = "General"
 	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
-	override var nibName: NSNib.Name? {
-		return "GeneralPreferenceViewController"
-	}
+	override var nibName: NSNib.Name? { "GeneralPreferenceViewController" }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -90,9 +84,7 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
-	override var nibName: NSNib.Name? {
-		return "AdvancedPreferenceViewController"
-	}
+	override var nibName: NSNib.Name? { "AdvancedPreferenceViewController" }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -158,7 +150,7 @@ lazy var preferencesWindowController = PreferencesWindowController(
 ## API
 
 ```swift
-public protocol PreferencePane: AnyObject {
+public protocol PreferencePane: NSViewController {
 	var preferencePaneIdentifier: PreferencePane.Identifier { get }
 	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
@@ -181,14 +173,25 @@ public final class PreferencesWindowController: NSWindowController {
 }
 ```
 
-As usual, call `NSWindowController#close()` to close the preferences window.
+As with any `NSWindowController`, call `NSWindowController#close()` to close the preferences window.
+
+
+## Known issues
+
+### The preferences window doesn't show
+
+This can happen when you are not using auto-layout or have not set a size for the view controller. You can fix this by either using auto-layout or setting an explicit size, for example, `preferredContentSize` in `viewDidLoad()`. [We intend to fix this.](https://github.com/sindresorhus/Preferences/pull/28)
+
+### There are no animations on macOS 10.13 and earlier
+
+The `animated` parameter of `PreferencesWindowController.init` has no effect on macOS 10.13 or earlier as those versions don't support `NSViewController.TransitionOptions.crossfade`.
 
 
 ## FAQ
 
 ### How can I localize the window title?
 
-The `PreferencesWindowController` adheres to the [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/) and uses this set of rules to determine the window title:
+The `PreferencesWindowController` adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/) and uses this set of rules to determine the window title:
 
 - **Multiple preference panes:** Uses the currently selected `preferencePaneTitle` as the window title. Localize your `preferencePaneTitle`s to get localized window titles.
 - **Single preference pane:** Sets the window title to `APPNAME Preferences`. The app name is obtained from your app's bundle. You can localize its `Info.plist` to customize the title. The `Preferences` part is taken from the "Preferences…" menu item, see #12. The order of lookup for the app name from your bundle:
@@ -201,9 +204,10 @@ The `PreferencesWindowController` adheres to the [Apple HIG](https://developer.a
 
 - Written in Swift. *(No bridging header!)*
 - Swifty API using a protocol.
-- Fully documented.
-- The window title is automatically localized by using the system string.
 - Supports segmented control style tabs.
+- Fully documented.
+- Adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/).
+- The window title is automatically localized by using the system string.
 
 
 ## Related
@@ -229,8 +233,3 @@ Want to tell the world about your app that is using Preferences? Open a PR!
 
 - [Sindre Sorhus](https://github.com/sindresorhus)
 - [Christian Tietze](https://github.com/DivineDominion)
-
-
-## License
-
-MIT

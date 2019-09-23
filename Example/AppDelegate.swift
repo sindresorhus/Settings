@@ -11,9 +11,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
 	var preferencesStyle: PreferencesStyle {
-		get {
-			return PreferencesStyle.preferencesStyleFromUserDefaults()
-		}
+		get { PreferencesStyle.preferencesStyleFromUserDefaults() }
 		set {
 			newValue.storeInUserDefaults()
 		}

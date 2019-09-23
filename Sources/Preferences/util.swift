@@ -1,11 +1,7 @@
 import Cocoa
 
-struct System {
-	/// Get a system localized string
-	/// Use https://itunes.apple.com/no/app/system-strings/id570467776 to find strings
-	static func localizedString(forKey key: String) -> String {
-		return Bundle(for: NSApplication.self).localizedString(forKey: key, value: nil, table: nil)
-	}
+extension NSImage {
+	static var empty: NSImage { NSImage(size: .zero) }
 }
 
 extension NSView {
@@ -61,14 +57,12 @@ extension NSEvent {
 	}()
 
 	/// Whether the event was triggered by user interaction.
-	var isUserInteraction: Bool {
-		return NSEvent.userInteractionEvents.contains(type)
-	}
+	var isUserInteraction: Bool { NSEvent.userInteractionEvents.contains(type) }
 }
 
 extension Bundle {
 	var appName: String {
-		return string(forInfoDictionaryKey: "CFBundleDisplayName")
+		string(forInfoDictionaryKey: "CFBundleDisplayName")
 			?? string(forInfoDictionaryKey: "CFBundleName")
 			?? string(forInfoDictionaryKey: "CFBundleExecutable")
 			?? "<Unknown App Name>"
@@ -76,6 +70,6 @@ extension Bundle {
 
 	private func string(forInfoDictionaryKey key: String) -> String? {
 		// `object(forInfoDictionaryKey:)` prefers localized info dictionary over the regular one automatically
-		return object(forInfoDictionaryKey: key) as? String
+		object(forInfoDictionaryKey: key) as? String
 	}
 }

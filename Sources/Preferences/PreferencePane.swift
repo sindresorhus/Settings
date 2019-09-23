@@ -10,29 +10,20 @@ public struct PreferencePaneIdentifier: Hashable, RawRepresentable {
 	}
 }
 
-public protocol PreferencePane: AnyObject {
+public protocol PreferencePane: NSViewController {
 	typealias Identifier = PreferencePaneIdentifier
 
 	var preferencePaneIdentifier: Identifier { get }
 	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get }
-	var viewController: NSViewController { get }
-}
-
-extension PreferencePane where Self: NSViewController {
-	public var viewController: NSViewController {
-		return self
-	}
 }
 
 extension PreferencePane {
 	public var toolbarItemIdentifier: NSToolbarItem.Identifier {
-		return preferencePaneIdentifier.toolbarItemIdentifier
+		preferencePaneIdentifier.toolbarItemIdentifier
 	}
 
-	public var toolbarItemIcon: NSImage {
-		return NSImage(size: .zero)
-	}
+	public var toolbarItemIcon: NSImage { .empty }
 }
 
 extension PreferencePane.Identifier {
@@ -45,6 +36,6 @@ extension PreferencePane.Identifier {
 	}
 
 	public var toolbarItemIdentifier: NSToolbarItem.Identifier {
-		return NSToolbarItem.Identifier(rawValue)
+		NSToolbarItem.Identifier(rawValue)
 	}
 }

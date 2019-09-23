@@ -1,5 +1,9 @@
 import Cocoa
 
+extension NSWindow.FrameAutosaveName {
+	static let preferences: NSWindow.FrameAutosaveName = "com.sindresorhus.Preferences.FrameAutosaveName"
+}
+
 public final class PreferencesWindowController: NSWindowController {
 	private let tabViewController = PreferencesTabViewController()
 
@@ -23,7 +27,7 @@ public final class PreferencesWindowController: NSWindowController {
 		precondition(!preferencePanes.isEmpty, "You need to set at least one view controller")
 
 		let window = UserInteractionPausableWindow(
-			contentRect: preferencePanes[0].viewController.view.bounds,
+			contentRect: preferencePanes[0].view.bounds,
 			styleMask: [
 				.titled,
 				.closable
@@ -68,16 +72,30 @@ public final class PreferencesWindowController: NSWindowController {
 	/// - Parameter preferencePane: Identifier of the preference pane to display, or `nil` to show the
 	///   tab that was open when the user last closed the window.
 	public func show(preferencePane preferenceIdentifier: PreferencePane.Identifier? = nil) {
-		if !window!.isVisible {
-			window?.center()
-		}
-
-		showWindow(self)
 		if let preferenceIdentifier = preferenceIdentifier {
 			tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
 		} else {
 			tabViewController.restoreInitialTab()
 		}
+
+		showWindow(self)
+		restoreWindowPosition()
 		NSApp.activate(ignoringOtherApps: true)
+	}
+
+	private func restoreWindowPosition() {
+		guard
+			let window = self.window,
+			let screenContainingWindow = window.screen
+		else {
+			return
+		}
+
+		window.setFrameOrigin(CGPoint(
+			x: screenContainingWindow.visibleFrame.midX - window.frame.width / 2,
+			y: screenContainingWindow.visibleFrame.midY - window.frame.height / 2
+		))
+		window.setFrameUsingName(.preferences)
+		window.setFrameAutosaveName(.preferences)
 	}
 }

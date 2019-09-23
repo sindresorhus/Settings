@@ -6,9 +6,7 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneTitle = "General"
 	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
-	override var nibName: NSNib.Name? {
-		return "GeneralPreferenceViewController"
-	}
+	override var nibName: NSNib.Name? { "GeneralPreferenceViewController" }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
