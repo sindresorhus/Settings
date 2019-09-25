@@ -182,7 +182,8 @@ As with any `NSWindowController`, call `NSWindowController#close()` to close the
 
 ## Recommendation
 
-The easiest way to layout your user interface within each panel is to use an `NSGridView` (macOS 10.12+), [documentation](https://developer.apple.com/documentation/appkit/nsgridview). You can see how it's implemented via Interface Builder in the example files.
+The easiest way to create the user interface within each panel is to use a [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview) in Interface Builder. See the example project in this repo for a demo.
+
 
 ## Known issues
 
