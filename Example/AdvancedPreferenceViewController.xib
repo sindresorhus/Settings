@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,13 +30,13 @@
                         <gridRow id="ZnY-h9-dEu"/>
                     </rows>
                     <columns>
-                        <gridColumn xPlacement="trailing" width="220" id="RqK-yY-jzI"/>
+                        <gridColumn xPlacement="trailing" width="131" id="RqK-yY-jzI"/>
                         <gridColumn xPlacement="leading" id="d5q-Pb-pgU"/>
                     </columns>
                     <gridCells>
                         <gridCell row="ltX-Ja-eM6" column="RqK-yY-jzI" id="042-ss-ffF">
                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PfT-L0-R1r">
-                                <rect key="frame" x="179" y="148" width="43" height="17"/>
+                                <rect key="frame" x="90" y="149" width="43" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Zoom:" id="bnu-AS-zpg">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -46,7 +46,7 @@
                         </gridCell>
                         <gridCell row="ltX-Ja-eM6" column="d5q-Pb-pgU" id="W2c-el-Egx">
                             <button key="contentView" horizontalHuggingPriority="248" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zhk-nP-ekf">
-                                <rect key="frame" x="229" y="148" width="223" height="18"/>
+                                <rect key="frame" x="140" y="148" width="312" height="18"/>
                                 <buttonCell key="cell" type="radio" title="Animate zoom" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="G15-Qe-p8C">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -59,7 +59,7 @@
                         <gridCell row="OOd-hD-rve" column="RqK-yY-jzI" id="ibh-ig-esN"/>
                         <gridCell row="OOd-hD-rve" column="d5q-Pb-pgU" id="1P6-Pp-b5f">
                             <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zL0-h8-cNf">
-                                <rect key="frame" x="229" y="123" width="149" height="18"/>
+                                <rect key="frame" x="140" y="124" width="149" height="18"/>
                                 <buttonCell key="cell" type="radio" title="Zoom in on selection" bezelStyle="regularSquare" imagePosition="left" inset="2" id="1V0-bu-KPz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -71,13 +71,13 @@
                         </gridCell>
                         <gridCell row="If4-3e-uiP" column="RqK-yY-jzI" headOfMergedCell="iwB-6h-jgI" id="iwB-6h-jgI">
                             <box key="contentView" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="KsN-qr-GRh">
-                                <rect key="frame" x="0.0" y="86" width="450" height="5"/>
+                                <rect key="frame" x="0.0" y="85" width="450" height="5"/>
                             </box>
                         </gridCell>
                         <gridCell row="If4-3e-uiP" column="d5q-Pb-pgU" headOfMergedCell="iwB-6h-jgI" id="UcV-H8-fjJ"/>
                         <gridCell row="R2Q-rY-cRM" column="RqK-yY-jzI" id="h2k-EF-30A">
                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-HF-wf6">
-                                <rect key="frame" x="88" y="47" width="134" height="17"/>
+                                <rect key="frame" x="-1" y="46" width="134" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Default shape colour:" id="UWB-wJ-kV4">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -87,7 +87,7 @@
                         </gridCell>
                         <gridCell row="R2Q-rY-cRM" column="d5q-Pb-pgU" id="Xm6-Te-Jzh">
                             <colorWell key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="2HU-om-C7T">
-                                <rect key="frame" x="230" y="40" width="75" height="30"/>
+                                <rect key="frame" x="141" y="39" width="75" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="SSi-8a-8qj"/>
                                     <constraint firstAttribute="width" constant="75" id="US5-Mf-wy6"/>
@@ -97,7 +97,7 @@
                         </gridCell>
                         <gridCell row="ZnY-h9-dEu" column="RqK-yY-jzI" id="dHH-pO-G3q">
                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kdZ-Ix-AIT">
-                                <rect key="frame" x="162" y="3" width="60" height="17"/>
+                                <rect key="frame" x="73" y="3" width="60" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Nudging:" id="UN1-r8-SEh">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -107,7 +107,7 @@
                         </gridCell>
                         <gridCell row="ZnY-h9-dEu" column="d5q-Pb-pgU" id="7vR-7C-BgA">
                             <textField key="contentView" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dW1-gQ-chh">
-                                <rect key="frame" x="230" y="0.0" width="100" height="22"/>
+                                <rect key="frame" x="141" y="0.0" width="100" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="rij-vW-UEb"/>
                                 </constraints>
@@ -128,7 +128,7 @@
                 <constraint firstItem="UrC-xJ-uLm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="ein-yo-Sdj"/>
                 <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="UrC-xJ-uLm" secondAttribute="trailing" constant="30" id="xtz-lU-zPd"/>
             </constraints>
-            <point key="canvasLocation" x="-6" y="128"/>
+            <point key="canvasLocation" x="-6" y="127.5"/>
         </customView>
     </objects>
 </document>
