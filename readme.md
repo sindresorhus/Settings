@@ -176,6 +176,11 @@ public final class PreferencesWindowController: NSWindowController {
 As with any `NSWindowController`, call `NSWindowController#close()` to close the preferences window.
 
 
+## Recommendation
+
+The easiest way to create the user interface within each panel is to use a [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview) in Interface Builder. See the example project in this repo for a demo.
+
+
 ## Known issues
 
 ### The preferences window doesn't show
