@@ -15,5 +15,5 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	}
 
 	@IBAction
-	private func zoomAction(_ sender: Any) {}
+	private func zoomAction(_ sender: Any) {} // swiftlint:disable:this attributes
 }

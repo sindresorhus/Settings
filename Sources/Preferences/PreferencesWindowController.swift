@@ -46,14 +46,16 @@ public final class PreferencesWindowController: NSWindowController {
 		super.init(window: window)
 
 		window.contentViewController = tabViewController
+
 		window.titleVisibility = {
 			switch style {
 			case .toolbarItems:
 				return .visible
 			case .segmentedControl:
-				return (preferencePanes.count <= 1) ? .visible : .hidden
+				return preferencePanes.count <= 1 ? .visible : .hidden
 			}
 		}()
+
 		tabViewController.isAnimated = animated
 		tabViewController.configure(preferencePanes: preferencePanes, style: style)
 		updateToolbarVisibility()
@@ -70,15 +72,18 @@ public final class PreferencesWindowController: NSWindowController {
 	}
 
 
-	/// Show the preferences window and brings it to front.
-	///
-	/// If you pass a `PreferencePane.Identifier`, the window will activate the corresponding tab.
-	///
-	/// - See `close()` to close the window again.
-	/// - See `showWindow(_:)` to show the window without the convenience of activating the app.
-	/// - Note: Unless you need to open a specific pane, prefer not to pass a parameter at all or `nil`.
-	/// - Parameter preferencePane: Identifier of the preference pane to display, or `nil` to show the
-	///   tab that was open when the user last closed the window.
+	/**
+	Show the preferences window and brings it to front.
+
+	If you pass a `PreferencePane.Identifier`, the window will activate the corresponding tab.
+
+	- Parameter preferencePane: Identifier of the preference pane to display, or `nil` to show the tab that was open when the user last closed the window.
+
+	- Note: Unless you need to open a specific pane, prefer not to pass a parameter at all or `nil`.
+
+	- See `close()` to close the window again.
+	- See `showWindow(_:)` to show the window without the convenience of activating the app.
+	*/
 	public func show(preferencePane preferenceIdentifier: PreferencePane.Identifier? = nil) {
 		if let preferenceIdentifier = preferenceIdentifier {
 			tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)

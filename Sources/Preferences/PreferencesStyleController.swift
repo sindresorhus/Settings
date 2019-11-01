@@ -6,7 +6,6 @@ protocol PreferencesStyleController: AnyObject {
 
 	func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
 	func toolbarItem(preferenceIdentifier: PreferencePane.Identifier) -> NSToolbarItem?
-
 	func selectTab(index: Int)
 }
 

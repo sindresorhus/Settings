@@ -1,11 +1,12 @@
 import Cocoa
 
-/// A window that allows you to disable all user interactions via `isUserInteractionEnabled`.
-///
-/// Used to avoid breaking animations when the user clicks too fast. Disable user interactions during
-/// animations and you're set.
+/**
+A window that allows you to disable all user interactions via `isUserInteractionEnabled`.
+
+Used to avoid breaking animations when the user clicks too fast. Disable user interactions during animations and you're set.
+*/
 class UserInteractionPausableWindow: NSWindow {
-	var isUserInteractionEnabled: Bool = true
+	var isUserInteractionEnabled = true
 
 	override func sendEvent(_ event: NSEvent) {
 		guard isUserInteractionEnabled || !event.isUserInteraction else {
