@@ -19,7 +19,7 @@ Just pass in some view controllers and this package will take care of the rest.
 #### SwiftPM
 
 ```swift
-.package(url: "https://github.com/sindresorhus/Preferences", from: "0.4.1")
+.package(url: "https://github.com/sindresorhus/Preferences", from: "1.0.0")
 ```
 
 #### Carthage
