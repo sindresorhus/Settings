@@ -178,7 +178,7 @@ As with any `NSWindowController`, call `NSWindowController#close()` to close the
 
 ## Recommendation
 
-The easiest way to create the user interface within each panel is to use a [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview) in Interface Builder. See the example project in this repo for a demo.
+The easiest way to create the user interface within each pane is to use a [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview) in Interface Builder. See the example project in this repo for a demo.
 
 
 ## Known issues
@@ -204,6 +204,17 @@ The `PreferencesWindowController` adheres to the [macOS Human Interface Guidelin
 	2. `CFBundleName`
 	3. `CFBundleExecutable`
 	4. Fall back to `"<Unknown App Name>"` to show you're missing some settings.
+
+### Why should I use this instead of just manually implementing it myself?
+
+It can't be that hard right? Well, turns out it is:
+
+- The recommended way is to implement it using storyboards. [But storyboards...](https://gist.github.com/iraycd/01b45c5e1be7ef6957b7) And if you want the segmented control style, you have to implement it programmatically, [which is quite complex](https://github.com/sindresorhus/Preferences/blob/85f8d793050004fc0154c7f6a061412e00d13fa3/Sources/Preferences/SegmentedControlStyleViewController.swift).
+- [Even Apple gets it wrong, a lot.](https://twitter.com/sindresorhus/status/1113382212584464384)
+- You have to correctly handle [window](https://github.com/sindresorhus/Preferences/commit/cc25d58a9ec379812fc8f2fd7ba48f3d35b4cbff) and [tab restoration](https://github.com/sindresorhus/Preferences/commit/2bb3fc7418f3dc49b534fab986807c4e70ba78c3).
+- [The window title format depends on whether you have a single or multiple panes.](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/)
+- It's difficult to get the transition animation right. A lot of apps have flaky animation between panes.
+- You end up having to deal with a lot of gnarly auto-layout complexities.
 
 ### How is it better than [`MASPreferences`](https://github.com/shpakovski/MASPreferences)?
 
