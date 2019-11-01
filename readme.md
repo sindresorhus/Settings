@@ -9,9 +9,9 @@ Just pass in some view controllers and this package will take care of the rest.
 
 ## Requirements
 
-- macOS 10.12+
-- Xcode 10.2+
-- Swift 5+
+- macOS 10.10+
+- Xcode 11+
+- Swift 5.1+
 
 
 ## Install
