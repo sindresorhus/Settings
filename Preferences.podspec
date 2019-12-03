@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name = 'Preferences'
-	s.version = '1.0.0'
+	s.version = '1.0.1'
 	s.summary = 'Add a preferences window to your macOS app in minutes'
 	s.license = 'MIT'
 	s.homepage = 'https://github.com/sindresorhus/Preferences'
