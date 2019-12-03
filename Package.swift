@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
 	name: "Preferences",
 	platforms: [
-		.macOS(.v10_12)
+		.macOS(.v10_10)
 	],
 	products: [
 		.library(
