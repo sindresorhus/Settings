@@ -4,6 +4,7 @@ import Preferences
 extension PreferencePane.Identifier {
 	static let general = Identifier("general")
 	static let advanced = Identifier("advanced")
+	static let userAccounts = Identifier("useraccounts")
 }
 
 @NSApplicationMain
@@ -19,7 +20,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
 	lazy var preferences: [PreferencePane] = [
 		GeneralPreferenceViewController(),
-		AdvancedPreferenceViewController()
+		AdvancedPreferenceViewController(),
+		UserAccountsPreferenceViewController()
 	]
 
 	lazy var preferencesWindowController = PreferencesWindowController(
