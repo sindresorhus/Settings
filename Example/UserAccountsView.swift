@@ -10,10 +10,22 @@ import Preferences
 
 func UserAccountsPreferenceViewController() -> PreferencePane {
     let icon = NSImage(named: NSImage.userAccountsName)!
-    return PreferencePaneHostingController(identifier: .userAccounts,
+    let vc = PreferencePaneHostingController(identifier: .userAccounts,
                                            title: "User Accounts",
                                            toolbarIcon: icon,
                                            content: UserAccountsView())
+    
+    return vc
+}
+
+extension HorizontalAlignment {
+    private enum PreferenceLabelAlignment: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            return context[HorizontalAlignment.leading]
+        }
+    }
+    
+    static let preferenceLabel = HorizontalAlignment(PreferenceLabelAlignment.self)
 }
 
 struct UserAccountsView: View {
@@ -21,18 +33,29 @@ struct UserAccountsView: View {
     @State var isOn2: Bool = false
     @State var selection1: Int = 1
     @State var selection2: Int = 0
-    
-    
+        
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .preferenceLabel) {
             CheckboxSectionView(isOn1: self.$isOn1, isOn2: self.$isOn2)
-            Divider().frame(height: 20.0)
+            Divider()
+                .frame(width: width, height: 20.0)
+                .alignmentGuide(.preferenceLabel, computeValue: { $0[.leading] + 104.0 })
             RadioSectionView(selection: self.$selection1)
-            Divider().frame(height: 20.0)
+            Divider()
+                .frame(height: 20.0)
+                .alignmentGuide(.preferenceLabel, computeValue: { $0[.leading] + 104.0 })
             PickerPreferenceView(selection: self.$selection2)
         }
-        .padding(EdgeInsets(top: 20.0, leading: 30.0, bottom: 20.0, trailing: 30.0))
-        .frame(width: 510.0, alignment: .center)
+        .frame(width: width, alignment: .leading)
+        .padding(paddingInsets)
+    }
+    
+    var width: CGFloat {
+        return 510.0
+    }
+    
+    var paddingInsets: EdgeInsets {
+        EdgeInsets(top: 20.0, leading: 30.0, bottom: 20.0, trailing: 30.0)
     }
 }
 
@@ -42,6 +65,7 @@ struct RadioSectionView: View {
     var body: some View {
         HStack(alignment: .top) {
             Text("Show scroll bars:")
+                .alignmentGuide(.preferenceLabel, computeValue: { $0[.trailing] })
             Picker(selection: self.$selection, label: EmptyView()) {
                  Text("When scrolling").tag(0)
                  Text("Always").tag(1)
@@ -59,8 +83,9 @@ struct CheckboxSectionView: View {
     var body: some View {
         HStack(alignment: .top) {
             Text("Permissions:")
+                .alignmentGuide(.preferenceLabel, computeValue: { $0[.trailing] })
             VStack(alignment: .leading) {
-                VStack {
+                VStack() {
                     Toggle("Allow user to administer this computer", isOn: self.$isOn1)
                         .toggleStyle(CheckboxToggleStyle())
                     Text("Administrator has root access to this machine")
@@ -80,6 +105,7 @@ struct PickerPreferenceView: View {
     var body: some View {
         HStack(alignment: .top) {
             Text("Preview mode:")
+                .alignmentGuide(.preferenceLabel, computeValue: { $0[.trailing] })
             VStack(alignment: .leading) {
                 Picker(selection: self.$selection, label: EmptyView()) {
                      Text("Automatic").tag(0)
