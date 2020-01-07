@@ -1,15 +1,11 @@
 import Cocoa
 
 extension NSToolbarItem.Identifier {
-	static var toolbarSegmentedControlItem: NSToolbarItem.Identifier {
-		NSToolbarItem.Identifier("toolbarSegmentedControlItem")
-	}
+	static let toolbarSegmentedControlItem = Self("toolbarSegmentedControlItem")
 }
 
 extension NSUserInterfaceItemIdentifier {
-	static var toolbarSegmentedControl: NSUserInterfaceItemIdentifier {
-		NSUserInterfaceItemIdentifier("toolbarSegmentedControl")
-	}
+	static let toolbarSegmentedControl = Self("toolbarSegmentedControl")
 }
 
 final class SegmentedControlStyleViewController: NSViewController, PreferencesStyleController {

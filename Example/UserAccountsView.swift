@@ -1,10 +1,3 @@
-//
-//  UserAccountsView.swift
-//  Preferences
-//
-//  Created by Kacper on 06/01/2020.
-//
-
 import SwiftUI
 import Preferences
 
@@ -13,14 +6,14 @@ Function wrapping SwiftUI into `PreferencePane`, which is mimicking view control
 */
 let UserAccountsPreferenceViewController: () -> PreferencePane = {
 	/// Wrap your custom view into `Preferences.Pane`, while providing necessary toolbar info.
-	let paneView =
-		Preferences.Pane(
-			identifier: .userAccounts,
-			title: "User Accounts",
-			toolbarIcon: NSImage(named: NSImage.userAccountsName)!
-		) {
-			UserAccountsView()
-		}
+	let paneView = Preferences.Pane(
+		identifier: .userAccounts,
+		title: "User Accounts",
+		toolbarIcon: NSImage(named: NSImage.userAccountsName)!
+	) {
+		UserAccountsView()
+	}
+
 	return Preferences.PaneHostingController(pane: paneView)
 }
 
@@ -34,7 +27,7 @@ struct UserAccountsView: View {
 	@State private var selection1 = 1
 	@State private var selection2 = 0
 	@State private var selection3 = 0
-	let contentWidth: Double = 450.0
+	private let contentWidth: Double = 450.0
 
 	var body: some View {
 		Preferences.Container(contentWidth: contentWidth) {

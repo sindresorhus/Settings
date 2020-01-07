@@ -112,3 +112,25 @@ public final class PreferencesWindowController: NSWindowController {
 		window.setFrameAutosaveName(.preferences)
 	}
 }
+
+@available(macOS 10.15, *)
+extension PreferencesWindowController {
+	/**
+	Create a preferences window from only SwiftUI-based preference panes.
+	*/
+	public convenience init(
+		panes: [PreferencePaneConvertible],
+		style: PreferencesStyle = .toolbarItems,
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
+	) {
+		let preferencePanes = panes.map { $0.asPreferencePane() }
+
+		self.init(
+			preferencePanes: preferencePanes,
+			style: style,
+			animated: animated,
+			hidesToolbarForSingleItem: hidesToolbarForSingleItem
+		)
+	}
+}

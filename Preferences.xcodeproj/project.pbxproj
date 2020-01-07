@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */; };
 		502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */; };
 		509EC81C22535E0A00760A3C /* PreferencesStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */; };
 		50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */; };
@@ -26,10 +25,11 @@
 		E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */; };
 		E34E9F0520E61C06002F8F86 /* AdvancedPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */; };
 		E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */; };
+		E3D64112248648EE0090D28E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D64111248648EE0090D28E /* Preferences.swift */; };
 		E7059F1323C2AC7400F84762 /* UserAccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7059F1123C2AC3700F84762 /* UserAccountsView.swift */; };
-		E74F0B0723C2BD6D00B16841 /* PreferencePane+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74F0B0623C2BD6D00B16841 /* PreferencePane+SwiftUI.swift */; };
-		E752207623FCACC800117D41 /* PreferenceSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E752207523FCACC800117D41 /* PreferenceSection.swift */; };
-		E7E6B56823C7DB2000E51429 /* PreferenceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6B56723C7DB2000E51429 /* PreferenceContainer.swift */; };
+		E74F0B0723C2BD6D00B16841 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74F0B0623C2BD6D00B16841 /* Pane.swift */; };
+		E752207623FCACC800117D41 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E752207523FCACC800117D41 /* Section.swift */; };
+		E7E6B56823C7DB2000E51429 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6B56723C7DB2000E51429 /* Container.swift */; };
 		OBJ_19 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* PreferencesWindowController.swift */; };
 		OBJ_20 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* util.swift */; };
 		OBJ_27 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -60,7 +60,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserInteractionPausableWindow.swift; sourceTree = "<group>"; usesTabs = 1; };
 		502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; usesTabs = 1; };
 		509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesStyleController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesStyle.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -80,10 +79,11 @@
 		E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AdvancedPreferenceViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedPreferenceViewController.xib; sourceTree = "<group>"; };
 		E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E7059F1123C2AC3700F84762 /* UserAccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountsView.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; wrapsLines = 1; };
-		E74F0B0623C2BD6D00B16841 /* PreferencePane+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferencePane+SwiftUI.swift"; sourceTree = "<group>"; usesTabs = 1; };
-		E752207523FCACC800117D41 /* PreferenceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceSection.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E7E6B56723C7DB2000E51429 /* PreferenceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceContainer.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E3D64111248648EE0090D28E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Preferences.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E7059F1123C2AC3700F84762 /* UserAccountsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserAccountsView.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; wrapsLines = 1; };
+		E74F0B0623C2BD6D00B16841 /* Pane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Pane.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E752207523FCACC800117D41 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Section.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E7E6B56723C7DB2000E51429 /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Container.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_10 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = util.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; lineEnding = 0; path = Package.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_9 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -119,23 +119,12 @@
 				E34E9F0020E61A26002F8F86 /* GeneralPreferenceViewController.xib */,
 				E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */,
 				E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */,
-				E3194E4022573FF3006FE775 /* util.swift */,
 				E7059F1123C2AC3700F84762 /* UserAccountsView.swift */,
+				E3194E4022573FF3006FE775 /* util.swift */,
 				E34E9EEB20E6149D002F8F86 /* Assets.xcassets */,
 				E34E9EF020E6149D002F8F86 /* Info.plist */,
 			);
 			path = Example;
-			sourceTree = "<group>";
-		};
-		E752207423FCAC7700117D41 /* PreferencesSwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				E74F0B0623C2BD6D00B16841 /* PreferencePane+SwiftUI.swift */,
-				E7E6B56723C7DB2000E51429 /* PreferenceContainer.swift */,
-				E752207523FCACC800117D41 /* PreferenceSection.swift */,
-			);
-			name = PreferencesSwiftUI;
-			path = Sources/PreferencesSwiftUI;
 			sourceTree = "<group>";
 		};
 		OBJ_12 /* Products */ = {
@@ -161,7 +150,6 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E752207423FCAC7700117D41 /* PreferencesSwiftUI */,
 				OBJ_8 /* Preferences */,
 			);
 			name = Sources;
@@ -170,6 +158,7 @@
 		OBJ_8 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				E3D64111248648EE0090D28E /* Preferences.swift */,
 				E34E9EFA20E61557002F8F86 /* PreferencePane.swift */,
 				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
 				OBJ_9 /* PreferencesWindowController.swift */,
@@ -177,7 +166,9 @@
 				509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */,
 				50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */,
 				50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */,
-				5006F25A22534BE9005F506C /* UserInteractionPausableWindow.swift */,
+				E74F0B0623C2BD6D00B16841 /* Pane.swift */,
+				E7E6B56723C7DB2000E51429 /* Container.swift */,
+				E752207523FCACC800117D41 /* Section.swift */,
 				56392001228D453100F8804C /* Localization.swift */,
 				OBJ_10 /* util.swift */,
 			);
@@ -245,7 +236,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					E34E9EE620E6149B002F8F86 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -262,7 +253,7 @@
 				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Preferences" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -335,19 +326,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				E752207623FCACC800117D41 /* PreferenceSection.swift in Sources */,
+				E752207623FCACC800117D41 /* Section.swift in Sources */,
 				509EC81C22535E0A00760A3C /* PreferencesStyleController.swift in Sources */,
 				OBJ_19 /* PreferencesWindowController.swift in Sources */,
 				E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */,
-				E74F0B0723C2BD6D00B16841 /* PreferencePane+SwiftUI.swift in Sources */,
-				5006F25B22534BE9005F506C /* UserInteractionPausableWindow.swift in Sources */,
+				E74F0B0723C2BD6D00B16841 /* Pane.swift in Sources */,
 				50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */,
 				50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */,
 				56392002228D453100F8804C /* Localization.swift in Sources */,
 				50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */,
+				E3D64112248648EE0090D28E /* Preferences.swift in Sources */,
 				E34E9EFB20E61557002F8F86 /* PreferencePane.swift in Sources */,
 				OBJ_20 /* util.swift in Sources */,
-				E7E6B56823C7DB2000E51429 /* PreferenceContainer.swift in Sources */,
+				E7E6B56823C7DB2000E51429 /* Container.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +457,7 @@
 		OBJ_16 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
@@ -478,11 +469,6 @@
 				INFOPLIST_FILE = Preferences.xcodeproj/Preferences_Info.plist;
 				MARKETING_VERSION = 1.0.1;
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-weak_framework",
-					"\"SwiftUI\"",
-				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Preferences;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -497,7 +483,7 @@
 		OBJ_17 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
@@ -509,11 +495,6 @@
 				INFOPLIST_FILE = Preferences.xcodeproj/Preferences_Info.plist;
 				MARKETING_VERSION = 1.0.1;
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-weak_framework",
-					"\"SwiftUI\"",
-				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Preferences;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";

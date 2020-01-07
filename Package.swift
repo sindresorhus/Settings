@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 import PackageDescription
 
 let package = Package(
@@ -12,23 +12,11 @@ let package = Package(
 			targets: [
 				"Preferences"
 			]
-		),
-		.library(
-			name: "PreferencesSwiftUI",
-			targets: [
-				"PreferencesSwiftUI"
-			]
 		)
 	],
 	targets: [
 		.target(
 			name: "Preferences"
-		),
-		.target(
-			name: "PreferencesSwiftUI",
-			dependencies: [
-				"Preferences"
-			]
 		)
 	]
 )

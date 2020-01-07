@@ -1,38 +1,29 @@
-//
-//  PreferencePane+SwiftUI.swift
-//  Preferences
-//
-//  Created by Kacper on 06/01/2020.
-//
-
-import Foundation
 import SwiftUI
 
 /**
-Represents object that can be converted to `PreferencePane`.
+Represents a type that can be converted to `PreferencePane`.
+
 Acts as type-eraser for `Preferences.Pane<T>`.
 */
 public protocol PreferencePaneConvertible {
 	/**
-	Convert self to equivalent PreferencePane
+	Convert `self` to equivalent `PreferencePane`.
 	*/
 	func asPreferencePane() -> PreferencePane
 }
 
-/**
-`enum` acting as a namespace for SwiftUI components.
-*/
 @available(macOS 10.15, *)
-public enum Preferences {
+extension Preferences {
 	/**
-	SwiftUI equivelent of `PreferencePane` protocol. Create this using your custom content view.
-	Contains all the necessary information for single preference pane.
+	Create a SwiftUI-based preference pane.
+
+	SwiftUI equivalent of the `PreferencePane` protocol.
 	*/
 	public struct Pane<Content: View>: View, PreferencePaneConvertible {
-		public let identifier: PreferencePane.Identifier
-		public let title: String
-		public let toolbarIcon: NSImage
-		public let content: Content
+		let identifier: PreferencePane.Identifier
+		let title: String
+		let toolbarIcon: NSImage
+		let content: Content
 
 		public init(
 			identifier: PreferencePane.Identifier,
@@ -46,9 +37,7 @@ public enum Preferences {
 			self.content = contentView()
 		}
 
-		public var body: some View {
-			content
-		}
+		public var body: some View { content }
 
 		public func asPreferencePane() -> PreferencePane {
 			PaneHostingController(pane: self)
@@ -56,7 +45,7 @@ public enum Preferences {
 	}
 
 	/**
-	Hosting controller enabling `Preferences.Pane` to be used alongside AppKit NSViewControllers.
+	Hosting controller enabling `Preferences.Pane` to be used alongside AppKit `NSViewController`'s.
 	*/
 	public final class PaneHostingController<Content: View>: NSHostingController<Content>, PreferencePane {
 		public let preferencePaneIdentifier: Identifier
@@ -93,22 +82,20 @@ public enum Preferences {
 }
 
 @available(macOS 10.15, *)
-extension PreferencesWindowController {
+private struct PreferenceDescriptionModifier: ViewModifier {
+	func body(content: Content) -> some View {
+		content
+			.font(.system(size: 11.0))
+			.foregroundColor(.secondary)
+	}
+}
+
+@available(macOS 10.15, *)
+extension View {
 	/**
-	Convenience way to create `PreferencesWindowController` using only SwiftUI views.
+	Applies font and color for a label used for describing a preference.
 	*/
-	public convenience init(
-		panes: [PreferencePaneConvertible],
-		style: PreferencesStyle = .toolbarItems,
-		animated: Bool = true,
-		hidesToolbarForSingleItem: Bool = true
-	) {
-		let preferencePanes = panes.map { $0.asPreferencePane() }
-		self.init(
-			preferencePanes: preferencePanes,
-			style: style,
-			animated: animated,
-			hidesToolbarForSingleItem: hidesToolbarForSingleItem
-		)
+	public func preferenceDescription() -> some View {
+		modifier(PreferenceDescriptionModifier())
 	}
 }

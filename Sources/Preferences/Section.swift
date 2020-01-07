@@ -1,28 +1,9 @@
-//
-//  PreferenceSection.swift
-//  Preferences
-//
-//  Created by Kacper on 19/02/2020.
-//
-
 import SwiftUI
 
 @available(macOS 10.15, *)
 extension Preferences {
 	/**
-	Applies font and color for labels used for describing preferences
-	*/
-	@available(macOS 10.15, *)
-	public struct PreferenceDescriptionModifier: ViewModifier {
-		public func body(content: Content) -> some View {
-			content
-				.font(Font.system(size: 11.0))
-				.foregroundColor(.secondary)
-		}
-	}
-
-	/**
-	Represents section with left aligned title and optional bottom divider (present by default).
+	Represents a section with right-aligned title and optional bottom divider.
 	*/
 	@available(macOS 10.15, *)
 	public struct Section: View {
@@ -41,7 +22,7 @@ extension Preferences {
 		}
 
 		/**
-		Convenience overlay for finding label's dimensions using GeometryReader.
+		Convenience overlay for finding a label's dimensions using `GeometryReader`.
 		*/
 		private struct LabelOverlay: View {
 			var body: some View {
@@ -54,7 +35,7 @@ extension Preferences {
 		}
 
 		/**
-		Convenience modifier for applying LabelWidthPreferenceKey.
+		Convenience modifier for applying `LabelWidthPreferenceKey`.
 		*/
 		struct LabelWidthModifier: ViewModifier {
 			@Binding var maxWidth: CGFloat
@@ -72,10 +53,10 @@ extension Preferences {
 		public let bottomDivider: Bool
 
 		/**
-		Creates instance of section, responsible for controling single preference.
+		A section is responsible for controlling a single preference.
 		
 		- Parameters:
-			- bottomDivider: Pass `true`, to place `Divider` after section content. Default is `false`.
+			- bottomDivider: Whether to place a `Divider` after the section content. Default is `false`.
 			- label: A view describing preference handled by this section.
 			- content: A content view.
 		*/
@@ -97,16 +78,21 @@ extension Preferences {
 		
 		- Parameters:
 			- title: A string describing preference handled by this section.
-			- bottomDivider: Pass `true`, to place `Divider` after section content. Default is `false`.
+			- bottomDivider: Whether to place a `Divider` after the section content. Default is `false`.
 			- content: A content view.
 		*/
-		public init<Content: View>(title: String, bottomDivider: Bool = false, @ViewBuilder content: @escaping () -> Content) {
+		public init<Content: View>(
+			title: String,
+			bottomDivider: Bool = false,
+			@ViewBuilder content: @escaping () -> Content
+		) {
 			let textLabel = {
 				Text(title)
 					.font(.system(size: 13.0))
 					.overlay(LabelOverlay())
 					.eraseToAnyView()
 			}
+
 			self.init(bottomDivider: bottomDivider, label: textLabel, content: content)
 		}
 
@@ -118,22 +104,5 @@ extension Preferences {
 				Spacer()
 			}
 		}
-	}
-}
-
-@available(macOS 10.15, *)
-extension View {
-	/**
-	Applies font and color for labels used for describing preferences using PreferenceDescriptionModifier
-	*/
-	public func preferenceDescription() -> some View {
-		self.modifier(Preferences.PreferenceDescriptionModifier())
-	}
-
-	/**
-	Equivalent to `eraseToAnyPublisher` from Combine framework
-	*/
-	func eraseToAnyView() -> AnyView {
-		AnyView(self)
 	}
 }

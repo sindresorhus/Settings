@@ -1,16 +1,9 @@
-//
-//  SwiftUIComponents.swift
-//  Preferences
-//
-//  Created by Kacper on 09/01/2020.
-//
-
 import SwiftUI
 
 @available(macOS 10.15, *)
 extension Preferences {
 	/**
-	Function builder for Preferences component used in order to restrict types of child view to Section.
+	Function builder for `Preferences` components used in order to restrict types of child views to be of type `Section`.
 	*/
 	@_functionBuilder
 	public struct SectionBuilder {
@@ -20,31 +13,36 @@ extension Preferences {
 	}
 
 	/**
-	Container which holds Preferences.Section objects, and does all the alignment magic similar to `NSGridView` from AppKit.
+	A view which holds `Preferences.Section` views and does all the alignment magic similar to `NSGridView` from AppKit.
 	*/
 	public struct Container: View {
-		public let sectionBuilder: () -> [Section]
-		public let contentWidth: Double
+		private let sectionBuilder: () -> [Section]
+		private let contentWidth: Double
 		@State private var maxLabelWidth: CGFloat = 0.0
 
 		/**
-		Creates instance of container component, which handles layout of stacked `Preferences.Section` views.
+		Creates an instance of container component, which handles layout of stacked `Preferences.Section` views.
+
 		Custom alignment requires content width to be specified beforehand.
 		
 		- Parameters:
-			- contentWidth: Fixed width of the container's content (excluding paddings).
-			- builder: A view builder that creates Preferences.Sections of this container.
+			- contentWidth: A fixed width of the container's content (excluding paddings).
+			- builder: A view builder that creates `Preferences.Section`'s of this container.
 		*/
-		public init(contentWidth: Double, @SectionBuilder builder: @escaping () -> [Section]) {
+		public init(
+			contentWidth: Double,
+			@SectionBuilder builder: @escaping () -> [Section]
+		) {
 			self.sectionBuilder = builder
 			self.contentWidth = contentWidth
 		}
 
 		public var body: some View {
 			let sections = sectionBuilder()
+
 			return VStack(alignment: .preferenceSectionLabel) {
-				ForEach(0..<sections.count, id: \.self) { idx in
-					self.viewForSection(sections, index: idx)
+				ForEach(0..<sections.count, id: \.self) { index in
+					self.viewForSection(sections, index: index)
 				}
 			}
 			.modifier(Section.LabelWidthModifier(maxWidth: $maxLabelWidth))
