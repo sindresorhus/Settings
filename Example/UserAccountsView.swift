@@ -8,16 +8,20 @@
 import SwiftUI
 import Preferences
 
+/**
+    Function wrapping SwiftUI into PreferencePane, which is mimicing view controller's default construction syntax
+ */
 func UserAccountsPreferenceViewController() -> PreferencePane {
     let icon = NSImage(named: NSImage.userAccountsName)!
-    let vc = PreferencePaneHostingController(identifier: .userAccounts,
+    return PreferencePaneHostingController(identifier: .userAccounts,
                                            title: "User Accounts",
                                            toolbarIcon: icon,
                                            content: UserAccountsView())
-    
-    return vc
 }
 
+/**
+    Extension with custom alignment guide for section title labels
+ */
 extension HorizontalAlignment {
     private enum PreferenceLabelAlignment: AlignmentID {
         static func defaultValue(in context: ViewDimensions) -> CGFloat {
@@ -28,6 +32,9 @@ extension HorizontalAlignment {
     static let preferenceLabel = HorizontalAlignment(PreferenceLabelAlignment.self)
 }
 
+/**
+    Main view of User Accounts preference screen
+ */
 struct UserAccountsView: View {
     @State var isOn1: Bool = true
     @State var isOn2: Bool = false
@@ -44,7 +51,7 @@ struct UserAccountsView: View {
             Divider()
                 .frame(height: 20.0)
                 .alignmentGuide(.preferenceLabel, computeValue: { $0[.leading] + 104.0 })
-            PickerPreferenceView(selection: self.$selection2)
+            PickerSectionView(selection: self.$selection2)
         }
         .frame(width: width, alignment: .leading)
         .padding(paddingInsets)
@@ -59,6 +66,7 @@ struct UserAccountsView: View {
     }
 }
 
+// Some example sections with various input methods
 struct RadioSectionView: View {
     @Binding var selection: Int
     
@@ -99,7 +107,7 @@ struct CheckboxSectionView: View {
     }
 }
  
-struct PickerPreferenceView: View {
+struct PickerSectionView: View {
     @Binding var selection: Int
     
     var body: some View {
