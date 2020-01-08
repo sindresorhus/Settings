@@ -4,7 +4,7 @@ import Preferences
 extension PreferencePane.Identifier {
 	static let general = Identifier("general")
 	static let advanced = Identifier("advanced")
-	static let userAccounts = Identifier("useraccounts")
+	static let userAccounts = Identifier("userAccounts")
 }
 
 @NSApplicationMain

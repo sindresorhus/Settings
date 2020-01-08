@@ -78,8 +78,8 @@
 		E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AdvancedPreferenceViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedPreferenceViewController.xib; sourceTree = "<group>"; };
 		E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E7059F1123C2AC3700F84762 /* UserAccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountsView.swift; sourceTree = "<group>"; };
-		E74F0B0623C2BD6D00B16841 /* PreferencePane+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferencePane+SwiftUI.swift"; sourceTree = "<group>"; };
+		E7059F1123C2AC3700F84762 /* UserAccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountsView.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E74F0B0623C2BD6D00B16841 /* PreferencePane+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferencePane+SwiftUI.swift"; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_10 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = util.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; lineEnding = 0; path = Package.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_9 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; usesTabs = 1; };
