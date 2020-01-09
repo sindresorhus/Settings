@@ -109,6 +109,7 @@ public struct Preferences: View {
                 Group {
                     sections[index]
                     Divider()
+						// Strangely doesn't work without width specification, probably bc of custom alignment
 						.frame(width: contentWidth, height: 20.0)
                         .alignmentGuide(.preferenceSectionLabel, computeValue: { d in d[.leading] + maxLabelWidth })
                 }
