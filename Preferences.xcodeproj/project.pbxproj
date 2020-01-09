@@ -28,6 +28,7 @@
 		E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */; };
 		E7059F1323C2AC7400F84762 /* UserAccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7059F1123C2AC3700F84762 /* UserAccountsView.swift */; };
 		E74F0B0723C2BD6D00B16841 /* PreferencePane+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74F0B0623C2BD6D00B16841 /* PreferencePane+SwiftUI.swift */; };
+		E7E6B56823C7DB2000E51429 /* SwiftUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6B56723C7DB2000E51429 /* SwiftUIComponents.swift */; };
 		OBJ_19 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* PreferencesWindowController.swift */; };
 		OBJ_20 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* util.swift */; };
 		OBJ_27 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -80,6 +81,7 @@
 		E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E7059F1123C2AC3700F84762 /* UserAccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountsView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E74F0B0623C2BD6D00B16841 /* PreferencePane+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferencePane+SwiftUI.swift"; sourceTree = "<group>"; usesTabs = 1; };
+		E7E6B56723C7DB2000E51429 /* SwiftUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIComponents.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_10 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = util.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; lineEnding = 0; path = Package.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_9 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -156,6 +158,7 @@
 			children = (
 				E34E9EFA20E61557002F8F86 /* PreferencePane.swift */,
 				E74F0B0623C2BD6D00B16841 /* PreferencePane+SwiftUI.swift */,
+				E7E6B56723C7DB2000E51429 /* SwiftUIComponents.swift */,
 				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
 				OBJ_9 /* PreferencesWindowController.swift */,
 				E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */,
@@ -331,6 +334,7 @@
 				50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */,
 				E34E9EFB20E61557002F8F86 /* PreferencePane.swift in Sources */,
 				OBJ_20 /* util.swift in Sources */,
+				E7E6B56823C7DB2000E51429 /* SwiftUIComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

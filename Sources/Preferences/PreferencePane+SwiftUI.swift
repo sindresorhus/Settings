@@ -9,23 +9,25 @@ import Foundation
 import SwiftUI
 
 @available (macOS 10.15, *)
-public final class PreferencePaneHostingController<Content: View>: NSHostingController<Content>, PreferencePane {
+public protocol PreferencePaneView: View {
+	var preferencePaneIdentifier: PreferencePane.Identifier { get }
+	var preferencePaneTitle: String { get }
+	var toolbarItemIcon: NSImage { get }
+}
+
+@available (macOS 10.15, *)
+public final class PreferencePaneHostingController<Content: PreferencePaneView>: NSHostingController<Content>, PreferencePane {
 	public let preferencePaneIdentifier: Identifier
 	public let preferencePaneTitle: String
 	public let toolbarItemIcon: NSImage
     
-	public init(
-		identifier: Identifier,
-		title: String,
-		toolbarIcon: NSImage = .empty,
-		content: Content
-	) {
-		self.preferencePaneIdentifier = identifier
-		self.preferencePaneTitle = title
-		self.toolbarItemIcon = toolbarIcon
-		super.init(rootView: content)
+	public init(preferencePaneView: Content) {
+		self.preferencePaneIdentifier = preferencePaneView.preferencePaneIdentifier
+		self.preferencePaneTitle = preferencePaneView.preferencePaneTitle
+		self.toolbarItemIcon = preferencePaneView.toolbarItemIcon
+		super.init(rootView: preferencePaneView)
 	}
-    
+	
 	@available(*, unavailable)
 	@objc required dynamic init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
