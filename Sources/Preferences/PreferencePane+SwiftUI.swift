@@ -20,7 +20,7 @@ public final class PreferencePaneHostingController<Content: PreferencePaneView>:
 	public let preferencePaneIdentifier: Identifier
 	public let preferencePaneTitle: String
 	public let toolbarItemIcon: NSImage
-    
+
 	public init(preferencePaneView: Content) {
 		self.preferencePaneIdentifier = preferencePaneView.preferencePaneIdentifier
 		self.preferencePaneTitle = preferencePaneView.preferencePaneTitle

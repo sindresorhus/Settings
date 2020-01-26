@@ -36,7 +36,7 @@ struct UserAccountsView: View, PreferencePaneView {
 	let preferencePaneIdentifier: PreferencePaneIdentifier = .userAccounts
 	let preferencePaneTitle: String = "User Accounts"
 	let toolbarItemIcon: NSImage = NSImage(named: NSImage.userAccountsName)!
-        
+
 	var body: some View {
 		Preferences(contentWidth: contentWidth) {
 			PreferenceSection(title: "Permissions:") {
