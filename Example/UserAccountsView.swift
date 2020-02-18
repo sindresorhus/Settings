@@ -30,6 +30,7 @@ extension Font {
 struct UserAccountsView: View, PreferencePaneView {
 	@State private var isOn1 = true
 	@State private var isOn2 = false
+	@State private var isOn3 = true
 	@State private var selection1 = 1
 	@State private var selection2 = 0
 	let contentWidth: CGFloat = 450.0
@@ -54,6 +55,19 @@ struct UserAccountsView: View, PreferencePaneView {
 					Text("Always").tag(1)
 				}
 					.pickerStyle(RadioGroupPickerStyle())
+			}
+			PreferenceSection(label: {
+				Toggle("Some toggle", isOn: self.$isOn3)
+			}) {
+				VStack(alignment: .leading) {
+					Picker(selection: self.$selection2, label: EmptyView()) {
+						Text("Automatic").tag(0)
+						Text("Manual").tag(1)
+					}.frame(width: 120.0)
+					Text("Automatic mode can slow things down.")
+						.font(.preferenceDescription)
+						.foregroundColor(.secondary)
+				}
 			}
 			PreferenceSection(title: "Preview mode:") {
 				VStack(alignment: .leading) {
