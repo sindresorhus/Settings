@@ -10,13 +10,17 @@ let package = Package(
 		.library(
 			name: "Preferences",
 			targets: [
-				"Preferences"
+				"Preferences",
+				"PreferencesSwiftUI"
 			]
 		)
 	],
 	targets: [
 		.target(
 			name: "Preferences"
+		)
+		.target(
+			name: "PreferencesSwiftUI"
 		)
 	]
 )

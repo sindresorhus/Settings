@@ -39,7 +39,7 @@ struct UserAccountsView: View, PreferencePaneView {
 	let toolbarItemIcon: NSImage = NSImage(named: NSImage.userAccountsName)!
 
 	var body: some View {
-		Preferences(contentWidth: contentWidth) {
+		PreferenceContainer(contentWidth: contentWidth) {
 			PreferenceSection(title: "Permissions:") {
 				VStack(alignment: .leading) {
 					Toggle("Allow user to administer this computer", isOn: self.$isOn1)
