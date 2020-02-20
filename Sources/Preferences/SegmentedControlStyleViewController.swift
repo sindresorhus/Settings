@@ -69,21 +69,15 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 	}
 
 	private func sizeSegmentedControlUniformly() {
-		let insets = CGSize(width: 36, height: 12)
-		let maxSegmentSize: CGSize = preferencePanes.reduce(.zero) { maxSize, preferencePane in
-			let title = preferencePane.preferencePaneTitle
-			let titleSize = title.size(
-				withAttributes: [
-					.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
-				]
-			)
-
-			return CGSize(
-				width: max(titleSize.width + insets.width, maxSize.width),
-				height: max(titleSize.height + insets.height, maxSize.height)
+		let sizes = Preferences.segmentSizes(
+			preferencePanes: preferencePanes,
+			insets: CGSize(width: 36, height: 12))
+		let maxSegmentSize: CGSize = sizes.reduce(.zero) {
+			CGSize(
+				width: max($0.width, $1.width),
+				height: max($0.height, $1.height)
 			)
 		}
-
 		let segmentBorderWidth = CGFloat(preferencePanes.count) + 1
 		let segmentedControlWidth = maxSegmentSize.width * CGFloat(preferencePanes.count) + segmentBorderWidth
 		let segmentedControlHeight = maxSegmentSize.height
@@ -102,25 +96,9 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 	}
 
 	private func sizeSegmentedControlToFit() {
-		let insets = CGSize(width: 8, height: 0)
-		let segmentSizes: [CGSize] = preferencePanes.map { preferencePane in
-			let title = preferencePane.preferencePaneTitle
-			let titleSize = title.size(
-				withAttributes: [
-					.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
-				]
-			)
-
-			let maxSize = CGSize(
-				width: max(titleSize.width, 0),
-				height: max(titleSize.height, 0)
-			)
-			return CGSize(
-				width: maxSize.width + insets.width,
-				height: maxSize.height + insets.height
-			)
-		}
-
+		let segmentSizes = Preferences.segmentSizes(
+			preferencePanes: preferencePanes,
+			insets: CGSize(width: 8, height: 0))
 		let segmentBorderWidth = CGFloat(preferencePanes.count) + 1
 		let segmentedControlWidth: CGFloat = segmentSizes.reduce(0) { $0 + $1.width } + segmentBorderWidth
 		let segmentedControlHeight = segmentSizes.map { $0.height }.max() ?? 0
@@ -184,5 +162,20 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 
 	@IBAction private func segmentedControlMenuAction(_ menuItem: NSMenuItem) {
 		delegate?.activateTab(index: menuItem.tag, animated: true)
+	}
+}
+
+fileprivate func segmentSizes(preferencePanes: [PreferencePane], insets: CGSize) -> [CGSize] {
+	return preferencePanes.map { preferencePane in
+		let title = preferencePane.preferencePaneTitle
+		let titleSize = title.size(
+			withAttributes: [
+				.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
+			]
+		)
+		return CGSize(
+			width: titleSize.width + insets.width,
+			height: titleSize.height + insets.height
+		)
 	}
 }
