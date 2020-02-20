@@ -1,6 +1,10 @@
 import Cocoa
 
 public enum PreferencesStyle {
+	public enum SegmentSize {
+		case fit, uniform
+	}
+	
 	case toolbarItems
-	case segmentedControl
+	case segmentedControl(size: SegmentSize)
 }

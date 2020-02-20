@@ -42,10 +42,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	@IBAction private func switchStyle(_ sender: Any) {
-		preferencesStyle = preferencesStyle == .segmentedControl
-			? .toolbarItems
-			: .segmentedControl
-
+		preferencesStyle = preferencesStyle.rotated
 		NSApp.relaunch()
+	}
+}
+
+extension PreferencesStyle {
+	var rotated: PreferencesStyle {
+		switch self {
+		case .toolbarItems:
+			return .segmentedControl(size: .uniform)
+		case .segmentedControl(size: .uniform):
+			return .segmentedControl(size: .fit)
+		case .segmentedControl(size: .fit):
+			return .toolbarItems
+		}
 	}
 }

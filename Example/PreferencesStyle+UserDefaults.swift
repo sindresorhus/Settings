@@ -8,8 +8,10 @@ extension PreferencesStyle: RawRepresentable {
 		switch self {
 		case .toolbarItems:
 			return 0
-		case .segmentedControl:
+		case .segmentedControl(size: .uniform):
 			return 1
+		case .segmentedControl(size: .fit):
+			return 2
 		}
 	}
 
@@ -18,7 +20,9 @@ extension PreferencesStyle: RawRepresentable {
 		case 0:
 			self = .toolbarItems
 		case 1:
-			self = .segmentedControl
+			self = .segmentedControl(size: .uniform)
+		case 2:
+			self = .segmentedControl(size: .fit)
 		default:
 			return nil
 		}
