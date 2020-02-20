@@ -131,7 +131,7 @@ extension PreferencesStyle.SegmentSize {
 		let insets: CGSize = {
 			switch self {
 			case .fit:
-				return CGSize(width: 4, height: 0)
+				return CGSize(width: 8, height: 0)
 			case .uniform:
 				return CGSize(width: 18, height: 12)
 			}
