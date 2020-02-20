@@ -60,48 +60,11 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 	}
 
 	private func sizeSegmentedControl() {
-		switch self.segmentSize! {
-		case .fit:
-			sizeSegmentedControlToFit()
-		case .uniform:
-			sizeSegmentedControlUniformly()
-		}
-	}
-
-	private func sizeSegmentedControlUniformly() {
-		let sizes = Preferences.segmentSizes(
-			preferencePanes: preferencePanes,
-			insets: CGSize(width: 36, height: 12))
-		let maxSegmentSize: CGSize = sizes.reduce(.zero) {
-			CGSize(
-				width: max($0.width, $1.width),
-				height: max($0.height, $1.height)
-			)
-		}
+		let segmentSizes = segmentSize.segmentSizes(preferencePanes: preferencePanes)
 		let segmentBorderWidth = CGFloat(preferencePanes.count) + 1
-		let segmentedControlWidth = maxSegmentSize.width * CGFloat(preferencePanes.count) + segmentBorderWidth
-		let segmentedControlHeight = maxSegmentSize.height
-
-		for (index, preferencePane) in preferencePanes.enumerated() {
-			segmentedControl.setLabel(preferencePane.preferencePaneTitle, forSegment: index)
-			segmentedControl.setWidth(maxSegmentSize.width, forSegment: index)
-			if let cell = segmentedControl.cell as? NSSegmentedCell {
-				cell.setTag(index, forSegment: index)
-			}
-		}
-
-		segmentedControl.frame = CGRect(
-			x: 0, y: 0,
-			width: segmentedControlWidth, height: segmentedControlHeight)
-	}
-
-	private func sizeSegmentedControlToFit() {
-		let segmentSizes = Preferences.segmentSizes(
-			preferencePanes: preferencePanes,
-			insets: CGSize(width: 8, height: 0))
-		let segmentBorderWidth = CGFloat(preferencePanes.count) + 1
-		let segmentedControlWidth: CGFloat = segmentSizes.reduce(0) { $0 + $1.width } + segmentBorderWidth
-		let segmentedControlHeight = segmentSizes.map { $0.height }.max() ?? 0
+		let segmentedControlSize = CGSize(
+			width: segmentSizes.reduce(0) { $0 + $1.width } + segmentBorderWidth,
+			height: segmentSizes.map { $0.height }.max() ?? 0)
 
 		for (index, preferencePane) in preferencePanes.enumerated() {
 			segmentedControl.setLabel(preferencePane.preferencePaneTitle, forSegment: index)
@@ -111,9 +74,7 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 			}
 		}
 
-		segmentedControl.frame = CGRect(
-			x: 0, y: 0,
-			width: segmentedControlWidth, height: segmentedControlHeight)
+		segmentedControl.frame = CGRect(origin: .zero, size: segmentedControlSize)
 	}
 
 	@IBAction private func segmentedControlAction(_ control: NSSegmentedControl) {
@@ -165,17 +126,44 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 	}
 }
 
-fileprivate func segmentSizes(preferencePanes: [PreferencePane], insets: CGSize) -> [CGSize] {
-	return preferencePanes.map { preferencePane in
-		let title = preferencePane.preferencePaneTitle
-		let titleSize = title.size(
-			withAttributes: [
-				.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
-			]
-		)
-		return CGSize(
-			width: titleSize.width + insets.width,
-			height: titleSize.height + insets.height
-		)
+extension PreferencesStyle.SegmentSize {
+	func segmentSizes(preferencePanes: [PreferencePane]) -> [CGSize] {
+		let insets: CGSize = {
+			switch self {
+			case .fit:
+				return CGSize(width: 4, height: 0)
+			case .uniform:
+				return CGSize(width: 18, height: 12)
+			}
+		}()
+		return segmentSizes(preferencePanes: preferencePanes, insets: insets)
+	}
+
+	func segmentSizes(preferencePanes: [PreferencePane], insets: CGSize) -> [CGSize] {
+		let sizes: [CGSize] = preferencePanes.map { preferencePane in
+			let title = preferencePane.preferencePaneTitle
+			let titleSize = title.size(
+				withAttributes: [
+					.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
+				]
+			)
+			return CGSize(
+				width:  titleSize.width  + 2 * insets.width,
+				height: titleSize.height + 2 * insets.height
+			)
+		}
+
+		switch self {
+		case .fit:
+			return sizes
+		case .uniform:
+			let maxSegmentSize: CGSize = sizes.reduce(.zero) {
+				CGSize(
+					width: max($0.width, $1.width),
+					height: max($0.height, $1.height)
+				)
+			}
+			return sizes.map { _ in maxSegmentSize }
+		}
 	}
 }
