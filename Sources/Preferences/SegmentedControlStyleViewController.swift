@@ -38,6 +38,7 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 
 	override func loadView() {
 		view = createSegmentedControl(preferencePanes: preferencePanes)
+		sizeSegmentedControlUniformly()
 	}
 
 	fileprivate func createSegmentedControl(preferencePanes: [PreferencePane]) -> NSSegmentedControl {
@@ -53,44 +54,40 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 			cell.trackingMode = .selectOne
 		}
 
-		let segmentSize: CGSize = {
-			let insets = CGSize(width: 36, height: 12)
-			var maxSize = CGSize.zero
+		return segmentedControl
+	}
 
-			for preferencePane in preferencePanes {
-				let title = preferencePane.preferencePaneTitle
-				let titleSize = title.size(
-					withAttributes: [
-						.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
-					]
-				)
-
-				maxSize = CGSize(
-					width: max(titleSize.width, maxSize.width),
-					height: max(titleSize.height, maxSize.height)
-				)
-			}
+	private func sizeSegmentedControlUniformly() {
+		let insets = CGSize(width: 36, height: 12)
+		let maxSegmentSize: CGSize = preferencePanes.reduce(.zero) { maxSize, preferencePane in
+			let title = preferencePane.preferencePaneTitle
+			let titleSize = title.size(
+				withAttributes: [
+					.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
+				]
+			)
 
 			return CGSize(
-				width: maxSize.width + insets.width,
-				height: maxSize.height + insets.height
+				width: max(titleSize.width + insets.width, maxSize.width),
+				height: max(titleSize.height + insets.height, maxSize.height)
 			)
-		}()
+		}
 
 		let segmentBorderWidth = CGFloat(preferencePanes.count) + 1
-		let segmentWidth = segmentSize.width * CGFloat(preferencePanes.count) + segmentBorderWidth
-		let segmentHeight = segmentSize.height
-		segmentedControl.frame = CGRect(x: 0, y: 0, width: segmentWidth, height: segmentHeight)
+		let segmentedControlWidth = maxSegmentSize.width * CGFloat(preferencePanes.count) + segmentBorderWidth
+		let segmentedControlHeight = maxSegmentSize.height
 
 		for (index, preferencePane) in preferencePanes.enumerated() {
 			segmentedControl.setLabel(preferencePane.preferencePaneTitle, forSegment: index)
-			segmentedControl.setWidth(segmentSize.width, forSegment: index)
+			segmentedControl.setWidth(maxSegmentSize.width, forSegment: index)
 			if let cell = segmentedControl.cell as? NSSegmentedCell {
 				cell.setTag(index, forSegment: index)
 			}
 		}
 
-		return segmentedControl
+		segmentedControl.frame = CGRect(
+			x: 0, y: 0,
+			width: segmentedControlWidth, height: segmentedControlHeight)
 	}
 
 	@IBAction private func segmentedControlAction(_ control: NSSegmentedControl) {
