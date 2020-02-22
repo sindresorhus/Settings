@@ -5,7 +5,7 @@ public enum PreferencesStyle {
 		case fit
 		case uniform
 	}
-	
+
 	case toolbarItems
 	case segmentedControl(size: SegmentSize)
 }
