@@ -150,7 +150,7 @@ extension PreferencesStyle.SegmentSize {
 			)
 
 			return CGSize(
-				width:  titleSize.width  + 2 * insets.width,
+				width: titleSize.width + 2 * insets.width,
 				height: titleSize.height + 2 * insets.height
 			)
 		}
