@@ -136,6 +136,7 @@ extension PreferencesStyle.SegmentSize {
 				return CGSize(width: 18, height: 12)
 			}
 		}()
+
 		return segmentSizes(preferencePanes: preferencePanes, insets: insets)
 	}
 
@@ -147,6 +148,7 @@ extension PreferencesStyle.SegmentSize {
 					.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
 				]
 			)
+
 			return CGSize(
 				width:  titleSize.width  + 2 * insets.width,
 				height: titleSize.height + 2 * insets.height
@@ -163,6 +165,7 @@ extension PreferencesStyle.SegmentSize {
 					height: max($0.height, $1.height)
 				)
 			}
+
 			return sizes.map { _ in maxSegmentSize }
 		}
 	}
