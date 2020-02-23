@@ -27,7 +27,7 @@ public final class PreferencePaneHostingController<Content: PreferencePaneView>:
 		self.toolbarItemIcon = preferencePaneView.toolbarItemIcon
 		super.init(rootView: preferencePaneView)
 	}
-	
+
 	@available(*, unavailable)
 	@objc required dynamic init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")

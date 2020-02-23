@@ -34,9 +34,9 @@ struct UserAccountsView: View, PreferencePaneView {
 	@State private var selection1 = 1
 	@State private var selection2 = 0
 	let contentWidth: CGFloat = 450.0
-	let preferencePaneIdentifier: PreferencePaneIdentifier = .userAccounts
-	let preferencePaneTitle: String = "User Accounts"
-	let toolbarItemIcon: NSImage = NSImage(named: NSImage.userAccountsName)!
+	let preferencePaneIdentifier = PreferencePaneIdentifier.userAccounts
+	let preferencePaneTitle = "User Accounts"
+	let toolbarItemIcon = NSImage(named: NSImage.userAccountsName)!
 
 	var body: some View {
 		PreferenceContainer(contentWidth: contentWidth) {
