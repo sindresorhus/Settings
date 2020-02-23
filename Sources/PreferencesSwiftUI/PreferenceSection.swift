@@ -12,6 +12,9 @@ import SwiftUI
  */
 @available(macOS 10.15, *)
 public struct PreferenceSection: View {
+	/**
+		Preference key holding max width of section labels
+	*/
 	struct LabelWidthPreferenceKey: PreferenceKey {
 		typealias Value = CGFloat
 
@@ -23,6 +26,9 @@ public struct PreferenceSection: View {
 		}
 	}
 
+	/**
+		Convenience overlay for finding label's dimensions using GeometryReader
+	*/
 	struct LabelOverlay: View {
 		var body: some View {
 			GeometryReader { geometry in
@@ -32,7 +38,10 @@ public struct PreferenceSection: View {
 			}
 		}
 	}
-
+	
+	/**
+		Convenience modifier for applying LabelWidthPreferenceKey
+	*/
 	struct LabelWidthModifier: ViewModifier {
 		@Binding var maxWidth: CGFloat
 

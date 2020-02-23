@@ -180,6 +180,42 @@ As with any `NSWindowController`, call `NSWindowController#close()` to close the
 
 The easiest way to create the user interface within each pane is to use a [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview) in Interface Builder. See the example project in this repo for a demo.
 
+## SwiftUI support
+
+If your deployment target is macOS 10.15+, you can use built-in SwiftUI components to create panes. Custom view must conform to `PreferencePaneView`, which is equivelent to `PreferencePane` in SwiftUI world. Then wrap it into `PreferencePaneHostingController` and pass it to `PreferencesWindowController`.
+
+There is `PreferenceContainer` and `PreferenceSection` which achieve similar alignement to AppKit's `NSGridView`. 
+
+```swift
+let CustomViewPreferencePaneViewController: () -> PreferencePane = {
+	PreferencePaneHostingController(preferencePaneView: CustomView())
+}
+
+struct CustomPane: View, PreferencePaneView {
+	// Same as PreferencePane protocol 
+	let preferencePaneIdentifier: PreferencePaneIdentifier = ... 
+	let preferencePaneTitle: Sting = ...
+	let toolbarItemIcon: NSImage = ...
+	
+	var body: some View {
+		PreferenceContainer(contentWidth: 450.0) {
+			PreferenceSection(title: "Setting name") {
+				// some view
+			}
+			PreferenceSection(label: {
+				// custom label aligned on the right side
+			}) {
+				// some view 
+			}
+			...
+		}
+	}
+}
+```
+
+Working example pane: [UserAccountsView.swift](/Example/UserAccountsView.swift).
+
+When using Swift Package Manager, SwiftUI extensions are distributed as separate target called `PreferencesSwiftUI`. 
 
 ## Known issues
 

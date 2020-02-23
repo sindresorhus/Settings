@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+/**
+	SwiftUI equivelent of PreferencePane protocol
+*/
 @available (macOS 10.15, *)
 public protocol PreferencePaneView: View {
 	var preferencePaneIdentifier: PreferencePane.Identifier { get }
@@ -15,6 +18,9 @@ public protocol PreferencePaneView: View {
 	var toolbarItemIcon: NSImage { get }
 }
 
+/**
+	Hosting controller enabling PreferencePaneView to be used alongside AppKit NSViewControllers
+*/
 @available (macOS 10.15, *)
 public final class PreferencePaneHostingController<Content: PreferencePaneView>: NSHostingController<Content>, PreferencePane {
 	public let preferencePaneIdentifier: Identifier
