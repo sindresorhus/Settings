@@ -29,7 +29,8 @@ public final class PreferencePaneHostingController<Content: PreferencePaneView>:
 	}
 
 	@available(*, unavailable)
-	@objc required dynamic init?(coder: NSCoder) {
+	@objc
+	dynamic required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }

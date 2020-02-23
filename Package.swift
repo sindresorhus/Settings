@@ -18,7 +18,7 @@ let package = Package(
 			targets: [
 				"PreferencesSwiftUI"
 			]
-		),
+		)
 	],
 	targets: [
 		.target(

@@ -11,8 +11,8 @@ import Preferences
 /**
 	Function wrapping SwiftUI into PreferencePane, which is mimicing view controller's default construction syntax
  */
-func UserAccountsPreferenceViewController() -> PreferencePane {
-	return PreferencePaneHostingController(preferencePaneView: UserAccountsView())
+let UserAccountsPreferenceViewController: () -> PreferencePane = {
+	PreferencePaneHostingController(preferencePaneView: UserAccountsView())
 }
 
 /**

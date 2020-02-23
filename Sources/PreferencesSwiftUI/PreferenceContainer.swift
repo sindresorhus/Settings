@@ -49,8 +49,8 @@ public struct PreferenceContainer: View {
 	public var body: some View {
 		let sections = sectionBuilder()
 		return VStack(alignment: .preferenceSectionLabel) {
-			ForEach(0..<sections.count, id: \.self) { i in
-				self.viewForSection(sections, index: i)
+			ForEach(0..<sections.count, id: \.self) { idx in
+				self.viewForSection(sections, index: idx)
 			}
 		}
 		.modifier(PreferenceSection.LabelWidthModifier(maxWidth: $maxLabelWidth))
@@ -67,7 +67,7 @@ public struct PreferenceContainer: View {
 					Divider()
 						// Strangely doesn't work without width specification, probably bc of custom alignment
 						.frame(width: contentWidth, height: 20.0)
-						.alignmentGuide(.preferenceSectionLabel, computeValue: { d in d[.leading] + self.maxLabelWidth })
+						.alignmentGuide(.preferenceSectionLabel) { dim in dim[.leading] + self.maxLabelWidth }
 				}
 			} else {
 				sections[index]
