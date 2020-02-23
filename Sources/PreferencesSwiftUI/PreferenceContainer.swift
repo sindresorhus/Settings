@@ -38,10 +38,10 @@ public struct PreferenceSectionBuilder {
 @available(macOS 10.15, *)
 public struct PreferenceContainer: View {
 	public let sectionBuilder: () -> [PreferenceSection]
-	public let contentWidth: CGFloat
-	@State var maxLabelWidth: CGFloat = 0.0
+	public let contentWidth: Double
+	@State private var maxLabelWidth: CGFloat = 0.0
 
-	public init(contentWidth: CGFloat, @PreferenceSectionBuilder builder: @escaping () -> [PreferenceSection]) {
+	public init(contentWidth: Double, @PreferenceSectionBuilder builder: @escaping () -> [PreferenceSection]) {
 		self.sectionBuilder = builder
 		self.contentWidth = contentWidth
 	}
@@ -54,7 +54,7 @@ public struct PreferenceContainer: View {
 			}
 		}
 		.modifier(PreferenceSection.LabelWidthModifier(maxWidth: $maxLabelWidth))
-		.frame(width: contentWidth, alignment: .leading)
+		.frame(width: CGFloat(contentWidth), alignment: .leading)
 		.padding(.vertical, 20.0)
 		.padding(.horizontal, 30.0)
 	}
@@ -66,7 +66,7 @@ public struct PreferenceContainer: View {
 					sections[index]
 					Divider()
 						// Strangely doesn't work without width specification, probably bc of custom alignment
-						.frame(width: contentWidth, height: 20.0)
+						.frame(width: CGFloat(contentWidth), height: 20.0)
 						.alignmentGuide(.preferenceSectionLabel) { dim in dim[.leading] + self.maxLabelWidth }
 				}
 			} else {
