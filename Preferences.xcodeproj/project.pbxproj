@@ -478,7 +478,11 @@
 				INFOPLIST_FILE = Preferences.xcodeproj/Preferences_Info.plist;
 				MARKETING_VERSION = 1.0.1;
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_framework",
+					"\"SwiftUI\"",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Preferences;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -505,7 +509,11 @@
 				INFOPLIST_FILE = Preferences.xcodeproj/Preferences_Info.plist;
 				MARKETING_VERSION = 1.0.1;
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_framework",
+					"\"SwiftUI\"",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Preferences;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
