@@ -182,9 +182,9 @@ The easiest way to create the user interface within each pane is to use a [`NSGr
 
 ## SwiftUI support
 
-If your deployment target is macOS 10.15+, you can use built-in SwiftUI components to create panes. Custom view must conform to `PreferencePaneView`, which is equivelent to `PreferencePane` in SwiftUI world. Then wrap it into `PreferencePaneHostingController` and pass it to `PreferencesWindowController`.
+If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. Your preference pane views must conform to `PreferencePaneView`, which is equivalent to `PreferencePane`. Then wrap the views in `PreferencePaneHostingController` and pass them to `PreferencesWindowController` as you would with normal panes.
 
-There is `PreferenceContainer` and `PreferenceSection` which achieve similar alignement to AppKit's `NSGridView`. 
+It also comes with `PreferenceContainer` and `PreferenceSection` to automatically achieve similar alignment as AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview).
 
 ```swift
 let CustomViewPreferencePaneViewController: () -> PreferencePane = {
@@ -193,29 +193,29 @@ let CustomViewPreferencePaneViewController: () -> PreferencePane = {
 
 struct CustomPane: View, PreferencePaneView {
 	// Same as PreferencePane protocol 
-	let preferencePaneIdentifier: PreferencePaneIdentifier = ... 
-	let preferencePaneTitle: Sting = ...
-	let toolbarItemIcon: NSImage = ...
+	let preferencePaneIdentifier: PreferencePaneIdentifier = …
+	let preferencePaneTitle: Sting = …
+	let toolbarItemIcon: NSImage = …
 	
 	var body: some View {
 		PreferenceContainer(contentWidth: 450.0) {
 			PreferenceSection(title: "Setting name") {
-				// some view
+				// Some view
 			}
 			PreferenceSection(label: {
-				// custom label aligned on the right side
+				// Custom label aligned on the right side
 			}) {
-				// some view 
+				// Some view 
 			}
-			...
+			…
 		}
 	}
 }
 ```
 
-Working example pane: [UserAccountsView.swift](/Example/UserAccountsView.swift).
+[Full example here.](Example/UserAccountsView.swift).
 
-When using Swift Package Manager, SwiftUI extensions are distributed as separate target called `PreferencesSwiftUI`. 
+When using Swift Package Manager, the SwiftUI components are distributed as separate target called `PreferencesSwiftUI`. 
 
 ## Known issues
 
