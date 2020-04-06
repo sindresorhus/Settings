@@ -26,7 +26,9 @@ let package = Package(
 		),
 		.target(
 			name: "PreferencesSwiftUI",
-			dependencies: ["Preferences"]
+			dependencies: [
+				"Preferences"
+			]
 		)
 	]
 )
