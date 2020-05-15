@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 /**
-	SwiftUI equivelent of PreferencePane protocol
+SwiftUI equivelent of PreferencePane protocol
 */
-@available (macOS 10.15, *)
+@available(macOS 10.15, *)
 public protocol PreferencePaneView: View {
 	var preferencePaneIdentifier: PreferencePane.Identifier { get }
 	var preferencePaneTitle: String { get }
@@ -19,9 +19,9 @@ public protocol PreferencePaneView: View {
 }
 
 /**
-	Hosting controller enabling PreferencePaneView to be used alongside AppKit NSViewControllers
+Hosting controller enabling PreferencePaneView to be used alongside AppKit NSViewControllers
 */
-@available (macOS 10.15, *)
+@available(macOS 10.15, *)
 public final class PreferencePaneHostingController<Content: PreferencePaneView>: NSHostingController<Content>, PreferencePane {
 	public let preferencePaneIdentifier: Identifier
 	public let preferencePaneTitle: String

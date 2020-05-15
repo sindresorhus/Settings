@@ -8,13 +8,13 @@
 import SwiftUI
 
 /**
-	Extension with custom alignment guide for section title labels.
- */
+Extension with custom alignment guide for section title labels.
+*/
 @available(macOS 10.15, *)
 extension HorizontalAlignment {
 	private enum PreferenceSectionLabelAlignment: AlignmentID {
 		static func defaultValue(in context: ViewDimensions) -> CGFloat {
-			return context[HorizontalAlignment.leading]
+			context[HorizontalAlignment.leading]
 		}
 	}
 
@@ -22,19 +22,19 @@ extension HorizontalAlignment {
 }
 
 /**
-	Function builder for Preferences component used in order to restrict types of child view to PreferenceSection.
+Function builder for Preferences component used in order to restrict types of child view to PreferenceSection.
 */
 @available(macOS 10.15, *)
 @_functionBuilder
 public struct PreferenceSectionBuilder {
 	public static func buildBlock(_ sections: PreferenceSection...) -> [PreferenceSection] {
-		return sections
+		sections
 	}
 }
 
 /**
-	Container for PreferenceSection objects.
- */
+Container for PreferenceSection objects.
+*/
 @available(macOS 10.15, *)
 public struct PreferenceContainer: View {
 	public let sectionBuilder: () -> [PreferenceSection]
@@ -60,14 +60,14 @@ public struct PreferenceContainer: View {
 	}
 
 	private func viewForSection(_ sections: [PreferenceSection], index: Int) -> some View {
-		return Group {
+		Group {
 			if index != sections.count - 1 && sections[index].bottomDivider {
 				Group {
 					sections[index]
 					Divider()
-						// Strangely doesn't work without width specification, probably bc of custom alignment
+						// Strangely doesn't work without width being specified. Probably because of custom alignment.
 						.frame(width: CGFloat(contentWidth), height: 20.0)
-						.alignmentGuide(.preferenceSectionLabel) { dim in dim[.leading] + self.maxLabelWidth }
+						.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + self.maxLabelWidth }
 				}
 			} else {
 				sections[index]

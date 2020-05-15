@@ -184,7 +184,7 @@ The easiest way to create the user interface within each pane is to use a [`NSGr
 
 If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. Your preference pane views must conform to `PreferencePaneView`, which is equivalent to `PreferencePane`. Then wrap the views in `PreferencePaneHostingController` and pass them to `PreferencesWindowController` as you would with normal panes.
 
-It also comes with `PreferenceContainer` and `PreferenceSection` to automatically achieve similar alignment as AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview).
+It also comes with [`PreferenceContainer`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`PreferenceSection`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment as AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview).
 
 ```swift
 let CustomViewPreferencePaneViewController: () -> PreferencePane = {

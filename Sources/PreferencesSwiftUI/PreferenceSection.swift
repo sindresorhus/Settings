@@ -7,15 +7,31 @@
 
 import SwiftUI
 
+@available(macOS 10.15, *)
+public struct PreferenceDescriptionModifier: ViewModifier {
+	public func body(content: Content) -> some View {
+		content
+			.font(Font.system(size: 11.0))
+			.foregroundColor(.secondary)
+	}
+}
+
+@available(macOS 10.15, *)
+extension View {
+	public func preferenceDescription() -> some View {
+		self.modifier(PreferenceDescriptionModifier())
+	}
+}
+
 /**
-	Represents section with left aligned title and optional bottom divider (present by default).
- */
+Represents section with left aligned title and optional bottom divider (present by default).
+*/
 @available(macOS 10.15, *)
 public struct PreferenceSection: View {
 	/**
-		Preference key holding max width of section labels
+	Preference key holding max width of section labels.
 	*/
-	struct LabelWidthPreferenceKey: PreferenceKey {
+	private struct LabelWidthPreferenceKey: PreferenceKey {
 		typealias Value = CGFloat
 
 		static var defaultValue: CGFloat = 0.0
@@ -27,9 +43,9 @@ public struct PreferenceSection: View {
 	}
 
 	/**
-		Convenience overlay for finding label's dimensions using GeometryReader
+	Convenience overlay for finding label's dimensions using GeometryReader.
 	*/
-	struct LabelOverlay: View {
+	private struct LabelOverlay: View {
 		var body: some View {
 			GeometryReader { geometry in
 				Rectangle()
@@ -38,9 +54,9 @@ public struct PreferenceSection: View {
 			}
 		}
 	}
-	
+
 	/**
-		Convenience modifier for applying LabelWidthPreferenceKey
+	Convenience modifier for applying LabelWidthPreferenceKey.
 	*/
 	struct LabelWidthModifier: ViewModifier {
 		@Binding var maxWidth: CGFloat
@@ -92,6 +108,6 @@ public struct PreferenceSection: View {
 @available(macOS 10.15, *)
 extension View {
 	func eraseToAnyView() -> AnyView {
-		return AnyView(self)
+		AnyView(self)
 	}
 }
