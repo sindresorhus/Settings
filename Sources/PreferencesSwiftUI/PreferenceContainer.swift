@@ -7,6 +7,62 @@
 
 import SwiftUI
 
+@available(macOS 10.15, *)
+extension Preferences {
+	/**
+	Function builder for Preferences component used in order to restrict types of child view to Section.
+	*/
+	@_functionBuilder
+	public struct SectionBuilder {
+		public static func buildBlock(_ sections: Section...) -> [Section] {
+			sections
+		}
+	}
+
+	/**
+	Container for Section objects.
+	*/
+	public struct Container: View {
+		public let sectionBuilder: () -> [Section]
+		public let contentWidth: Double
+		@State private var maxLabelWidth: CGFloat = 0.0
+
+		public init(contentWidth: Double, @SectionBuilder builder: @escaping () -> [Section]) {
+			self.sectionBuilder = builder
+			self.contentWidth = contentWidth
+		}
+
+		public var body: some View {
+			let sections = sectionBuilder()
+			return VStack(alignment: .preferenceSectionLabel) {
+				ForEach(0..<sections.count, id: \.self) { idx in
+					self.viewForSection(sections, index: idx)
+				}
+			}
+			.modifier(Section.LabelWidthModifier(maxWidth: $maxLabelWidth))
+			.frame(width: CGFloat(contentWidth), alignment: .leading)
+			.padding(.vertical, 20.0)
+			.padding(.horizontal, 30.0)
+		}
+
+		private func viewForSection(_ sections: [Section], index: Int) -> some View {
+			Group {
+				if index != sections.count - 1 && sections[index].bottomDivider {
+					Group {
+						sections[index]
+						Divider()
+							// Strangely doesn't work without width being specified. Probably because of custom alignment.
+							.frame(width: CGFloat(contentWidth), height: 20.0)
+							.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + self.maxLabelWidth }
+					}
+				} else {
+					sections[index]
+				}
+			}
+		}
+	}
+}
+
 /**
 Extension with custom alignment guide for section title labels.
 */
@@ -19,59 +75,4 @@ extension HorizontalAlignment {
 	}
 
 	static let preferenceSectionLabel = HorizontalAlignment(PreferenceSectionLabelAlignment.self)
-}
-
-/**
-Function builder for Preferences component used in order to restrict types of child view to PreferenceSection.
-*/
-@available(macOS 10.15, *)
-@_functionBuilder
-public struct PreferenceSectionBuilder {
-	public static func buildBlock(_ sections: PreferenceSection...) -> [PreferenceSection] {
-		sections
-	}
-}
-
-/**
-Container for PreferenceSection objects.
-*/
-@available(macOS 10.15, *)
-public struct PreferenceContainer: View {
-	public let sectionBuilder: () -> [PreferenceSection]
-	public let contentWidth: Double
-	@State private var maxLabelWidth: CGFloat = 0.0
-
-	public init(contentWidth: Double, @PreferenceSectionBuilder builder: @escaping () -> [PreferenceSection]) {
-		self.sectionBuilder = builder
-		self.contentWidth = contentWidth
-	}
-
-	public var body: some View {
-		let sections = sectionBuilder()
-		return VStack(alignment: .preferenceSectionLabel) {
-			ForEach(0..<sections.count, id: \.self) { idx in
-				self.viewForSection(sections, index: idx)
-			}
-		}
-		.modifier(PreferenceSection.LabelWidthModifier(maxWidth: $maxLabelWidth))
-		.frame(width: CGFloat(contentWidth), alignment: .leading)
-		.padding(.vertical, 20.0)
-		.padding(.horizontal, 30.0)
-	}
-
-	private func viewForSection(_ sections: [PreferenceSection], index: Int) -> some View {
-		Group {
-			if index != sections.count - 1 && sections[index].bottomDivider {
-				Group {
-					sections[index]
-					Divider()
-						// Strangely doesn't work without width being specified. Probably because of custom alignment.
-						.frame(width: CGFloat(contentWidth), height: 20.0)
-						.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + self.maxLabelWidth }
-				}
-			} else {
-				sections[index]
-			}
-		}
-	}
 }

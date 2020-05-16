@@ -12,13 +12,13 @@ import Preferences
 Function wrapping SwiftUI into PreferencePane, which is mimicing view controller's default construction syntax
 */
 let UserAccountsPreferenceViewController: () -> PreferencePane = {
-	PreferencePaneHostingController(preferencePaneView: UserAccountsView())
+	Preferences.PaneHostingController(preferencePaneView: UserAccountsView())
 }
 
 /**
 The main view of "User Accounts" preference pane.
 */
-struct UserAccountsView: PreferencePaneView {
+struct UserAccountsView: Preferences.PaneView {
 	@State private var isOn1 = true
 	@State private var isOn2 = false
 	@State private var isOn3 = true
@@ -31,8 +31,8 @@ struct UserAccountsView: PreferencePaneView {
 	let toolbarItemIcon = NSImage(named: NSImage.userAccountsName)!
 
 	var body: some View {
-		PreferenceContainer(contentWidth: contentWidth) {
-			PreferenceSection(title: "Permissions:") {
+		Preferences.Container(contentWidth: contentWidth) {
+			Preferences.Section(title: "Permissions:") {
 				VStack(alignment: .leading) {
 					Toggle("Allow user to administer this computer", isOn: self.$isOn1)
 					Text("Administrator has root access to this machine.")
@@ -40,7 +40,7 @@ struct UserAccountsView: PreferencePaneView {
 					Toggle("Allow user to access every file", isOn: self.$isOn2)
 				}
 			}
-			PreferenceSection(title: "Show scroll bars:") {
+			Preferences.Section(title: "Show scroll bars:") {
 				Picker("", selection: self.$selection1) {
 					Text("When scrolling").tag(0)
 					Text("Always").tag(1)
@@ -48,7 +48,7 @@ struct UserAccountsView: PreferencePaneView {
 					.labelsHidden()
 					.pickerStyle(RadioGroupPickerStyle())
 			}
-			PreferenceSection(label: {
+			Preferences.Section(label: {
 				Toggle("Some toggle", isOn: self.$isOn3)
 			}) {
 				VStack(alignment: .leading) {
@@ -62,7 +62,7 @@ struct UserAccountsView: PreferencePaneView {
 						.preferenceDescription()
 				}
 			}
-			PreferenceSection(title: "Preview mode:") {
+			Preferences.Section(title: "Preview mode:") {
 				VStack(alignment: .leading) {
 					Picker("", selection: self.$selection3) {
 						Text("Automatic").tag(0)

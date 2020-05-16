@@ -182,27 +182,27 @@ The easiest way to create the user interface within each pane is to use a [`NSGr
 
 ## SwiftUI support
 
-If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. Your preference pane views must conform to `PreferencePaneView`, which is equivalent to `PreferencePane`. Then wrap the views in `PreferencePaneHostingController` and pass them to `PreferencesWindowController` as you would with normal panes.
+If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. Your preference pane views must conform to `Preferences.PaneView`, which is equivalent to `PreferencePane`. Then wrap the views in `Preferences.PaneHostingController` and pass them to `PreferencesWindowController` as you would with normal panes.
 
-It also comes with [`PreferenceContainer`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`PreferenceSection`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment as AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview).
+It also comes with [`Preferences.Container`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`Preferences.Section`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment as AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview).
 
 ```swift
 let CustomViewPreferencePaneViewController: () -> PreferencePane = {
-	PreferencePaneHostingController(preferencePaneView: CustomView())
+	Preferences.PaneHostingController(preferencePaneView: CustomView())
 }
 
-struct CustomPane: View, PreferencePaneView {
+struct CustomPane: Preferences.PaneView {
 	// Same as PreferencePane protocol 
 	let preferencePaneIdentifier: PreferencePaneIdentifier = …
 	let preferencePaneTitle: Sting = …
 	let toolbarItemIcon: NSImage = …
 	
 	var body: some View {
-		PreferenceContainer(contentWidth: 450.0) {
-			PreferenceSection(title: "Setting name") {
+		Preferences.Container(contentWidth: 450.0) {
+			Preferences.Section(title: "Setting name") {
 				// Some view
 			}
-			PreferenceSection(label: {
+			Preferences.Section(label: {
 				// Custom label aligned on the right side
 			}) {
 				// Some view 

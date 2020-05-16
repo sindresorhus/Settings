@@ -9,34 +9,38 @@ import Foundation
 import SwiftUI
 
 /**
-SwiftUI equivelent of PreferencePane protocol
+SwiftUI equivelent of PreferencePane protocol.
 */
 @available(macOS 10.15, *)
-public protocol PreferencePaneView: View {
+public protocol _PreferencePaneView: View {
 	var preferencePaneIdentifier: PreferencePane.Identifier { get }
 	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get }
 }
 
-/**
-Hosting controller enabling PreferencePaneView to be used alongside AppKit NSViewControllers
-*/
 @available(macOS 10.15, *)
-public final class PreferencePaneHostingController<Content: PreferencePaneView>: NSHostingController<Content>, PreferencePane {
-	public let preferencePaneIdentifier: Identifier
-	public let preferencePaneTitle: String
-	public let toolbarItemIcon: NSImage
+public enum Preferences {
+	public typealias PaneView = _PreferencePaneView
 
-	public init(preferencePaneView: Content) {
-		self.preferencePaneIdentifier = preferencePaneView.preferencePaneIdentifier
-		self.preferencePaneTitle = preferencePaneView.preferencePaneTitle
-		self.toolbarItemIcon = preferencePaneView.toolbarItemIcon
-		super.init(rootView: preferencePaneView)
-	}
+	/**
+	Hosting controller enabling PreferencePaneView to be used alongside AppKit NSViewControllers.
+	*/
+	public final class PaneHostingController<Content: PaneView>: NSHostingController<Content>, PreferencePane {
+		public let preferencePaneIdentifier: Identifier
+		public let preferencePaneTitle: String
+		public let toolbarItemIcon: NSImage
 
-	@available(*, unavailable)
-	@objc
-	dynamic required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
+		public init(preferencePaneView: Content) {
+			self.preferencePaneIdentifier = preferencePaneView.preferencePaneIdentifier
+			self.preferencePaneTitle = preferencePaneView.preferencePaneTitle
+			self.toolbarItemIcon = preferencePaneView.toolbarItemIcon
+			super.init(rootView: preferencePaneView)
+		}
+
+		@available(*, unavailable)
+		@objc
+		dynamic required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
 	}
 }

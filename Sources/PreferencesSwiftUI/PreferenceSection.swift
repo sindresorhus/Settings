@@ -8,105 +8,114 @@
 import SwiftUI
 
 @available(macOS 10.15, *)
-public struct PreferenceDescriptionModifier: ViewModifier {
-	public func body(content: Content) -> some View {
-		content
-			.font(Font.system(size: 11.0))
-			.foregroundColor(.secondary)
-	}
-}
-
-@available(macOS 10.15, *)
-extension View {
-	public func preferenceDescription() -> some View {
-		self.modifier(PreferenceDescriptionModifier())
-	}
-}
-
-/**
-Represents section with left aligned title and optional bottom divider (present by default).
-*/
-@available(macOS 10.15, *)
-public struct PreferenceSection: View {
+extension Preferences {
 	/**
-	Preference key holding max width of section labels.
+	Applies font and color for labels used for describing preferences
 	*/
-	private struct LabelWidthPreferenceKey: PreferenceKey {
-		typealias Value = CGFloat
-
-		static var defaultValue: CGFloat = 0.0
-
-		static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-			let next = nextValue()
-			value = next > value ? next : value
+	@available(macOS 10.15, *)
+	public struct PreferenceDescriptionModifier: ViewModifier {
+		public func body(content: Content) -> some View {
+			content
+				.font(Font.system(size: 11.0))
+				.foregroundColor(.secondary)
 		}
 	}
 
 	/**
-	Convenience overlay for finding label's dimensions using GeometryReader.
+	Represents section with left aligned title and optional bottom divider (present by default).
 	*/
-	private struct LabelOverlay: View {
-		var body: some View {
-			GeometryReader { geometry in
-				Rectangle()
-					.fill(Color.clear)
-					.preference(key: LabelWidthPreferenceKey.self, value: geometry.size.width)
+	@available(macOS 10.15, *)
+	public struct Section: View {
+		/**
+		Preference key holding max width of section labels.
+		*/
+		private struct LabelWidthPreferenceKey: PreferenceKey {
+			typealias Value = CGFloat
+
+			static var defaultValue: CGFloat = 0.0
+
+			static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+				let next = nextValue()
+				value = next > value ? next : value
+			}
+		}
+
+		/**
+		Convenience overlay for finding label's dimensions using GeometryReader.
+		*/
+		private struct LabelOverlay: View {
+			var body: some View {
+				GeometryReader { geometry in
+					Rectangle()
+						.fill(Color.clear)
+						.preference(key: LabelWidthPreferenceKey.self, value: geometry.size.width)
+				}
+			}
+		}
+
+		/**
+		Convenience modifier for applying LabelWidthPreferenceKey.
+		*/
+		struct LabelWidthModifier: ViewModifier {
+			@Binding var maxWidth: CGFloat
+
+			func body(content: Content) -> some View {
+				content
+					.onPreferenceChange(LabelWidthPreferenceKey.self) { maxWidth in
+						self.maxWidth = maxWidth
+					}
+			}
+		}
+
+		public let label: AnyView
+		public let content: AnyView
+		public let bottomDivider: Bool
+
+		public init<Label: View, Content: View>(
+			bottomDivider: Bool = false,
+			label: @escaping () -> Label,
+			content: @escaping () -> Content
+		) {
+			self.label = label()
+				.overlay(LabelOverlay())
+				.eraseToAnyView()
+			self.bottomDivider = bottomDivider
+			self.content = content().eraseToAnyView()
+		}
+
+		public init<Content: View>(title: String, bottomDivider: Bool = true, content: @escaping () -> Content) {
+			let textLabel = {
+				Text(title)
+					.font(.system(size: 13.0))
+					.overlay(LabelOverlay())
+					.eraseToAnyView()
+			}
+			self.init(bottomDivider: bottomDivider, label: textLabel, content: content)
+		}
+
+		public var body: some View {
+			HStack(alignment: .top) {
+				label
+					.alignmentGuide(.preferenceSectionLabel) { $0[.trailing] }
+				content
+				Spacer()
 			}
 		}
 	}
-
-	/**
-	Convenience modifier for applying LabelWidthPreferenceKey.
-	*/
-	struct LabelWidthModifier: ViewModifier {
-		@Binding var maxWidth: CGFloat
-
-		func body(content: Content) -> some View {
-			content
-				.onPreferenceChange(LabelWidthPreferenceKey.self) { maxWidth in
-					self.maxWidth = maxWidth
-				}
-		}
-	}
-
-	public let label: AnyView
-	public let content: AnyView
-	public let bottomDivider: Bool
-
-	public init<Label: View, Content: View>(
-		bottomDivider: Bool = false,
-		label: @escaping () -> Label,
-		content: @escaping () -> Content
-	) {
-		self.label = label()
-			.overlay(LabelOverlay())
-			.eraseToAnyView()
-		self.bottomDivider = bottomDivider
-		self.content = content().eraseToAnyView()
-	}
-
-	public init<Content: View>(title: String, bottomDivider: Bool = true, content: @escaping () -> Content) {
-		let textLabel = {
-			Text(title)
-				.font(.system(size: 13.0))
-				.overlay(LabelOverlay())
-				.eraseToAnyView()
-		}
-		self.init(bottomDivider: bottomDivider, label: textLabel, content: content)
-	}
-
-	public var body: some View {
-		HStack(alignment: .top) {
-			label
-				.alignmentGuide(.preferenceSectionLabel) { $0[.trailing] }
-			content
-			Spacer()
-		}
-	}
 }
 
 @available(macOS 10.15, *)
 extension View {
+	/**
+	Applies font and color for labels used for describing preferences using PreferenceDescriptionModifier
+	*/
+	public func preferenceDescription() -> some View {
+		self.modifier(Preferences.PreferenceDescriptionModifier())
+	}
+
+	/**
+	Equivalent to `eraseToAnyPublisher` from Combine framework
+	*/
 	func eraseToAnyView() -> AnyView {
 		AnyView(self)
 	}
