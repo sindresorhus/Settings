@@ -71,6 +71,14 @@ extension Preferences {
 		public let content: AnyView
 		public let bottomDivider: Bool
 
+		/**
+		Creates instance of section, responsible for controling single preference.
+		
+		- Parameters:
+			- bottomDivider: Pass `true`, to place `Divider` after section content. Default is `false`.
+			- label: A view describing preference handled by this section.
+			- content: A content view.
+		*/
 		public init<Label: View, Content: View>(
 			bottomDivider: Bool = false,
 			label: @escaping () -> Label,
@@ -83,7 +91,15 @@ extension Preferences {
 			self.content = content().eraseToAnyView()
 		}
 
-		public init<Content: View>(title: String, bottomDivider: Bool = true, content: @escaping () -> Content) {
+		/**
+		Creates instance of section, responsible for controling single preference with `Text` as  a `Label`.
+		
+		- Parameters:
+			- title: A string describing preference handled by this section.
+			- bottomDivider: Pass `true`, to place `Divider` after section content. Default is `false`.
+			- content: A content view.
+		*/
+		public init<Content: View>(title: String, bottomDivider: Bool = false, content: @escaping () -> Content) {
 			let textLabel = {
 				Text(title)
 					.font(.system(size: 13.0))

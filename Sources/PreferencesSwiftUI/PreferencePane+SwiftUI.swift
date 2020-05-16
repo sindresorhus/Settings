@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /**
-SwiftUI equivelent of PreferencePane protocol.
+SwiftUI equivelent of `PreferencePane` protocol.
 */
 @available(macOS 10.15, *)
 public protocol _PreferencePaneView: View {
@@ -18,12 +18,15 @@ public protocol _PreferencePaneView: View {
 	var toolbarItemIcon: NSImage { get }
 }
 
+/**
+`enum` acting as a namespace for SwiftUI components.
+*/
 @available(macOS 10.15, *)
 public enum Preferences {
 	public typealias PaneView = _PreferencePaneView
 
 	/**
-	Hosting controller enabling PreferencePaneView to be used alongside AppKit NSViewControllers.
+	Hosting controller enabling `Preferences.PaneView` to be used alongside AppKit NSViewControllers.
 	*/
 	public final class PaneHostingController<Content: PaneView>: NSHostingController<Content>, PreferencePane {
 		public let preferencePaneIdentifier: Identifier

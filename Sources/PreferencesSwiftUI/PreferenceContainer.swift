@@ -20,13 +20,21 @@ extension Preferences {
 	}
 
 	/**
-	Container for Section objects.
+	Container which holds Preferences.Section objects, and does all the alignment magic similar to `NSGridView` from AppKit.
 	*/
 	public struct Container: View {
 		public let sectionBuilder: () -> [Section]
 		public let contentWidth: Double
 		@State private var maxLabelWidth: CGFloat = 0.0
 
+		/**
+		Creates instance of container component, which handles layout of stacked `Preferences.Section` views.
+		Custom alignment requires content width to be specified beforehand.
+		
+		- Parameters:
+			- contentWidth: Fixed width of the container's content (excluding paddings).
+			- builder: A view builder that creates Preferences.Sections of this container.
+		*/
 		public init(contentWidth: Double, @SectionBuilder builder: @escaping () -> [Section]) {
 			self.sectionBuilder = builder
 			self.contentWidth = contentWidth
