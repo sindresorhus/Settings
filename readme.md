@@ -6,21 +6,17 @@
 
 Just pass in some view controllers and this package will take care of the rest.
 
-
 ## Requirements
 
 - macOS 10.10+
 - Xcode 11+
 - Swift 5.1+
 
-
 ## Install
 
 #### SwiftPM
 
-```swift
-.package(url: "https://github.com/sindresorhus/Preferences", from: "1.0.1")
-```
+Add `https://github.com/sindresorhus/Preferences` in the [“Swift Package Manager” tab in Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
 #### Carthage
 
@@ -33,7 +29,6 @@ github "sindresorhus/Preferences"
 ```ruby
 pod 'Preferences'
 ```
-
 
 ## Usage
 
@@ -146,7 +141,6 @@ lazy var preferencesWindowController = PreferencesWindowController(
 
 ![NSSegmentedControl based](segmented-control.png)
 
-
 ## API
 
 ```swift
@@ -175,11 +169,9 @@ public final class PreferencesWindowController: NSWindowController {
 
 As with any `NSWindowController`, call `NSWindowController#close()` to close the preferences window.
 
-
 ## Recommendation
 
 The easiest way to create the user interface within each pane is to use a [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview) in Interface Builder. See the example project in this repo for a demo.
-
 
 ## Known issues
 
@@ -190,7 +182,6 @@ This can happen when you are not using auto-layout or have not set a size for th
 ### There are no animations on macOS 10.13 and earlier
 
 The `animated` parameter of `PreferencesWindowController.init` has no effect on macOS 10.13 or earlier as those versions don't support `NSViewController.TransitionOptions.crossfade`.
-
 
 ## FAQ
 
@@ -225,7 +216,6 @@ It can't be that hard right? Well, turns out it is:
 - Adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/).
 - The window title is automatically localized by using the system string.
 
-
 ## Related
 
 - [Defaults](https://github.com/sindresorhus/Defaults) - Swifty and modern UserDefaults
@@ -236,7 +226,6 @@ It can't be that hard right? Well, turns out it is:
 
 You might also like Sindre's [apps](https://sindresorhus.com/apps).
 
-
 ## Used in these apps
 
 - [TableFlip](https://tableflipapp.com) - Visual Markdown table editor by [Christian Tietze](https://github.com/DivineDominion)
@@ -244,7 +233,6 @@ You might also like Sindre's [apps](https://sindresorhus.com/apps).
 - [Word Counter](https://wordcounterapp.com) - Measuring writer's productivity by [Christian Tietze](https://github.com/DivineDominion)
 
 Want to tell the world about your app that is using Preferences? Open a PR!
-
 
 ## Maintainers
 
