@@ -9,35 +9,64 @@ import Foundation
 import SwiftUI
 
 /**
-SwiftUI equivelent of `PreferencePane` protocol.
-*/
-@available(macOS 10.15, *)
-public protocol _PreferencePaneView: View {
-	var preferencePaneIdentifier: PreferencePane.Identifier { get }
-	var preferencePaneTitle: String { get }
-	var toolbarItemIcon: NSImage { get }
-}
-
-/**
 `enum` acting as a namespace for SwiftUI components.
 */
 @available(macOS 10.15, *)
 public enum Preferences {
-	public typealias PaneView = _PreferencePaneView
+	/**
+	SwiftUI equivelent of `PreferencePane` protocol. Create this using your custom content view.
+	Contains all the necessary information for single preference pane.
+	*/
+	public struct PaneView<Content: View>: View {
+		public let identifier: PreferencePane.Identifier
+		public let title: String
+		public let toolbarIcon: NSImage
+		public let content: Content
+
+		public init(
+			identifier: PreferencePane.Identifier,
+			title: String,
+			toolbarIcon: NSImage,
+			contentView: () -> Content
+		) {
+			self.identifier = identifier
+			self.title = title
+			self.toolbarIcon = toolbarIcon
+			self.content = contentView()
+		}
+
+		public var body: some View {
+			content
+		}
+	}
 
 	/**
 	Hosting controller enabling `Preferences.PaneView` to be used alongside AppKit NSViewControllers.
 	*/
-	public final class PaneHostingController<Content: PaneView>: NSHostingController<Content>, PreferencePane {
+	public final class PaneHostingController<Content: View>: NSHostingController<Content>, PreferencePane {
 		public let preferencePaneIdentifier: Identifier
 		public let preferencePaneTitle: String
 		public let toolbarItemIcon: NSImage
 
-		public init(preferencePaneView: Content) {
-			self.preferencePaneIdentifier = preferencePaneView.preferencePaneIdentifier
-			self.preferencePaneTitle = preferencePaneView.preferencePaneTitle
-			self.toolbarItemIcon = preferencePaneView.toolbarItemIcon
-			super.init(rootView: preferencePaneView)
+		init(
+			identifier: Identifier,
+			title: String,
+			toolbarIcon: NSImage,
+			content: Content
+		) {
+			self.preferencePaneIdentifier = identifier
+			self.preferencePaneTitle = title
+			self.toolbarItemIcon = toolbarIcon
+			super.init(rootView: content)
+		}
+
+		public convenience init(paneView: PaneView<Content>) {
+			self.init(
+				identifier: paneView.identifier,
+				title: paneView.title,
+				toolbarIcon: paneView.toolbarIcon,
+				content: paneView.content
+			)
 		}
 
 		@available(*, unavailable)

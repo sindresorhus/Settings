@@ -182,21 +182,28 @@ The easiest way to create the user interface within each pane is to use a [`NSGr
 
 ## SwiftUI support
 
-If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. Your preference pane views must conform to `Preferences.PaneView`, which is equivalent to `PreferencePane`. Then wrap the views in `Preferences.PaneHostingController` and pass them to `PreferencesWindowController` as you would with normal panes.
+If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. To do so, create 
+`Preferences.PaneView` (which is equivalent to `PreferencePane` in SwiftUI world) using your custom view and necessary toolbar information. Then wrap the pane views in `Preferences.PaneHostingController` and pass them to `PreferencesWindowController` as you would with normal panes.
 
 It also comes with [`Preferences.Container`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`Preferences.Section`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment as AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview).
 
 ```swift
 let CustomViewPreferencePaneViewController: () -> PreferencePane = {
-	Preferences.PaneHostingController(preferencePaneView: CustomView())
+	let paneView =
+		Preferences.PaneView(
+			identifier: ...,
+			title: ...,
+			toolbarIcon: NSImage(...)
+		) {
+			// your custom view (and modifiers if wanted)
+			CustomPane()
+			//  .environmentObject(self.someSettingsManager)
+		}
+	
+	Preferences.PaneHostingController(paneView: paneView)
 }
 
-struct CustomPane: Preferences.PaneView {
-	// Same as PreferencePane protocol 
-	let preferencePaneIdentifier: PreferencePaneIdentifier = …
-	let preferencePaneTitle: Sting = …
-	let toolbarItemIcon: NSImage = …
-	
+struct CustomPane: View {
 	var body: some View {
 		Preferences.Container(contentWidth: 450.0) {
 			Preferences.Section(title: "Setting name") {
