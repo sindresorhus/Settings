@@ -79,6 +79,9 @@ public enum Preferences {
 
 @available(macOS 10.15, *)
 extension PreferencesWindowController {
+	/**
+	Convenience way to create `PreferencesWindowController` using only SwiftUI views.
+	*/
 	public convenience init<T: View>(
 		paneViews: [Preferences.PaneView<T>],
 		style: PreferencesStyle = .toolbarItems,
