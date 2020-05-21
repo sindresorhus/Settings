@@ -82,13 +82,14 @@ extension Preferences {
 		public init<Label: View, Content: View>(
 			bottomDivider: Bool = false,
 			label: @escaping () -> Label,
-			content: @escaping () -> Content
+			@ViewBuilder content: @escaping () -> Content
 		) {
 			self.label = label()
 				.overlay(LabelOverlay())
 				.eraseToAnyView()
 			self.bottomDivider = bottomDivider
-			self.content = content().eraseToAnyView()
+			let stack = VStack(alignment: .leading) { content() }
+			self.content = stack.eraseToAnyView()
 		}
 
 		/**
@@ -99,7 +100,7 @@ extension Preferences {
 			- bottomDivider: Pass `true`, to place `Divider` after section content. Default is `false`.
 			- content: A content view.
 		*/
-		public init<Content: View>(title: String, bottomDivider: Bool = false, content: @escaping () -> Content) {
+		public init<Content: View>(title: String, bottomDivider: Bool = false, @ViewBuilder content: @escaping () -> Content) {
 			let textLabel = {
 				Text(title)
 					.font(.system(size: 13.0))

@@ -39,12 +39,10 @@ struct UserAccountsView: View {
 	var body: some View {
 		Preferences.Container(contentWidth: contentWidth) {
 			Preferences.Section(title: "Permissions:") {
-				VStack(alignment: .leading) {
-					Toggle("Allow user to administer this computer", isOn: self.$isOn1)
-					Text("Administrator has root access to this machine.")
-						.preferenceDescription()
-					Toggle("Allow user to access every file", isOn: self.$isOn2)
-				}
+				Toggle("Allow user to administer this computer", isOn: self.$isOn1)
+				Text("Administrator has root access to this machine.")
+					.preferenceDescription()
+				Toggle("Allow user to access every file", isOn: self.$isOn2)
 			}
 			Preferences.Section(title: "Show scroll bars:") {
 				Picker("", selection: self.$selection1) {
@@ -57,28 +55,24 @@ struct UserAccountsView: View {
 			Preferences.Section(label: {
 				Toggle("Some toggle", isOn: self.$isOn3)
 			}) {
-				VStack(alignment: .leading) {
-					Picker("", selection: self.$selection2) {
-						Text("Automatic").tag(0)
-						Text("Manual").tag(1)
-					}
-						.labelsHidden()
-						.frame(width: 120.0)
-					Text("Automatic mode can slow things down.")
-						.preferenceDescription()
+				Picker("", selection: self.$selection2) {
+					Text("Automatic").tag(0)
+					Text("Manual").tag(1)
 				}
+					.labelsHidden()
+					.frame(width: 120.0)
+				Text("Automatic mode can slow things down.")
+					.preferenceDescription()
 			}
 			Preferences.Section(title: "Preview mode:") {
-				VStack(alignment: .leading) {
-					Picker("", selection: self.$selection3) {
-						Text("Automatic").tag(0)
-						Text("Manual").tag(1)
-					}
-						.labelsHidden()
-						.frame(width: 120.0)
-					Text("Automatic mode can slow things down.")
-						.preferenceDescription()
+				Picker("", selection: self.$selection3) {
+					Text("Automatic").tag(0)
+					Text("Manual").tag(1)
 				}
+					.labelsHidden()
+					.frame(width: 120.0)
+				Text("Automatic mode can slow things down.")
+					.preferenceDescription()
 			}
 		}
 	}

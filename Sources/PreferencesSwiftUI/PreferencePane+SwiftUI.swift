@@ -86,9 +86,11 @@ extension PreferencesWindowController {
 		hidesToolbarForSingleItem: Bool = true
 	) {
 		let panes = paneViews.map { Preferences.PaneHostingController(paneView: $0) }
-		self.init(preferencePanes: panes,
-				  style: style,
-				  animated: animated,
-				  hidesToolbarForSingleItem: hidesToolbarForSingleItem)
+		self.init(
+			preferencePanes: panes,
+			style: style,
+			animated: animated,
+			hidesToolbarForSingleItem: hidesToolbarForSingleItem
+		)
 	}
 }
