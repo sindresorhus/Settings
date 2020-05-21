@@ -170,7 +170,7 @@ public final class PreferencesWindowController: NSWindowController {
 	)
 	
 	init(
-		paneViews: [PreferencePaneConvertible],
+		panes: [PreferencePaneConvertible],
 		style: PreferencesStyle = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
@@ -190,7 +190,7 @@ The easiest way to create the user interface within each pane is to use a [`NSGr
 ## SwiftUI support
 
 If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. To do so, create 
-`Preferences.PaneView` (which is equivalent to `PreferencePane` in SwiftUI world) using your custom view and necessary toolbar information. 
+`Preferences.Pane` (which is equivalent to `PreferencePane` in SwiftUI world) using your custom view and necessary toolbar information. 
 
 Package also contains some convenience SwiftUI components, like [`Preferences.Container`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`Preferences.Section`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment to AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview).
 
@@ -217,9 +217,9 @@ Then in the `AppDelegate`, initialize a new `PreferencesWindowController` and pa
 ```swift
 // …
 lazy var preferencesWindowController = PreferencesWindowController(
-	paneViews: [
-		PaneView(identifier: ..., title: ..., toolbarIcon: NSImage(...)) { CustomPane() },
-		PaneView(identifier: ..., title: ..., toolbarIcon: NSImage(...)) { AnotherCustomPane() },
+	panes: [
+		Pane(identifier: ..., title: ..., toolbarIcon: NSImage(...)) { CustomPane() },
+		Pane(identifier: ..., title: ..., toolbarIcon: NSImage(...)) { AnotherCustomPane() },
 	]
 )
 // …
@@ -230,7 +230,7 @@ If you want to use SwiftUI panes alongside standard AppKit NSViewControllers, th
 ```swift
 let CustomViewPreferencePaneViewController: () -> PreferencePane = {
 	let paneView =
-		Preferences.PaneView(
+		Preferences.Pane(
 			identifier: ...,
 			title: ...,
 			toolbarIcon: NSImage(...)

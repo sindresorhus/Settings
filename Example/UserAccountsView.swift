@@ -12,16 +12,16 @@ import Preferences
 Function wrapping SwiftUI into `PreferencePane`, which is mimicking view controller's default construction syntax.
 */
 let UserAccountsPreferenceViewController: () -> PreferencePane = {
-	/// Wrap your custom view into `Preferences.PaneView`, while providing necessary toolbar info.
+	/// Wrap your custom view into `Preferences.Pane`, while providing necessary toolbar info.
 	let paneView =
-		Preferences.PaneView(
+		Preferences.Pane(
 			identifier: .userAccounts,
 			title: "User Accounts",
 			toolbarIcon: NSImage(named: NSImage.userAccountsName)!
 		) {
 			UserAccountsView()
 		}
-	return Preferences.PaneHostingController(paneView: paneView)
+	return Preferences.PaneHostingController(pane: paneView)
 }
 
 /**

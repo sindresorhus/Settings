@@ -10,7 +10,7 @@ import SwiftUI
 
 /**
 Represents object that can be converted to `PreferencePane`.
-Acts as type-eraser for `Preferences.PaneView<T>`.
+Acts as type-eraser for `Preferences.Pane<T>`.
 */
 public protocol PreferencePaneConvertible {
 	/**
@@ -28,7 +28,7 @@ public enum Preferences {
 	SwiftUI equivelent of `PreferencePane` protocol. Create this using your custom content view.
 	Contains all the necessary information for single preference pane.
 	*/
-	public struct PaneView<Content: View>: View, PreferencePaneConvertible {
+	public struct Pane<Content: View>: View, PreferencePaneConvertible {
 		public let identifier: PreferencePane.Identifier
 		public let title: String
 		public let toolbarIcon: NSImage
@@ -51,12 +51,12 @@ public enum Preferences {
 		}
 
 		public func asPreferencePane() -> PreferencePane {
-			PaneHostingController(paneView: self)
+			PaneHostingController(pane: self)
 		}
 	}
 
 	/**
-	Hosting controller enabling `Preferences.PaneView` to be used alongside AppKit NSViewControllers.
+	Hosting controller enabling `Preferences.Pane` to be used alongside AppKit NSViewControllers.
 	*/
 	public final class PaneHostingController<Content: View>: NSHostingController<Content>, PreferencePane {
 		public let preferencePaneIdentifier: Identifier
@@ -75,12 +75,12 @@ public enum Preferences {
 			super.init(rootView: content)
 		}
 
-		public convenience init(paneView: PaneView<Content>) {
+		public convenience init(pane: Pane<Content>) {
 			self.init(
-				identifier: paneView.identifier,
-				title: paneView.title,
-				toolbarIcon: paneView.toolbarIcon,
-				content: paneView.content
+				identifier: pane.identifier,
+				title: pane.title,
+				toolbarIcon: pane.toolbarIcon,
+				content: pane.content
 			)
 		}
 
@@ -98,14 +98,14 @@ extension PreferencesWindowController {
 	Convenience way to create `PreferencesWindowController` using only SwiftUI views.
 	*/
 	public convenience init(
-		paneViews: [PreferencePaneConvertible],
+		panes: [PreferencePaneConvertible],
 		style: PreferencesStyle = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	) {
-		let panes = paneViews.map { $0.asPreferencePane() }
+		let preferencePanes = panes.map { $0.asPreferencePane() }
 		self.init(
-			preferencePanes: panes,
+			preferencePanes: preferencePanes,
 			style: style,
 			animated: animated,
 			hidesToolbarForSingleItem: hidesToolbarForSingleItem
