@@ -200,7 +200,7 @@ let CustomViewPreferencePaneViewController: () -> PreferencePane = {
 			//  .environmentObject(self.someSettingsManager)
 		}
 	
-	Preferences.PaneHostingController(paneView: paneView)
+	return Preferences.PaneHostingController(paneView: paneView)
 }
 
 struct CustomPane: View {

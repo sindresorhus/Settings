@@ -21,7 +21,6 @@ let UserAccountsPreferenceViewController: () -> PreferencePane = {
 		) {
 			UserAccountsView()
 		}
-	// return PreferencePane
 	return Preferences.PaneHostingController(paneView: paneView)
 }
 

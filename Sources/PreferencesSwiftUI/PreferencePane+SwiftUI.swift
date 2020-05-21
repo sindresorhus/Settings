@@ -76,3 +76,19 @@ public enum Preferences {
 		}
 	}
 }
+
+@available(macOS 10.15, *)
+extension PreferencesWindowController {
+	public convenience init<T: View>(
+		paneViews: [Preferences.PaneView<T>],
+		style: PreferencesStyle = .toolbarItems,
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
+	) {
+		let panes = paneViews.map { Preferences.PaneHostingController(paneView: $0) }
+		self.init(preferencePanes: panes,
+				  style: style,
+				  animated: animated,
+				  hidesToolbarForSingleItem: hidesToolbarForSingleItem)
+	}
+}
