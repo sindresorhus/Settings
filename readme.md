@@ -169,8 +169,8 @@ public final class PreferencesWindowController: NSWindowController {
 		hidesToolbarForSingleItem: Bool = true
 	)
 	
-	init<T: View>(
-		paneViews: [Preferences.PaneView<T>],
+	init(
+		paneViews: [PreferencePaneConvertible],
 		style: PreferencesStyle = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true

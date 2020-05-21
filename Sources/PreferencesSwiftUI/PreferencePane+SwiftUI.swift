@@ -9,6 +9,17 @@ import Foundation
 import SwiftUI
 
 /**
+Represents object that can be converted to `PreferencePane`.
+Acts as type-eraser for `Preferences.PaneView<T>`.
+*/
+public protocol PreferencePaneConvertible {
+	/**
+	Convert self to equivalent PreferencePane
+	*/
+	func asPreferencePane() -> PreferencePane
+}
+
+/**
 `enum` acting as a namespace for SwiftUI components.
 */
 @available(macOS 10.15, *)
@@ -17,7 +28,7 @@ public enum Preferences {
 	SwiftUI equivelent of `PreferencePane` protocol. Create this using your custom content view.
 	Contains all the necessary information for single preference pane.
 	*/
-	public struct PaneView<Content: View>: View {
+	public struct PaneView<Content: View>: View, PreferencePaneConvertible {
 		public let identifier: PreferencePane.Identifier
 		public let title: String
 		public let toolbarIcon: NSImage
@@ -37,6 +48,10 @@ public enum Preferences {
 
 		public var body: some View {
 			content
+		}
+
+		public func asPreferencePane() -> PreferencePane {
+			PaneHostingController(paneView: self)
 		}
 	}
 
@@ -82,13 +97,13 @@ extension PreferencesWindowController {
 	/**
 	Convenience way to create `PreferencesWindowController` using only SwiftUI views.
 	*/
-	public convenience init<T: View>(
-		paneViews: [Preferences.PaneView<T>],
+	public convenience init(
+		paneViews: [PreferencePaneConvertible],
 		style: PreferencesStyle = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	) {
-		let panes = paneViews.map { Preferences.PaneHostingController(paneView: $0) }
+		let panes = paneViews.map { $0.asPreferencePane() }
 		self.init(
 			preferencePanes: panes,
 			style: style,
