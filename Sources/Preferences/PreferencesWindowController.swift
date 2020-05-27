@@ -95,6 +95,13 @@ public final class PreferencesWindowController: NSWindowController {
 		restoreWindowPosition()
 		NSApp.activate(ignoringOtherApps: true)
 	}
+    
+    /**
+    Activates tab in the preferences window
+     */
+    public func activateTab(preferenceIdentifier: PreferencePane.Identifier) {
+        tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
+    }
 
 	private func restoreWindowPosition() {
 		guard
