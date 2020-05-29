@@ -6,21 +6,17 @@
 
 Just pass in some view controllers and this package will take care of the rest.
 
-
 ## Requirements
 
 - macOS 10.10+
 - Xcode 11+
 - Swift 5.1+
 
-
 ## Install
 
 #### SwiftPM
 
-```swift
-.package(url: "https://github.com/sindresorhus/Preferences", from: "1.0.1")
-```
+Add `https://github.com/sindresorhus/Preferences` in the [“Swift Package Manager” tab in Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
 #### Carthage
 
@@ -33,7 +29,6 @@ github "sindresorhus/Preferences"
 ```ruby
 pod 'Preferences'
 ```
-
 
 ## Usage
 
@@ -146,7 +141,6 @@ lazy var preferencesWindowController = PreferencesWindowController(
 
 ![NSSegmentedControl based](segmented-control.png)
 
-
 ## API
 
 ```swift
@@ -181,7 +175,6 @@ public final class PreferencesWindowController: NSWindowController {
 ```
 
 As with any `NSWindowController`, call `NSWindowController#close()` to close the preferences window.
-
 
 ## Recommendation
 
@@ -268,7 +261,6 @@ This can happen when you are not using auto-layout or have not set a size for th
 
 The `animated` parameter of `PreferencesWindowController.init` has no effect on macOS 10.13 or earlier as those versions don't support `NSViewController.TransitionOptions.crossfade`.
 
-
 ## FAQ
 
 ### How can I localize the window title?
@@ -302,16 +294,15 @@ It can't be that hard right? Well, turns out it is:
 - Adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/).
 - The window title is automatically localized by using the system string.
 
-
 ## Related
 
 - [Defaults](https://github.com/sindresorhus/Defaults) - Swifty and modern UserDefaults
 - [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - Add "Launch at Login" functionality to your macOS app
+- [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) - Add user-customizable global keyboard shortcuts to your macOS app
 - [DockProgress](https://github.com/sindresorhus/DockProgress) - Show progress in your app's Dock icon
 - [More…](https://github.com/search?q=user%3Asindresorhus+language%3Aswift)
 
 You might also like Sindre's [apps](https://sindresorhus.com/apps).
-
 
 ## Used in these apps
 
@@ -320,7 +311,6 @@ You might also like Sindre's [apps](https://sindresorhus.com/apps).
 - [Word Counter](https://wordcounterapp.com) - Measuring writer's productivity by [Christian Tietze](https://github.com/DivineDominion)
 
 Want to tell the world about your app that is using Preferences? Open a PR!
-
 
 ## Maintainers
 
