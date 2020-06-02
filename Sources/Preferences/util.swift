@@ -1,7 +1,7 @@
 import Cocoa
 
 extension NSImage {
-	static var empty: NSImage { NSImage(size: .zero) }
+	public static var empty: NSImage { NSImage(size: .zero) }
 }
 
 extension NSView {

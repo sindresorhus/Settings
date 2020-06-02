@@ -12,11 +12,23 @@ let package = Package(
 			targets: [
 				"Preferences"
 			]
+		),
+		.library(
+			name: "PreferencesSwiftUI",
+			targets: [
+				"PreferencesSwiftUI"
+			]
 		)
 	],
 	targets: [
 		.target(
 			name: "Preferences"
+		),
+		.target(
+			name: "PreferencesSwiftUI",
+			dependencies: [
+				"Preferences"
+			]
 		)
 	]
 )

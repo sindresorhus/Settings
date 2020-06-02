@@ -162,6 +162,13 @@ public final class PreferencesWindowController: NSWindowController {
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	)
+	
+	init(
+		panes: [PreferencePaneConvertible],
+		style: PreferencesStyle = .toolbarItems,
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
+	)
 
 	func show(preferencePane: PreferencePane.Identifier? = nil)
 }
@@ -172,6 +179,77 @@ As with any `NSWindowController`, call `NSWindowController#close()` to close the
 ## Recommendation
 
 The easiest way to create the user interface within each pane is to use a [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview) in Interface Builder. See the example project in this repo for a demo.
+
+## SwiftUI support
+
+If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. To do so, create 
+`Preferences.Pane` (which is equivalent to `PreferencePane` in SwiftUI world) using your custom view and necessary toolbar information. 
+
+Package also contains some convenience SwiftUI components, like [`Preferences.Container`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`Preferences.Section`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment to AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview).
+
+```swift
+struct CustomPane: View {
+	var body: some View {
+		Preferences.Container(contentWidth: 450.0) {
+			Preferences.Section(title: "Setting name") {
+				// Some view
+			}
+			Preferences.Section(label: {
+				// Custom label aligned on the right side
+			}) {
+				// Some view 
+			}
+			…
+		}
+	}
+}
+```
+
+Then in the `AppDelegate`, initialize a new `PreferencesWindowController` and pass it the pane views.
+
+```swift
+// …
+lazy var preferencesWindowController = PreferencesWindowController(
+	panes: [
+		Pane(identifier: ..., title: ..., toolbarIcon: NSImage(...)) { CustomPane() },
+		Pane(identifier: ..., title: ..., toolbarIcon: NSImage(...)) { AnotherCustomPane() },
+	]
+)
+// …
+```
+
+If you want to use SwiftUI panes alongside standard AppKit NSViewControllers, then wrap the pane views into `Preferences.PaneHostingController` and pass them to `PreferencesWindowController` as you would with standard panes.
+
+```swift
+let CustomViewPreferencePaneViewController: () -> PreferencePane = {
+	let paneView =
+		Preferences.Pane(
+			identifier: ...,
+			title: ...,
+			toolbarIcon: NSImage(...)
+		) {
+			// your custom view (and modifiers if wanted)
+			CustomPane()
+			//  .environmentObject(self.someSettingsManager)
+		}
+	
+	return Preferences.PaneHostingController(paneView: paneView)
+}
+// …
+lazy var preferencesWindowController = PreferencesWindowController(
+	preferencePanes: [
+		GeneralPreferenceViewController(),
+		AdvancedPreferenceViewController(),
+		CustomViewPreferencePaneViewController()
+	],
+	style: .segmentedControl
+)
+// …
+```
+
+[Full example here.](Example/UserAccountsView.swift).
+
+When using Swift Package Manager, the SwiftUI components are distributed as separate target called `PreferencesSwiftUI`. 
 
 ## Known issues
 
