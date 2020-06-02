@@ -20,13 +20,13 @@ extension Preferences {
 	SwiftUI equivalent of the `PreferencePane` protocol.
 	*/
 	public struct Pane<Content: View>: View, PreferencePaneConvertible {
-		let identifier: PreferencePane.Identifier
+		let identifier: PaneIdentifier
 		let title: String
 		let toolbarIcon: NSImage
 		let content: Content
 
 		public init(
-			identifier: PreferencePane.Identifier,
+			identifier: PaneIdentifier,
 			title: String,
 			toolbarIcon: NSImage,
 			contentView: () -> Content
@@ -48,12 +48,12 @@ extension Preferences {
 	Hosting controller enabling `Preferences.Pane` to be used alongside AppKit `NSViewController`'s.
 	*/
 	public final class PaneHostingController<Content: View>: NSHostingController<Content>, PreferencePane {
-		public let preferencePaneIdentifier: Identifier
+		public let preferencePaneIdentifier: PaneIdentifier
 		public let preferencePaneTitle: String
 		public let toolbarItemIcon: NSImage
 
 		init(
-			identifier: Identifier,
+			identifier: PaneIdentifier,
 			title: String,
 			toolbarIcon: NSImage,
 			content: Content

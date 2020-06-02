@@ -75,7 +75,7 @@ public final class PreferencesWindowController: NSWindowController {
 	/**
 	Show the preferences window and brings it to front.
 
-	If you pass a `PreferencePane.Identifier`, the window will activate the corresponding tab.
+	If you pass a `Preferences.PaneIdentifier`, the window will activate the corresponding tab.
 
 	- Parameter preferencePane: Identifier of the preference pane to display, or `nil` to show the tab that was open when the user last closed the window.
 
@@ -84,7 +84,7 @@ public final class PreferencesWindowController: NSWindowController {
 	- See `close()` to close the window again.
 	- See `showWindow(_:)` to show the window without the convenience of activating the app.
 	*/
-	public func show(preferencePane preferenceIdentifier: PreferencePane.Identifier? = nil) {
+	public func show(preferencePane preferenceIdentifier: Preferences.PaneIdentifier? = nil) {
 		if let preferenceIdentifier = preferenceIdentifier {
 			tabViewController.activateTab(preferenceIdentifier: preferenceIdentifier, animated: false)
 		} else {

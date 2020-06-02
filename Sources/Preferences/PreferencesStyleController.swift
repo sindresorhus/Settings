@@ -5,11 +5,11 @@ protocol PreferencesStyleController: AnyObject {
 	var isKeepingWindowCentered: Bool { get }
 
 	func toolbarItemIdentifiers() -> [NSToolbarItem.Identifier]
-	func toolbarItem(preferenceIdentifier: PreferencePane.Identifier) -> NSToolbarItem?
+	func toolbarItem(preferenceIdentifier: Preferences.PaneIdentifier) -> NSToolbarItem?
 	func selectTab(index: Int)
 }
 
 protocol PreferencesStyleControllerDelegate: AnyObject {
-	func activateTab(preferenceIdentifier: PreferencePane.Identifier, animated: Bool)
+	func activateTab(preferenceIdentifier: Preferences.PaneIdentifier, animated: Bool)
 	func activateTab(index: Int, animated: Bool)
 }

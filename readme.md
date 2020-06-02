@@ -39,9 +39,9 @@ First, create some preference pane identifiers:
 ```swift
 import Preferences
 
-extension PreferencePane.Identifier {
-	static let general = Identifier("general")
-	static let advanced = Identifier("advanced")
+extension Preferences.PaneIdentifier {
+	static let general = Self("general")
+	static let advanced = Self("advanced")
 }
 ```
 
@@ -54,7 +54,7 @@ import Cocoa
 import Preferences
 
 final class GeneralPreferenceViewController: NSViewController, PreferencePane {
-	let preferencePaneIdentifier = PreferencePane.Identifier.general
+	let preferencePaneIdentifier = Preferences.PaneIdentifier.general
 	let preferencePaneTitle = "General"
 	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
@@ -75,7 +75,7 @@ import Cocoa
 import Preferences
 
 final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
-	let preferencePaneIdentifier = PreferencePane.Identifier.advanced
+	let preferencePaneIdentifier = Preferences.PaneIdentifier.advanced
 	let preferencePaneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
@@ -145,7 +145,7 @@ lazy var preferencesWindowController = PreferencesWindowController(
 
 ```swift
 public protocol PreferencePane: NSViewController {
-	var preferencePaneIdentifier: PreferencePane.Identifier { get }
+	var preferencePaneIdentifier: Preferences.PaneIdentifier { get }
 	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
 }
@@ -170,7 +170,7 @@ public final class PreferencesWindowController: NSWindowController {
 		hidesToolbarForSingleItem: Bool = true
 	)
 
-	func show(preferencePane: PreferencePane.Identifier? = nil)
+	func show(preferencePane: Preferences.PaneIdentifier? = nil)
 }
 ```
 
