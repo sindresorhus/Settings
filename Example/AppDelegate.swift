@@ -11,8 +11,8 @@ extension Preferences.PaneIdentifier {
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
-	var preferencesStyle: PreferencesStyle {
-		get { PreferencesStyle.preferencesStyleFromUserDefaults() }
+	var preferencesStyle: Preferences.Style {
+		get { .preferencesStyleFromUserDefaults() }
 		set {
 			newValue.storeInUserDefaults()
 		}

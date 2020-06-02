@@ -27,7 +27,7 @@ public final class PreferencesWindowController: NSWindowController {
 
 	public init(
 		preferencePanes: [PreferencePane],
-		style: PreferencesStyle = .toolbarItems,
+		style: Preferences.Style = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	) {
@@ -120,7 +120,7 @@ extension PreferencesWindowController {
 	*/
 	public convenience init(
 		panes: [PreferencePaneConvertible],
-		style: PreferencesStyle = .toolbarItems,
+		style: Preferences.Style = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	) {

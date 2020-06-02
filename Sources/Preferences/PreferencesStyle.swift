@@ -1,6 +1,8 @@
 import Cocoa
 
-public enum PreferencesStyle {
-	case toolbarItems
-	case segmentedControl
+extension Preferences {
+	public enum Style {
+		case toolbarItems
+		case segmentedControl
+	}
 }

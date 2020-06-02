@@ -144,28 +144,32 @@ lazy var preferencesWindowController = PreferencesWindowController(
 ## API
 
 ```swift
+public enum Preferences {}
+
+extension Preferences {
+	public enum Style {
+		case toolbarItems
+		case segmentedControl
+	}
+}
+
 public protocol PreferencePane: NSViewController {
 	var preferencePaneIdentifier: Preferences.PaneIdentifier { get }
 	var preferencePaneTitle: String { get }
 	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
 }
 
-public enum PreferencesStyle {
-	case toolbarItems
-	case segmentedControl
-}
-
 public final class PreferencesWindowController: NSWindowController {
 	init(
 		preferencePanes: [PreferencePane],
-		style: PreferencesStyle = .toolbarItems,
+		style: Preferences.Style = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	)
 
 	init(
 		panes: [PreferencePaneConvertible],
-		style: PreferencesStyle = .toolbarItems,
+		style: Preferences.Style = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	)
