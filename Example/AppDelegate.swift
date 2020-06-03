@@ -49,8 +49,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 }
 
-extension PreferencesStyle {
-	var rotated: PreferencesStyle {
+extension Preferences.Style {
+	var rotated: Self {
 		switch self {
 		case .toolbarItems:
 			return .segmentedControl(size: .uniform)
