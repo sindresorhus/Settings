@@ -122,7 +122,7 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 	}
 }
 
-extension PreferencesStyle.SegmentSize {
+extension Preferences.Style.SegmentSize {
 	func segmentSizes(preferencePanes: [PreferencePane]) -> [CGSize] {
 		let insets: CGSize = {
 			switch self {
