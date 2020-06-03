@@ -4,23 +4,23 @@ import Preferences
 /**
 Function wrapping SwiftUI into `PreferencePane`, which is mimicking view controller's default construction syntax.
 */
-let UserAccountsPreferenceViewController: () -> PreferencePane = {
+let AccountsPreferenceViewController: () -> PreferencePane = {
 	/// Wrap your custom view into `Preferences.Pane`, while providing necessary toolbar info.
 	let paneView = Preferences.Pane(
-		identifier: .userAccounts,
-		title: "User Accounts",
+		identifier: .accounts,
+		title: "Accounts",
 		toolbarIcon: NSImage(named: NSImage.userAccountsName)!
 	) {
-		UserAccountsView()
+		AccountsView()
 	}
 
 	return Preferences.PaneHostingController(pane: paneView)
 }
 
 /**
-The main view of “User Accounts” preference pane.
+The main view of “Accounts” preference pane.
 */
-struct UserAccountsView: View {
+struct AccountsView: View {
 	@State private var isOn1 = true
 	@State private var isOn2 = false
 	@State private var isOn3 = true
@@ -71,8 +71,8 @@ struct UserAccountsView: View {
 	}
 }
 
-struct UserAccountsView_Previews: PreviewProvider {
+struct AccountsView_Previews: PreviewProvider {
 	static var previews: some View {
-		UserAccountsView()
+		AccountsView()
 	}
 }

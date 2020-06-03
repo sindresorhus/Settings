@@ -189,7 +189,7 @@ The easiest way to create the user interface within each pane is to use a [`NSGr
 If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. Create a
 `Preferences.Pane` (instead of `PreferencePane` when using AppKit) using your custom view and necessary toolbar information.
 
-Run the `PreferencesExample` target in the Xcode project in this repo to see a real-world example. The `User Accounts` tab is in SwiftUI.
+Run the `PreferencesExample` target in the Xcode project in this repo to see a real-world example. The `Accounts` tab is in SwiftUI.
 
 There are also some bundled convenience SwiftUI components, like [`Preferences.Container`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`Preferences.Section`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment to AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview). And also a `.preferenceDescription()` view modifier to style text as a preference description.
 
@@ -269,7 +269,7 @@ lazy var preferencesWindowController = PreferencesWindowController(
 // …
 ```
 
-[Full example here.](Example/UserAccountsView.swift).
+[Full example here.](Example/AccountsView.swift).
 
 ## Known issues
 

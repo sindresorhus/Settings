@@ -4,7 +4,7 @@ import Preferences
 extension Preferences.PaneIdentifier {
 	static let general = Self("general")
 	static let advanced = Self("advanced")
-	static let userAccounts = Self("userAccounts")
+	static let accounts = Self("accounts")
 }
 
 @NSApplicationMain
@@ -21,7 +21,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	lazy var preferences: [PreferencePane] = [
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController(),
-		UserAccountsPreferenceViewController()
+		AccountsPreferenceViewController()
 	]
 
 	lazy var preferencesWindowController = PreferencesWindowController(
@@ -36,7 +36,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		preferencesWindowController.show(preferencePane: .userAccounts)
+		preferencesWindowController.show(preferencePane: .accounts)
 	}
 
 	@IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {

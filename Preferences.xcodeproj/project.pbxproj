@@ -26,7 +26,7 @@
 		E34E9F0520E61C06002F8F86 /* AdvancedPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */; };
 		E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */; };
 		E3D64112248648EE0090D28E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D64111248648EE0090D28E /* Preferences.swift */; };
-		E7059F1323C2AC7400F84762 /* UserAccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7059F1123C2AC3700F84762 /* UserAccountsView.swift */; };
+		E7059F1323C2AC7400F84762 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7059F1123C2AC3700F84762 /* AccountsView.swift */; };
 		E74F0B0723C2BD6D00B16841 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74F0B0623C2BD6D00B16841 /* Pane.swift */; };
 		E752207623FCACC800117D41 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E752207523FCACC800117D41 /* Section.swift */; };
 		E7E6B56823C7DB2000E51429 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6B56723C7DB2000E51429 /* Container.swift */; };
@@ -80,7 +80,7 @@
 		E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedPreferenceViewController.xib; sourceTree = "<group>"; };
 		E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E3D64111248648EE0090D28E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Preferences.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E7059F1123C2AC3700F84762 /* UserAccountsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserAccountsView.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; wrapsLines = 1; };
+		E7059F1123C2AC3700F84762 /* AccountsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountsView.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; wrapsLines = 1; };
 		E74F0B0623C2BD6D00B16841 /* Pane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Pane.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E752207523FCACC800117D41 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Section.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E7E6B56723C7DB2000E51429 /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Container.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -119,7 +119,7 @@
 				E34E9F0020E61A26002F8F86 /* GeneralPreferenceViewController.xib */,
 				E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */,
 				E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */,
-				E7059F1123C2AC3700F84762 /* UserAccountsView.swift */,
+				E7059F1123C2AC3700F84762 /* AccountsView.swift */,
 				E3194E4022573FF3006FE775 /* util.swift */,
 				E34E9EEB20E6149D002F8F86 /* Assets.xcassets */,
 				E34E9EF020E6149D002F8F86 /* Info.plist */,
@@ -315,7 +315,7 @@
 			files = (
 				E34E9EFF20E617E7002F8F86 /* GeneralPreferenceViewController.swift in Sources */,
 				E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */,
-				E7059F1323C2AC7400F84762 /* UserAccountsView.swift in Sources */,
+				E7059F1323C2AC7400F84762 /* AccountsView.swift in Sources */,
 				E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */,
 				E3194E4122573FF3006FE775 /* util.swift in Sources */,
 				502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */,
