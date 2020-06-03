@@ -18,6 +18,7 @@ whitelist_rules:
   - contains_over_first_not_nil
   - contains_over_range_nil_comparison
   - control_statement
+  - custom_rules
   - deployment_target
   - discarded_notification_center_observer
   - discouraged_direct_init
@@ -34,6 +35,7 @@ whitelist_rules:
   - empty_parentheses_with_trailing_closure
   - empty_string
   - empty_xctest_method
+  - enum_case_associated_value_count
   - explicit_init
   - fallthrough
   - fatal_error_message
@@ -79,6 +81,7 @@ whitelist_rules:
   - operator_whitespace
   - overridden_super_call
   - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
   - private_action
   - private_outlet
   - private_unit_test
@@ -112,7 +115,6 @@ whitelist_rules:
   - trailing_newline
   - trailing_semicolon
   - trailing_whitespace
-  - type_name
   - unavailable_function
   - unneeded_break_in_switch
   - unneeded_parentheses_in_closure_argument
@@ -137,26 +139,12 @@ whitelist_rules:
 analyzer_rules:
   - unused_declaration
   - unused_import
-force_cast: warning
-force_unwrapping: warning
 number_separator:
   minimum_length: 5
 object_literal:
   image_literal: false
 discouraged_object_literal:
   color_literal: false
-type_contents_order:
-  order:
-    - case
-    - [type_alias, associated_type, subtype]
-    - type_property
-    - type_method
-    - ib_outlet
-    - [ib_inspectable, instance_property]
-    - initializer
-    - subscript
-    - view_life_cycle_method
-    - [ib_action, other_method]
 identifier_name:
   max_length:
     warning: 100
@@ -178,3 +166,13 @@ identifier_name:
     - 'y2'
 deployment_target:
   macOS_deployment_target: '10.10'
+custom_rules:
+  no_nsrect:
+    name: 'Use CGRect instead of NSRect'
+    regex: '^NSRect$'
+  no_nssize:
+    name: 'Use CGSize instead of NSSize'
+    regex: '^NSSize$'
+  no_nspoint:
+    name: 'Use CGPoint instead of NSPoint'
+    regex: '^NSPoint$'

@@ -1,17 +1,18 @@
 import Cocoa
 import Preferences
 
-extension PreferencePane.Identifier {
-	static let general = Identifier("general")
-	static let advanced = Identifier("advanced")
+extension Preferences.PaneIdentifier {
+	static let general = Self("general")
+	static let advanced = Self("advanced")
+	static let accounts = Self("accounts")
 }
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
-	var preferencesStyle: PreferencesStyle {
-		get { PreferencesStyle.preferencesStyleFromUserDefaults() }
+	var preferencesStyle: Preferences.Style {
+		get { .preferencesStyleFromUserDefaults() }
 		set {
 			newValue.storeInUserDefaults()
 		}
@@ -19,7 +20,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
 	lazy var preferences: [PreferencePane] = [
 		GeneralPreferenceViewController(),
-		AdvancedPreferenceViewController()
+		AdvancedPreferenceViewController(),
+		AccountsPreferenceViewController()
 	]
 
 	lazy var preferencesWindowController = PreferencesWindowController(
@@ -34,7 +36,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		preferencesWindowController.show(preferencePane: .advanced)
+		preferencesWindowController.show(preferencePane: .accounts)
 	}
 
 	@IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {

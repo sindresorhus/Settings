@@ -6,21 +6,17 @@
 
 Just pass in some view controllers and this package will take care of the rest.
 
-
 ## Requirements
 
 - macOS 10.10+
-- Xcode 11+
-- Swift 5.1+
-
+- Xcode 11.5+
+- Swift 5.2+
 
 ## Install
 
 #### SwiftPM
 
-```swift
-.package(url: "https://github.com/sindresorhus/Preferences", from: "1.0.1")
-```
+Add `https://github.com/sindresorhus/Preferences` in the [“Swift Package Manager” tab in Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
 #### Carthage
 
@@ -34,7 +30,6 @@ github "sindresorhus/Preferences"
 pod 'Preferences'
 ```
 
-
 ## Usage
 
 *Run the `PreferencesExample` target in Xcode to try a live example.*
@@ -44,9 +39,9 @@ First, create some preference pane identifiers:
 ```swift
 import Preferences
 
-extension PreferencePane.Identifier {
-	static let general = Identifier("general")
-	static let advanced = Identifier("advanced")
+extension Preferences.PaneIdentifier {
+	static let general = Self("general")
+	static let advanced = Self("advanced")
 }
 ```
 
@@ -59,7 +54,7 @@ import Cocoa
 import Preferences
 
 final class GeneralPreferenceViewController: NSViewController, PreferencePane {
-	let preferencePaneIdentifier = PreferencePane.Identifier.general
+	let preferencePaneIdentifier = Preferences.PaneIdentifier.general
 	let preferencePaneTitle = "General"
 	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
 
@@ -80,7 +75,7 @@ import Cocoa
 import Preferences
 
 final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
-	let preferencePaneIdentifier = PreferencePane.Identifier.advanced
+	let preferencePaneIdentifier = Preferences.PaneIdentifier.advanced
 	let preferencePaneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
 
@@ -146,40 +141,135 @@ lazy var preferencesWindowController = PreferencesWindowController(
 
 ![NSSegmentedControl based](segmented-control.png)
 
-
 ## API
 
 ```swift
-public protocol PreferencePane: NSViewController {
-	var preferencePaneIdentifier: PreferencePane.Identifier { get }
-	var preferencePaneTitle: String { get }
-	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
+public enum Preferences {}
+
+extension Preferences {
+	public enum Style {
+		case toolbarItems
+		case segmentedControl
+	}
 }
 
-public enum PreferencesStyle {
-	case toolbarItems
-	case segmentedControl
+public protocol PreferencePane: NSViewController {
+	var preferencePaneIdentifier: Preferences.PaneIdentifier { get }
+	var preferencePaneTitle: String { get }
+	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
 }
 
 public final class PreferencesWindowController: NSWindowController {
 	init(
 		preferencePanes: [PreferencePane],
-		style: PreferencesStyle = .toolbarItems,
+		style: Preferences.Style = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	)
 
-	func show(preferencePane: PreferencePane.Identifier? = nil)
+	init(
+		panes: [PreferencePaneConvertible],
+		style: Preferences.Style = .toolbarItems,
+		animated: Bool = true,
+		hidesToolbarForSingleItem: Bool = true
+	)
+
+	func show(preferencePane: Preferences.PaneIdentifier? = nil)
 }
 ```
 
 As with any `NSWindowController`, call `NSWindowController#close()` to close the preferences window.
 
-
 ## Recommendation
 
 The easiest way to create the user interface within each pane is to use a [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview) in Interface Builder. See the example project in this repo for a demo.
 
+## SwiftUI support
+
+If your deployment target is macOS 10.15 or later, you can use the bundled SwiftUI components to create panes. Create a
+`Preferences.Pane` (instead of `PreferencePane` when using AppKit) using your custom view and necessary toolbar information.
+
+Run the `PreferencesExample` target in the Xcode project in this repo to see a real-world example. The `Accounts` tab is in SwiftUI.
+
+There are also some bundled convenience SwiftUI components, like [`Preferences.Container`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`Preferences.Section`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment to AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview). And also a `.preferenceDescription()` view modifier to style text as a preference description.
+
+```swift
+struct CustomPane: View {
+	var body: some View {
+		Preferences.Container(contentWidth: 450.0) {
+			Preferences.Section(title: "Section Title") {
+				// Some view.
+			}
+			Preferences.Section(label: {
+				// Custom label aligned on the right side.
+			}) {
+				// Some view.
+			}
+			…
+		}
+	}
+}
+```
+
+Then in the `AppDelegate`, initialize a new `PreferencesWindowController` and pass it the pane views.
+
+```swift
+// …
+
+lazy var preferencesWindowController = PreferencesWindowController(
+	panes: [
+		Pane(
+			 identifier: …,
+			 title: …,
+			 toolbarIcon: NSImage(…)
+		) {
+			CustomPane()
+		},
+		Pane(
+			 identifier: …,
+			 title: …,
+			 toolbarIcon: NSImage(…)
+		) {
+			AnotherCustomPane()
+		}
+	]
+)
+
+// …
+```
+
+If you want to use SwiftUI panes alongside standard AppKit `NSViewController`'s, instead wrap the pane views into `Preferences.PaneHostingController` and pass them to `PreferencesWindowController` as you would with standard panes.
+
+```swift
+let CustomViewPreferencePaneViewController: () -> PreferencePane = {
+	let paneView = Preferences.Pane(
+		identifier: …,
+		title: …,
+		toolbarIcon: NSImage(…)
+	) {
+		// Your custom view (and modifiers if needed).
+		CustomPane()
+		//  .environmentObject(self.someSettingsManager)
+	}
+
+	return Preferences.PaneHostingController(paneView: paneView)
+}
+
+// …
+
+lazy var preferencesWindowController = PreferencesWindowController(
+	preferencePanes: [
+		GeneralPreferenceViewController(),
+		AdvancedPreferenceViewController(),
+		CustomViewPreferencePaneViewController()
+	],
+	style: .segmentedControl
+)
+
+// …
+```
+
+[Full example here.](Example/AccountsView.swift).
 
 ## Known issues
 
@@ -190,7 +280,6 @@ This can happen when you are not using auto-layout or have not set a size for th
 ### There are no animations on macOS 10.13 and earlier
 
 The `animated` parameter of `PreferencesWindowController.init` has no effect on macOS 10.13 or earlier as those versions don't support `NSViewController.TransitionOptions.crossfade`.
-
 
 ## FAQ
 
@@ -221,20 +310,20 @@ It can't be that hard right? Well, turns out it is:
 - Written in Swift. *(No bridging header!)*
 - Swifty API using a protocol.
 - Supports segmented control style tabs.
+- SwiftUI support.
 - Fully documented.
 - Adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/).
 - The window title is automatically localized by using the system string.
-
 
 ## Related
 
 - [Defaults](https://github.com/sindresorhus/Defaults) - Swifty and modern UserDefaults
 - [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - Add "Launch at Login" functionality to your macOS app
+- [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) - Add user-customizable global keyboard shortcuts to your macOS app
 - [DockProgress](https://github.com/sindresorhus/DockProgress) - Show progress in your app's Dock icon
 - [More…](https://github.com/search?q=user%3Asindresorhus+language%3Aswift)
 
 You might also like Sindre's [apps](https://sindresorhus.com/apps).
-
 
 ## Used in these apps
 
@@ -243,7 +332,6 @@ You might also like Sindre's [apps](https://sindresorhus.com/apps).
 - [Word Counter](https://wordcounterapp.com) - Measuring writer's productivity by [Christian Tietze](https://github.com/DivineDominion)
 
 Want to tell the world about your app that is using Preferences? Open a PR!
-
 
 ## Maintainers
 

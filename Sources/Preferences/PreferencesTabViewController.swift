@@ -20,7 +20,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		self.view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferencePanes: [PreferencePane], style: PreferencesStyle) {
+	func configure(preferencePanes: [PreferencePane], style: Preferences.Style) {
 		self.preferencePanes = preferencePanes
 		self.children = preferencePanes
 
@@ -53,7 +53,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		activateTab(preferenceIdentifier: preferencePane.preferencePaneIdentifier, animated: animated)
 	}
 
-	func activateTab(preferenceIdentifier: PreferencePane.Identifier, animated: Bool) {
+	func activateTab(preferenceIdentifier: Preferences.PaneIdentifier, animated: Bool) {
 		guard let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier }) else {
 			return activateTab(index: 0, animated: animated)
 		}
@@ -222,6 +222,6 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 			return nil
 		}
 
-		return preferencesStyleController.toolbarItem(preferenceIdentifier: .Identifier(fromToolbarItemIdentifier: itemIdentifier))
+		return preferencesStyleController.toolbarItem(preferenceIdentifier: Preferences.PaneIdentifier(fromToolbarItemIdentifier: itemIdentifier))
 	}
 }
