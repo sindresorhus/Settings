@@ -2,7 +2,7 @@
 
 > Add a preferences window to your macOS app in minutes
 
-<img src="screenshot.gif" width="628" height="416">
+<img src="screenshot.gif" width="628">
 
 Just pass in some view controllers and this package will take care of the rest.
 
@@ -14,7 +14,7 @@ Just pass in some view controllers and this package will take care of the rest.
 
 ## Install
 
-#### SwiftPM
+#### Swift Package Manager
 
 Add `https://github.com/sindresorhus/Preferences` in the [“Swift Package Manager” tab in Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
@@ -192,6 +192,8 @@ If your deployment target is macOS 10.15 or later, you can use the bundled Swift
 Run the `PreferencesExample` target in the Xcode project in this repo to see a real-world example. The `Accounts` tab is in SwiftUI.
 
 There are also some bundled convenience SwiftUI components, like [`Preferences.Container`](./Sources/PreferencesSwiftUI/PreferenceContainer.swift) and [`Preferences.Section`](./Sources/PreferencesSwiftUI/PreferenceSection.swift) to automatically achieve similar alignment to AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview). And also a `.preferenceDescription()` view modifier to style text as a preference description.
+
+Tip: The [`Defaults`](https://github.com/sindresorhus/Defaults#swiftui-support) package makes it very easy to persist the preferences.
 
 ```swift
 struct CustomPane: View {
