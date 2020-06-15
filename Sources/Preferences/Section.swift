@@ -97,7 +97,7 @@ extension Preferences {
 		}
 
 		public var body: some View {
-			HStack(alignment: .top) {
+			HStack(alignment: .center) {
 				label
 					.alignmentGuide(.preferenceSectionLabel) { $0[.trailing] }
 				content
