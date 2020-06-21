@@ -54,7 +54,7 @@ extension Preferences {
 
 		/**
 		A section is responsible for controlling a single preference.
-		
+
 		- Parameters:
 			- bottomDivider: Whether to place a `Divider` after the section content. Default is `false`.
 			- label: A view describing preference handled by this section.
@@ -75,7 +75,7 @@ extension Preferences {
 
 		/**
 		Creates instance of section, responsible for controling single preference with `Text` as  a `Label`.
-		
+
 		- Parameters:
 			- title: A string describing preference handled by this section.
 			- bottomDivider: Whether to place a `Divider` after the section content. Default is `false`.

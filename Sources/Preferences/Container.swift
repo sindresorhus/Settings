@@ -24,7 +24,7 @@ extension Preferences {
 		Creates an instance of container component, which handles layout of stacked `Preferences.Section` views.
 
 		Custom alignment requires content width to be specified beforehand.
-		
+
 		- Parameters:
 			- contentWidth: A fixed width of the container's content (excluding paddings).
 			- builder: A view builder that creates `Preferences.Section`'s of this container.

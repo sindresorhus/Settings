@@ -16,13 +16,13 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	var isAnimated: Bool = true
 
 	override func loadView() {
-		self.view = NSView()
-		self.view.translatesAutoresizingMaskIntoConstraints = false
+		view = NSView()
+		view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
 	func configure(preferencePanes: [PreferencePane], style: Preferences.Style) {
 		self.preferencePanes = preferencePanes
-		self.children = preferencePanes
+		children = preferencePanes
 
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
 		toolbar.allowsUserCustomization = false
@@ -83,7 +83,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	}
 
 	private func updateWindowTitle(tabIndex: Int) {
-		self.window.title = {
+		window.title = {
 			if preferencePanes.count > 1 {
 				return preferencePanes[tabIndex].preferencePaneTitle
 			} else {
