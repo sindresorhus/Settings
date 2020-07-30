@@ -56,7 +56,7 @@ import Preferences
 final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneIdentifier = Preferences.PaneIdentifier.general
 	let preferencePaneTitle = "General"
-	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
+	let toolbarItemIcon = NSImage(systemSymbolName: "gearshape", accessibilityDescription: "General preferences")!
 
 	override var nibName: NSNib.Name? { "GeneralPreferenceViewController" }
 
@@ -77,7 +77,7 @@ import Preferences
 final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneIdentifier = Preferences.PaneIdentifier.advanced
 	let preferencePaneTitle = "Advanced"
-	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
+	let toolbarItemIcon = NSImage(systemSymbolName: "gearshape.2", accessibilityDescription: "Advanced preferences")!
 
 	override var nibName: NSNib.Name? { "AdvancedPreferenceViewController" }
 

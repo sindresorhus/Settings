@@ -9,7 +9,7 @@ let AccountsPreferenceViewController: () -> PreferencePane = {
 	let paneView = Preferences.Pane(
 		identifier: .accounts,
 		title: "Accounts",
-		toolbarIcon: NSImage(named: NSImage.userAccountsName)!
+		toolbarIcon: NSImage(systemSymbolName: "person.crop.circle", accessibilityDescription: "Accounts preferences")!
 	) {
 		AccountsView()
 	}

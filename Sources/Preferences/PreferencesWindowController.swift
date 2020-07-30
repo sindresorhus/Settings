@@ -56,6 +56,10 @@ public final class PreferencesWindowController: NSWindowController {
 			}
 		}()
 
+		if #available(macOS 11.0, *), style == .toolbarItems {
+			window.toolbarStyle = .preference
+		}
+
 		tabViewController.isAnimated = animated
 		tabViewController.configure(preferencePanes: preferencePanes, style: style)
 		updateToolbarVisibility()
