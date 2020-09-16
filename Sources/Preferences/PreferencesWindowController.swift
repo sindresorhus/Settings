@@ -102,7 +102,7 @@ public final class PreferencesWindowController: NSWindowController {
 
 	private func restoreWindowPosition() {
 		guard
-			let window = self.window,
+			let window = window,
 			let screenContainingWindow = window.screen
 		else {
 			return

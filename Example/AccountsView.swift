@@ -32,13 +32,13 @@ struct AccountsView: View {
 	var body: some View {
 		Preferences.Container(contentWidth: contentWidth) {
 			Preferences.Section(title: "Permissions:") {
-				Toggle("Allow user to administer this computer", isOn: self.$isOn1)
+				Toggle("Allow user to administer this computer", isOn: $isOn1)
 				Text("Administrator has root access to this machine.")
 					.preferenceDescription()
-				Toggle("Allow user to access every file", isOn: self.$isOn2)
+				Toggle("Allow user to access every file", isOn: $isOn2)
 			}
 			Preferences.Section(title: "Show scroll bars:") {
-				Picker("", selection: self.$selection1) {
+				Picker("", selection: $selection1) {
 					Text("When scrolling").tag(0)
 					Text("Always").tag(1)
 				}
@@ -46,9 +46,9 @@ struct AccountsView: View {
 					.pickerStyle(RadioGroupPickerStyle())
 			}
 			Preferences.Section(label: {
-				Toggle("Some toggle", isOn: self.$isOn3)
+				Toggle("Some toggle", isOn: $isOn3)
 			}) {
-				Picker("", selection: self.$selection2) {
+				Picker("", selection: $selection2) {
 					Text("Automatic").tag(0)
 					Text("Manual").tag(1)
 				}
@@ -58,7 +58,7 @@ struct AccountsView: View {
 					.preferenceDescription()
 			}
 			Preferences.Section(title: "Preview mode:") {
-				Picker("", selection: self.$selection3) {
+				Picker("", selection: $selection3) {
 					Text("Automatic").tag(0)
 					Text("Manual").tag(1)
 				}

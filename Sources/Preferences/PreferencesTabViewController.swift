@@ -130,8 +130,8 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			from: fromViewController,
 			to: toViewController,
 			options: options
-		) {
-			self.activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
+		) { [self] in
+			activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		}
 	}
 
