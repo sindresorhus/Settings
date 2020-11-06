@@ -97,7 +97,7 @@ In the `AppDelegate`, initialize a new `PreferencesWindowController` and pass it
 import Cocoa
 import Preferences
 
-@NSApplicationMain
+@main
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 

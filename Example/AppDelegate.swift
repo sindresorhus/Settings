@@ -7,7 +7,7 @@ extension Preferences.PaneIdentifier {
 	static let advanced = Self("advanced")
 }
 
-@NSApplicationMain
+@main
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
