@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,7 @@
 		50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */; };
 		50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */; };
 		56392002228D453100F8804C /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56392001228D453100F8804C /* Localization.swift */; };
-		E3194E4122573FF3006FE775 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3194E4022573FF3006FE775 /* util.swift */; };
+		E3194E4122573FF3006FE775 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3194E4022573FF3006FE775 /* Utilities.swift */; };
 		E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EE920E6149B002F8F86 /* AppDelegate.swift */; };
 		E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EEB20E6149D002F8F86 /* Assets.xcassets */; };
 		E34E9EEF20E6149D002F8F86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EED20E6149D002F8F86 /* MainMenu.xib */; };
@@ -31,7 +31,7 @@
 		E752207623FCACC800117D41 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E752207523FCACC800117D41 /* Section.swift */; };
 		E7E6B56823C7DB2000E51429 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6B56723C7DB2000E51429 /* Container.swift */; };
 		OBJ_19 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* PreferencesWindowController.swift */; };
-		OBJ_20 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* util.swift */; };
+		OBJ_20 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Utilities.swift */; };
 		OBJ_27 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +67,7 @@
 		50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ToolbarItemStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		50F9AE80225773A0005D7DC3 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; path = readme.md; sourceTree = "<group>"; usesTabs = 1; };
 		56392001228D453100F8804C /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Localization.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E3194E4022573FF3006FE775 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = util.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E3194E4022573FF3006FE775 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Utilities.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EE720E6149B002F8F86 /* PreferencesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreferencesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34E9EE920E6149B002F8F86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EEB20E6149D002F8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		E74F0B0623C2BD6D00B16841 /* Pane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Pane.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E752207523FCACC800117D41 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Section.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E7E6B56723C7DB2000E51429 /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Container.swift; sourceTree = "<group>"; usesTabs = 1; };
-		OBJ_10 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = util.swift; sourceTree = "<group>"; usesTabs = 1; };
+		OBJ_10 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Utilities.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; lineEnding = 0; path = Package.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_9 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		"Preferences::Preferences::Product" /* Preferences.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Preferences.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +120,7 @@
 				E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */,
 				E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */,
 				E7059F1123C2AC3700F84762 /* AccountsView.swift */,
-				E3194E4022573FF3006FE775 /* util.swift */,
+				E3194E4022573FF3006FE775 /* Utilities.swift */,
 				E34E9EEB20E6149D002F8F86 /* Assets.xcassets */,
 				E34E9EF020E6149D002F8F86 /* Info.plist */,
 			);
@@ -170,7 +170,7 @@
 				E7E6B56723C7DB2000E51429 /* Container.swift */,
 				E752207523FCACC800117D41 /* Section.swift */,
 				56392001228D453100F8804C /* Localization.swift */,
-				OBJ_10 /* util.swift */,
+				OBJ_10 /* Utilities.swift */,
 			);
 			name = Preferences;
 			path = Sources/Preferences;
@@ -236,7 +236,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					E34E9EE620E6149B002F8F86 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -253,7 +253,7 @@
 				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Preferences" */;
-			compatibilityVersion = "Xcode 11.4";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -317,7 +317,7 @@
 				E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */,
 				E7059F1323C2AC7400F84762 /* AccountsView.swift in Sources */,
 				E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */,
-				E3194E4122573FF3006FE775 /* util.swift in Sources */,
+				E3194E4122573FF3006FE775 /* Utilities.swift in Sources */,
 				502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +337,7 @@
 				50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */,
 				E3D64112248648EE0090D28E /* Preferences.swift in Sources */,
 				E34E9EFB20E61557002F8F86 /* PreferencePane.swift in Sources */,
-				OBJ_20 /* util.swift in Sources */,
+				OBJ_20 /* Utilities.swift in Sources */,
 				E7E6B56823C7DB2000E51429 /* Container.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,7 +405,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.PreferencesExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,7 +445,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.PreferencesExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -540,6 +540,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -588,6 +589,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -3,6 +3,7 @@ import Cocoa
 final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
 	private var activeTab: Int?
 	private var preferencePanes = [PreferencePane]()
+	private var style: Preferences.Style?
 	internal var preferencePanesCount: Int { preferencePanes.count }
 	private var preferencesStyleController: PreferencesStyleController!
 	private var isKeepingWindowCentered: Bool { preferencesStyleController.isKeepingWindowCentered }
@@ -22,6 +23,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 	func configure(preferencePanes: [PreferencePane], style: Preferences.Style) {
 		self.preferencePanes = preferencePanes
+		self.style = style
 		children = preferencePanes
 
 		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
@@ -128,8 +130,8 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			from: fromViewController,
 			to: toViewController,
 			options: options
-		) {
-			self.activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
+		) { [self] in
+			activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		}
 	}
 
@@ -207,7 +209,7 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 	}
 
 	func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-		toolbarItemIdentifiers
+		style == .segmentedControl ? [] : toolbarItemIdentifiers
 	}
 
 	public func toolbar(

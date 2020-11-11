@@ -9,8 +9,8 @@ Just pass in some view controllers and this package will take care of the rest.
 ## Requirements
 
 - macOS 10.10+
-- Xcode 11.5+
-- Swift 5.2+
+- Xcode 12+
+- Swift 5.3+
 
 ## Install
 
@@ -32,7 +32,7 @@ pod 'Preferences'
 
 ## Usage
 
-*Run the `PreferencesExample` target in Xcode to try a live example.*
+*Run the `PreferencesExample` target in Xcode to try a live example (requires macOS 11 or later).*
 
 First, create some preference pane identifiers:
 
@@ -56,7 +56,7 @@ import Preferences
 final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneIdentifier = Preferences.PaneIdentifier.general
 	let preferencePaneTitle = "General"
-	let toolbarItemIcon = NSImage(named: NSImage.preferencesGeneralName)!
+	let toolbarItemIcon = NSImage(systemSymbolName: "gearshape", accessibilityDescription: "General preferences")!
 
 	override var nibName: NSNib.Name? { "GeneralPreferenceViewController" }
 
@@ -68,6 +68,8 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 }
 ```
 
+Note: If you need to support macOS versions older than macOS 11, you have to add a [fallback for the `toolbarItemIcon`](#backwards-compatibility).
+
 `AdvancedPreferenceViewController.swift`
 
 ```swift
@@ -77,7 +79,7 @@ import Preferences
 final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneIdentifier = Preferences.PaneIdentifier.advanced
 	let preferencePaneTitle = "Advanced"
-	let toolbarItemIcon = NSImage(named: NSImage.advancedName)!
+	let toolbarItemIcon = NSImage(systemSymbolName: "gearshape.2", accessibilityDescription: "Advanced preferences")!
 
 	override var nibName: NSNib.Name? { "AdvancedPreferenceViewController" }
 
@@ -97,7 +99,7 @@ In the `AppDelegate`, initialize a new `PreferencesWindowController` and pass it
 import Cocoa
 import Preferences
 
-@NSApplicationMain
+@main
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
@@ -251,7 +253,7 @@ let CustomViewPreferencePaneViewController: () -> PreferencePane = {
 	) {
 		// Your custom view (and modifiers if needed).
 		CustomPane()
-		//  .environmentObject(self.someSettingsManager)
+		//  .environmentObject(someSettingsManager)
 	}
 
 	return Preferences.PaneHostingController(paneView: paneView)
@@ -272,6 +274,10 @@ lazy var preferencesWindowController = PreferencesWindowController(
 ```
 
 [Full example here.](Example/AccountsView.swift).
+
+## Backwards compatibility
+
+macOS 11 and later supports SF Symbols which can be conveniently used for the toolbar icons. If you need to support older macOS versions, you have to add a fallback. Apple recommends using the same icons even for older systems. The best way to achieve this is to [export the relevant SF Symbols icons](https://github.com/davedelong/sfsymbols) to images and add them to your Asset Catalog.
 
 ## Known issues
 
