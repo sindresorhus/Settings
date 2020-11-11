@@ -32,7 +32,7 @@ pod 'Preferences'
 
 ## Usage
 
-*Run the `PreferencesExample` target in Xcode to try a live example.*
+*Run the `PreferencesExample` target in Xcode to try a live example (requires macOS 11 or later).*
 
 First, create some preference pane identifiers:
 
@@ -67,6 +67,8 @@ final class GeneralPreferenceViewController: NSViewController, PreferencePane {
 	}
 }
 ```
+
+Note: If you need to support macOS versions older than macOS 11, you have to add a [fallback for the `toolbarItemIcon`](#backwards-compatibility).
 
 `AdvancedPreferenceViewController.swift`
 
@@ -272,6 +274,10 @@ lazy var preferencesWindowController = PreferencesWindowController(
 ```
 
 [Full example here.](Example/AccountsView.swift).
+
+## Backwards compatibility
+
+macOS 11 and later supports SF Symbols which can be conveniently used for the toolbar icons. If you need to support older macOS versions, you have to add a fallback. Apple recommends using the same icons even for older systems. The best way to achieve this is to [export the relevant SF Symbols icons](https://github.com/davedelong/sfsymbols) to images and add them to your Asset Catalog.
 
 ## Known issues
 
