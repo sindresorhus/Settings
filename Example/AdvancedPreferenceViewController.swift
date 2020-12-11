@@ -16,4 +16,15 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 
 	@IBAction
 	private func zoomAction(_ sender: Any) {} // swiftlint:disable:this attributes
+
+	@IBAction
+	private func showFontPanel(_ sender: Any) {
+		let fontManager = NSFontManager.shared
+		fontManager.orderFrontFontPanel(self)
+	}
+
+	@IBAction
+	private func changeFont(_ sender: Any) {
+		print(sender)
+	}
 }
