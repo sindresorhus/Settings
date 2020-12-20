@@ -19,8 +19,7 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 
 	@IBAction
 	private func showFontPanel(_ sender: Any) {
-		let fontManager = NSFontManager.shared
-		fontManager.orderFrontFontPanel(self)
+		NSFontManager.shared.orderFrontFontPanel(self)
 	}
 
 	@IBAction
