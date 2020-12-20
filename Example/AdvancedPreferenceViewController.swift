@@ -6,12 +6,15 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	let preferencePaneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(systemSymbolName: "gearshape.2", accessibilityDescription: "Advanced preferences")!
 
+	@IBOutlet private var fontLabel: NSTextField!
+	private var font: NSFont = .systemFont(ofSize: 14.0)
+
 	override var nibName: NSNib.Name? { "AdvancedPreferenceViewController" }
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// Setup stuff here
+		updateFontLabel()
 	}
 
 	@IBAction
@@ -19,11 +22,18 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 
 	@IBAction
 	private func showFontPanel(_ sender: Any) {
-		NSFontManager.shared.orderFrontFontPanel(self)
+		let fontManager = NSFontManager.shared
+		fontManager.setSelectedFont(font, isMultiple: false)
+		fontManager.orderFrontFontPanel(self)
 	}
 
 	@IBAction
-	private func changeFont(_ sender: Any) {
-		print(sender)
+	private func changeFont(_ sender: NSFontManager) {
+		font = sender.convert(font)
+		updateFontLabel()
+	}
+
+	private func updateFontLabel() {
+		fontLabel.stringValue = font.displayName ?? font.fontName
 	}
 }
