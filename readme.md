@@ -96,7 +96,7 @@ If you need to respond actions indirectly, `PreferencesWindowController` will fo
 ```swift
 final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	@IBOutlet private var fontLabel: NSTextField!
-	private var selectedFont: NSFont = .systemFont(ofSize: 14.0)
+	private var selectedFont = NSFont.systemFont(ofSize: 14)
 
 	@IBAction private func changeFont(_ sender: NSFontManager) {
 		font = sender.convert(font)
