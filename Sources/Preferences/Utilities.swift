@@ -81,7 +81,7 @@ A window that allows you to disable all user interactions via `isUserInteraction
 
 Used to avoid breaking animations when the user clicks too fast. Disable user interactions during animations and you're set.
 */
-class UserInteractionPausableWindow: NSWindow {
+class UserInteractionPausableWindow: NSWindow { // swiftlint:disable:this final_class
 	var isUserInteractionEnabled = true
 
 	override func sendEvent(_ event: NSEvent) {
