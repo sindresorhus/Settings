@@ -7,7 +7,7 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 	let toolbarItemIcon = NSImage(systemSymbolName: "gearshape.2", accessibilityDescription: "Advanced preferences")!
 
 	@IBOutlet private var fontLabel: NSTextField!
-	private var font: NSFont = .systemFont(ofSize: 14.0)
+	private var font = NSFont.systemFont(ofSize: 14)
 
 	override var nibName: NSNib.Name? { "AdvancedPreferenceViewController" }
 
