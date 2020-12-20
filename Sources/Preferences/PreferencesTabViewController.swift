@@ -16,6 +16,14 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 	var isAnimated: Bool = true
 
+	var activeViewController: NSViewController? {
+		guard let activeTab = activeTab else {
+			return nil
+		}
+
+		return preferencePanes[activeTab]
+	}
+
 	override func loadView() {
 		view = NSView()
 		view.translatesAutoresizingMaskIntoConstraints = false

@@ -91,6 +91,19 @@ final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
 }
 ```
 
+If you need to respond actions indirectly, `PreferencesWindowController` will forward responder chain actions to the active pane if it responds to that selector.
+
+```swift
+final class AdvancedPreferenceViewController: NSViewController, PreferencePane {
+	@IBOutlet private var fontLabel: NSTextField!
+	private var selectedFont = NSFont.systemFont(ofSize: 14)
+
+	@IBAction private func changeFont(_ sender: NSFontManager) {
+		font = sender.convert(font)
+	}
+}
+```
+
 In the `AppDelegate`, initialize a new `PreferencesWindowController` and pass it the view controllers. Then add an action outlet for the `Preferences…` menu item to show the preferences window.
 
 `AppDelegate.swift`

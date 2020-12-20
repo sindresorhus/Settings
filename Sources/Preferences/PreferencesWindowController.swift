@@ -117,6 +117,29 @@ public final class PreferencesWindowController: NSWindowController {
 	}
 }
 
+extension PreferencesWindowController {
+	/// Returns the active pane if it responds to the given action.
+	public override func supplementalTarget(forAction action: Selector, sender: Any?) -> Any? {
+		if let target = super.supplementalTarget(forAction: action, sender: sender) {
+			return target
+		}
+
+		guard let activeViewController = tabViewController.activeViewController else {
+			return nil
+		}
+
+		if let target = NSApp.target(forAction: action, to: activeViewController, from: sender) as? NSResponder, target.responds(to: action) {
+			return target
+		}
+
+		if let target = activeViewController.supplementalTarget(forAction: action, sender: sender) as? NSResponder, target.responds(to: action) {
+			return target
+		}
+
+		return nil
+	}
+}
+
 @available(macOS 10.15, *)
 extension PreferencesWindowController {
 	/**
