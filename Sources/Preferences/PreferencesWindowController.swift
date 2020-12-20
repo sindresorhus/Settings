@@ -118,8 +118,7 @@ public final class PreferencesWindowController: NSWindowController {
 }
 
 extension PreferencesWindowController {
-
-	/// returns the active pane if it responds to the given action
+	/// Returns the active pane if it responds to the given action.
 	public override func supplementalTarget(forAction action: Selector, sender: Any?) -> Any? {
 		if let target = super.supplementalTarget(forAction: action, sender: sender) {
 			return target
