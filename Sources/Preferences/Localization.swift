@@ -108,7 +108,7 @@ struct Localization {
 			.lazy
 			.map { Locale(identifier: $0) }
 			.first { $0.languageCode != nil }
-			?? Locale.current
+			?? .current
 
 		guard let languageCode = preferredLocale.languageCode else {
 			return defaultLocalizedString

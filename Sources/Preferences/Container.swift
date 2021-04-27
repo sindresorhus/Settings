@@ -5,7 +5,7 @@ extension Preferences {
 	/**
 	Function builder for `Preferences` components used in order to restrict types of child views to be of type `Section`.
 	*/
-	@_functionBuilder
+	@resultBuilder
 	public struct SectionBuilder {
 		public static func buildBlock(_ sections: Section...) -> [Section] {
 			sections
@@ -51,19 +51,14 @@ extension Preferences {
 			.padding(.horizontal, 30.0)
 		}
 
+		@ViewBuilder
 		private func viewForSection(_ sections: [Section], index: Int) -> some View {
-			Group {
-				if index != sections.count - 1 && sections[index].bottomDivider {
-					Group {
-						sections[index]
-						Divider()
-							// Strangely doesn't work without width being specified. Probably because of custom alignment.
-							.frame(width: CGFloat(contentWidth), height: 20.0)
-							.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + maxLabelWidth }
-					}
-				} else {
-					sections[index]
-				}
+			sections[index]
+			if index != sections.count - 1 && sections[index].bottomDivider {
+				Divider()
+					// Strangely doesn't work without width being specified. Probably because of custom alignment.
+					.frame(width: CGFloat(contentWidth), height: 20.0)
+					.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + maxLabelWidth }
 			}
 		}
 	}

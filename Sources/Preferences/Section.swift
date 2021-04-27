@@ -27,8 +27,7 @@ extension Preferences {
 		private struct LabelOverlay: View {
 			var body: some View {
 				GeometryReader { geometry in
-					Rectangle()
-						.fill(Color.clear)
+					Color.clear
 						.preference(key: LabelWidthPreferenceKey.self, value: geometry.size.width)
 				}
 			}
@@ -67,7 +66,7 @@ extension Preferences {
 		) {
 			self.label = label()
 				.overlay(LabelOverlay())
-				.eraseToAnyView()
+				.eraseToAnyView() // TODO: Remove use of `AnyView`.
 			self.bottomDivider = bottomDivider
 			let stack = VStack(alignment: .leading) { content() }
 			self.content = stack.eraseToAnyView()

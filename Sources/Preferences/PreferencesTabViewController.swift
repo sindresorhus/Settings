@@ -14,7 +14,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 	var window: NSWindow! { view.window }
 
-	var isAnimated: Bool = true
+	var isAnimated = true
 
 	var activeViewController: NSViewController? {
 		guard let activeTab = activeTab else {
