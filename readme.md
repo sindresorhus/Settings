@@ -342,6 +342,7 @@ It can't be that hard right? Well, turns out it is:
 - [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - Add "Launch at Login" functionality to your macOS app
 - [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) - Add user-customizable global keyboard shortcuts to your macOS app
 - [DockProgress](https://github.com/sindresorhus/DockProgress) - Show progress in your app's Dock icon
+- [Regex](https://github.com/sindresorhus/Regex) - Swifty regular expressions
 - [More…](https://github.com/search?q=user%3Asindresorhus+language%3Aswift)
 
 You might also like Sindre's [apps](https://sindresorhus.com/apps).
