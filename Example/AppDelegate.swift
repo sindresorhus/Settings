@@ -11,20 +11,20 @@ extension Preferences.PaneIdentifier {
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
-	var preferencesStyle: Preferences.Style {
+	private var preferencesStyle: Preferences.Style {
 		get { .preferencesStyleFromUserDefaults() }
 		set {
 			newValue.storeInUserDefaults()
 		}
 	}
 
-	lazy var preferences: [PreferencePane] = [
+	private lazy var preferences: [PreferencePane] = [
 		GeneralPreferenceViewController(),
 		AccountsPreferenceViewController(),
 		AdvancedPreferenceViewController()
 	]
 
-	lazy var preferencesWindowController = PreferencesWindowController(
+	private lazy var preferencesWindowController = PreferencesWindowController(
 		preferencePanes: preferences,
 		style: preferencesStyle,
 		animated: true,

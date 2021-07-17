@@ -116,7 +116,7 @@ import Preferences
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
-	lazy var preferencesWindowController = PreferencesWindowController(
+	private lazy var preferencesWindowController = PreferencesWindowController(
 		preferencePanes: [
 			GeneralPreferenceViewController(),
 			AdvancedPreferenceViewController()
@@ -138,7 +138,7 @@ When you create the `PreferencesWindowController`, you can choose between the `N
 
 ```swift
 // …
-lazy var preferencesWindowController = PreferencesWindowController(
+private lazy var preferencesWindowController = PreferencesWindowController(
 	preferencePanes: [
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController()
@@ -233,7 +233,7 @@ Then in the `AppDelegate`, initialize a new `PreferencesWindowController` and pa
 ```swift
 // …
 
-lazy var preferencesWindowController = PreferencesWindowController(
+private lazy var preferencesWindowController = PreferencesWindowController(
 	panes: [
 		Pane(
 			 identifier: …,
@@ -274,7 +274,7 @@ let CustomViewPreferencePaneViewController: () -> PreferencePane = {
 
 // …
 
-lazy var preferencesWindowController = PreferencesWindowController(
+private lazy var preferencesWindowController = PreferencesWindowController(
 	preferencePanes: [
 		GeneralPreferenceViewController(),
 		AdvancedPreferenceViewController(),

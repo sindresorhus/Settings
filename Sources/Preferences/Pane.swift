@@ -82,20 +82,13 @@ extension Preferences {
 }
 
 @available(macOS 10.15, *)
-private struct PreferenceDescriptionModifier: ViewModifier {
-	func body(content: Content) -> some View {
-		content
-			.font(.system(size: 11.0))
-			.foregroundColor(.secondary)
-	}
-}
-
-@available(macOS 10.15, *)
 extension View {
 	/**
 	Applies font and color for a label used for describing a preference.
 	*/
 	public func preferenceDescription() -> some View {
-		modifier(PreferenceDescriptionModifier())
+		font(.system(size: 11.0))
+			// TODO: Use `.foregroundStyle` when targeting macOS 12.
+			.foregroundColor(.secondary)
 	}
 }
