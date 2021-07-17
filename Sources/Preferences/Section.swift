@@ -50,17 +50,20 @@ extension Preferences {
 		public let label: AnyView
 		public let content: AnyView
 		public let bottomDivider: Bool
+		public let verticalAlignment: VerticalAlignment
 
 		/**
 		A section is responsible for controlling a single preference.
 
 		- Parameters:
 			- bottomDivider: Whether to place a `Divider` after the section content. Default is `false`.
+			- verticalAlignement: The vertical alignment of the section content.
 			- label: A view describing preference handled by this section.
 			- content: A content view.
 		*/
 		public init<Label: View, Content: View>(
 			bottomDivider: Bool = false,
+			verticalAlignment: VerticalAlignment = .firstTextBaseline,
 			label: @escaping () -> Label,
 			@ViewBuilder content: @escaping () -> Content
 		) {
@@ -68,6 +71,7 @@ extension Preferences {
 				.overlay(LabelOverlay())
 				.eraseToAnyView() // TODO: Remove use of `AnyView`.
 			self.bottomDivider = bottomDivider
+			self.verticalAlignment = verticalAlignment
 			let stack = VStack(alignment: .leading) { content() }
 			self.content = stack.eraseToAnyView()
 		}
@@ -78,11 +82,13 @@ extension Preferences {
 		- Parameters:
 			- title: A string describing preference handled by this section.
 			- bottomDivider: Whether to place a `Divider` after the section content. Default is `false`.
+			- verticalAlignement: The vertical alignment of the section content.
 			- content: A content view.
 		*/
 		public init<Content: View>(
 			title: String,
 			bottomDivider: Bool = false,
+			verticalAlignment: VerticalAlignment = .firstTextBaseline,
 			@ViewBuilder content: @escaping () -> Content
 		) {
 			let textLabel = {
@@ -92,11 +98,16 @@ extension Preferences {
 					.eraseToAnyView()
 			}
 
-			self.init(bottomDivider: bottomDivider, label: textLabel, content: content)
+			self.init(
+				bottomDivider: bottomDivider,
+				verticalAlignment: verticalAlignment,
+				label: textLabel,
+				content: content
+			)
 		}
 
 		public var body: some View {
-			HStack(alignment: .firstTextBaseline) {
+			HStack(alignment: verticalAlignment) {
 				label
 					.alignmentGuide(.preferenceSectionLabel) { $0[.trailing] }
 				content
