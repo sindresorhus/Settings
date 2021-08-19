@@ -18,6 +18,7 @@ extension Preferences {
 	public struct Container: View {
 		private let sectionBuilder: () -> [Section]
 		private let contentWidth: Double
+		private let minimumLabelWidth: Double
 		@State private var maxLabelWidth: CGFloat = 0.0
 
 		/**
@@ -27,14 +28,17 @@ extension Preferences {
 
 		- Parameters:
 			- contentWidth: A fixed width of the container's content (excluding paddings).
+			- minimumLabelWidth: A minimum width for labels within this container.
 			- builder: A view builder that creates `Preferences.Section`'s of this container.
 		*/
 		public init(
 			contentWidth: Double,
+			minimumLabelWidth: Double = 0.0,
 			@SectionBuilder builder: @escaping () -> [Section]
 		) {
 			self.sectionBuilder = builder
 			self.contentWidth = contentWidth
+			self.minimumLabelWidth = minimumLabelWidth
 		}
 
 		public var body: some View {
@@ -58,7 +62,7 @@ extension Preferences {
 				Divider()
 					// Strangely doesn't work without width being specified. Probably because of custom alignment.
 					.frame(width: CGFloat(contentWidth), height: 20.0)
-					.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + maxLabelWidth }
+					.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + max(minimumLabelWidth, maxLabelWidth) }
 			}
 		}
 	}
