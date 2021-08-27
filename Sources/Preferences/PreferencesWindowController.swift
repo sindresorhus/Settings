@@ -42,6 +42,10 @@ public final class PreferencesWindowController: NSWindowController {
 			backing: .buffered,
 			defer: true
 		)
+
+		// Center the window by default
+		window.center()
+
 		self.hidesToolbarForSingleItem = hidesToolbarForSingleItem
 		super.init(window: window)
 
@@ -100,23 +104,10 @@ public final class PreferencesWindowController: NSWindowController {
 		}
 
 		showWindow(self)
-		restoreWindowPosition()
-	}
 
-	private func restoreWindowPosition() {
-		guard
-			let window = window,
-			let screenContainingWindow = window.screen
-		else {
-			return
 		if forceAppToActivate {
 			NSApp.activate(ignoringOtherApps: true)
 		}
-
-		window.setFrameOrigin(CGPoint(
-			x: screenContainingWindow.visibleFrame.midX - window.frame.width / 2,
-			y: screenContainingWindow.visibleFrame.midY - window.frame.height / 2
-		))
 	}
 }
 
