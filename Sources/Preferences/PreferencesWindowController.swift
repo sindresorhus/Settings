@@ -45,6 +45,8 @@ public final class PreferencesWindowController: NSWindowController {
 		self.hidesToolbarForSingleItem = hidesToolbarForSingleItem
 		super.init(window: window)
 
+		self.windowFrameAutosaveName = .preferences
+
 		window.contentViewController = tabViewController
 
 		window.titleVisibility = {
@@ -112,8 +114,6 @@ public final class PreferencesWindowController: NSWindowController {
 			x: screenContainingWindow.visibleFrame.midX - window.frame.width / 2,
 			y: screenContainingWindow.visibleFrame.midY - window.frame.height / 2
 		))
-		window.setFrameUsingName(.preferences)
-		window.setFrameAutosaveName(.preferences)
 	}
 }
 
