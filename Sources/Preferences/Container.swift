@@ -28,7 +28,7 @@ extension Preferences {
 
 		- Parameters:
 			- contentWidth: A fixed width of the container's content (excluding paddings).
-			- minimumLabelWidth: A minimum width for labels within this container. Defaults to `0`, which behaves as if there is no minimum width set for labels.
+			- minimumLabelWidth: A minimum width for labels within this container. By default, it will fit to the largest label.
 			- builder: A view builder that creates `Preferences.Section`'s of this container.
 		*/
 		public init(
