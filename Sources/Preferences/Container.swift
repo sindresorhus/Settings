@@ -19,7 +19,7 @@ extension Preferences {
 		private let sectionBuilder: () -> [Section]
 		private let contentWidth: Double
 		private let minimumLabelWidth: Double
-		@State private var maxLabelWidth: CGFloat = 0.0
+		@State private var maximumLabelWidth = 0.0
 
 		/**
 		Creates an instance of container component, which handles layout of stacked `Preferences.Section` views.
@@ -49,10 +49,10 @@ extension Preferences {
 					viewForSection(sections, index: index)
 				}
 			}
-			.modifier(Section.LabelWidthModifier(maxWidth: $maxLabelWidth))
+			.modifier(Section.LabelWidthModifier(maximumWidth: $maximumLabelWidth))
 			.frame(width: CGFloat(contentWidth), alignment: .leading)
-			.padding(.vertical, 20.0)
-			.padding(.horizontal, 30.0)
+			.padding(.vertical, 20)
+			.padding(.horizontal, 30)
 		}
 
 		@ViewBuilder
@@ -61,8 +61,8 @@ extension Preferences {
 			if index != sections.count - 1 && sections[index].bottomDivider {
 				Divider()
 					// Strangely doesn't work without width being specified. Probably because of custom alignment.
-					.frame(width: CGFloat(contentWidth), height: 20.0)
-					.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + max(minimumLabelWidth, maxLabelWidth) }
+					.frame(width: CGFloat(contentWidth), height: 20)
+					.alignmentGuide(.preferenceSectionLabel) { $0[.leading] + CGFloat(max(minimumLabelWidth, maximumLabelWidth)) }
 			}
 		}
 	}

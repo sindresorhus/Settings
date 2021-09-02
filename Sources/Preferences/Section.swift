@@ -11,11 +11,11 @@ extension Preferences {
 		Preference key holding max width of section labels.
 		*/
 		private struct LabelWidthPreferenceKey: PreferenceKey {
-			typealias Value = CGFloat
+			typealias Value = Double
 
-			static var defaultValue: CGFloat = 0.0
+			static var defaultValue = 0.0
 
-			static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+			static func reduce(value: inout Double, nextValue: () -> Double) {
 				let next = nextValue()
 				value = next > value ? next : value
 			}
@@ -28,7 +28,7 @@ extension Preferences {
 			var body: some View {
 				GeometryReader { geometry in
 					Color.clear
-						.preference(key: LabelWidthPreferenceKey.self, value: geometry.size.width)
+						.preference(key: LabelWidthPreferenceKey.self, value: Double(geometry.size.width))
 				}
 			}
 		}
@@ -37,12 +37,12 @@ extension Preferences {
 		Convenience modifier for applying `LabelWidthPreferenceKey`.
 		*/
 		struct LabelWidthModifier: ViewModifier {
-			@Binding var maxWidth: CGFloat
+			@Binding var maximumWidth: Double
 
 			func body(content: Content) -> some View {
 				content
-					.onPreferenceChange(LabelWidthPreferenceKey.self) { newMaxWidth in
-						maxWidth = newMaxWidth
+					.onPreferenceChange(LabelWidthPreferenceKey.self) { newMaximumWidth in
+						maximumWidth = Double(newMaximumWidth)
 					}
 			}
 		}
