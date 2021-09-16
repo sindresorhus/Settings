@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferenceViewController" customModule="PreferencesExample" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="GeneralSettingsViewController" customModule="PreferencesExample" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="c22-O7-iKe" id="ZQe-UH-LCX"/>
             </connections>
@@ -58,7 +58,7 @@
                         </gridCell>
                         <gridCell row="ukr-az-gqc" column="cs9-fm-l2F" id="jPa-TM-cRP">
                             <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-jy-wRw">
-                                <rect key="frame" x="111" y="337" width="163" height="18"/>
+                                <rect key="frame" x="111" y="337" width="167" height="18"/>
                                 <buttonCell key="cell" type="check" title="Auto Save while editing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dB2-6s-xY8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -95,7 +95,7 @@
                         </gridCell>
                         <gridCell row="3rI-5v-nj2" column="cs9-fm-l2F" id="dEO-dF-qf0">
                             <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uFJ-3w-B8K">
-                                <rect key="frame" x="111" y="190" width="235" height="18"/>
+                                <rect key="frame" x="111" y="190" width="238" height="18"/>
                                 <buttonCell key="cell" type="check" title="Scale down images to fit Artboards" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Mw9-dm-8vN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -114,7 +114,7 @@
                         </gridCell>
                         <gridCell row="vzh-lB-BGH" column="cs9-fm-l2F" id="oqN-sN-jXV">
                             <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zrp-jv-5Hq">
-                                <rect key="frame" x="111" y="166" width="270" height="18"/>
+                                <rect key="frame" x="111" y="166" width="274" height="18"/>
                                 <buttonCell key="cell" type="check" title="Insert PDF and EPS files as bitmap layers" bezelStyle="regularSquare" imagePosition="left" inset="2" id="x5i-CI-gSv">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -134,7 +134,7 @@
                         </gridCell>
                         <gridCell row="ktD-ti-fYg" column="GGj-JC-w4E" id="LBW-7i-fKd">
                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pP4-VT-r7d">
-                                <rect key="frame" x="0.0" y="111" width="105" height="16"/>
+                                <rect key="frame" x="1" y="111" width="104" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Artboard export:" id="s9c-vd-E8g">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -144,10 +144,10 @@
                         </gridCell>
                         <gridCell row="ktD-ti-fYg" column="cs9-fm-l2F" id="eJz-N1-yND">
                             <popUpButton key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-aZ-SDF">
-                                <rect key="frame" x="111" y="105" width="110" height="26"/>
+                                <rect key="frame" x="110" y="104" width="111" height="27"/>
                                 <popUpButtonCell key="cell" type="push" title="Left to right" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hGF-9Y-ejC" id="H3d-6S-qhu">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="o2h-Pc-QGF">
                                         <items>
                                             <menuItem title="Left to right" state="on" id="hGF-9Y-ejC"/>
@@ -177,7 +177,7 @@
                         <gridCell row="Tvj-zX-YeH" column="cs9-fm-l2F" headOfMergedCell="rNE-cv-S52" id="nYW-Px-IA6"/>
                         <gridCell row="VRC-hO-9ih" column="GGj-JC-w4E" id="i7L-lY-3Bg">
                             <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="pog-Yc-oS8">
-                                <rect key="frame" x="-2" y="28" width="107" height="15"/>
+                                <rect key="frame" x="-2" y="29" width="107" height="14"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Button to switch:" id="PZ6-Ug-5uU">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -187,8 +187,8 @@
                         </gridCell>
                         <gridCell row="VRC-hO-9ih" column="cs9-fm-l2F" id="UzW-zn-TH6">
                             <button key="contentView" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AeJ-us-BJO">
-                                <rect key="frame" x="107" y="18" width="185" height="32"/>
-                                <buttonCell key="cell" type="push" title="Switch Preference Style" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pPv-HR-smI">
+                                <rect key="frame" x="106" y="19" width="163" height="32"/>
+                                <buttonCell key="cell" type="push" title="Switch Settings Style" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pPv-HR-smI">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -200,7 +200,7 @@
                         <gridCell row="XUV-T9-ss0" column="GGj-JC-w4E" id="rlE-X1-Ygk"/>
                         <gridCell row="XUV-T9-ss0" column="cs9-fm-l2F" id="uRY-go-gLe">
                             <textField key="contentView" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dJi-EK-ORe">
-                                <rect key="frame" x="111" y="1" width="173" height="15"/>
+                                <rect key="frame" x="111" y="1" width="172" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" title="Click this button to switch style." id="NOF-sJ-b0B">
                                     <font key="font" metaFont="message" size="11"/>
                                     <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>

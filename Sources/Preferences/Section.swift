@@ -1,7 +1,7 @@
 import SwiftUI
 
 @available(macOS 10.15, *)
-extension Preferences {
+extension Settings {
 	/**
 	Represents a section with right-aligned title and optional bottom divider.
 	*/
@@ -28,7 +28,10 @@ extension Preferences {
 			var body: some View {
 				GeometryReader { geometry in
 					Color.clear
-						.preference(key: LabelWidthPreferenceKey.self, value: Double(geometry.size.width))
+						.preference(
+							key: LabelWidthPreferenceKey.self,
+							value: geometry.size.width
+						)
 				}
 			}
 		}
@@ -42,7 +45,7 @@ extension Preferences {
 			func body(content: Content) -> some View {
 				content
 					.onPreferenceChange(LabelWidthPreferenceKey.self) { newMaximumWidth in
-						maximumWidth = Double(newMaximumWidth)
+						maximumWidth = newMaximumWidth
 					}
 			}
 		}
@@ -53,12 +56,12 @@ extension Preferences {
 		public let verticalAlignment: VerticalAlignment
 
 		/**
-		A section is responsible for controlling a single preference.
+		A section is responsible for controlling a single setting.
 
 		- Parameters:
 			- bottomDivider: Whether to place a `Divider` after the section content. Default is `false`.
 			- verticalAlignement: The vertical alignment of the section content.
-			- label: A view describing preference handled by this section.
+			- label: A view describing the setting handled by this section.
 			- content: A content view.
 		*/
 		public init<Label: View, Content: View>(
@@ -77,10 +80,10 @@ extension Preferences {
 		}
 
 		/**
-		Creates instance of section, responsible for controling single preference with `Text` as  a `Label`.
+		Creates instance of section, responsible for controling a single setting with `Text` as  a `Label`.
 
 		- Parameters:
-			- title: A string describing preference handled by this section.
+			- title: A string describing the setting handled by this section.
 			- bottomDivider: Whether to place a `Divider` after the section content. Default is `false`.
 			- verticalAlignement: The vertical alignment of the section content.
 			- content: A content view.
@@ -109,7 +112,7 @@ extension Preferences {
 		public var body: some View {
 			HStack(alignment: verticalAlignment) {
 				label
-					.alignmentGuide(.preferenceSectionLabel) { $0[.trailing] }
+					.alignmentGuide(.settingsSectionLabel) { $0[.trailing] }
 				content
 				Spacer()
 			}

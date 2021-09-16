@@ -3,7 +3,7 @@ import Preferences
 
 // Helpers to write styles to and read them from UserDefaults.
 
-extension Preferences.Style: RawRepresentable {
+extension Settings.Style: RawRepresentable {
 	public var rawValue: Int {
 		switch self {
 		case .toolbarItems:
@@ -25,10 +25,10 @@ extension Preferences.Style: RawRepresentable {
 	}
 }
 
-extension Preferences.Style {
-	static let userDefaultsKey = "preferencesStyle"
+extension Settings.Style {
+	static let userDefaultsKey = "settingsStyle"
 
-	static func preferencesStyleFromUserDefaults(_ userDefaults: UserDefaults = .standard) -> Self {
+	static func settingsStyleFromUserDefaults(_ userDefaults: UserDefaults = .standard) -> Self {
 		Self(rawValue: userDefaults.integer(forKey: userDefaultsKey))
 			?? .toolbarItems
 	}

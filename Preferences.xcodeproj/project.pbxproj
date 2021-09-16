@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */; };
-		509EC81C22535E0A00760A3C /* PreferencesStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */; };
-		50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */; };
+		509EC81C22535E0A00760A3C /* SettingsStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC81B22535E0A00760A3C /* SettingsStyleController.swift */; };
+		50A412F42196B70100E4A5A8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* Style.swift */; };
 		50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */; };
 		50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */; };
 		56392002228D453100F8804C /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56392001228D453100F8804C /* Localization.swift */; };
@@ -19,18 +19,18 @@
 		E34E9EEF20E6149D002F8F86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EED20E6149D002F8F86 /* MainMenu.xib */; };
 		E34E9EF520E61507002F8F86 /* Preferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Preferences::Preferences::Product" /* Preferences.framework */; };
 		E34E9EF620E61507002F8F86 /* Preferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "Preferences::Preferences::Product" /* Preferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E34E9EFB20E61557002F8F86 /* PreferencePane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EFA20E61557002F8F86 /* PreferencePane.swift */; };
-		E34E9EFF20E617E7002F8F86 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EFE20E617E7002F8F86 /* GeneralPreferenceViewController.swift */; };
-		E34E9F0120E61A26002F8F86 /* GeneralPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0020E61A26002F8F86 /* GeneralPreferenceViewController.xib */; };
+		E34E9EFB20E61557002F8F86 /* SettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EFA20E61557002F8F86 /* SettingsPane.swift */; };
+		E34E9EFF20E617E7002F8F86 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EFE20E617E7002F8F86 /* GeneralSettingsViewController.swift */; };
+		E34E9F0120E61A26002F8F86 /* GeneralSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0020E61A26002F8F86 /* GeneralSettingsViewController.xib */; };
 		E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */; };
-		E34E9F0520E61C06002F8F86 /* AdvancedPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */; };
-		E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */; };
-		E3D64112248648EE0090D28E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D64111248648EE0090D28E /* Preferences.swift */; };
-		E7059F1323C2AC7400F84762 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7059F1123C2AC3700F84762 /* AccountsView.swift */; };
+		E34E9F0520E61C06002F8F86 /* AdvancedSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0420E61C06002F8F86 /* AdvancedSettingsViewController.xib */; };
+		E34E9F0820E62743002F8F86 /* SettingsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0620E62627002F8F86 /* SettingsTabViewController.swift */; };
+		E3D64112248648EE0090D28E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D64111248648EE0090D28E /* Settings.swift */; };
+		E7059F1323C2AC7400F84762 /* AccountsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7059F1123C2AC3700F84762 /* AccountsScreen.swift */; };
 		E74F0B0723C2BD6D00B16841 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74F0B0623C2BD6D00B16841 /* Pane.swift */; };
 		E752207623FCACC800117D41 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E752207523FCACC800117D41 /* Section.swift */; };
 		E7E6B56823C7DB2000E51429 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6B56723C7DB2000E51429 /* Container.swift */; };
-		OBJ_19 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* PreferencesWindowController.swift */; };
+		OBJ_19 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* SettingsWindowController.swift */; };
 		OBJ_20 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Utilities.swift */; };
 		OBJ_27 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 /* End PBXBuildFile section */
@@ -61,8 +61,8 @@
 
 /* Begin PBXFileReference section */
 		502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; usesTabs = 1; };
-		509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesStyleController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesStyle.swift; sourceTree = "<group>"; usesTabs = 1; };
+		509EC81B22535E0A00760A3C /* SettingsStyleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsStyleController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		50A412F32196B70100E4A5A8 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Style.swift; sourceTree = "<group>"; usesTabs = 1; };
 		50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SegmentedControlStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ToolbarItemStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		50F9AE80225773A0005D7DC3 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; path = readme.md; sourceTree = "<group>"; usesTabs = 1; };
@@ -73,20 +73,20 @@
 		E34E9EEB20E6149D002F8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E34E9EEE20E6149D002F8F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E34E9EF020E6149D002F8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E34E9EFA20E61557002F8F86 /* PreferencePane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencePane.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E34E9EFE20E617E7002F8F86 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E34E9F0020E61A26002F8F86 /* GeneralPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralPreferenceViewController.xib; sourceTree = "<group>"; };
+		E34E9EFA20E61557002F8F86 /* SettingsPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsPane.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E34E9EFE20E617E7002F8F86 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E34E9F0020E61A26002F8F86 /* GeneralSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralSettingsViewController.xib; sourceTree = "<group>"; };
 		E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AdvancedPreferenceViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedPreferenceViewController.xib; sourceTree = "<group>"; };
-		E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E3D64111248648EE0090D28E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Preferences.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E7059F1123C2AC3700F84762 /* AccountsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountsView.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; wrapsLines = 1; };
+		E34E9F0420E61C06002F8F86 /* AdvancedSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSettingsViewController.xib; sourceTree = "<group>"; };
+		E34E9F0620E62627002F8F86 /* SettingsTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E3D64111248648EE0090D28E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Settings.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E7059F1123C2AC3700F84762 /* AccountsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountsScreen.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; wrapsLines = 1; };
 		E74F0B0623C2BD6D00B16841 /* Pane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Pane.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E752207523FCACC800117D41 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Section.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E7E6B56723C7DB2000E51429 /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Container.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_10 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Utilities.swift; sourceTree = "<group>"; usesTabs = 1; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; lineEnding = 0; path = Package.swift; sourceTree = "<group>"; usesTabs = 1; };
-		OBJ_9 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		OBJ_9 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsWindowController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		"Preferences::Preferences::Product" /* Preferences.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Preferences.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -115,11 +115,11 @@
 				E34E9EE920E6149B002F8F86 /* AppDelegate.swift */,
 				502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */,
 				E34E9EED20E6149D002F8F86 /* MainMenu.xib */,
-				E34E9EFE20E617E7002F8F86 /* GeneralPreferenceViewController.swift */,
-				E34E9F0020E61A26002F8F86 /* GeneralPreferenceViewController.xib */,
+				E34E9EFE20E617E7002F8F86 /* GeneralSettingsViewController.swift */,
+				E34E9F0020E61A26002F8F86 /* GeneralSettingsViewController.xib */,
 				E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */,
-				E34E9F0420E61C06002F8F86 /* AdvancedPreferenceViewController.xib */,
-				E7059F1123C2AC3700F84762 /* AccountsView.swift */,
+				E34E9F0420E61C06002F8F86 /* AdvancedSettingsViewController.xib */,
+				E7059F1123C2AC3700F84762 /* AccountsScreen.swift */,
 				E3194E4022573FF3006FE775 /* Utilities.swift */,
 				E34E9EEB20E6149D002F8F86 /* Assets.xcassets */,
 				E34E9EF020E6149D002F8F86 /* Info.plist */,
@@ -158,12 +158,12 @@
 		OBJ_8 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				E3D64111248648EE0090D28E /* Preferences.swift */,
-				E34E9EFA20E61557002F8F86 /* PreferencePane.swift */,
-				50A412F32196B70100E4A5A8 /* PreferencesStyle.swift */,
-				OBJ_9 /* PreferencesWindowController.swift */,
-				E34E9F0620E62627002F8F86 /* PreferencesTabViewController.swift */,
-				509EC81B22535E0A00760A3C /* PreferencesStyleController.swift */,
+				E3D64111248648EE0090D28E /* Settings.swift */,
+				E34E9EFA20E61557002F8F86 /* SettingsPane.swift */,
+				50A412F32196B70100E4A5A8 /* Style.swift */,
+				OBJ_9 /* SettingsWindowController.swift */,
+				E34E9F0620E62627002F8F86 /* SettingsTabViewController.swift */,
+				509EC81B22535E0A00760A3C /* SettingsStyleController.swift */,
 				50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */,
 				50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */,
 				E74F0B0623C2BD6D00B16841 /* Pane.swift */,
@@ -278,9 +278,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */,
-				E34E9F0520E61C06002F8F86 /* AdvancedPreferenceViewController.xib in Resources */,
+				E34E9F0520E61C06002F8F86 /* AdvancedSettingsViewController.xib in Resources */,
 				E34E9EEF20E6149D002F8F86 /* MainMenu.xib in Resources */,
-				E34E9F0120E61A26002F8F86 /* GeneralPreferenceViewController.xib in Resources */,
+				E34E9F0120E61A26002F8F86 /* GeneralSettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,9 +313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E34E9EFF20E617E7002F8F86 /* GeneralPreferenceViewController.swift in Sources */,
+				E34E9EFF20E617E7002F8F86 /* GeneralSettingsViewController.swift in Sources */,
 				E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */,
-				E7059F1323C2AC7400F84762 /* AccountsView.swift in Sources */,
+				E7059F1323C2AC7400F84762 /* AccountsScreen.swift in Sources */,
 				E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */,
 				E3194E4122573FF3006FE775 /* Utilities.swift in Sources */,
 				502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */,
@@ -327,16 +327,16 @@
 			buildActionMask = 0;
 			files = (
 				E752207623FCACC800117D41 /* Section.swift in Sources */,
-				509EC81C22535E0A00760A3C /* PreferencesStyleController.swift in Sources */,
-				OBJ_19 /* PreferencesWindowController.swift in Sources */,
-				E34E9F0820E62743002F8F86 /* PreferencesTabViewController.swift in Sources */,
+				509EC81C22535E0A00760A3C /* SettingsStyleController.swift in Sources */,
+				OBJ_19 /* SettingsWindowController.swift in Sources */,
+				E34E9F0820E62743002F8F86 /* SettingsTabViewController.swift in Sources */,
 				E74F0B0723C2BD6D00B16841 /* Pane.swift in Sources */,
 				50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */,
 				50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */,
 				56392002228D453100F8804C /* Localization.swift in Sources */,
-				50A412F42196B70100E4A5A8 /* PreferencesStyle.swift in Sources */,
-				E3D64112248648EE0090D28E /* Preferences.swift in Sources */,
-				E34E9EFB20E61557002F8F86 /* PreferencePane.swift in Sources */,
+				50A412F42196B70100E4A5A8 /* Style.swift in Sources */,
+				E3D64112248648EE0090D28E /* Settings.swift in Sources */,
+				E34E9EFB20E61557002F8F86 /* SettingsPane.swift in Sources */,
 				OBJ_20 /* Utilities.swift in Sources */,
 				E7E6B56823C7DB2000E51429 /* Container.swift in Sources */,
 			);

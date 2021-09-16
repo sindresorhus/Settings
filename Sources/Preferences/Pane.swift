@@ -1,25 +1,25 @@
 import SwiftUI
 
 /**
-Represents a type that can be converted to `PreferencePane`.
+Represents a type that can be converted to `SettingsPane`.
 
-Acts as type-eraser for `Preferences.Pane<T>`.
+Acts as type-eraser for `Settings.Pane<T>`.
 */
-public protocol PreferencePaneConvertible {
+public protocol SettingsPaneConvertible {
 	/**
-	Convert `self` to equivalent `PreferencePane`.
+	Convert `self` to equivalent `SettingsPane`.
 	*/
-	func asPreferencePane() -> PreferencePane
+	func asPreferencePane() -> SettingsPane
 }
 
 @available(macOS 10.15, *)
-extension Preferences {
+extension Settings {
 	/**
-	Create a SwiftUI-based preference pane.
+	Create a SwiftUI-based settings pane.
 
-	SwiftUI equivalent of the `PreferencePane` protocol.
+	SwiftUI equivalent of the `SettingsPane` protocol.
 	*/
-	public struct Pane<Content: View>: View, PreferencePaneConvertible {
+	public struct Pane<Content: View>: View, SettingsPaneConvertible {
 		let identifier: PaneIdentifier
 		let title: String
 		let toolbarIcon: NSImage
@@ -39,15 +39,15 @@ extension Preferences {
 
 		public var body: some View { content }
 
-		public func asPreferencePane() -> PreferencePane {
+		public func asPreferencePane() -> SettingsPane {
 			PaneHostingController(pane: self)
 		}
 	}
 
 	/**
-	Hosting controller enabling `Preferences.Pane` to be used alongside AppKit `NSViewController`'s.
+	Hosting controller enabling `Settings.Pane` to be used alongside AppKit `NSViewController`'s.
 	*/
-	public final class PaneHostingController<Content: View>: NSHostingController<Content>, PreferencePane {
+	public final class PaneHostingController<Content: View>: NSHostingController<Content>, SettingsPane {
 		public let preferencePaneIdentifier: PaneIdentifier
 		public let preferencePaneTitle: String
 		public let toolbarItemIcon: NSImage
@@ -84,7 +84,7 @@ extension Preferences {
 @available(macOS 10.15, *)
 extension View {
 	/**
-	Applies font and color for a label used for describing a preference.
+	Applies font and color for a label used for describing a setting.
 	*/
 	public func preferenceDescription() -> some View {
 		font(.system(size: 11.0))

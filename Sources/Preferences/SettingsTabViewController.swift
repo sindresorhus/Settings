@@ -1,15 +1,15 @@
 import Cocoa
 
-final class PreferencesTabViewController: NSViewController, PreferencesStyleControllerDelegate {
+final class SettingsTabViewController: NSViewController, SettingsStyleControllerDelegate {
 	private var activeTab: Int?
-	private var preferencePanes = [PreferencePane]()
-	private var style: Preferences.Style?
-	internal var preferencePanesCount: Int { preferencePanes.count }
-	private var preferencesStyleController: PreferencesStyleController!
-	private var isKeepingWindowCentered: Bool { preferencesStyleController.isKeepingWindowCentered }
+	private var panes = [SettingsPane]()
+	private var style: Settings.Style?
+	internal var settingsPanesCount: Int { panes.count }
+	private var settingsStyleController: SettingsStyleController!
+	private var isKeepingWindowCentered: Bool { settingsStyleController.isKeepingWindowCentered }
 
 	private var toolbarItemIdentifiers: [NSToolbarItem.Identifier] {
-		preferencesStyleController?.toolbarItemIdentifiers() ?? []
+		settingsStyleController?.toolbarItemIdentifiers() ?? []
 	}
 
 	var window: NSWindow! { view.window }
@@ -21,7 +21,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			return nil
 		}
 
-		return preferencePanes[activeTab]
+		return panes[activeTab]
 	}
 
 	override func loadView() {
@@ -29,12 +29,12 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 		view.translatesAutoresizingMaskIntoConstraints = false
 	}
 
-	func configure(preferencePanes: [PreferencePane], style: Preferences.Style) {
-		self.preferencePanes = preferencePanes
+	func configure(panes: [SettingsPane], style: Settings.Style) {
+		self.panes = panes
 		self.style = style
-		children = preferencePanes
+		children = panes
 
-		let toolbar = NSToolbar(identifier: "PreferencesToolbar")
+		let toolbar = NSToolbar(identifier: "SettingsToolbar")
 		toolbar.allowsUserCustomization = false
 		toolbar.displayMode = .iconAndLabel
 		toolbar.showsBaselineSeparator = true
@@ -42,26 +42,22 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 		switch style {
 		case .segmentedControl:
-			preferencesStyleController = SegmentedControlStyleViewController(preferencePanes: preferencePanes)
+			settingsStyleController = SegmentedControlStyleViewController(panes: panes)
 		case .toolbarItems:
-			preferencesStyleController = ToolbarItemStyleViewController(
-				preferencePanes: preferencePanes,
+			settingsStyleController = ToolbarItemStyleViewController(
+				panes: panes,
 				toolbar: toolbar,
 				centerToolbarItems: false
 			)
 		}
-		preferencesStyleController.delegate = self
+		settingsStyleController.delegate = self
 
-		// Called last so that `preferencesStyleController` can be asked for items.
+		// Called last so that `settingsStyleController` can be asked for items.
 		window.toolbar = toolbar
 	}
 
-	func activateTab(preferencePane: PreferencePane, animated: Bool) {
-		activateTab(preferenceIdentifier: preferencePane.preferencePaneIdentifier, animated: animated)
-	}
-
-	func activateTab(preferenceIdentifier: Preferences.PaneIdentifier, animated: Bool) {
-		guard let index = (preferencePanes.firstIndex { $0.preferencePaneIdentifier == preferenceIdentifier }) else {
+	func activateTab(paneIdentifier: Settings.PaneIdentifier, animated: Bool) {
+		guard let index = (panes.firstIndex { $0.preferencePaneIdentifier == paneIdentifier }) else {
 			return activateTab(index: 0, animated: animated)
 		}
 
@@ -71,7 +67,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	func activateTab(index: Int, animated: Bool) {
 		defer {
 			activeTab = index
-			preferencesStyleController.selectTab(index: index)
+			settingsStyleController.selectTab(index: index)
 			updateWindowTitle(tabIndex: index)
 		}
 
@@ -94,21 +90,23 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 
 	private func updateWindowTitle(tabIndex: Int) {
 		window.title = {
-			if preferencePanes.count > 1 {
-				return preferencePanes[tabIndex].preferencePaneTitle
+			if panes.count > 1 {
+				return panes[tabIndex].preferencePaneTitle
 			} else {
-				let preferences = Localization[.preferences]
+				let settings = Localization[.preferences]
 				let appName = Bundle.main.appName
-				return "\(appName) \(preferences)"
+				return "\(appName) \(settings)"
 			}
 		}()
 	}
 
-	/// Cached constraints that pin `childViewController` views to the content view.
+	/**
+	Cached constraints that pin `childViewController` views to the content view.
+	*/
 	private var activeChildViewConstraints = [NSLayoutConstraint]()
 
 	private func immediatelyDisplayTab(index: Int) {
-		let toViewController = preferencePanes[index]
+		let toViewController = panes[index]
 		view.addSubview(toViewController.view)
 		activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		setWindowFrame(for: toViewController, animated: false)
@@ -121,8 +119,8 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 			return
 		}
 
-		let fromViewController = preferencePanes[activeTab]
-		let toViewController = preferencePanes[index]
+		let fromViewController = panes[activeTab]
+		let toViewController = panes[index]
 
 		// View controller animations only work on macOS 10.14 and newer.
 		let options: NSViewController.TransitionOptions
@@ -207,7 +205,7 @@ final class PreferencesTabViewController: NSViewController, PreferencesStyleCont
 	}
 }
 
-extension PreferencesTabViewController: NSToolbarDelegate {
+extension SettingsTabViewController: NSToolbarDelegate {
 	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
 		toolbarItemIdentifiers
 	}
@@ -229,6 +227,6 @@ extension PreferencesTabViewController: NSToolbarDelegate {
 			return nil
 		}
 
-		return preferencesStyleController.toolbarItem(preferenceIdentifier: Preferences.PaneIdentifier(fromToolbarItemIdentifier: itemIdentifier))
+		return settingsStyleController.toolbarItem(paneIdentifier: .init(fromToolbarItemIdentifier: itemIdentifier))
 	}
 }

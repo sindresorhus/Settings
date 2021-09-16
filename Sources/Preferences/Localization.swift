@@ -105,6 +105,7 @@ struct Localization {
 
 		// Iterate through all user-preferred languages until we find one that has a valid language code.
 		let preferredLocale = Locale.preferredLanguages
+			// TODO: Use `.firstNonNil()` here when available.
 			.lazy
 			.map { Locale(identifier: $0) }
 			.first { $0.languageCode != nil }

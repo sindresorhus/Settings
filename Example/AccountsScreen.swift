@@ -2,25 +2,27 @@ import SwiftUI
 import Preferences
 
 /**
-Function wrapping SwiftUI into `PreferencePane`, which is mimicking view controller's default construction syntax.
+Function wrapping SwiftUI into `SettingsPane`, which is mimicking view controller's default construction syntax.
 */
-let AccountsPreferenceViewController: () -> PreferencePane = {
-	/// Wrap your custom view into `Preferences.Pane`, while providing necessary toolbar info.
-	let paneView = Preferences.Pane(
+let AccountsSettingsViewController: () -> SettingsPane = {
+	/**
+	Wrap your custom view into `Settings.Pane`, while providing necessary toolbar info.
+	*/
+	let paneView = Settings.Pane(
 		identifier: .accounts,
 		title: "Accounts",
-		toolbarIcon: NSImage(systemSymbolName: "person.crop.circle", accessibilityDescription: "Accounts preferences")!
+		toolbarIcon: NSImage(systemSymbolName: "person.crop.circle", accessibilityDescription: "Accounts settings")!
 	) {
-		AccountsView()
+		AccountsScreen()
 	}
 
-	return Preferences.PaneHostingController(pane: paneView)
+	return Settings.PaneHostingController(pane: paneView)
 }
 
 /**
-The main view of “Accounts” preference pane.
+The main view of “Accounts” settings pane.
 */
-struct AccountsView: View {
+struct AccountsScreen: View {
 	@State private var isOn1 = true
 	@State private var isOn2 = false
 	@State private var isOn3 = true
@@ -30,22 +32,22 @@ struct AccountsView: View {
 	private let contentWidth: Double = 450.0
 
 	var body: some View {
-		Preferences.Container(contentWidth: contentWidth) {
-			Preferences.Section(title: "Permissions:") {
+		Settings.Container(contentWidth: contentWidth) {
+			Settings.Section(title: "Permissions:") {
 				Toggle("Allow user to administer this computer", isOn: $isOn1)
 				Text("Administrator has root access to this machine.")
 					.preferenceDescription()
 				Toggle("Allow user to access every file", isOn: $isOn2)
 			}
-			Preferences.Section(title: "Show scroll bars:") {
+			Settings.Section(title: "Show scroll bars:") {
 				Picker("", selection: $selection1) {
 					Text("When scrolling").tag(0)
 					Text("Always").tag(1)
 				}
 					.labelsHidden()
-					.pickerStyle(RadioGroupPickerStyle())
+					.pickerStyle(.radioGroup)
 			}
-			Preferences.Section(label: {
+			Settings.Section(label: {
 				Toggle("Some toggle", isOn: $isOn3)
 			}) {
 				Picker("", selection: $selection2) {
@@ -57,7 +59,7 @@ struct AccountsView: View {
 				Text("Automatic mode can slow things down.")
 					.preferenceDescription()
 			}
-			Preferences.Section(title: "Preview mode:") {
+			Settings.Section(title: "Preview mode:") {
 				Picker("", selection: $selection3) {
 					Text("Automatic").tag(0)
 					Text("Manual").tag(1)
@@ -71,8 +73,8 @@ struct AccountsView: View {
 	}
 }
 
-struct AccountsView_Previews: PreviewProvider {
+struct AccountsScreen_Previews: PreviewProvider {
 	static var previews: some View {
-		AccountsView()
+		AccountsScreen()
 	}
 }

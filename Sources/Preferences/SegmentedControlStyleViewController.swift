@@ -8,7 +8,7 @@ extension NSUserInterfaceItemIdentifier {
 	static let toolbarSegmentedControl = Self("toolbarSegmentedControl")
 }
 
-final class SegmentedControlStyleViewController: NSViewController, PreferencesStyleController {
+final class SegmentedControlStyleViewController: NSViewController, SettingsStyleController {
 	var segmentedControl: NSSegmentedControl! {
 		get { view as? NSSegmentedControl }
 		set {
@@ -18,13 +18,13 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 
 	var isKeepingWindowCentered: Bool { true }
 
-	weak var delegate: PreferencesStyleControllerDelegate?
+	weak var delegate: SettingsStyleControllerDelegate?
 
-	private var preferencePanes: [PreferencePane]!
+	private var panes: [SettingsPane]!
 
-	required init(preferencePanes: [PreferencePane]) {
+	required init(panes: [SettingsPane]) {
 		super.init(nibName: nil, bundle: nil)
-		self.preferencePanes = preferencePanes
+		self.panes = panes
 	}
 
 	@available(*, unavailable)
@@ -33,12 +33,12 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 	}
 
 	override func loadView() {
-		view = createSegmentedControl(preferencePanes: preferencePanes)
+		view = createSegmentedControl(panes: panes)
 	}
 
-	fileprivate func createSegmentedControl(preferencePanes: [PreferencePane]) -> NSSegmentedControl {
+	fileprivate func createSegmentedControl(panes: [SettingsPane]) -> NSSegmentedControl {
 		let segmentedControl = NSSegmentedControl()
-		segmentedControl.segmentCount = preferencePanes.count
+		segmentedControl.segmentCount = panes.count
 		segmentedControl.segmentStyle = .texturedSquare
 		segmentedControl.target = self
 		segmentedControl.action = #selector(segmentedControlAction)
@@ -53,8 +53,8 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 			let insets = CGSize(width: 36, height: 12)
 			var maxSize = CGSize.zero
 
-			for preferencePane in preferencePanes {
-				let title = preferencePane.preferencePaneTitle
+			for pane in panes {
+				let title = pane.preferencePaneTitle
 				let titleSize = title.size(
 					withAttributes: [
 						.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
@@ -73,13 +73,13 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 			)
 		}()
 
-		let segmentBorderWidth = CGFloat(preferencePanes.count) + 1
-		let segmentWidth = segmentSize.width * CGFloat(preferencePanes.count) + segmentBorderWidth
+		let segmentBorderWidth = Double(panes.count) + 1
+		let segmentWidth = segmentSize.width * Double(panes.count) + segmentBorderWidth
 		let segmentHeight = segmentSize.height
 		segmentedControl.frame = CGRect(x: 0, y: 0, width: segmentWidth, height: segmentHeight)
 
-		for (index, preferencePane) in preferencePanes.enumerated() {
-			segmentedControl.setLabel(preferencePane.preferencePaneTitle, forSegment: index)
+		for (index, pane) in panes.enumerated() {
+			segmentedControl.setLabel(pane.preferencePaneTitle, forSegment: index)
 			segmentedControl.setWidth(segmentSize.width, forSegment: index)
 			if let cell = segmentedControl.cell as? NSSegmentedCell {
 				cell.setTag(index, forSegment: index)
@@ -105,8 +105,8 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 		]
 	}
 
-	func toolbarItem(preferenceIdentifier: Preferences.PaneIdentifier) -> NSToolbarItem? {
-		let toolbarItemIdentifier = preferenceIdentifier.toolbarItemIdentifier
+	func toolbarItem(paneIdentifier: Settings.PaneIdentifier) -> NSToolbarItem? {
+		let toolbarItemIdentifier = paneIdentifier.toolbarItemIdentifier
 		precondition(toolbarItemIdentifier == .toolbarSegmentedControlItem)
 
 		// When the segments outgrow the window, we need to provide a group of
@@ -114,12 +114,12 @@ final class SegmentedControlStyleViewController: NSViewController, PreferencesSt
 		// context menu that pops up at the right edge of the window.
 		let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: toolbarItemIdentifier)
 		toolbarItemGroup.view = segmentedControl
-		toolbarItemGroup.subitems = preferencePanes.enumerated().map { index, preferenceable -> NSToolbarItem in
-			let item = NSToolbarItem(itemIdentifier: .init("segment-\(preferenceable.preferencePaneTitle)"))
-			item.label = preferenceable.preferencePaneTitle
+		toolbarItemGroup.subitems = panes.enumerated().map { index, settingsPane -> NSToolbarItem in
+			let item = NSToolbarItem(itemIdentifier: .init("segment-\(settingsPane.preferencePaneTitle)"))
+			item.label = settingsPane.preferencePaneTitle
 
 			let menuItem = NSMenuItem(
-				title: preferenceable.preferencePaneTitle,
+				title: settingsPane.preferencePaneTitle,
 				action: #selector(segmentedControlMenuAction),
 				keyEquivalent: ""
 			)

@@ -1,15 +1,12 @@
 import Cocoa
 
 extension NSApplication {
-	/// Relaunch the app.
-	func relaunch() {
+	@MainActor
+	func relaunch() async throws {
 		let configuration = NSWorkspace.OpenConfiguration()
 		configuration.createsNewApplicationInstance = true
+		try await NSWorkspace.shared.openApplication(at: Bundle.main.bundleURL, configuration: configuration)
 
-		NSWorkspace.shared.openApplication(at: Bundle.main.bundleURL, configuration: configuration) { _, _ in
-			DispatchQueue.main.async {
-				NSApp.terminate(nil)
-			}
-		}
+		NSApp.terminate(nil)
 	}
 }

@@ -23,7 +23,9 @@ extension NSView {
 }
 
 extension NSEvent {
-	/// Events triggered by user interaction.
+	/**
+	Events triggered by user interaction.
+	*/
 	static let userInteractionEvents: [NSEvent.EventType] = {
 		var events: [NSEvent.EventType] = [
 			.leftMouseDown,
@@ -57,7 +59,9 @@ extension NSEvent {
 		return events
 	}()
 
-	/// Whether the event was triggered by user interaction.
+	/**
+	Whether the event was triggered by user interaction.
+	*/
 	var isUserInteraction: Bool { NSEvent.userInteractionEvents.contains(type) }
 }
 

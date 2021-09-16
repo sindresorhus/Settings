@@ -1,6 +1,6 @@
 import Cocoa
 
-extension Preferences {
+extension Settings {
 	public enum Style {
 		case toolbarItems
 		case segmentedControl
