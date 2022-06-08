@@ -6,6 +6,8 @@
 
 Just pass in some view controllers and this package will take care of the rest. Built-in SwiftUI support.
 
+*This package is compatible with macOS 13 and automatically uses `Settings` instead of `Preferences` in the window title on macOS 13 and later.*
+
 <br>
 
 ---

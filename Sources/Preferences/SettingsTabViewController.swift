@@ -93,7 +93,13 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 			if panes.count > 1 {
 				return panes[tabIndex].preferencePaneTitle
 			} else {
-				let settings = Localization[.preferences]
+				let settings: String
+				if #available(macOS 13, *) {
+					settings = Localization[.settings]
+				} else {
+					settings = Localization[.preferences]
+				}
+
 				let appName = Bundle.main.appName
 				return "\(appName) \(settings)"
 			}
