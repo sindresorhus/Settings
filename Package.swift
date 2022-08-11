@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
 	name: "Preferences",
+    defaultLocalization: "fr",
 	platforms: [
 		.macOS(.v10_10)
 	],
@@ -16,7 +17,8 @@ let package = Package(
 	],
 	targets: [
 		.target(
-			name: "Preferences"
+			name: "Preferences",
+            resources: [.process("Resources")]
 		)
 	]
 )
