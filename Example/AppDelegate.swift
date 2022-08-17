@@ -49,7 +49,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 			: .segmentedControl
 
 		Task {
-			try! await NSApp.relaunch()
+			try! await NSApp.relaunch() // swiftlint:disable:this force_try
 		}
 	}
 }

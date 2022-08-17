@@ -3,47 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */; };
-		509EC81C22535E0A00760A3C /* SettingsStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509EC81B22535E0A00760A3C /* SettingsStyleController.swift */; };
-		50A412F42196B70100E4A5A8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F32196B70100E4A5A8 /* Style.swift */; };
-		50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */; };
-		50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */; };
-		56392002228D453100F8804C /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56392001228D453100F8804C /* Localization.swift */; };
 		E3194E4122573FF3006FE775 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3194E4022573FF3006FE775 /* Utilities.swift */; };
+		E340668C28ADAFF3002F8EA9 /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = E340668B28ADAFF3002F8EA9 /* Preferences */; };
 		E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EE920E6149B002F8F86 /* AppDelegate.swift */; };
 		E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EEB20E6149D002F8F86 /* Assets.xcassets */; };
 		E34E9EEF20E6149D002F8F86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EED20E6149D002F8F86 /* MainMenu.xib */; };
-		E34E9EF520E61507002F8F86 /* Preferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Preferences::Preferences::Product" /* Preferences.framework */; };
-		E34E9EF620E61507002F8F86 /* Preferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "Preferences::Preferences::Product" /* Preferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E34E9EFB20E61557002F8F86 /* SettingsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EFA20E61557002F8F86 /* SettingsPane.swift */; };
 		E34E9EFF20E617E7002F8F86 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EFE20E617E7002F8F86 /* GeneralSettingsViewController.swift */; };
 		E34E9F0120E61A26002F8F86 /* GeneralSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0020E61A26002F8F86 /* GeneralSettingsViewController.xib */; };
 		E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */; };
 		E34E9F0520E61C06002F8F86 /* AdvancedSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0420E61C06002F8F86 /* AdvancedSettingsViewController.xib */; };
-		E34E9F0820E62743002F8F86 /* SettingsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0620E62627002F8F86 /* SettingsTabViewController.swift */; };
-		E3D64112248648EE0090D28E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D64111248648EE0090D28E /* Settings.swift */; };
 		E7059F1323C2AC7400F84762 /* AccountsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7059F1123C2AC3700F84762 /* AccountsScreen.swift */; };
-		E74F0B0723C2BD6D00B16841 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74F0B0623C2BD6D00B16841 /* Pane.swift */; };
-		E752207623FCACC800117D41 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E752207523FCACC800117D41 /* Section.swift */; };
-		E7E6B56823C7DB2000E51429 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6B56723C7DB2000E51429 /* Container.swift */; };
-		OBJ_19 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* SettingsWindowController.swift */; };
-		OBJ_20 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Utilities.swift */; };
-		OBJ_27 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E34E9EF720E61507002F8F86 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "Preferences::Preferences";
-			remoteInfo = Preferences;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E34E9EF920E61508002F8F86 /* Embed Frameworks */ = {
@@ -52,7 +27,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E34E9EF620E61507002F8F86 /* Preferences.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,33 +35,18 @@
 
 /* Begin PBXFileReference section */
 		502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; usesTabs = 1; };
-		509EC81B22535E0A00760A3C /* SettingsStyleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsStyleController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		50A412F32196B70100E4A5A8 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Style.swift; sourceTree = "<group>"; usesTabs = 1; };
-		50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SegmentedControlStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ToolbarItemStyleViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		50F9AE80225773A0005D7DC3 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; path = readme.md; sourceTree = "<group>"; usesTabs = 1; };
-		56392001228D453100F8804C /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Localization.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E3194E4022573FF3006FE775 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Utilities.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E340668928ADAFD5002F8EA9 /* Preferences */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Preferences; path = ..; sourceTree = "<group>"; };
 		E34E9EE720E6149B002F8F86 /* PreferencesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreferencesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34E9EE920E6149B002F8F86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EEB20E6149D002F8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E34E9EEE20E6149D002F8F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E34E9EF020E6149D002F8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E34E9EFA20E61557002F8F86 /* SettingsPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsPane.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EFE20E617E7002F8F86 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9F0020E61A26002F8F86 /* GeneralSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralSettingsViewController.xib; sourceTree = "<group>"; };
 		E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AdvancedPreferenceViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9F0420E61C06002F8F86 /* AdvancedSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSettingsViewController.xib; sourceTree = "<group>"; };
-		E34E9F0620E62627002F8F86 /* SettingsTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsTabViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E3D64111248648EE0090D28E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Settings.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E7059F1123C2AC3700F84762 /* AccountsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountsScreen.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; wrapsLines = 1; };
-		E74F0B0623C2BD6D00B16841 /* Pane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Pane.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E752207523FCACC800117D41 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Section.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E7E6B56723C7DB2000E51429 /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Container.swift; sourceTree = "<group>"; usesTabs = 1; };
-		OBJ_10 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Utilities.swift; sourceTree = "<group>"; usesTabs = 1; };
-		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; lineEnding = 0; path = Package.swift; sourceTree = "<group>"; usesTabs = 1; };
-		OBJ_9 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsWindowController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		"Preferences::Preferences::Product" /* Preferences.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Preferences.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,20 +54,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E34E9EF520E61507002F8F86 /* Preferences.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_21 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
+				E340668C28ADAFF3002F8EA9 /* Preferences in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E340668A28ADAFF3002F8EA9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E340668928ADAFD5002F8EA9 /* Preferences */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E34E9EE820E6149B002F8F86 /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,13 +84,12 @@
 				E34E9EEB20E6149D002F8F86 /* Assets.xcassets */,
 				E34E9EF020E6149D002F8F86 /* Info.plist */,
 			);
-			path = Example;
+			name = Example;
 			sourceTree = "<group>";
 		};
 		OBJ_12 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				"Preferences::Preferences::Product" /* Preferences.framework */,
 				E34E9EE720E6149B002F8F86 /* PreferencesExample.app */,
 			);
 			name = Products;
@@ -139,42 +98,11 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				50F9AE80225773A0005D7DC3 /* readme.md */,
-				OBJ_6 /* Package.swift */,
-				OBJ_7 /* Sources */,
 				E34E9EE820E6149B002F8F86 /* Example */,
+				E340668A28ADAFF3002F8EA9 /* Frameworks */,
 				OBJ_12 /* Products */,
 			);
 			sourceTree = "<group>";
-		};
-		OBJ_7 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_8 /* Preferences */,
-			);
-			name = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_8 /* Preferences */ = {
-			isa = PBXGroup;
-			children = (
-				E3D64111248648EE0090D28E /* Settings.swift */,
-				E34E9EFA20E61557002F8F86 /* SettingsPane.swift */,
-				50A412F32196B70100E4A5A8 /* Style.swift */,
-				OBJ_9 /* SettingsWindowController.swift */,
-				E34E9F0620E62627002F8F86 /* SettingsTabViewController.swift */,
-				509EC81B22535E0A00760A3C /* SettingsStyleController.swift */,
-				50A412F52196E87900E4A5A8 /* SegmentedControlStyleViewController.swift */,
-				50A412F72196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift */,
-				E74F0B0623C2BD6D00B16841 /* Pane.swift */,
-				E7E6B56723C7DB2000E51429 /* Container.swift */,
-				E752207523FCACC800117D41 /* Section.swift */,
-				56392001228D453100F8804C /* Localization.swift */,
-				OBJ_10 /* Utilities.swift */,
-			);
-			name = Preferences;
-			path = Sources/Preferences;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -191,43 +119,14 @@
 			buildRules = (
 			);
 			dependencies = (
-				E34E9EF820E61507002F8F86 /* PBXTargetDependency */,
 			);
 			name = PreferencesExample;
+			packageProductDependencies = (
+				E340668B28ADAFF3002F8EA9 /* Preferences */,
+			);
 			productName = PreferencesExample;
 			productReference = E34E9EE720E6149B002F8F86 /* PreferencesExample.app */;
 			productType = "com.apple.product-type.application";
-		};
-		"Preferences::Preferences" /* Preferences */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_15 /* Build configuration list for PBXNativeTarget "Preferences" */;
-			buildPhases = (
-				E3BFC67821FBBC8B00C16B1A /* SwiftLint */,
-				OBJ_18 /* Sources */,
-				OBJ_21 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Preferences;
-			productName = Preferences;
-			productReference = "Preferences::Preferences::Product" /* Preferences.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		"Preferences::SwiftPMPackageDescription" /* PreferencesPackageDescription */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_23 /* Build configuration list for PBXNativeTarget "PreferencesPackageDescription" */;
-			buildPhases = (
-				OBJ_26 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PreferencesPackageDescription;
-			productName = PreferencesPackageDescription;
-			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -247,13 +146,10 @@
 							};
 						};
 					};
-					"Preferences::Preferences" = {
-						LastSwiftMigration = 1020;
-					};
 				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Preferences" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -265,8 +161,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				"Preferences::Preferences" /* Preferences */,
-				"Preferences::SwiftPMPackageDescription" /* PreferencesPackageDescription */,
 				E34E9EE620E6149B002F8F86 /* PreferencesExample */,
 			);
 		};
@@ -286,28 +180,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		E3BFC67821FBBC8B00C16B1A /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		E34E9EE320E6149B002F8F86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -322,43 +194,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_18 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				E752207623FCACC800117D41 /* Section.swift in Sources */,
-				509EC81C22535E0A00760A3C /* SettingsStyleController.swift in Sources */,
-				OBJ_19 /* SettingsWindowController.swift in Sources */,
-				E34E9F0820E62743002F8F86 /* SettingsTabViewController.swift in Sources */,
-				E74F0B0723C2BD6D00B16841 /* Pane.swift in Sources */,
-				50A412F82196EAF200E4A5A8 /* ToolbarItemStyleViewController.swift in Sources */,
-				50A412F62196E87900E4A5A8 /* SegmentedControlStyleViewController.swift in Sources */,
-				56392002228D453100F8804C /* Localization.swift in Sources */,
-				50A412F42196B70100E4A5A8 /* Style.swift in Sources */,
-				E3D64112248648EE0090D28E /* Settings.swift in Sources */,
-				E34E9EFB20E61557002F8F86 /* SettingsPane.swift in Sources */,
-				OBJ_20 /* Utilities.swift in Sources */,
-				E7E6B56823C7DB2000E51429 /* Container.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_26 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_27 /* Package.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E34E9EF820E61507002F8F86 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "Preferences::Preferences" /* Preferences */;
-			targetProxy = E34E9EF720E61507002F8F86 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E34E9EED20E6149D002F8F86 /* MainMenu.xib */ = {
@@ -375,7 +211,6 @@
 		E34E9EF320E6149D002F8F86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -400,12 +235,11 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.PreferencesExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,7 +252,6 @@
 		E34E9EF420E6149D002F8F86 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -440,87 +273,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sindresorhus.PreferencesExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		OBJ_16 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Preferences.xcodeproj/Preferences_Info.plist;
-				MARKETING_VERSION = 2.5.0;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Preferences;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = Preferences;
-			};
-			name = Debug;
-		};
-		OBJ_17 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Preferences.xcodeproj/Preferences_Info.plist;
-				MARKETING_VERSION = 2.5.0;
-				OTHER_CFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Preferences;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGET_NAME = Preferences;
-			};
-			name = Release;
-		};
-		OBJ_24 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		OBJ_25 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -561,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -608,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -632,15 +394,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_15 /* Build configuration list for PBXNativeTarget "Preferences" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_16 /* Debug */,
-				OBJ_17 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		OBJ_2 /* Build configuration list for PBXProject "Preferences" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -650,16 +403,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_23 /* Build configuration list for PBXNativeTarget "PreferencesPackageDescription" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_24 /* Debug */,
-				OBJ_25 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E340668B28ADAFF3002F8EA9 /* Preferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Preferences;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = OBJ_1 /* Project object */;
 }

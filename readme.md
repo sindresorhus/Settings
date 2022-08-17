@@ -8,62 +8,17 @@ Just pass in some view controllers and this package will take care of the rest. 
 
 *This package is compatible with macOS 13 and automatically uses `Settings` instead of `Preferences` in the window title on macOS 13 and later.*
 
-<br>
-
----
-
-<div align="center">
-	<p>
-		<p>
-			<sup>
-				<a href="https://github.com/sponsors/sindresorhus">Sindre's open source work is supported by the community</a>
-			</sup>
-		</p>
-		<sup>Special thanks to:</sup>
-		<br>
-		<br>
-		<a href="https://keygen.sh">
-			<div>
-				<img src="https://sindresorhus.com/assets/thanks/keygen-logo.svg" width="210" alt="Keygen">
-			</div>
-			<b>A dead-simple software licensing and distribution API built for developers</b>
-		</a>
-		<br>
-		<br>
-	</p>
-</div>
-
----
-
-<br>
-
 ## Requirements
 
-- macOS 10.10+
-- Xcode 13.4+
-- Swift 5.6+
+macOS 10.10 and later.
 
 ## Install
 
-#### Swift Package Manager
-
 Add `https://github.com/sindresorhus/Preferences` in the [“Swift Package Manager” tab in Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
-
-#### Carthage
-
-```
-github "sindresorhus/Preferences"
-```
-
-#### CocoaPods
-
-```ruby
-pod 'Preferences'
-```
 
 ## Usage
 
-*Run the `Example` target in Xcode to try a live example (requires macOS 11 or later).*
+*Run the `Example` Xcode project to try a live example (requires macOS 11 or later).*
 
 First, create some settings pane identifiers:
 
