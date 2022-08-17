@@ -10,7 +10,7 @@ Just pass in some view controllers and this package will take care of the rest. 
 
 ## Requirements
 
-macOS 10.10 and later.
+macOS 10.13 and later.
 
 ## Install
 

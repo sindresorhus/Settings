@@ -1,4 +1,3 @@
-import Cocoa
 import SwiftUI
 
 extension NSImage {
@@ -26,43 +25,36 @@ extension NSEvent {
 	/**
 	Events triggered by user interaction.
 	*/
-	static let userInteractionEvents: [NSEvent.EventType] = {
-		var events: [NSEvent.EventType] = [
-			.leftMouseDown,
-			.leftMouseUp,
-			.rightMouseDown,
-			.rightMouseUp,
-			.leftMouseDragged,
-			.rightMouseDragged,
-			.keyDown,
-			.keyUp,
-			.scrollWheel,
-			.tabletPoint,
-			.otherMouseDown,
-			.otherMouseUp,
-			.otherMouseDragged,
-			.gesture,
-			.magnify,
-			.swipe,
-			.rotate,
-			.beginGesture,
-			.endGesture,
-			.smartMagnify,
-			.quickLook,
-			.directTouch
-		]
-
-		if #available(macOS 10.10.3, *) {
-			events.append(.pressure)
-		}
-
-		return events
-	}()
+	static let userInteractionEvents: [EventType] = [
+		.leftMouseDown,
+		.leftMouseUp,
+		.rightMouseDown,
+		.rightMouseUp,
+		.leftMouseDragged,
+		.rightMouseDragged,
+		.keyDown,
+		.keyUp,
+		.scrollWheel,
+		.tabletPoint,
+		.otherMouseDown,
+		.otherMouseUp,
+		.otherMouseDragged,
+		.gesture,
+		.magnify,
+		.swipe,
+		.rotate,
+		.beginGesture,
+		.endGesture,
+		.smartMagnify,
+		.pressure,
+		.quickLook,
+		.directTouch
+	]
 
 	/**
 	Whether the event was triggered by user interaction.
 	*/
-	var isUserInteraction: Bool { NSEvent.userInteractionEvents.contains(type) }
+	var isUserInteraction: Bool { Self.userInteractionEvents.contains(type) }
 }
 
 extension Bundle {
