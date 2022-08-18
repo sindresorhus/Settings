@@ -4,7 +4,7 @@ import Preferences
 /**
 Function wrapping SwiftUI into `SettingsPane`, which is mimicking view controller's default construction syntax.
 */
-let AccountsSettingsViewController: () -> SettingsPane = {
+let AccountsSettingsViewController: () -> SettingsPane = { // swiftlint:disable:this identifier_name
 	/**
 	Wrap your custom view into `Settings.Pane`, while providing necessary toolbar info.
 	*/
