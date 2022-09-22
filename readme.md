@@ -338,6 +338,7 @@ You might also like Sindre's [apps](https://sindresorhus.com/apps).
 - [The Archive](https://zettelkasten.de/the-archive/) - Note-taking app by [Christian Tietze](https://github.com/DivineDominion)
 - [Word Counter](https://wordcounterapp.com) - Measuring writer's productivity by [Christian Tietze](https://github.com/DivineDominion)
 - [Medis](https://getmedis.com) - A Redis GUI by [Zihua Li](https://github.com/luin)
+- [vChewing IME](https://github.com/vChewing/vChewing-macOS/) - Next-generation bopomofo-phonetic Chinese input method by [The vChewing Project](https://github.com/vChewing)
 
 Want to tell the world about your app that is using Preferences? Open a PR!
 
