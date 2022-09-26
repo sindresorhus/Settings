@@ -89,7 +89,7 @@ public final class SettingsWindowController: NSWindowController {
 	- See `showWindow(_:)` to show the window without the convenience of activating the app.
 	*/
 	public func show(preferencePane paneIdentifier: Settings.PaneIdentifier? = nil) {
-		if let paneIdentifier = paneIdentifier {
+		if let paneIdentifier {
 			tabViewController.activateTab(paneIdentifier: paneIdentifier, animated: false)
 		} else {
 			tabViewController.restoreInitialTab()
@@ -102,7 +102,7 @@ public final class SettingsWindowController: NSWindowController {
 
 	private func restoreWindowPosition() {
 		guard
-			let window = window,
+			let window,
 			let screenContainingWindow = window.screen
 		else {
 			return

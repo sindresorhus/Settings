@@ -7,7 +7,7 @@ extension NSImage {
 extension NSView {
 	@discardableResult
 	func constrainToSuperviewBounds() -> [NSLayoutConstraint] {
-		guard let superview = superview else {
+		guard let superview else {
 			preconditionFailure("superview has to be set first")
 		}
 

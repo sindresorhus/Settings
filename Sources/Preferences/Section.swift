@@ -64,11 +64,11 @@ extension Settings {
 			- label: A view describing the setting handled by this section.
 			- content: A content view.
 		*/
-		public init<Label: View, Content: View>(
+		public init(
 			bottomDivider: Bool = false,
 			verticalAlignment: VerticalAlignment = .firstTextBaseline,
-			label: @escaping () -> Label,
-			@ViewBuilder content: @escaping () -> Content
+			label: @escaping () -> some View,
+			@ViewBuilder content: @escaping () -> some View
 		) {
 			self.label = label()
 				.overlay(LabelOverlay())
@@ -88,11 +88,11 @@ extension Settings {
 			- verticalAlignement: The vertical alignment of the section content.
 			- content: A content view.
 		*/
-		public init<Content: View>(
+		public init(
 			title: String,
 			bottomDivider: Bool = false,
 			verticalAlignment: VerticalAlignment = .firstTextBaseline,
-			@ViewBuilder content: @escaping () -> Content
+			@ViewBuilder content: @escaping () -> some View
 		) {
 			let textLabel = {
 				Text(title)

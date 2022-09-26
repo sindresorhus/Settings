@@ -17,7 +17,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 	var isAnimated = true
 
 	var activeViewController: NSViewController? {
-		guard let activeTab = activeTab else {
+		guard let activeTab else {
 			return nil
 		}
 
@@ -119,7 +119,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 	}
 
 	private func animateTabTransition(index: Int, animated: Bool) {
-		guard let activeTab = activeTab else {
+		guard let activeTab else {
 			assertionFailure("animateTabTransition called before a tab was displayed; transition only works from one tab to another")
 			immediatelyDisplayTab(index: index)
 			return
@@ -189,7 +189,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 	}
 
 	private func setWindowFrame(for viewController: NSViewController, animated: Bool = false) {
-		guard let window = window else {
+		guard let window else {
 			preconditionFailure()
 		}
 

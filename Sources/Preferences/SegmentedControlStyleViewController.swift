@@ -114,7 +114,7 @@ final class SegmentedControlStyleViewController: NSViewController, SettingsStyle
 		// context menu that pops up at the right edge of the window.
 		let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: toolbarItemIdentifier)
 		toolbarItemGroup.view = segmentedControl
-		toolbarItemGroup.subitems = panes.enumerated().map { index, settingsPane -> NSToolbarItem in
+		toolbarItemGroup.subitems = panes.enumerated().map { index, settingsPane in
 			let item = NSToolbarItem(itemIdentifier: .init("segment-\(settingsPane.preferencePaneTitle)"))
 			item.label = settingsPane.preferencePaneTitle
 
