@@ -154,7 +154,7 @@ extension SettingsWindowController {
 		hidesToolbarForSingleItem: Bool = true
 	) {
 		self.init(
-			preferencePanes: panes.map { $0.asPreferencePane() },
+			preferencePanes: panes.map { $0.asSettingsPane() },
 			style: style,
 			animated: animated,
 			hidesToolbarForSingleItem: hidesToolbarForSingleItem
