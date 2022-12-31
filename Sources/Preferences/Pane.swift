@@ -9,7 +9,7 @@ public protocol SettingsPaneConvertible {
 	/**
 	Convert `self` to equivalent `SettingsPane`.
 	*/
-	func asPreferencePane() -> SettingsPane
+	func asSettingsPane() -> SettingsPane
 }
 
 @available(macOS 10.15, *)
@@ -39,7 +39,7 @@ extension Settings {
 
 		public var body: some View { content }
 
-		public func asPreferencePane() -> SettingsPane {
+		public func asSettingsPane() -> SettingsPane {
 			PaneHostingController(pane: self)
 		}
 	}
