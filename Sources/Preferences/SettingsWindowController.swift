@@ -26,15 +26,15 @@ public final class SettingsWindowController: NSWindowController {
 	}
 
 	public init(
-		preferencePanes: [SettingsPane],
+		settingsPanes: [SettingsPane],
 		style: Settings.Style = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	) {
-		precondition(!preferencePanes.isEmpty, "You need to set at least one view controller")
+		precondition(!settingsPanes.isEmpty, "You need to set at least one view controller")
 
 		let window = UserInteractionPausableWindow(
-			contentRect: preferencePanes[0].view.bounds,
+			contentRect: settingsPanes[0].view.bounds,
 			styleMask: [
 				.titled,
 				.closable
@@ -52,7 +52,7 @@ public final class SettingsWindowController: NSWindowController {
 			case .toolbarItems:
 				return .visible
 			case .segmentedControl:
-				return preferencePanes.count <= 1 ? .visible : .hidden
+				return settingsPanes.count <= 1 ? .visible : .hidden
 			}
 		}()
 
@@ -61,7 +61,7 @@ public final class SettingsWindowController: NSWindowController {
 		}
 
 		tabViewController.isAnimated = animated
-		tabViewController.configure(panes: preferencePanes, style: style)
+		tabViewController.configure(panes: settingsPanes, style: style)
 		updateToolbarVisibility()
 	}
 
@@ -154,7 +154,7 @@ extension SettingsWindowController {
 		hidesToolbarForSingleItem: Bool = true
 	) {
 		self.init(
-			preferencePanes: panes.map { $0.asSettingsPane() },
+			settingsPanes: panes.map { $0.asSettingsPane() },
 			style: style,
 			animated: animated,
 			hidesToolbarForSingleItem: hidesToolbarForSingleItem
