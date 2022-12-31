@@ -154,7 +154,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 		completionHandler completion: (() -> Void)? = nil
 	) {
 		let isAnimated = options
-			.intersection([
+			.isDisjoint(with: [
 				.crossfade,
 				.slideUp,
 				.slideDown,
@@ -163,7 +163,6 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 				.slideLeft,
 				.slideRight
 			])
-			.isEmpty == false
 
 		if isAnimated {
 			NSAnimationContext.runAnimationGroup({ context in
