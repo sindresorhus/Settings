@@ -29,6 +29,7 @@ struct AccountsScreen: View {
 	@State private var selection1 = 1
 	@State private var selection2 = 0
 	@State private var selection3 = 0
+	@State private var isExpanded = false
 	private let contentWidth: Double = 450.0
 
 	var body: some View {
@@ -68,6 +69,19 @@ struct AccountsScreen: View {
 					.frame(width: 120.0)
 				Text("Automatic mode can slow things down.")
 					.preferenceDescription()
+			}
+			Settings.Section(title: "Expand this pane:") {
+				Toggle("Expand", isOn: $isExpanded)
+				if isExpanded {
+					ZStack(alignment: .center) {
+						Rectangle()
+							.fill(.gray)
+							.frame(width: 200, height: 200)
+							.cornerRadius(20)
+						Text("🦄")
+							.frame(width: 180, height: 180)
+					}
+				}
 			}
 		}
 	}
