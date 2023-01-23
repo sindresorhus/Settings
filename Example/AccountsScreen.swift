@@ -71,17 +71,15 @@ struct AccountsScreen: View {
 					.preferenceDescription()
 			}
 			Settings.Section(title: "Expand this pane:") {
-				Toggle("Expand", isOn: $expand)
+				Toggle("Expand", isOn: $isExpanded)
 				if isExpanded {
 					ZStack(alignment: .center) {
 						Rectangle()
 							.fill(.gray)
 							.frame(width: 200, height: 200)
 							.cornerRadius(20)
-						Text("It would be nice if the window would animate based on the size of the content :)")
+						Text("🦄")
 							.frame(width: 180, height: 180)
-							.multilineTextAlignment(.center)
-							.colorInvert()
 					}
 				}
 			}
