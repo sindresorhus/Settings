@@ -46,7 +46,11 @@ struct Localization {
 			"vi": "Tùy chọn",
 			"zh-CN": "偏好设置",
 			"zh-HK": "偏好設定",
-			"zh-TW": "偏好設定"
+			"zh-TW": "偏好設定",
+			"zh-Hans": "偏好设置",
+			"zh-Hans-CN": "偏好设置",
+			"zh-Hant-HK": "偏好設定",
+			"zh-Hant-TW": "偏好設定"
 		],
 		.settings: [
 			"ar": "الإعدادات",
@@ -87,7 +91,11 @@ struct Localization {
 			"vi": "Cài đặt",
 			"zh-CN": "设置",
 			"zh-HK": "設定",
-			"zh-TW": "設定"
+			"zh-TW": "設定",
+			"zh-Hans": "设置",
+			"zh-Hans-CN": "设置",
+			"zh-Hant-HK": "設定",
+			"zh-Hant-TW": "設定"
 		]
 	]
 
@@ -119,10 +127,10 @@ struct Localization {
 		if languageCode == "zh" {
 			let regionCode = preferredLocale.regionCode ?? ""
 			if regionCode == "HK" || regionCode == "TW" {
-				return localizedDict["\(languageCode)-\(regionCode)"]!
+				return localizedDict["\(languageCode)-Hant-\(regionCode)"]!
 			} else {
 				// Fall back to "regular" zh-CN if neither the HK or TW region codes are found.
-				return localizedDict["\(languageCode)-CN"]!
+				return localizedDict["\(languageCode)-Hans-CN"]!
 			}
 		} else {
 			if let localizedString = localizedDict[languageCode] {
