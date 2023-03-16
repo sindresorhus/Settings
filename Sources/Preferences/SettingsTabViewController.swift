@@ -154,7 +154,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 		completionHandler completion: (() -> Void)? = nil
 	) {
 		let isAnimated = options
-			.isDisjoint(with: [
+			.isSubset(of: [
 				.crossfade,
 				.slideUp,
 				.slideDown,
