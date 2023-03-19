@@ -23,7 +23,7 @@ extension Settings.Pane {
 }
 
 extension SettingsWindowController {
-	@available(*, deprecated, renamed: "init(settingsPanes:style:animated:hidesToolbarForSingleItem:)")
+	@available(*, deprecated, renamed: "init(panes:style:animated:hidesToolbarForSingleItem:)")
 	public convenience init(
 		preferencePanes: [PreferencePane],
 		style: Settings.Style = .toolbarItems,

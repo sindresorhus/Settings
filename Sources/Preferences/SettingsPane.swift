@@ -11,14 +11,14 @@ extension Settings {
 }
 
 public protocol SettingsPane: NSViewController {
-	var preferencePaneIdentifier: Settings.PaneIdentifier { get }
-	var preferencePaneTitle: String { get }
+	var paneIdentifier: Settings.PaneIdentifier { get }
+	var paneTitle: String { get }
 	var toolbarItemIcon: NSImage { get }
 }
 
 extension SettingsPane {
 	public var toolbarItemIdentifier: NSToolbarItem.Identifier {
-		preferencePaneIdentifier.toolbarItemIdentifier
+		paneIdentifier.toolbarItemIdentifier
 	}
 
 	public var toolbarItemIcon: NSImage { .empty }

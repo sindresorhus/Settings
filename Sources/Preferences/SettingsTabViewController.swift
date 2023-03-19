@@ -57,7 +57,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 	}
 
 	func activateTab(paneIdentifier: Settings.PaneIdentifier, animated: Bool) {
-		guard let index = (panes.firstIndex { $0.preferencePaneIdentifier == paneIdentifier }) else {
+		guard let index = (panes.firstIndex { $0.paneIdentifier == paneIdentifier }) else {
 			return activateTab(index: 0, animated: animated)
 		}
 
@@ -91,7 +91,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 	private func updateWindowTitle(tabIndex: Int) {
 		window.title = {
 			if panes.count > 1 {
-				return panes[tabIndex].preferencePaneTitle
+				return panes[tabIndex].paneTitle
 			} else {
 				let settings: String
 				if #available(macOS 13, *) {

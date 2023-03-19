@@ -48,8 +48,8 @@ extension Settings {
 	Hosting controller enabling `Settings.Pane` to be used alongside AppKit `NSViewController`'s.
 	*/
 	public final class PaneHostingController<Content: View>: NSHostingController<Content>, SettingsPane {
-		public let preferencePaneIdentifier: PaneIdentifier
-		public let preferencePaneTitle: String
+		public let paneIdentifier: PaneIdentifier
+		public let paneTitle: String
 		public let toolbarItemIcon: NSImage
 
 		init(
@@ -58,8 +58,8 @@ extension Settings {
 			toolbarIcon: NSImage,
 			content: Content
 		) {
-			self.preferencePaneIdentifier = identifier
-			self.preferencePaneTitle = title
+			self.paneIdentifier = identifier
+			self.paneTitle = title
 			self.toolbarItemIcon = toolbarIcon
 			super.init(rootView: content)
 		}

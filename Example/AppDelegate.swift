@@ -36,7 +36,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		settingsWindowController.show(preferencePane: .accounts)
+		settingsWindowController.show(pane: .accounts)
 	}
 
 	@IBAction private func settingsMenuItemActionHandler(_ sender: NSMenuItem) {

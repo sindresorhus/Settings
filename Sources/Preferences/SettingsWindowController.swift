@@ -67,12 +67,12 @@ public final class SettingsWindowController: NSWindowController {
 
 	@available(*, unavailable)
 	override public init(window: NSWindow?) {
-		fatalError("init(window:) is not supported, use init(preferences:style:animated:)")
+		fatalError("init(window:) is not supported, use init(panes:style:animated:hidesToolbarForSingleItem:)")
 	}
 
 	@available(*, unavailable)
 	public required init?(coder: NSCoder) {
-		fatalError("init(coder:) is not supported, use init(preferences:style:animated:)")
+		fatalError("init(coder:) is not supported, use init(panes:style:animated:hidesToolbarForSingleItem:hidesToolbarForSingleItem:)")
 	}
 
 
@@ -81,14 +81,14 @@ public final class SettingsWindowController: NSWindowController {
 
 	If you pass a `Settings.PaneIdentifier`, the window will activate the corresponding tab.
 
-	- Parameter preferencePane: Identifier of the settings pane to display, or `nil` to show the tab that was open when the user last closed the window.
+	- Parameter paneIdentifier: Identifier of the settings pane to display, or `nil` to show the tab that was open when the user last closed the window.
 
 	- Note: Unless you need to open a specific pane, prefer not to pass a parameter at all or `nil`.
 
 	- See `close()` to close the window again.
 	- See `showWindow(_:)` to show the window without the convenience of activating the app.
 	*/
-	public func show(preferencePane paneIdentifier: Settings.PaneIdentifier? = nil) {
+	public func show(pane paneIdentifier: Settings.PaneIdentifier? = nil) {
 		if let paneIdentifier {
 			tabViewController.activateTab(paneIdentifier: paneIdentifier, animated: false)
 		} else {
