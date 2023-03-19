@@ -25,7 +25,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	]
 
 	private lazy var settingsWindowController = SettingsWindowController(
-		settingsPanes: settings,
+		panes: settings,
 		style: settingsStyle,
 		animated: true,
 		hidesToolbarForSingleItem: true

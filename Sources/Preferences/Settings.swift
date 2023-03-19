@@ -31,7 +31,7 @@ extension SettingsWindowController {
 		hidesToolbarForSingleItem: Bool = true
 	) {
 		self.init(
-			settingsPanes: preferencePanes,
+			panes: preferencePanes,
 			style: style,
 			animated: animated,
 			hidesToolbarForSingleItem: hidesToolbarForSingleItem)
