@@ -18,14 +18,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 	}
 
-	private lazy var settings: [SettingsPane] = [
+	private lazy var panes: [SettingsPane] = [
 		GeneralSettingsViewController(),
 		AccountsSettingsViewController(),
 		AdvancedSettingsViewController()
 	]
 
 	private lazy var settingsWindowController = SettingsWindowController(
-		panes: settings,
+		panes: panes,
 		style: settingsStyle,
 		animated: true,
 		hidesToolbarForSingleItem: true
