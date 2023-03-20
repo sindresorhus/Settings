@@ -1,7 +1,7 @@
 import Cocoa
 
 extension NSWindow.FrameAutosaveName {
-	static let settings: NSWindow.FrameAutosaveName = "com.sindresorhus.Preferences.FrameAutosaveName"
+	static let settings: NSWindow.FrameAutosaveName = "com.sindresorhus.Settings.FrameAutosaveName"
 }
 
 public final class SettingsWindowController: NSWindowController {

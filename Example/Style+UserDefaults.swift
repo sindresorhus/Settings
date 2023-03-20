@@ -1,5 +1,5 @@
 import Foundation
-import Preferences
+import Settings
 
 // Helpers to write styles to and read them from UserDefaults.
 

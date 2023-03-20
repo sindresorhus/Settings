@@ -1,5 +1,5 @@
 import SwiftUI
-import Preferences
+import Settings
 
 /**
 Function wrapping SwiftUI into `SettingsPane`, which is mimicking view controller's default construction syntax.
@@ -37,7 +37,7 @@ struct AccountsScreen: View {
 			Settings.Section(title: "Permissions:") {
 				Toggle("Allow user to administer this computer", isOn: $isOn1)
 				Text("Administrator has root access to this machine.")
-					.preferenceDescription()
+					.settingDescription()
 				Toggle("Allow user to access every file", isOn: $isOn2)
 			}
 			Settings.Section(title: "Show scroll bars:") {
@@ -58,7 +58,7 @@ struct AccountsScreen: View {
 					.labelsHidden()
 					.frame(width: 120.0)
 				Text("Automatic mode can slow things down.")
-					.preferenceDescription()
+					.settingDescription()
 			}
 			Settings.Section(title: "Preview mode:") {
 				Picker("", selection: $selection3) {
@@ -68,7 +68,7 @@ struct AccountsScreen: View {
 					.labelsHidden()
 					.frame(width: 120.0)
 				Text("Automatic mode can slow things down.")
-					.preferenceDescription()
+					.settingDescription()
 			}
 			Settings.Section(title: "Expand this pane:") {
 				Toggle("Expand", isOn: $isExpanded)

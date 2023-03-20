@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */; };
+		502B68E72254947B00789D9F /* Style+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B68E52254944600789D9F /* Style+UserDefaults.swift */; };
 		E3194E4122573FF3006FE775 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3194E4022573FF3006FE775 /* Utilities.swift */; };
-		E340668C28ADAFF3002F8EA9 /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = E340668B28ADAFF3002F8EA9 /* Preferences */; };
 		E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EE920E6149B002F8F86 /* AppDelegate.swift */; };
 		E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EEB20E6149D002F8F86 /* Assets.xcassets */; };
 		E34E9EEF20E6149D002F8F86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EED20E6149D002F8F86 /* MainMenu.xib */; };
@@ -17,6 +16,7 @@
 		E34E9F0120E61A26002F8F86 /* GeneralSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0020E61A26002F8F86 /* GeneralSettingsViewController.xib */; };
 		E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */; };
 		E34E9F0520E61C06002F8F86 /* AdvancedSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0420E61C06002F8F86 /* AdvancedSettingsViewController.xib */; };
+		E3D37D6429C86E6D00AE5ACC /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = E3D37D6329C86E6D00AE5ACC /* Settings */; };
 		E7059F1323C2AC7400F84762 /* AccountsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7059F1123C2AC3700F84762 /* AccountsScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,10 +34,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; usesTabs = 1; };
+		502B68E52254944600789D9F /* Style+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Style+UserDefaults.swift"; sourceTree = "<group>"; usesTabs = 1; };
 		E3194E4022573FF3006FE775 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Utilities.swift; sourceTree = "<group>"; usesTabs = 1; };
-		E340668928ADAFD5002F8EA9 /* Preferences */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Preferences; path = ..; sourceTree = "<group>"; };
-		E34E9EE720E6149B002F8F86 /* PreferencesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreferencesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E34E9EE720E6149B002F8F86 /* SettingsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SettingsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34E9EE920E6149B002F8F86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9EEB20E6149D002F8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E34E9EEE20E6149D002F8F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		E34E9F0020E61A26002F8F86 /* GeneralSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralSettingsViewController.xib; sourceTree = "<group>"; };
 		E34E9F0220E61BC0002F8F86 /* AdvancedPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AdvancedPreferenceViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		E34E9F0420E61C06002F8F86 /* AdvancedSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedSettingsViewController.xib; sourceTree = "<group>"; };
+		E3D37D6229C86E6100AE5ACC /* Settings */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Settings; path = ..; sourceTree = "<group>"; };
 		E7059F1123C2AC3700F84762 /* AccountsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountsScreen.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; wrapsLines = 1; };
 /* End PBXFileReference section */
 
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E340668C28ADAFF3002F8EA9 /* Preferences in Frameworks */,
+				E3D37D6429C86E6D00AE5ACC /* Settings in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +64,7 @@
 		E340668A28ADAFF3002F8EA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E340668928ADAFD5002F8EA9 /* Preferences */,
+				E3D37D6229C86E6100AE5ACC /* Settings */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -73,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				E34E9EE920E6149B002F8F86 /* AppDelegate.swift */,
-				502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */,
+				502B68E52254944600789D9F /* Style+UserDefaults.swift */,
 				E34E9EED20E6149D002F8F86 /* MainMenu.xib */,
 				E34E9EFE20E617E7002F8F86 /* GeneralSettingsViewController.swift */,
 				E34E9F0020E61A26002F8F86 /* GeneralSettingsViewController.xib */,
@@ -90,7 +90,7 @@
 		OBJ_12 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E34E9EE720E6149B002F8F86 /* PreferencesExample.app */,
+				E34E9EE720E6149B002F8F86 /* SettingsExample.app */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -108,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E34E9EE620E6149B002F8F86 /* PreferencesExample */ = {
+		E34E9EE620E6149B002F8F86 /* SettingsExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E34E9EF220E6149D002F8F86 /* Build configuration list for PBXNativeTarget "PreferencesExample" */;
+			buildConfigurationList = E34E9EF220E6149D002F8F86 /* Build configuration list for PBXNativeTarget "SettingsExample" */;
 			buildPhases = (
 				E34E9EE320E6149B002F8F86 /* Sources */,
 				E34E9EE420E6149B002F8F86 /* Frameworks */,
@@ -121,12 +121,12 @@
 			);
 			dependencies = (
 			);
-			name = PreferencesExample;
+			name = SettingsExample;
 			packageProductDependencies = (
-				E340668B28ADAFF3002F8EA9 /* Preferences */,
+				E3D37D6329C86E6D00AE5ACC /* Settings */,
 			);
 			productName = PreferencesExample;
-			productReference = E34E9EE720E6149B002F8F86 /* PreferencesExample.app */;
+			productReference = E34E9EE720E6149B002F8F86 /* SettingsExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -136,7 +136,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					E34E9EE620E6149B002F8F86 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -149,7 +149,7 @@
 					};
 				};
 			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Preferences" */;
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Settings" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -162,7 +162,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E34E9EE620E6149B002F8F86 /* PreferencesExample */,
+				E34E9EE620E6149B002F8F86 /* SettingsExample */,
 			);
 		};
 /* End PBXProject section */
@@ -191,7 +191,7 @@
 				E7059F1323C2AC7400F84762 /* AccountsScreen.swift in Sources */,
 				E34E9F0320E61BC0002F8F86 /* AdvancedPreferenceViewController.swift in Sources */,
 				E3194E4122573FF3006FE775 /* Utilities.swift in Sources */,
-				502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */,
+				502B68E72254947B00789D9F /* Style+UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +227,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -269,6 +270,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -311,6 +313,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = YES;
@@ -360,6 +363,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -386,7 +390,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E34E9EF220E6149D002F8F86 /* Build configuration list for PBXNativeTarget "PreferencesExample" */ = {
+		E34E9EF220E6149D002F8F86 /* Build configuration list for PBXNativeTarget "SettingsExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E34E9EF320E6149D002F8F86 /* Debug */,
@@ -395,7 +399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_2 /* Build configuration list for PBXProject "Preferences" */ = {
+		OBJ_2 /* Build configuration list for PBXProject "Settings" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_3 /* Debug */,
@@ -407,9 +411,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E340668B28ADAFF3002F8EA9 /* Preferences */ = {
+		E3D37D6329C86E6D00AE5ACC /* Settings */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Preferences;
+			productName = Settings;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

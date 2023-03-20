@@ -1,5 +1,5 @@
 import Cocoa
-import Preferences
+import Settings
 
 final class AdvancedSettingsViewController: NSViewController, SettingsPane {
 	let paneIdentifier = Settings.PaneIdentifier.advanced

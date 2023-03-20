@@ -86,9 +86,17 @@ extension View {
 	/**
 	Applies font and color for a label used for describing a setting.
 	*/
-	public func preferenceDescription() -> some View {
+	public func settingDescription() -> some View {
 		font(.system(size: 11.0))
 			// TODO: Use `.foregroundStyle` when targeting macOS 12.
 			.foregroundColor(.secondary)
+	}
+
+	/**
+	Applies font and color for a label used for describing a setting.
+	*/
+	@available(*, deprecated, renamed: "settingDescription")
+	public func preferenceDescription() -> some View {
+		settingDescription()
 	}
 }

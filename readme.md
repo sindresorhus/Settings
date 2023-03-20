@@ -1,4 +1,4 @@
-# Preferences
+# Settings
 
 > Add a settings window to your macOS app in minutes
 
@@ -8,13 +8,15 @@ Just pass in some view controllers and this package will take care of the rest. 
 
 *This package is compatible with macOS 13 and automatically uses `Settings` instead of `Preferences` in the window title on macOS 13 and later.*
 
+*This project was previously known as `Preferences`.*
+
 ## Requirements
 
 macOS 10.13 and later.
 
 ## Install
 
-Add `https://github.com/sindresorhus/Preferences` in the [“Swift Package Manager” tab in Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
+Add `https://github.com/sindresorhus/Settings` in the [“Swift Package Manager” tab in Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
 ## Usage
 
@@ -23,7 +25,7 @@ Add `https://github.com/sindresorhus/Preferences` in the [“Swift Package Manag
 First, create some settings pane identifiers:
 
 ```swift
-import Preferences
+import Settings
 
 extension Settings.PaneIdentifier {
 	static let general = Self("general")
@@ -37,7 +39,7 @@ Second, create a couple of view controllers for the settings panes you want. The
 
 ```swift
 import Cocoa
-import Preferences
+import Settings
 
 final class GeneralSettingsViewController: NSViewController, SettingsPane {
 	let paneIdentifier = Settings.PaneIdentifier.general
@@ -60,7 +62,7 @@ Note: If you need to support macOS versions older than macOS 11, you have to add
 
 ```swift
 import Cocoa
-import Preferences
+import Settings
 
 final class AdvancedSettingsViewController: NSViewController, SettingsPane {
 	let paneIdentifier = Settings.PaneIdentifier.advanced
@@ -96,7 +98,7 @@ In the `AppDelegate`, initialize a new `SettingsWindowController` and pass it th
 
 ```swift
 import Cocoa
-import Preferences
+import Settings
 
 @main
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -191,7 +193,7 @@ If your deployment target is macOS 10.15 or later, you can use the bundled Swift
 
 Run the `Example` target in the Xcode project in this repo to see a real-world example. The `Accounts` tab is in SwiftUI.
 
-There are also some bundled convenience SwiftUI components, like [`Settings.Container`](./Sources/Preferences/Container.swift) and [`Settings.Section`](./Sources/Preferences/Section.swift) to automatically achieve similar alignment to AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview). And also a `.preferenceDescription()` view modifier to style text as a setting description.
+There are also some bundled convenience SwiftUI components, like [`Settings.Container`](Sources/Settings/Container.swift) and [`Settings.Section`](Sources/Settings/Section.swift) to automatically achieve similar alignment to AppKit's [`NSGridView`](https://developer.apple.com/documentation/appkit/nsgridview). And also a `.settiingDescription()` view modifier to style text as a setting description.
 
 Tip: The [`Defaults`](https://github.com/sindresorhus/Defaults#swiftui-support) package makes it very easy to persist the settings.
 
@@ -281,7 +283,7 @@ macOS 11 and later supports SF Symbols which can be conveniently used for the to
 
 ### The settings window doesn't show
 
-This can happen when you are not using auto-layout or have not set a size for the view controller. You can fix this by either using auto-layout or setting an explicit size, for example, `preferredContentSize` in `viewDidLoad()`. [We intend to fix this.](https://github.com/sindresorhus/Preferences/pull/28)
+This can happen when you are not using auto-layout or have not set a size for the view controller. You can fix this by either using auto-layout or setting an explicit size, for example, `preferredContentSize` in `viewDidLoad()`. [We intend to fix this.](https://github.com/sindresorhus/Settings/pull/28)
 
 ### There are no animations on macOS 10.13 and earlier
 
@@ -291,7 +293,7 @@ The `animated` parameter of `SettingsWindowController.init` has no effect on mac
 
 ### How can I localize the window title?
 
-The `SettingsWindowController` adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/) and uses this set of rules to determine the window title:
+The `SettingsWindowController` adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/patterns/settings/) and uses this set of rules to determine the window title:
 
 - **Multiple settings panes:** Uses the currently selected `paneTitle` as the window title. Localize your `paneTitle`s to get localized window titles.
 - **Single settings pane:** Sets the window title to `APPNAME Settings`. The app name is obtained from your app's bundle. You can localize its `Info.plist` to customize the title. The `Settings` part is taken from the "Settings…" menu item, see #12. The order of lookup for the app name from your bundle:
@@ -304,10 +306,10 @@ The `SettingsWindowController` adheres to the [macOS Human Interface Guidelines]
 
 It can't be that hard right? Well, turns out it is:
 
-- The recommended way is to implement it using storyboards. [But storyboards...](https://gist.github.com/iraycd/01b45c5e1be7ef6957b7) And if you want the segmented control style, you have to implement it programmatically, [which is quite complex](https://github.com/sindresorhus/Preferences/blob/85f8d793050004fc0154c7f6a061412e00d13fa3/Sources/Preferences/SegmentedControlStyleViewController.swift).
+- The recommended way is to implement it using storyboards. [But storyboards...](https://gist.github.com/iraycd/01b45c5e1be7ef6957b7) And if you want the segmented control style, you have to implement it programmatically, [which is quite complex](https://github.com/sindresorhus/Settings/blob/85f8d793050004fc0154c7f6a061412e00d13fa3/Sources/Preferences/SegmentedControlStyleViewController.swift).
 - [Even Apple gets it wrong, a lot.](https://twitter.com/sindresorhus/status/1113382212584464384)
-- You have to correctly handle [window](https://github.com/sindresorhus/Preferences/commit/cc25d58a9ec379812fc8f2fd7ba48f3d35b4cbff) and [tab restoration](https://github.com/sindresorhus/Preferences/commit/2bb3fc7418f3dc49b534fab986807c4e70ba78c3).
-- [The window title format depends on whether you have a single or multiple panes.](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/)
+- You have to correctly handle [window](https://github.com/sindresorhus/Settings/commit/cc25d58a9ec379812fc8f2fd7ba48f3d35b4cbff) and [tab restoration](https://github.com/sindresorhus/Settings/commit/2bb3fc7418f3dc49b534fab986807c4e70ba78c3).
+- [The window title format depends on whether you have a single or multiple panes.](https://developer.apple.com/design/human-interface-guidelines/patterns/settings/)
 - It's difficult to get the transition animation right. A lot of apps have flaky animation between panes.
 - You end up having to deal with a lot of gnarly auto-layout complexities.
 
@@ -318,7 +320,7 @@ It can't be that hard right? Well, turns out it is:
 - Supports segmented control style tabs.
 - SwiftUI support.
 - Fully documented.
-- Adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/).
+- Adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/patterns/settings/).
 - The window title is automatically localized by using the system string.
 
 ## Related
@@ -340,7 +342,7 @@ You might also like Sindre's [apps](https://sindresorhus.com/apps).
 - [Medis](https://getmedis.com) - A Redis GUI by [Zihua Li](https://github.com/luin)
 - [vChewing IME](https://github.com/vChewing/vChewing-macOS) - Next-generation bopomofo-phonetic Chinese input method by [The vChewing Project](https://github.com/vChewing)
 
-Want to tell the world about your app that is using Preferences? Open a PR!
+Want to tell the world about your app that is using this package? Open a PR!
 
 ## Maintainers
 
