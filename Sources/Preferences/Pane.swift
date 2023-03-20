@@ -9,7 +9,7 @@ public protocol SettingsPaneConvertible {
 	/**
 	Convert `self` to equivalent `SettingsPane`.
 	*/
-	func asPreferencePane() -> SettingsPane
+	func asSettingsPane() -> SettingsPane
 }
 
 @available(macOS 10.15, *)
@@ -39,7 +39,7 @@ extension Settings {
 
 		public var body: some View { content }
 
-		public func asPreferencePane() -> SettingsPane {
+		public func asSettingsPane() -> SettingsPane {
 			PaneHostingController(pane: self)
 		}
 	}
@@ -48,8 +48,8 @@ extension Settings {
 	Hosting controller enabling `Settings.Pane` to be used alongside AppKit `NSViewController`'s.
 	*/
 	public final class PaneHostingController<Content: View>: NSHostingController<Content>, SettingsPane {
-		public let preferencePaneIdentifier: PaneIdentifier
-		public let preferencePaneTitle: String
+		public let paneIdentifier: PaneIdentifier
+		public let paneTitle: String
 		public let toolbarItemIcon: NSImage
 
 		init(
@@ -58,8 +58,8 @@ extension Settings {
 			toolbarIcon: NSImage,
 			content: Content
 		) {
-			self.preferencePaneIdentifier = identifier
-			self.preferencePaneTitle = title
+			self.paneIdentifier = identifier
+			self.paneTitle = title
 			self.toolbarItemIcon = toolbarIcon
 			super.init(rootView: content)
 		}

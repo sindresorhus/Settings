@@ -54,7 +54,7 @@ final class SegmentedControlStyleViewController: NSViewController, SettingsStyle
 			var maxSize = CGSize.zero
 
 			for pane in panes {
-				let title = pane.preferencePaneTitle
+				let title = pane.paneTitle
 				let titleSize = title.size(
 					withAttributes: [
 						.font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .regular))
@@ -79,7 +79,7 @@ final class SegmentedControlStyleViewController: NSViewController, SettingsStyle
 		segmentedControl.frame = CGRect(x: 0, y: 0, width: segmentWidth, height: segmentHeight)
 
 		for (index, pane) in panes.enumerated() {
-			segmentedControl.setLabel(pane.preferencePaneTitle, forSegment: index)
+			segmentedControl.setLabel(pane.paneTitle, forSegment: index)
 			segmentedControl.setWidth(segmentSize.width, forSegment: index)
 			if let cell = segmentedControl.cell as? NSSegmentedCell {
 				cell.setTag(index, forSegment: index)
@@ -114,12 +114,12 @@ final class SegmentedControlStyleViewController: NSViewController, SettingsStyle
 		// context menu that pops up at the right edge of the window.
 		let toolbarItemGroup = NSToolbarItemGroup(itemIdentifier: toolbarItemIdentifier)
 		toolbarItemGroup.view = segmentedControl
-		toolbarItemGroup.subitems = panes.enumerated().map { index, settingsPane in
-			let item = NSToolbarItem(itemIdentifier: .init("segment-\(settingsPane.preferencePaneTitle)"))
-			item.label = settingsPane.preferencePaneTitle
+		toolbarItemGroup.subitems = panes.enumerated().map { index, settingsPane -> NSToolbarItem in
+			let item = NSToolbarItem(itemIdentifier: .init("segment-\(settingsPane.paneTitle)"))
+			item.label = settingsPane.paneTitle
 
 			let menuItem = NSMenuItem(
-				title: settingsPane.preferencePaneTitle,
+				title: settingsPane.paneTitle,
 				action: #selector(segmentedControlMenuAction),
 				keyEquivalent: ""
 			)

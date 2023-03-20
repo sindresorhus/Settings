@@ -31,7 +31,7 @@ extension Settings.PaneIdentifier {
 }
 ```
 
-Second, create a couple of view controllers for the settings panes you want. The only difference from implementing a normal view controller is that you have to add the `SettingsPane` protocol and implement the `preferencePaneIdentifier`, `toolbarItemTitle`, and `toolbarItemIcon` properties, as shown below. You can leave out `toolbarItemIcon` if you're using the `.segmentedControl` style.
+Second, create a couple of view controllers for the settings panes you want. The only difference from implementing a normal view controller is that you have to add the `SettingsPane` protocol and implement the `paneIdentifier`, `toolbarItemTitle`, and `toolbarItemIcon` properties, as shown below. You can leave out `toolbarItemIcon` if you're using the `.segmentedControl` style.
 
 `GeneralSettingsViewController.swift`
 
@@ -40,8 +40,8 @@ import Cocoa
 import Preferences
 
 final class GeneralSettingsViewController: NSViewController, SettingsPane {
-	let preferencePaneIdentifier = Settings.PaneIdentifier.general
-	let preferencePaneTitle = "General"
+	let paneIdentifier = Settings.PaneIdentifier.general
+	let paneTitle = "General"
 	let toolbarItemIcon = NSImage(systemSymbolName: "gearshape", accessibilityDescription: "General settings")!
 
 	override var nibName: NSNib.Name? { "GeneralSettingsViewController" }
@@ -63,8 +63,8 @@ import Cocoa
 import Preferences
 
 final class AdvancedSettingsViewController: NSViewController, SettingsPane {
-	let preferencePaneIdentifier = Settings.PaneIdentifier.advanced
-	let preferencePaneTitle = "Advanced"
+	let paneIdentifier = Settings.PaneIdentifier.advanced
+	let paneTitle = "Advanced"
 	let toolbarItemIcon = NSImage(systemSymbolName: "gearshape.2", accessibilityDescription: "Advanced settings")!
 
 	override var nibName: NSNib.Name? { "AdvancedSettingsViewController" }
@@ -103,7 +103,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet private var window: NSWindow!
 
 	private lazy var settingsWindowController = SettingsWindowController(
-		preferencePanes: [
+		panes: [
 			GeneralSettingsViewController(),
 			AdvancedSettingsViewController()
 		]
@@ -125,7 +125,7 @@ When you create the `SettingsWindowController`, you can choose between the `NSTo
 ```swift
 // …
 private lazy var settingsWindowController = SettingsWindowController(
-	preferencePanes: [
+	panes: [
 		GeneralSettingsViewController(),
 		AdvancedSettingsViewController()
 	],
@@ -155,14 +155,14 @@ extension Settings {
 }
 
 public protocol SettingsPane: NSViewController {
-	var preferencePaneIdentifier: Settings.PaneIdentifier { get }
-	var preferencePaneTitle: String { get }
+	var paneIdentifier: Settings.PaneIdentifier { get }
+	var paneTitle: String { get }
 	var toolbarItemIcon: NSImage { get } // Not required when using the .`segmentedControl` style
 }
 
 public final class SettingsWindowController: NSWindowController {
 	init(
-		preferencePanes: [SettingsPane],
+		panes: [SettingsPane],
 		style: Settings.Style = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
@@ -175,7 +175,7 @@ public final class SettingsWindowController: NSWindowController {
 		hidesToolbarForSingleItem: Bool = true
 	)
 
-	func show(preferencePane: Settings.PaneIdentifier? = nil)
+	func show(pane: Settings.PaneIdentifier? = nil)
 }
 ```
 
@@ -260,7 +260,7 @@ let CustomViewSettingsPaneViewController: () -> SettingsPane = {
 // …
 
 private lazy var settingsWindowController = SettingsWindowController(
-	preferencePanes: [
+	panes: [
 		GeneralSettingsViewController(),
 		AdvancedSettingsViewController(),
 		CustomViewSettingsPaneViewController()
@@ -293,7 +293,7 @@ The `animated` parameter of `SettingsWindowController.init` has no effect on mac
 
 The `SettingsWindowController` adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/) and uses this set of rules to determine the window title:
 
-- **Multiple settings panes:** Uses the currently selected `preferencePaneTitle` as the window title. Localize your `preferencePaneTitle`s to get localized window titles.
+- **Multiple settings panes:** Uses the currently selected `paneTitle` as the window title. Localize your `paneTitle`s to get localized window titles.
 - **Single settings pane:** Sets the window title to `APPNAME Settings`. The app name is obtained from your app's bundle. You can localize its `Info.plist` to customize the title. The `Settings` part is taken from the "Settings…" menu item, see #12. The order of lookup for the app name from your bundle:
 	1. `CFBundleDisplayName`
 	2. `CFBundleName`

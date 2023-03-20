@@ -32,12 +32,12 @@ final class ToolbarItemStyleViewController: NSObject, SettingsStyleController {
 	}
 
 	func toolbarItem(paneIdentifier: Settings.PaneIdentifier) -> NSToolbarItem? {
-		guard let pane = (panes.first { $0.preferencePaneIdentifier == paneIdentifier }) else {
+		guard let pane = (panes.first { $0.paneIdentifier == paneIdentifier }) else {
 			preconditionFailure()
 		}
 
 		let toolbarItem = NSToolbarItem(itemIdentifier: paneIdentifier.toolbarItemIdentifier)
-		toolbarItem.label = pane.preferencePaneTitle
+		toolbarItem.label = pane.paneTitle
 		toolbarItem.image = pane.toolbarItemIcon
 		toolbarItem.target = self
 		toolbarItem.action = #selector(toolbarItemSelected)

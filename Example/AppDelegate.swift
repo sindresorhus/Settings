@@ -18,14 +18,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 	}
 
-	private lazy var settings: [SettingsPane] = [
+	private lazy var panes: [SettingsPane] = [
 		GeneralSettingsViewController(),
 		AccountsSettingsViewController(),
 		AdvancedSettingsViewController()
 	]
 
 	private lazy var settingsWindowController = SettingsWindowController(
-		preferencePanes: settings,
+		panes: panes,
 		style: settingsStyle,
 		animated: true,
 		hidesToolbarForSingleItem: true
@@ -36,7 +36,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 	func applicationDidFinishLaunching(_ notification: Notification) {
-		settingsWindowController.show(preferencePane: .accounts)
+		settingsWindowController.show(pane: .accounts)
 	}
 
 	@IBAction private func settingsMenuItemActionHandler(_ sender: NSMenuItem) {

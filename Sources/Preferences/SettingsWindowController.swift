@@ -26,15 +26,15 @@ public final class SettingsWindowController: NSWindowController {
 	}
 
 	public init(
-		preferencePanes: [SettingsPane],
+		panes: [SettingsPane],
 		style: Settings.Style = .toolbarItems,
 		animated: Bool = true,
 		hidesToolbarForSingleItem: Bool = true
 	) {
-		precondition(!preferencePanes.isEmpty, "You need to set at least one view controller")
+		precondition(!panes.isEmpty, "You need to set at least one pane")
 
 		let window = UserInteractionPausableWindow(
-			contentRect: preferencePanes[0].view.bounds,
+			contentRect: panes[0].view.bounds,
 			styleMask: [
 				.titled,
 				.closable
@@ -52,7 +52,7 @@ public final class SettingsWindowController: NSWindowController {
 			case .toolbarItems:
 				return .visible
 			case .segmentedControl:
-				return preferencePanes.count <= 1 ? .visible : .hidden
+				return panes.count <= 1 ? .visible : .hidden
 			}
 		}()
 
@@ -61,18 +61,18 @@ public final class SettingsWindowController: NSWindowController {
 		}
 
 		tabViewController.isAnimated = animated
-		tabViewController.configure(panes: preferencePanes, style: style)
+		tabViewController.configure(panes: panes, style: style)
 		updateToolbarVisibility()
 	}
 
 	@available(*, unavailable)
 	override public init(window: NSWindow?) {
-		fatalError("init(window:) is not supported, use init(preferences:style:animated:)")
+		fatalError("init(window:) is not supported, use init(panes:style:animated:hidesToolbarForSingleItem:)")
 	}
 
 	@available(*, unavailable)
 	public required init?(coder: NSCoder) {
-		fatalError("init(coder:) is not supported, use init(preferences:style:animated:)")
+		fatalError("init(coder:) is not supported, use init(panes:style:animated:hidesToolbarForSingleItem:hidesToolbarForSingleItem:)")
 	}
 
 
@@ -81,14 +81,14 @@ public final class SettingsWindowController: NSWindowController {
 
 	If you pass a `Settings.PaneIdentifier`, the window will activate the corresponding tab.
 
-	- Parameter preferencePane: Identifier of the settings pane to display, or `nil` to show the tab that was open when the user last closed the window.
+	- Parameter paneIdentifier: Identifier of the settings pane to display, or `nil` to show the tab that was open when the user last closed the window.
 
 	- Note: Unless you need to open a specific pane, prefer not to pass a parameter at all or `nil`.
 
 	- See `close()` to close the window again.
 	- See `showWindow(_:)` to show the window without the convenience of activating the app.
 	*/
-	public func show(preferencePane paneIdentifier: Settings.PaneIdentifier? = nil) {
+	public func show(pane paneIdentifier: Settings.PaneIdentifier? = nil) {
 		if let paneIdentifier {
 			tabViewController.activateTab(paneIdentifier: paneIdentifier, animated: false)
 		} else {
@@ -154,7 +154,7 @@ extension SettingsWindowController {
 		hidesToolbarForSingleItem: Bool = true
 	) {
 		self.init(
-			preferencePanes: panes.map { $0.asPreferencePane() },
+			panes: panes.map { $0.asSettingsPane() },
 			style: style,
 			animated: animated,
 			hidesToolbarForSingleItem: hidesToolbarForSingleItem
