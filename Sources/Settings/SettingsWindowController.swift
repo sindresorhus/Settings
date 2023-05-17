@@ -101,9 +101,7 @@ public final class SettingsWindowController: NSWindowController {
 	}
 
 	private func restoreWindowPosition() {
-		guard
-			let window
-		else {
+		guard let window else {
 			return
 		}
 
