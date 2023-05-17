@@ -102,16 +102,12 @@ public final class SettingsWindowController: NSWindowController {
 
 	private func restoreWindowPosition() {
 		guard
-			let window,
-			let screenContainingWindow = window.screen
+			let window
 		else {
 			return
 		}
 
-		window.setFrameOrigin(CGPoint(
-			x: screenContainingWindow.visibleFrame.midX - window.frame.width / 2,
-			y: screenContainingWindow.visibleFrame.midY - window.frame.height / 2
-		))
+		window.center()
 		window.setFrameUsingName(.settings)
 		window.setFrameAutosaveName(.settings)
 	}
