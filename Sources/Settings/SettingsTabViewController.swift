@@ -137,6 +137,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 		}
 
 		view.removeConstraints(activeChildViewConstraints)
+		toViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
 		transition(
 			from: fromViewController,
