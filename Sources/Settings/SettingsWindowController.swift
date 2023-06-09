@@ -104,7 +104,7 @@ public final class SettingsWindowController: NSWindowController {
 			NSApp.activate(ignoringOtherApps: true)
 		}
 		#else
-			NSApp.activate(ignoringOtherApps: true)
+		NSApp.activate(ignoringOtherApps: true)
 		#endif
 	}
 
