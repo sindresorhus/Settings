@@ -97,7 +97,7 @@ public final class SettingsWindowController: NSWindowController {
 
 		showWindow(self)
 		restoreWindowPosition()
-		#if compiler(>=5.9) && canImport(AppKit, _version: "14.0")
+		#if compiler(>=5.9) && canImport(AppKit)
 		if #available(macOS 14.0, *) {
 			NSApp.activate()
 		} else {
