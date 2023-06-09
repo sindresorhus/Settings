@@ -1,4 +1,4 @@
-import Cocoa
+import AppKit
 
 extension Settings {
 	public struct PaneIdentifier: Hashable, RawRepresentable, Codable {

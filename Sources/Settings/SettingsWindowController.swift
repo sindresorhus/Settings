@@ -1,4 +1,4 @@
-import Cocoa
+import AppKit
 
 extension NSWindow.FrameAutosaveName {
 	static let settings: NSWindow.FrameAutosaveName = "com.sindresorhus.Settings.FrameAutosaveName"
@@ -97,7 +97,15 @@ public final class SettingsWindowController: NSWindowController {
 
 		showWindow(self)
 		restoreWindowPosition()
+		#if compiler(>=5.9) && canImport(AppKit)
+		if #available(macOS 14, *) {
+			NSApp.activate()
+		} else {
+			NSApp.activate(ignoringOtherApps: true)
+		}
+		#else
 		NSApp.activate(ignoringOtherApps: true)
+		#endif
 	}
 
 	private func restoreWindowPosition() {
