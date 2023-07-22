@@ -154,16 +154,15 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 		options: NSViewController.TransitionOptions = [],
 		completionHandler completion: (() -> Void)? = nil
 	) {
-		let isAnimated = options
-			.isSubset(of: [
-				.crossfade,
-				.slideUp,
-				.slideDown,
-				.slideForward,
-				.slideBackward,
-				.slideLeft,
-				.slideRight
-			])
+		let isAnimated = !options.isEmpty && options.isSubset(of: [
+			.crossfade,
+			.slideUp,
+			.slideDown,
+			.slideForward,
+			.slideBackward,
+			.slideLeft,
+			.slideRight
+		])
 
 		if isAnimated {
 			NSAnimationContext.runAnimationGroup({ context in
