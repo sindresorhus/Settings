@@ -14,6 +14,8 @@ public typealias PreferencePaneConvertible = SettingsPaneConvertible
 @available(*, deprecated, renamed: "SettingsWindowController")
 public typealias PreferencesWindowController = SettingsWindowController
 
+public typealias SettingsPaneIdentifier = Settings.PaneIdentifier
+
 @available(macOS 10.15, *)
 extension Settings.Pane {
 	@available(*, deprecated, renamed: "asSettingsPane()")
