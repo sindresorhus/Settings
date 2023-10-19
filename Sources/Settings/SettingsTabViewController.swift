@@ -144,6 +144,10 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 			to: toViewController,
 			options: options
 		) { [self] in
+			if isAnimated,
+				 let toolbarItemStyleViewController = settingsStyleController as? ToolbarItemStyleViewController {
+				toolbarItemStyleViewController.refreshPreviousSelectedItem()
+			}
 			activeChildViewConstraints = toViewController.view.constrainToSuperviewBounds()
 		}
 	}
