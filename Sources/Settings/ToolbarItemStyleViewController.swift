@@ -6,6 +6,7 @@ final class ToolbarItemStyleViewController: NSObject, SettingsStyleController {
 	let panes: [SettingsPane]
 	var isKeepingWindowCentered: Bool { centerToolbarItems }
 	weak var delegate: SettingsStyleControllerDelegate?
+	private var previousSelectedItemIdentifier: NSToolbarItem.Identifier?
 
 	init(panes: [SettingsPane], toolbar: NSToolbar, centerToolbarItems: Bool) {
 		self.panes = panes
@@ -53,5 +54,23 @@ final class ToolbarItemStyleViewController: NSObject, SettingsStyleController {
 
 	func selectTab(index: Int) {
 		toolbar.selectedItemIdentifier = panes[index].toolbarItemIdentifier
+	}
+  
+	public func refreshPreviousSelectedItem() {
+		// On macOS Sonoma, sometimes NSToolbar would preserve the
+		// visual selected state of previous selected toolbar item during
+		// view animation.
+		// AppKit doesn’t seem to offer a way to refresh toolbar items.
+		// So we manually “refresh” it.
+		if
+			#available(macOS 14, *),
+			let previousSelectedItemIdentifier,
+			let index = toolbar.items.firstIndex(where: { $0.itemIdentifier == previousSelectedItemIdentifier })
+		{
+			toolbar.removeItem(at: index)
+			toolbar.insertItem(withItemIdentifier: previousSelected, at: index)
+		}
+
+		previousSelectedItemIdentifier = toolbar.selectedItemIdentifier
 	}
 }
