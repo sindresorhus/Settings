@@ -62,12 +62,15 @@ final class ToolbarItemStyleViewController: NSObject, SettingsStyleController {
 		// view animation.
 		// AppKit doesn’t seem to offer a way to refresh toolbar items.
 		// So we manually “refresh” it.
-		if #available(macOS 14, *),
-			 let previousSelected = previousSelectedItemIdentifier,
-			 let index = toolbar.items.firstIndex(where: { $0.itemIdentifier == previousSelected }) {
+		if
+			#available(macOS 14, *),
+			let previousSelectedItemIdentifier,
+			let index = toolbar.items.firstIndex(where: { $0.itemIdentifier == previousSelectedItemIdentifier })
+		{
 			toolbar.removeItem(at: index)
 			toolbar.insertItem(withItemIdentifier: previousSelected, at: index)
 		}
+
 		previousSelectedItemIdentifier = toolbar.selectedItemIdentifier
 	}
 }
