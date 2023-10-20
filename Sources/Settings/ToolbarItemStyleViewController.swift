@@ -68,7 +68,7 @@ final class ToolbarItemStyleViewController: NSObject, SettingsStyleController {
 			let index = toolbar.items.firstIndex(where: { $0.itemIdentifier == previousSelectedItemIdentifier })
 		{
 			toolbar.removeItem(at: index)
-			toolbar.insertItem(withItemIdentifier: previousSelected, at: index)
+			toolbar.insertItem(withItemIdentifier: previousSelectedItemIdentifier, at: index)
 		}
 
 		previousSelectedItemIdentifier = toolbar.selectedItemIdentifier
