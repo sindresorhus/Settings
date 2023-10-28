@@ -340,6 +340,7 @@ You might also like Sindre's [apps](https://sindresorhus.com/apps).
 - [Word Counter](https://wordcounterapp.com) - Measuring writer's productivity by [Christian Tietze](https://github.com/DivineDominion)
 - [Medis](https://getmedis.com) - A Redis GUI by [Zihua Li](https://github.com/luin)
 - [OK JSON](https://okjson.app) - A scriptable JSON formatter by [Francis Feng](https://github.com/francisfeng)
+- [Menu Helper](https://github.com/Kyle-Ye/MenuHelper) - a Finder Extension App by [Kyle-Ye](https://github.com/Kyle-Ye)
 
 Want to tell the world about your app that is using this package? Open a PR!
 
