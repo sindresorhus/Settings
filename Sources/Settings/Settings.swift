@@ -3,7 +3,7 @@ The namespace for this package.
 */
 public enum Settings {}
 
-/// A typealias for this package's namespace to solve the conflict with SwiftUI.Settings
+/// A typealias for this package's namespace to solve the conflict with [SwiftUI.Settings](https://developer.apple.com/documentation/swiftui/settings)
 ///
 /// You can also use the following code snippet to solve the conflict
 /// ```swift
