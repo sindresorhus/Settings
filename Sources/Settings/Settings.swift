@@ -4,13 +4,14 @@ The namespace for this package.
 public enum Settings {}
 
 /**
-A typealias for this package's namespace to solve the conflict with [SwiftUI.Settings](https://developer.apple.com/documentation/swiftui/settings)
+A typealias for this package's namespace to solve the conflict with [SwiftUI.Settings](https://developer.apple.com/documentation/swiftui/settings).
 
-You can also use the following code snippet to solve the conflict
+You can also use the following code snippet to solve the conflict:
+
 ```swift
 import enum Settings.Settings
 ```
- */
+*/
 public typealias AppSettings = Settings
 
 // TODO: Remove in the next major version.
