@@ -3,20 +3,15 @@ import PackageDescription
 
 let package = Package(
 	name: "Settings",
-	platforms: [
-		.macOS(.v10_13)
-	],
+    defaultLocalization: "en",
+	platforms: [.macOS(.v10_13)],
 	products: [
-		.library(
-			name: "Settings",
-			targets: [
-				"Settings"
-			]
-		)
+		.library(name: "Settings", targets: ["Settings"])
 	],
 	targets: [
 		.target(
-			name: "Settings"
+			name: "Settings",
+            resources: [.process("Resources")]
 		)
 	]
 )
