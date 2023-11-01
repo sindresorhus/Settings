@@ -6,7 +6,12 @@ let package = Package(
     defaultLocalization: "en",
 	platforms: [.macOS(.v10_13)],
 	products: [
-		.library(name: "Settings", targets: ["Settings"])
+		.library(
+			name: "Settings",
+			targets: [
+				"Settings"
+			]
+		)
 	],
 	targets: [
 		.target(
