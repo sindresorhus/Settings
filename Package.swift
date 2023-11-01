@@ -1,8 +1,9 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.8
 import PackageDescription
 
 let package = Package(
 	name: "Settings",
+    defaultLocalization: "en",
 	platforms: [
 		.macOS(.v10_13)
 	],
@@ -16,7 +17,10 @@ let package = Package(
 	],
 	targets: [
 		.target(
-			name: "Settings"
+			name: "Settings",
+			resources: [
+				.process("Resources")
+			]
 		)
 	]
 )

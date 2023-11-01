@@ -1,0 +1,484 @@
+{
+    "version": "1.0",
+    "strings": {
+        "settings": {
+            "localizations": {
+                "ko": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "설정"
+                    }
+                },
+                "uk": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Параметри"
+                    }
+                },
+                "es-419": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajustes"
+                    }
+                },
+                "hi": {
+                    "stringUnit": {
+                        "value": "समायोजन",
+                        "state": "translated"
+                    }
+                },
+                "hu": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Beállítások"
+                    }
+                },
+                "th": {
+                    "stringUnit": {
+                        "value": "ค่าติดตั้ง",
+                        "state": "translated"
+                    }
+                },
+                "ja": {
+                    "stringUnit": {
+                        "value": "設定",
+                        "state": "translated"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Settings"
+                    }
+                },
+                "it": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Impostazioni"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "value": "Ayarlar",
+                        "state": "translated"
+                    }
+                },
+                "id": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Pengaturan"
+                    }
+                },
+                "ru": {
+                    "stringUnit": {
+                        "value": "Настройки",
+                        "state": "translated"
+                    }
+                },
+                "sk": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nastavenia"
+                    }
+                },
+                "ro": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Configurări"
+                    }
+                },
+                "ar": {
+                    "stringUnit": {
+                        "value": "الإعدادات",
+                        "state": "translated"
+                    }
+                },
+                "pl": {
+                    "stringUnit": {
+                        "value": "Ustawienia",
+                        "state": "translated"
+                    }
+                },
+                "hr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Postavke"
+                    }
+                },
+                "nl": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Instellingen"
+                    }
+                },
+                "fi": {
+                    "stringUnit": {
+                        "value": "Asetukset",
+                        "state": "translated"
+                    }
+                },
+                "zh-hans": {
+                    "stringUnit": {
+                        "value": "设置",
+                        "state": "translated"
+                    }
+                },
+                "da": {
+                    "stringUnit": {
+                        "value": "Indstillinger",
+                        "state": "translated"
+                    }
+                },
+                "fr-CA": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Réglages"
+                    }
+                },
+                "ms": {
+                    "stringUnit": {
+                        "value": "Tetapan",
+                        "state": "translated"
+                    }
+                },
+                "cs": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nastavení"
+                    }
+                },
+                "sv": {
+                    "stringUnit": {
+                        "value": "Inställningar",
+                        "state": "translated"
+                    }
+                },
+                "zh-hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "設定"
+                    }
+                },
+                "el": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ρυθμίσεις"
+                    }
+                },
+                "pt-PT": {
+                    "stringUnit": {
+                        "value": "Definições",
+                        "state": "translated"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "value": "Ajustes",
+                        "state": "translated"
+                    }
+                },
+                "vi": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cài đặt"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "value": "Réglages",
+                        "state": "translated"
+                    }
+                },
+                "en-GB": {
+                    "stringUnit": {
+                        "value": "Settings",
+                        "state": "translated"
+                    }
+                },
+                "pt": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajustes"
+                    }
+                },
+                "ca": {
+                    "stringUnit": {
+                        "value": "Configuració",
+                        "state": "translated"
+                    }
+                },
+                "no": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Innstillinger"
+                    }
+                },
+                "de": {
+                    "stringUnit": {
+                        "value": "Einstellungen",
+                        "state": "translated"
+                    }
+                },
+                "he": {
+                    "stringUnit": {
+                        "value": "הגדרות",
+                        "state": "translated"
+                    }
+                },
+                "en-AU": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Settings"
+                    }
+                },
+                "zh-HK": {
+                    "stringUnit": {
+                        "value": "設定",
+                        "state": "translated"
+                    }
+                }
+            },
+            "extractionState": "manual"
+        },
+        "preferences": {
+            "localizations": {
+                "hr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Postavke"
+                    }
+                },
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Einstellungen"
+                    }
+                },
+                "zh-hant": {
+                    "stringUnit": {
+                        "value": "偏好設定",
+                        "state": "translated"
+                    }
+                },
+                "cs": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Předvolby"
+                    }
+                },
+                "ms": {
+                    "stringUnit": {
+                        "value": "Keutamaan",
+                        "state": "translated"
+                    }
+                },
+                "ko": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "환경설정"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Tercihler"
+                    }
+                },
+                "th": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "การตั้งค่า"
+                    }
+                },
+                "el": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Προτιμήσεις"
+                    }
+                },
+                "ar": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "تفضيلات"
+                    }
+                },
+                "pt-PT": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Preferências"
+                    }
+                },
+                "it": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Preferenze"
+                    }
+                },
+                "vi": {
+                    "stringUnit": {
+                        "value": "Tùy chọn",
+                        "state": "translated"
+                    }
+                },
+                "fr-CA": {
+                    "stringUnit": {
+                        "value": "Préférences",
+                        "state": "translated"
+                    }
+                },
+                "ca": {
+                    "stringUnit": {
+                        "value": "Preferències",
+                        "state": "translated"
+                    }
+                },
+                "zh-hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "偏好设置"
+                    }
+                },
+                "da": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Indstillinger"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "value": "Préférences",
+                        "state": "translated"
+                    }
+                },
+                "he": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "העדפות"
+                    }
+                },
+                "fi": {
+                    "stringUnit": {
+                        "value": "Asetukset",
+                        "state": "translated"
+                    }
+                },
+                "sk": {
+                    "stringUnit": {
+                        "value": "Nastavenia",
+                        "state": "translated"
+                    }
+                },
+                "es-419": {
+                    "stringUnit": {
+                        "value": "Preferencias",
+                        "state": "translated"
+                    }
+                },
+                "pt": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Preferências"
+                    }
+                },
+                "zh-HK": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "偏好設定"
+                    }
+                },
+                "sv": {
+                    "stringUnit": {
+                        "value": "Inställningar",
+                        "state": "translated"
+                    }
+                },
+                "id": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Preferensi"
+                    }
+                },
+                "ru": {
+                    "stringUnit": {
+                        "value": "Настройки",
+                        "state": "translated"
+                    }
+                },
+                "uk": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Параметри"
+                    }
+                },
+                "nl": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voorkeuren"
+                    }
+                },
+                "ja": {
+                    "stringUnit": {
+                        "value": "環境設定",
+                        "state": "translated"
+                    }
+                },
+                "pl": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Preferencje"
+                    }
+                },
+                "en-GB": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Preferences"
+                    }
+                },
+                "en-AU": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Preferences"
+                    }
+                },
+                "hu": {
+                    "stringUnit": {
+                        "value": "Beállítások",
+                        "state": "translated"
+                    }
+                },
+                "ro": {
+                    "stringUnit": {
+                        "value": "Preferințe",
+                        "state": "translated"
+                    }
+                },
+                "hi": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "प्राथमिकता"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "value": "Preferences",
+                        "state": "translated"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Preferencias"
+                    }
+                },
+                "no": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Valg"
+                    }
+                }
+            },
+            "extractionState": "manual"
+        }
+    },
+    "sourceLanguage": "en"
+}
