@@ -99,6 +99,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 				} else {
 					settings = NSLocalizedString("preferences", bundle: .module, comment: "Preferences")
 				}
+
 				let appName = Bundle.main.appName
 				return "\(appName) \(settings)"
 			}
