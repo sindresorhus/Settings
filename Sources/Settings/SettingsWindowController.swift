@@ -95,8 +95,6 @@ public final class SettingsWindowController: NSWindowController {
 			tabViewController.restoreInitialTab()
 		}
 
-		showWindow(self)
-		restoreWindowPosition()
 		#if compiler(>=5.9) && canImport(AppKit)
 		if #available(macOS 14, *) {
 			NSApp.activate()
@@ -106,6 +104,9 @@ public final class SettingsWindowController: NSWindowController {
 		#else
 		NSApp.activate(ignoringOtherApps: true)
 		#endif
+
+		showWindow(self)
+		restoreWindowPosition()
 	}
 
 	private func restoreWindowPosition() {
