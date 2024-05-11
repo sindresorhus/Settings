@@ -29,7 +29,8 @@ public final class SettingsWindowController: NSWindowController {
 		panes: [SettingsPane],
 		style: Settings.Style = .toolbarItems,
 		animated: Bool = true,
-		hidesToolbarForSingleItem: Bool = true
+		hidesToolbarForSingleItem: Bool = true,
+        delegate: NSWindowDelegate? = nil
 	) {
 		precondition(!panes.isEmpty, "You need to set at least one pane")
 
@@ -42,6 +43,7 @@ public final class SettingsWindowController: NSWindowController {
 			backing: .buffered,
 			defer: true
 		)
+        window.delegate = delegate
 		self.hidesToolbarForSingleItem = hidesToolbarForSingleItem
 		super.init(window: window)
 
@@ -154,13 +156,15 @@ extension SettingsWindowController {
 		panes: [SettingsPaneConvertible],
 		style: Settings.Style = .toolbarItems,
 		animated: Bool = true,
-		hidesToolbarForSingleItem: Bool = true
+		hidesToolbarForSingleItem: Bool = true,
+        delegate: NSWindowDelegate? = nil
 	) {
 		self.init(
 			panes: panes.map { $0.asSettingsPane() },
 			style: style,
 			animated: animated,
-			hidesToolbarForSingleItem: hidesToolbarForSingleItem
+			hidesToolbarForSingleItem: hidesToolbarForSingleItem,
+            delegate: delegate
 		)
 	}
 }
