@@ -50,7 +50,7 @@ extension Settings {
 				}
 			}
 			.modifier(Section.LabelWidthModifier(maximumWidth: $maximumLabelWidth))
-			.frame(width: contentWidth, alignment: .leading)
+			.frame(width: contentWidth, alignment: .center)
 			.padding(.vertical, 20)
 			.padding(.horizontal, 30)
 		}

@@ -114,7 +114,6 @@ extension Settings {
 				label
 					.alignmentGuide(.settingsSectionLabel) { $0[.trailing] }
 				content
-				Spacer()
 			}
 		}
 	}
