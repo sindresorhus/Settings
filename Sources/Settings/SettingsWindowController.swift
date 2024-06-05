@@ -33,7 +33,7 @@ public final class SettingsWindowController: NSWindowController {
 	) {
 		precondition(!panes.isEmpty, "You need to set at least one pane")
 
-		let window = UserInteractionPausableWindow(
+		let window = SettingsWindow(
 			contentRect: panes[0].view.bounds,
 			styleMask: [
 				.titled,
@@ -163,4 +163,8 @@ extension SettingsWindowController {
 			hidesToolbarForSingleItem: hidesToolbarForSingleItem
 		)
 	}
+}
+
+private final class SettingsWindow: UserInteractionPausableWindow {
+	override var canBecomeMain: Bool { false }
 }
