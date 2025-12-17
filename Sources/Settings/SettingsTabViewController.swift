@@ -137,6 +137,12 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 		}
 
 		view.removeConstraints(activeChildViewConstraints)
+
+		// Reset visual state in case view was left with alpha=0 from a previous
+		// crossfade animation that was interrupted or not yet complete.
+		toViewController.view.alphaValue = 1
+		toViewController.view.isHidden = false
+
 		toViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
 		transition(
