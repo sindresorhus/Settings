@@ -283,7 +283,7 @@ macOS 11 and later supports SF Symbols which can be conveniently used for the to
 
 ### The settings window doesn't show
 
-This can happen when you are not using auto-layout or have not set a size for the view controller. You can fix this by either using auto-layout or setting an explicit size, for example, `preferredContentSize` in `viewDidLoad()`. [We intend to fix this.](https://github.com/sindresorhus/Settings/pull/28)
+This can happen when the view controller has no intrinsic or bounds size. You can fix it by either using auto-layout or setting an explicit size, for example, `preferredContentSize` in `viewDidLoad()`.
 
 ### There are no animations on macOS 10.13 and earlier
 

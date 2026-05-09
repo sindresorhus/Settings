@@ -4,6 +4,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 	private var activeTab: Int?
 	private var panes = [SettingsPane]()
 	private var style: Settings.Style?
+	private var measuredContentSizes = [Settings.PaneIdentifier: CGSize]()
 	internal var settingsPanesCount: Int { panes.count }
 	private var settingsStyleController: SettingsStyleController!
 	private var isKeepingWindowCentered: Bool { settingsStyleController.isKeepingWindowCentered }
@@ -200,7 +201,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 			preconditionFailure()
 		}
 
-		let contentSize = viewController.view.fittingSize
+		let contentSize = resolvedContentSize(for: viewController)
 
 		let newWindowSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
 		var frame = window.frame
@@ -214,6 +215,35 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 
 		let animatableWindow = animated ? window.animator() : window
 		animatableWindow.setFrame(frame, display: false)
+	}
+
+	private func resolvedContentSize(for viewController: NSViewController) -> CGSize {
+		let fittingSize = viewController.view.fittingSize
+		if fittingSize != .zero {
+			cacheContentSize(fittingSize, for: viewController)
+			return fittingSize
+		}
+
+		if let paneIdentifier = (viewController as? SettingsPane)?.paneIdentifier,
+		   let measuredContentSize = measuredContentSizes[paneIdentifier] {
+			return measuredContentSize
+		}
+
+		let boundsSize = viewController.view.bounds.size
+		if boundsSize != .zero {
+			cacheContentSize(boundsSize, for: viewController)
+			return boundsSize
+		}
+
+		return fittingSize
+	}
+
+	private func cacheContentSize(_ size: CGSize, for viewController: NSViewController) {
+		guard let paneIdentifier = (viewController as? SettingsPane)?.paneIdentifier else {
+			return
+		}
+
+		measuredContentSizes[paneIdentifier] = size
 	}
 }
 
