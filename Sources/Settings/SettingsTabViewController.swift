@@ -4,6 +4,7 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 	private var activeTab: Int?
 	private var panes = [SettingsPane]()
 	private var style: Settings.Style?
+	private var contentSizes = [Settings.PaneIdentifier: CGSize]()
 	internal var settingsPanesCount: Int { panes.count }
 	private var settingsStyleController: SettingsStyleController!
 	private var isKeepingWindowCentered: Bool { settingsStyleController.isKeepingWindowCentered }
@@ -200,7 +201,11 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 			preconditionFailure()
 		}
 
-		let contentSize = viewController.view.fittingSize
+		guard let pane = viewController as? SettingsPane else {
+			preconditionFailure()
+		}
+
+		let contentSize = preferredContentSize(for: pane)
 
 		let newWindowSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
 		var frame = window.frame
@@ -214,6 +219,21 @@ final class SettingsTabViewController: NSViewController, SettingsStyleController
 
 		let animatableWindow = animated ? window.animator() : window
 		animatableWindow.setFrame(frame, display: false)
+	}
+
+	private func preferredContentSize(for pane: SettingsPane) -> CGSize {
+		let contentSize = [
+			pane.view.fittingSize,
+			pane.preferredContentSize,
+			pane.view.bounds.size,
+			contentSizes[pane.paneIdentifier] ?? .zero
+		].first { $0.isValidContentSize } ?? .zero
+
+		if contentSize.isValidContentSize {
+			contentSizes[pane.paneIdentifier] = contentSize
+		}
+
+		return contentSize
 	}
 }
 
@@ -240,5 +260,11 @@ extension SettingsTabViewController: NSToolbarDelegate {
 		}
 
 		return settingsStyleController.toolbarItem(paneIdentifier: .init(fromToolbarItemIdentifier: itemIdentifier))
+	}
+}
+
+private extension CGSize {
+	var isValidContentSize: Bool {
+		width > 0 && height > 0
 	}
 }
